@@ -8,7 +8,7 @@ const User = require("../models/users");
 /* Signup */
 router.post("/signup", async (req, res) => {
   try {
-    if (!req.body.password || !req.body.email) {
+    if (!req.body.password || !req.body.email ||!req.body.firstname ||!req.body.name) {
       return res.json({ result: false, error: "Missing or empty fields" });
     }
     
