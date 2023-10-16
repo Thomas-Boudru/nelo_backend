@@ -30,7 +30,10 @@ router.post("/signup", async (req, res) => {
       token: uid2(32),
       email: req.body.email,
       password: hash,
+      language: 'fr',
       isActive: true,
+      isConditions : req.body.isConditions,
+      isMailing : req.body.isMailing,
       dateCreation: new Date(),
       userData: newUserData,
     });
@@ -54,5 +57,22 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+
+// Signin
+
+router.post('/login', (req,res) => {
+  if (!req.body.email || !req.body.password) {
+    res.json({ result: false, error: 'Missing or empty fields' });
+    return;}
+
+  User.findOne({email : req.body.email})
+  .then(data => {
+    if(data && bcrypt.compareSync(req.body.password, data.password)){
+      res.json({ result: true, db: data})   
+    } else {
+      res.json({result: false, error : "Email or password"})
+    } 
+  })
+});
 
 module.exports = router;
