@@ -87,8 +87,7 @@ router.get('/search', async (req, res) => {
       today.setHours(0, 0, 0, 0);  // Met à 00:00:00 pour comparer uniquement les jours
   
       const upcomingEvents = await Event.find({
-        startDateEvent: { $lte: today },  // L'événement commence avant ou aujourd'hui
-        endDateEvent: { $gte: today }     // L'événement se termine aujourd'hui ou après
+        endDateEvent: { $gte: today }     
       });
   
       res.json({ result: true, upcomingEvents });
