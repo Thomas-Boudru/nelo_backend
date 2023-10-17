@@ -52,26 +52,33 @@ router.post("/createEvent", async (req, res) => {
 
 // search events
 
+
+
 router.get('/search', async (req, res) => {
-    const searchText = req.query.q;
-  
-    try {
-      const eventResults = await Event.find({
-        nameEvent: { $regex: searchText, $options: 'i' },
-      });
-  
-      // Recherche de l'organisateur en fonction du nom de l'événement
-      const organizerResults = await Organizer.find({ name: { $regex: searchText, $options: 'i' } });
-  
-      res.json({ eventResults, organizerResults });
-    } catch (error) {
-      console.error('Error searching events and organizers', error);
-      res.status(500).json({ error: 'An error occurred while searching events and organizers' });
-    }
-  });
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Mettre l'heure à 00:00:00
+
+  const searchText = req.query.q;
+
+  try {
+    const eventResults = await Event.find({
+      nameEvent: { $regex: searchText, $options: 'i' },
+      endDateEvent: { $gte: today } // endDateEvent doit être supérieure ou égale à la date d'aujourd'hui (sans tenir compte de l'heure)
+    });
+
+    // Recherche de l'organisateur en fonction du nom de l'événement
+    const organizerResults = await Organizer.find({ name: { $regex: searchText, $options: 'i' } });
+
+    res.json({ eventResults, organizerResults });
+  } catch (error) {
+    console.error('Error searching events and organizers', error);
+    res.status(500).json({ error: 'An error occurred while searching events and organizers' });
+  }
+});
 
 
-  
+
   // get all events for which 
 
   router.get('/eventsUpcoming', async (req, res) => {
