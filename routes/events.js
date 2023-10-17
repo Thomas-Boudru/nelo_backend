@@ -69,5 +69,25 @@ router.get('/search', async (req, res) => {
       res.status(500).json({ error: 'An error occurred while searching events and organizers' });
     }
   });
+
+
+  
+  // get all events for which 
+
+  router.get('/eventsUpcoming', async (req, res) => {
+    try {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);  // Met à 00:00:00 pour comparer uniquement les jours
+  
+      const upcomingEvents = await Event.find({
+        endDateEvent: { $gte: today }
+      });
+  
+      res.json({ result: true, upcomingEvents });
+    } catch (error) {
+      console.error('Error:', error);
+      res.json({ result: false, error: "An error occurred while fetching upcoming events" });
+    }
+  });
   
   module.exports = router;

@@ -16,6 +16,7 @@ const stands = mongoose.Schema({
 const eventsSchema = mongoose.Schema({
   nameEvent: String,
   descriptionEvent: String,
+  isPermanent: Boolean,
   startDateEvent : Date,
   endDateEvent: Date,
   pictureEvent: String,
