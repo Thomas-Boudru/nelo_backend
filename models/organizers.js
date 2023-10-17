@@ -16,6 +16,7 @@ const organizersSchema = mongoose.Schema({
     website: String,
     token: String,
     isActive: Boolean,
+    isAdmin: Boolean,
     language : String,
     event : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
     userData : [adminUser],

@@ -28,6 +28,7 @@ router.post("/createOrganizer", async (req, res) => {
       website: req.body.website,
       token: uid2(32),
       isActive: true,
+      isAdmin: false,
       language: req.body.language,
     });
 

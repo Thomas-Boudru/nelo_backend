@@ -25,8 +25,8 @@ router.post("/createEvent", async (req, res) => {
               latitude: req.body.latitude,
               longitude: req.body.longitude,
               organizer: req.body.organizerId,
-              private: req.body.private,
-              allFree: req.body.free,
+              backgroundColor : req.body.backgroundColor,
+              priceToken: req.body.priceToken,
               isActive : true
           });
 
@@ -49,5 +49,25 @@ router.post("/createEvent", async (req, res) => {
   }
 });
 
+
+// search events
+
+router.get('/search', async (req, res) => {
+    const searchText = req.query.q;
+  
+    try {
+      const eventResults = await Event.find({
+        nameEvent: { $regex: searchText, $options: 'i' },
+      });
+  
+      // Recherche de l'organisateur en fonction du nom de l'événement
+      const organizerResults = await Organizer.find({ name: { $regex: searchText, $options: 'i' } });
+  
+      res.json({ eventResults, organizerResults });
+    } catch (error) {
+      console.error('Error searching events and organizers', error);
+      res.status(500).json({ error: 'An error occurred while searching events and organizers' });
+    }
+  });
   
   module.exports = router;
