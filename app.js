@@ -8,6 +8,8 @@ require('./models/connection');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var organizersRouter = require('./routes/organizers');
+var eventsRouter = require('./routes/events');
 
 var app = express();
 
@@ -19,5 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/organizers', organizersRouter);
+app.use('/events', eventsRouter);
 
 module.exports = app;
