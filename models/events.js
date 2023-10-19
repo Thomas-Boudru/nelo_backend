@@ -16,12 +16,17 @@ const stands = mongoose.Schema({
 const eventsSchema = mongoose.Schema({
   nameEvent: String,
   descriptionEvent: String,
+
   isPermanent: Boolean,
+
   startDateEvent : Date,
   endDateEvent: Date,
+
   pictureEvent: String,
   website : String,
+
   isActive: Boolean,
+
   namePlace: String,
   addressPlace : String,
   cityPlace : String,
@@ -29,9 +34,19 @@ const eventsSchema = mongoose.Schema({
   latitude: Number,
   longitude: Number,
   backgroundColor: String,
+
   priceToken: Number,
+
+  isBaseToken: Boolean,
+  baseToken: Number,
+  isReimburse: Boolean,
+  reimburseCode: String,
+
+  isSaldoUnique : Boolean,
+  saldoEvent: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
+
   organizer : { type: mongoose.Schema.Types.ObjectId, ref: "organizers" },
-  standsData : [stands],
+  standsData : [stands]
 });
 
 const Event = mongoose.model("events", eventsSchema);

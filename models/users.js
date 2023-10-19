@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
 
-const saldo = mongoose.Schema({
-  amount: String,
-  event : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
-  organizer : [{ type: mongoose.Schema.Types.ObjectId, ref: "organizers" }],
-  creationDate: Date,
-  endDate: Date,
+const saldoMain = mongoose.Schema({
+  amount: Number,
+  transactions : [{ type: mongoose.Schema.Types.ObjectId, ref: "transactions" }],
+  transfers : [{ type: mongoose.Schema.Types.ObjectId, ref: "transfers" }],
+})
+
+const saldoOthers = mongoose.Schema({
+  amount: Number,
+  saldoInfo : { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
+  transactions : [{ type: mongoose.Schema.Types.ObjectId, ref: "transactions" }],
+  transfers : [{ type: mongoose.Schema.Types.ObjectId, ref: "transfers" }],
 })
 
 
@@ -26,7 +31,9 @@ const usersSchema = mongoose.Schema({
   isMailing : Boolean,
   dateCreation: Date,
   userData : userData,
-  saldoData : [saldo]
+
+  saldoMainData: saldoMain,
+  saldoOthersData : [saldoOthers]
 });
 
 const User = mongoose.model("users", usersSchema);

@@ -1,0 +1,192 @@
+var express = require('express');
+var router = express.Router();
+const Event = require("../models/events");
+const Organizer = require("../models/organizers")
+const User = require("../models/users")
+const Transaction = require("../models/transactions")
+const Saldo = require("../models/saldos")
+
+// Create Transaction In
+router.post("/createTransactionIn", async (req, res) => {
+    try {
+      const newTransaction = new Transaction({
+        amount: req.body.amount,
+        token: req.body.token,
+        creationDate: new Date(),
+        user: req.body.userId,
+        saldo: req.body.saldoId
+      });
+  
+      const savedTransaction = await newTransaction.save();
+  
+      // Now that the event is saved, let's update the Organizer
+      const userIdentity = req.body.userId;
+  
+      if (!req.body.saldoId) {
+        // Update saldoMainData.amount by adding req.body.amount
+        await User.findByIdAndUpdate(
+          userIdentity,
+          {
+            $push: { 'saldoMainData.transactions': savedTransaction._id },
+            $inc: { 'saldoMainData.amount': req.body.amount }
+          }
+        );
+      } else {
+        const saldoInfoId = req.body.saldoId;
+        const user = await User.findById(userIdentity);
+  
+       
+        // Check if saldoOthersData with saldoInfoId exists in the user's data
+        const saldoOtherData = user.saldoOthersData.find(
+          (s) => s.saldoInfo.toString() === saldoInfoId
+        );
+  
+        if (saldoOtherData) {
+          // Update an existing saldoOtherData
+          await User.findOneAndUpdate(
+            { _id: userIdentity, 'saldoOthersData.saldoInfo': saldoInfoId },
+            {
+              $push: { 'saldoOthersData.$.transactions': savedTransaction._id },
+              $inc: { 'saldoOthersData.$.amount': req.body.amount }
+            }
+          );
+        } else {
+          // Create a new saldoOtherData and add the transaction
+          const newSaldoOtherData = {
+            amount: req.body.amount,
+            saldoInfo: saldoInfoId,
+            transactions: [savedTransaction._id]
+          };
+  
+          user.saldoOthersData.push(newSaldoOtherData);
+          await user.save();
+        }
+      }
+  
+      res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
+  
+    } catch (error) {
+      console.error('Error:', error);
+      res.json({ result: false, message: "Error saving transaction" });
+    }
+  });
+  
+
+// Create Transaction Out
+
+
+router.post("/createTransactionOut", async (req, res) => {
+  let savedTransaction; // Declare the variable outside the try block.
+
+  try {
+    const userIdentity = req.body.userId;
+    const saldoInfoId = req.body.saldoId;
+    const amountToDeduct = req.body.amount;
+
+    const user = await User.findById(userIdentity);
+
+    if (!user) {
+      return res.json({ result: false, message: "User not found" });
+    }
+
+    if (saldoInfoId) {
+      const saldoOtherData = user.saldoOthersData.find(
+        (s) => s.saldoInfo.toString() === saldoInfoId
+      );
+
+      if (!saldoOtherData) {
+        return res.json({ result: false, message: "No money deposit on this saldo" });
+      }
+
+      if (saldoOtherData.amount < amountToDeduct) {
+        return res.json({ result: false, message: "Insufficient funds" });
+      }
+
+      saldoOtherData.amount -= amountToDeduct;
+      const newTransaction = new Transaction({
+        amount: -amountToDeduct,
+        token: req.body.token,
+        creationDate: new Date(),
+        user: userIdentity,
+        saldo: saldoInfoId
+      });
+      savedTransaction = await newTransaction.save();
+
+      await User.findOneAndUpdate(
+        { _id: userIdentity, 'saldoOthersData.saldoInfo': saldoInfoId },
+        {
+          $push: { 'saldoOthersData.$.transactions': savedTransaction._id },
+          $set: { 'saldoOthersData.$.amount': saldoOtherData.amount }
+        }
+      );
+    } else {
+      if (user.saldoMainData.amount < amountToDeduct) {
+        return res.json({ result: false, message: "Insufficient funds" });
+      }
+
+      user.saldoMainData.amount -= amountToDeduct;
+      const newTransaction = new Transaction({
+        amount: -amountToDeduct,
+        token: req.body.token,
+        creationDate: new Date(),
+        user: userIdentity
+      });
+      savedTransaction = await newTransaction.save();
+
+      await User.findByIdAndUpdate(
+        userIdentity,
+        {
+          $push: { 'saldoMainData.transactions': savedTransaction._id },
+          $set: { 'saldoMainData.amount': user.saldoMainData.amount }
+        }
+      );
+    }
+
+    res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.json({ result: false, message: "Error saving transaction" });
+  }
+});
+
+
+
+
+
+
+// Create Saldo / Coins type
+
+router.post("/createSaldo", async (req, res) => {
+    try {
+      const newSaldo = new Saldo({
+        name: req.body.saldoName,
+        creationDate: new Date(),
+        endDate: '2023-12-19T09:06:49.108+00:00',
+        organizer : req.body.organizerId,
+      });
+  
+      const savedSaldo = await newSaldo.save();
+  
+      // Now that the event is saved, let's update the Organizer
+      {/*const organizerIdentity = req.body.organizerId;
+  
+      if (organizerIdentity) {
+        await Organizer.findByIdAndUpdate(
+            organizerIdentity,
+          { $push: { 'saldoOrganizer': savedSaldo._id } }
+        );
+      } else (
+          res.json({ result: false, error: "No organizer id found" })
+      );*/}
+      
+      res.json({ result: true, message: "Saldo saved", coin: savedSaldo });
+  
+    } catch (error) {
+      console.error('Error:', error);
+      res.json({ result: false, message: "Error saving saldo" });
+    }
+  });
+  
+
+  module.exports = router;

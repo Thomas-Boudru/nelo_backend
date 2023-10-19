@@ -19,6 +19,13 @@ router.post("/signup", async (req, res) => {
 
     const hash = bcrypt.hashSync(req.body.password, 10);
 
+
+    const newSaldoMain = {
+      amount: 0,
+      transactions : [],
+      transfers: []
+    };
+
     const newUserData = {
       firstname: req.body.firstname,
       name: req.body.name,
@@ -36,6 +43,8 @@ router.post("/signup", async (req, res) => {
       isMailing : req.body.isMailing,
       dateCreation: new Date(),
       userData: newUserData,
+      saldoMainData : newSaldoMain,
+      saldoOthersData : []
     });
 
     await newUser.save();

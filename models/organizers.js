@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
 
+
+const bank = mongoose.Schema({
+    nameAccount: String,
+    numberAccount: String,
+  })
+
 const adminUser = mongoose.Schema({
     name: String,
     firstname: String,
@@ -18,8 +24,16 @@ const organizersSchema = mongoose.Schema({
     isActive: Boolean,
     isAdmin: Boolean,
     language : String,
+    address : String,
+    postCode: String,
+    country: String,
+    vat: String,
+    tariff: String,
     event : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
+    saldoOrganizer: [{ type: mongoose.Schema.Types.ObjectId, ref: "saldos" }],
     userData : [adminUser],
+    bankData : bank,
+    
 });
 
 const Organizer = mongoose.model("organizers", organizersSchema);
