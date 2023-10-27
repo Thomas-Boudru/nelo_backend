@@ -32,6 +32,8 @@ const usersSchema = mongoose.Schema({
   dateCreation: Date,
   userData : userData,
 
+  events : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
+
   saldoMainData: saldoMain,
   saldoOthersData : [saldoOthers]
 });

@@ -8,8 +8,6 @@ const products = mongoose.Schema({
 const stands = mongoose.Schema({
     name: String,
     backgroundColor: String,
-    firstname: String,
-    email: String,
     productsData : [products],
   })
 
