@@ -84,4 +84,23 @@ router.post('/login', (req,res) => {
   })
 });
 
+
+// Get info of user
+
+router.post('/getInfoUser', (req,res) => {
+  if (!req.body.tokenUser) {
+    res.json({ result: false, error: 'Missing or empty fields' });
+    return;}
+
+  User.findOne({token : req.body.tokenUser})
+  .then(data => {
+    if(data){
+      res.json({ result: true, message: "User found", db: data})   
+    } else {
+      res.json({result: false, error : "No user found"})
+    } 
+  })
+});
+
+
 module.exports = router;
