@@ -104,11 +104,14 @@ router.post('/eventByUser', (req, res) => {
 
   // Vérifier si l'événement est déjà associé à l'utilisateur
   User.findOne({ token: req.body.tokenUser})
-    .populate('organizer')
-    .populate('events')
+    .populate({
+      path: 'events',
+      populate : {
+        path: 'organizer'
+      }})
     .then(data => {
       if(data){
-        return res.json({ result: true, message: 'Events found', data : data.events })
+        return res.json({ result: true, message: 'Events found', data : data })
       } else {
         return res.json({ result: false, message: 'No Event found' })
       }
