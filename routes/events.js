@@ -4,50 +4,6 @@ const Event = require("../models/events");
 const Organizer = require("../models/organizers")
 
 
-// Create an Event
-
-router.post("/createEvent", async (req, res) => {
-  try {
-      const data = await Event.findOne({ nameEvent: req.body.nameEvent });
-
-      if (!data) {
-          const newEvent = new Event({
-              nameEvent: req.body.nameEvent,
-              descriptionEvent: req.body.descriptionEvent,
-              startDateEvent: req.body.startDateEvent,
-              endDateEvent: req.body.endDateEvent,
-              pictureEvent: req.body.pictureEvent,
-              website: req.body.website,
-              namePlace: req.body.namePlace,
-              addressPlace: req.body.addressPlace,
-              cityPlace: req.body.cityPlace,
-              countryPlace: req.body.countryPlace,
-              latitude: req.body.latitude,
-              longitude: req.body.longitude,
-              organizer: req.body.organizerId,
-              backgroundColor : req.body.backgroundColor,
-              priceToken: req.body.priceToken,
-              isActive : true
-          });
-
-          const savedEvent = await newEvent.save();
-
-          // Now that the event is saved, let's update the Organizer
-          const organizerId = req.body.organizerId;
-          await Organizer.findByIdAndUpdate(
-              organizerId,
-              { $push: { event: savedEvent._id } }
-          );
-
-          res.json({ result: true, message: "Event saved", event: savedEvent });
-      } else {
-          res.json({ result: false, message: "Event already exists" });
-      }
-  } catch (error) {
-      console.error('Error:', error);
-      res.json({ result: false, message: "Error saving event" });
-  }
-});
 
 
 // search events
@@ -96,5 +52,32 @@ router.get('/search', async (req, res) => {
       res.json({ result: false, error: "An error occurred while fetching upcoming events" });
     }
   });
+
+
+  // add event to user
+
+router.post('/addEvent', (req, res) => {
+  if (!req.body.eventId || !req.body.tokenUser) {
+    res.json({ result: false, error: 'Missing or empty fields' });
+    return;
+  }
+
+  User.findOne({ token: req.body.tokenUser })
+    .then(user => {
+      if (user) {
+        user.events.push(req.body.eventId);
+        return user.save(); // Sauvegarder les modifications apportées à l'utilisateur
+      } else {
+        res.json({ result: false, error: 'User not found' });
+      }
+    })
+    .then(savedUser => {
+      res.json({ result: true, user: savedUser });
+    })
+    .catch(error => {
+      res.json({ result: false, error: error.message });
+    });
+});
+
   
   module.exports = router;
