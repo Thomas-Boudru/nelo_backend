@@ -92,5 +92,26 @@ router.post('/addEvent', (req, res) => {
 });
 
 
+
+
+// Get all event of user
+
+
+router.post('/eventByUser', (req, res) => {
+  if (!req.body.tokenUser) {
+    return res.json({ result: false, error: 'Missing or empty fields' });
+  }
+
+  // Vérifier si l'événement est déjà associé à l'utilisateur
+  User.findOne({ token: req.body.tokenUser})
+    .populate('events')
+    .then(data => {
+      if(data){
+        return res.json({ result: true, message: 'Events found', data : data.events })
+      } else {
+        return res.json({ result: false, message: 'No Event found' })
+      }
+    })
+});
   
   module.exports = router;
