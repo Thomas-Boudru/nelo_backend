@@ -59,26 +59,38 @@ router.get('/search', async (req, res) => {
 
 router.post('/addEvent', (req, res) => {
   if (!req.body.eventId || !req.body.tokenUser) {
-    res.json({ result: false, error: 'Missing or empty fields' });
-    return;
+    return res.json({ result: false, error: 'Missing or empty fields' });
   }
 
-  User.findOne({ token: req.body.tokenUser })
-    .then(user => {
-      if (user) {
-        user.events.push(req.body.eventId);
-        return user.save(); // Sauvegarder les modifications apportées à l'utilisateur
+  // Vérifier si l'événement est déjà associé à l'utilisateur
+  User.findOne({ token: req.body.tokenUser, events: req.body.eventId })
+    .then(existingUser => {
+      if (existingUser) {
+        return res.json({ result: true, message: 'Event already associated with the user' });
       } else {
-        res.json({ result: false, error: 'User not found' });
+        // Ajouter l'événement à l'utilisateur
+        return User.findOne({ token: req.body.tokenUser })
+          .then(user => {
+            if (user) {
+              user.events.push(req.body.eventId);
+              return user.save(); // Sauvegarder les modifications apportées à l'utilisateur
+            } else {
+              return res.json({ result: false, error: 'User not found' });
+            }
+          })
+          .then(savedUser => {
+            return res.json({ result: true, user: savedUser });
+          })
+          .catch(error => {
+            return res.json({ result: false, error: error.message });
+          });
       }
     })
-    .then(savedUser => {
-      res.json({ result: true, user: savedUser });
-    })
     .catch(error => {
-      res.json({ result: false, error: error.message });
+      return res.json({ result: false, error: error.message });
     });
 });
+
 
   
   module.exports = router;
