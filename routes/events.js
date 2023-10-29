@@ -12,7 +12,6 @@ const User = require("../models/users")
 
 
 router.get('/search', async (req, res) => {
-
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Mettre l'heure à 00:00:00
 
@@ -22,9 +21,10 @@ router.get('/search', async (req, res) => {
     const eventResults = await Event.find({
       nameEvent: { $regex: searchText, $options: 'i' },
       endDateEvent: { $gte: today } // endDateEvent doit être supérieure ou égale à la date d'aujourd'hui (sans tenir compte de l'heure)
-    });
+    })
+      .populate('organizer')
+      .populate('saldoEvent');
 
-    // Recherche de l'organisateur en fonction du nom de l'événement
     const organizerResults = await Organizer.find({ name: { $regex: searchText, $options: 'i' } });
 
     res.json({ eventResults, organizerResults });
@@ -33,6 +33,7 @@ router.get('/search', async (req, res) => {
     res.status(500).json({ error: 'An error occurred while searching events and organizers' });
   }
 });
+
 
 
 

@@ -6,6 +6,7 @@ const User = require("../models/users")
 const Transaction = require("../models/transactions")
 const Saldo = require("../models/saldos")
 
+
 // Create Transaction In
 router.post("/createTransactionIn", async (req, res) => {
     try {
@@ -200,5 +201,33 @@ router.post("/createSaldo", async (req, res) => {
     }
   });
   
+
+  // get all transactions of  events +  sum
+
+  router.post('/getTransactionsByEvents', (req, res) => {
+    if (!req.body.eventId) {
+      return res.json({ result: false, error: 'Missing or empty fields' });
+    }
+ 
+    
+
+    Transaction.find({ event: req.body.eventId})
+      .then(data => {
+
+        let sumComputation = 0
+        let tokenComputation = 0
+
+        for(element of data){
+          sumComputation += -element.amount;
+          tokenComputation += element.token;
+        }
+        if(data){
+          return res.json({ result: true, message: 'Transactions found', data : data, sum : sumComputation, numUser : data.length, numToken : tokenComputation  })
+        } else {
+          return res.json({ result: false, message: 'No transaction found' })
+        }
+      })
+  });
+
 
   module.exports = router;
