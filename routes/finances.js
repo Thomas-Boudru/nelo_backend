@@ -79,11 +79,11 @@ router.post("/createTransactionOut", async (req, res) => {
   let savedTransaction; // Declare the variable outside the try block.
 
   try {
-    const userIdentity = req.body.userId;
+    const userIdentity = req.body.userToken;
     const saldoInfoId = req.body.saldoId;
     const amountToDeduct = req.body.amount;
 
-    const user = await User.findById(userIdentity);
+    const user = await User.findOne({token : userIdentity});
 
     if (!user) {
       return res.json({ result: false, message: "User not found" });
@@ -107,13 +107,13 @@ router.post("/createTransactionOut", async (req, res) => {
         amount: -amountToDeduct,
         token: req.body.token,
         creationDate: new Date(),
-        user: userIdentity,
+        user: user._id,
         saldo: saldoInfoId
       });
       savedTransaction = await newTransaction.save();
 
       await User.findOneAndUpdate(
-        { _id: userIdentity, 'saldoOthersData.saldoInfo': saldoInfoId },
+        { _id: user._id, 'saldoOthersData.saldoInfo': saldoInfoId },
         {
           $push: { 'saldoOthersData.$.transactions': savedTransaction._id },
           $set: { 'saldoOthersData.$.amount': saldoOtherData.amount }
@@ -129,12 +129,12 @@ router.post("/createTransactionOut", async (req, res) => {
         amount: -amountToDeduct,
         token: req.body.token,
         creationDate: new Date(),
-        user: userIdentity
+        user: user._id
       });
       savedTransaction = await newTransaction.save();
 
       await User.findByIdAndUpdate(
-        userIdentity,
+        user._id,
         {
           $push: { 'saldoMainData.transactions': savedTransaction._id },
           $set: { 'saldoMainData.amount': user.saldoMainData.amount }
