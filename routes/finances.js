@@ -81,7 +81,10 @@ router.post("/createTransactionOut", async (req, res) => {
   try {
     const userIdentity = req.body.userToken;
     const saldoInfoId = req.body.saldoId;
-    const amountToDeduct = req.body.amount;
+    const numberToken = req.body.numberToken;
+    const priceToken = req.body.priceToken;
+
+    let amountToDeduct = numberToken * priceToken
 
     const user = await User.findOne({token : userIdentity});
 
@@ -105,7 +108,8 @@ router.post("/createTransactionOut", async (req, res) => {
       saldoOtherData.amount -= amountToDeduct;
       const newTransaction = new Transaction({
         amount: -amountToDeduct,
-        token: req.body.token,
+        token: numberToken,
+        priceToken: priceToken,
         creationDate: new Date(),
         user: user._id,
         saldo: saldoInfoId
@@ -127,7 +131,8 @@ router.post("/createTransactionOut", async (req, res) => {
       user.saldoMainData.amount -= amountToDeduct;
       const newTransaction = new Transaction({
         amount: -amountToDeduct,
-        token: req.body.token,
+        token: numberToken,
+        priceToken: priceToken,
         creationDate: new Date(),
         user: user._id
       });
