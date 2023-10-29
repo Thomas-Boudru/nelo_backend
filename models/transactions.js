@@ -5,8 +5,10 @@ const transactionsSchema = mongoose.Schema({
   token: Number,
   priceToken: Number,
   creationDate: Date,
+  event : { type: mongoose.Schema.Types.ObjectId, ref: "events" },
+  stand: { type: mongoose.Schema.Types.ObjectId, ref: "stands" },
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
-  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" }
+  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"}
 });
 
 const Transaction = mongoose.model("transactions", transactionsSchema);

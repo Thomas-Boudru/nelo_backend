@@ -80,9 +80,12 @@ router.post("/createTransactionOut", async (req, res) => {
 
   try {
     const userIdentity = req.body.userToken;
+    const eventId = req.body.eventId;
     const saldoInfoId = req.body.saldoId;
     const numberToken = req.body.numberToken;
     const priceToken = req.body.priceToken;
+    const standId = req.body.standId;
+    
 
     let amountToDeduct = numberToken * priceToken
 
@@ -111,6 +114,8 @@ router.post("/createTransactionOut", async (req, res) => {
         token: numberToken,
         priceToken: priceToken,
         creationDate: new Date(),
+        event: eventId,
+        stand:standId,
         user: user._id,
         saldo: saldoInfoId
       });
@@ -134,6 +139,8 @@ router.post("/createTransactionOut", async (req, res) => {
         token: numberToken,
         priceToken: priceToken,
         creationDate: new Date(),
+        event: eventId,
+        stand:standId,
         user: user._id
       });
       savedTransaction = await newTransaction.save();
