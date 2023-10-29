@@ -46,7 +46,9 @@ router.get('/search', async (req, res) => {
   
       const upcomingEvents = await Event.find({
         endDateEvent: { $gte: today }     
-      });
+      })
+      .populate('organizer')
+      .populate('saldoEvent');
   
       res.json({ result: true, upcomingEvents });
     } catch (error) {
@@ -54,6 +56,7 @@ router.get('/search', async (req, res) => {
       res.json({ result: false, error: "An error occurred while fetching upcoming events" });
     }
   });
+  
 
 
   // add event to user
