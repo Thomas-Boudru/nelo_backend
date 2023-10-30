@@ -91,6 +91,7 @@ router.post('/getEventOrganizer', (req, res) => {
     organizer: req.body.organizerId,
     endDateEvent: { $gte: today }
   })
+    .populate("organizer")
     .then(data => {
       if (data.length > 0) {
         res.json({ result: true, message: 'Events found', db: data });
