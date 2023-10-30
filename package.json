@@ -17,6 +17,7 @@
     "mongoose": "^7.6.2",
     "morgan": "~1.9.1",
     "node-fetch": "2",
+    "paynl-sdk": "^1.1.4",
     "uid2": "^1.0.0"
   }
 }

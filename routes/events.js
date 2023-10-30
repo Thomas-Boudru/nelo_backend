@@ -26,6 +26,7 @@ router.get('/search', async (req, res) => {
       .populate('saldoEvent');
 
     const organizerResults = await Organizer.find({ name: { $regex: searchText, $options: 'i' } });
+      
 
     res.json({ eventResults, organizerResults });
   } catch (error) {

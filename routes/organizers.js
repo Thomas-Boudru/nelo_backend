@@ -5,6 +5,7 @@ const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
 const cloudinary = require('cloudinary').v2;
 const sgMail = require('@sendgrid/mail');
+const Event = require("../models/events");
 
 cloudinary.config({
   cloud_name: 'dqr6dghcl',
@@ -75,6 +76,33 @@ router.post("/addUserData", async (req, res) => {
     return res.json({ result: false, error: "An error occurred" });
   }
 });
+
+
+// Get event of Organizer
+
+router.post('/getEventOrganizer', (req, res) => {
+  if (!req.body.organizerId) {
+    return res.json({ result: false, error: 'Missing or empty fields' });
+  }
+
+  const today = new Date(); // Define today's date here, ensuring it's correct in your system
+
+  Event.find({
+    organizer: req.body.organizerId,
+    endDateEvent: { $gte: today }
+  })
+    .then(data => {
+      if (data.length > 0) {
+        res.json({ result: true, message: 'Events found', db: data });
+      } else {
+        res.json({ result: false, error: 'No events found' });
+      }
+    })
+    .catch(error => {
+      res.json({ result: false, error: error.message }); // Handle any potential errors
+    });
+});
+
 
 
 
