@@ -87,7 +87,7 @@ router.post('/login', (req,res) => {
 
 // Get info of user
 
-/*router.post('/getInfoUser', (req,res) => {
+router.post('/getInfoUser', (req,res) => {
   if (!req.body.tokenUser) {
     res.json({ result: false, error: 'Missing or empty fields' });
     return;}
@@ -101,6 +101,6 @@ router.post('/login', (req,res) => {
     } 
   })
 });
-}*/
+
 
 module.exports = router;
