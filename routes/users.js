@@ -94,6 +94,10 @@ router.post('/getInfoUser', (req,res) => {
     return;}
 
   User.findOne({token : req.body.tokenUser})
+  .populate({
+    path: 'saldoOthersData.saldoInfo',
+    model: 'saldos'
+  })
   .then(data => {
     if(data){
       res.json({ result: true, message: "User found", db: data})   
