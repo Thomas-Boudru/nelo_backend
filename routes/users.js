@@ -108,6 +108,77 @@ router.post('/getInfoUser', (req,res) => {
 });
 
 
+
+// change info of user
+
+router.post('/updateUserInfo', (req, res) => {
+  const { token, email, language, firstname, picture, name } = req.body;
+  
+  if (!token) {
+    return res.json({ result: false, error: 'Missing token field' });
+  }
+
+  // Créer un objet contenant uniquement les champs modifiables
+  const updatedInfo = {};
+  if (email) updatedInfo.email = email;
+  if (language) updatedInfo.language = language;
+  if (firstname) updatedInfo["userData.firstname"] = firstname;
+  if (picture) updatedInfo["userData.picture"] = picture;
+  if (name) updatedInfo["userData.name"] = name;
+
+  User.findOneAndUpdate({ token: token }, updatedInfo, { new: true })
+    .then(updatedUser => {
+      if (updatedUser) {
+        return res.json({ result: true, data: updatedUser });
+      } else {
+        return res.json({ result: false, error: 'User not found' });
+      }
+    })
+    .catch(error => {
+      return res.json({ result: false, error: error.message });
+    });
+});
+
+
+// change Password
+
+router.post('/changePassword', (req, res) => {
+  const { token, oldPassword, newPassword } = req.body;
+  
+  if (!token || !oldPassword || !newPassword) {
+    return res.json({ result: false, error: 'Missing fields' });
+  }
+
+  User.findOne({ token })
+    .then(user => {
+      if (!user) {
+        return res.json({ result: false, error: 'User not found' });
+      }
+      
+      // Vérifier si l'ancien mot de passe correspond
+      if (!bcrypt.compareSync(oldPassword, user.password)) {
+        return res.json({ result: false, error: 'Old password is incorrect' });
+      }
+      
+      // Hasher et sauvegarder le nouveau mot de passe
+      const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
+      user.password = hashedNewPassword;
+      
+      // Enregistrer les modifications dans la base de données
+      user.save()
+        .then(updatedUser => {
+          return res.json({ result: true, message: 'Password updated successfully' });
+        })
+        .catch(error => {
+          return res.json({ result: false, error: error.message });
+        });
+    })
+    .catch(error => {
+      return res.json({ result: false, error: error.message });
+    });
+});
+
+
 // Get info of user financial
 
 router.post('/getInfoUserFinancial', (req, res) => {
