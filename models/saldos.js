@@ -7,6 +7,7 @@ const saldosSchema = mongoose.Schema({
   creationDate: Date,
   endDate: Date,
   organizer : { type: mongoose.Schema.Types.ObjectId, ref: "organizers" },
+  event : { type: mongoose.Schema.Types.ObjectId, ref: "events" },
 });
 
 const Saldo = mongoose.model("saldos", saldosSchema);

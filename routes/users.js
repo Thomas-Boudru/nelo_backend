@@ -4,6 +4,7 @@ const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
 const sgMail = require('@sendgrid/mail');
 const User = require("../models/users");
+const Transfer = require('../models/transfers')
 
 /* Signup */
 router.post("/signup", async (req, res) => {
@@ -87,30 +88,20 @@ router.post('/login', (req,res) => {
 
 // Get info of user
 
-router.post('/getInfoUser', (req, res) => {
+router.post('/getInfoUser', (req,res) => {
   if (!req.body.tokenUser) {
     res.json({ result: false, error: 'Missing or empty fields' });
-    return;
-  }
+    return;}
 
-  User.findOne({ token: req.body.tokenUser })
-    .populate({
-      path: 'saldoOthersData.saldoInfo', // Peupler uniquement le champ saldoInfo de saldoOthersData
-      model: 'saldos' // Remplacez 'saldos' par le nom de votre modèle de saldoInfo
-    })
-    .exec()
-    .then(data => {
-      if (data) {
-        res.json({ result: true, message: "User found", db: data });
-      } else {
-        res.json({ result: false, error: "No user found" });
-      }
-    })
-    .catch(error => {
-      res.json({ result: false, error: error.message });
-    });
+  User.findOne({token : req.body.tokenUser})
+  .then(data => {
+    if(data){
+      res.json({ result: true, message: "User found", db: data})   
+    } else {
+      res.json({result: false, error : "No user found"})
+    } 
+  })
 });
-
 
 
 // Get info of user financial
@@ -123,31 +114,26 @@ router.post('/getInfoUserFinancial', (req, res) => {
 
   User.findOne({ token: req.body.tokenUser })
     .populate({
-      path: 'events', // Peupler les événements
-      populate: {
-        path: 'standsData.productsData', // Peupler les produits des stands
-        model: 'products' // Remplacez 'products' par le nom de votre modèle de produits
-      }
+      path: 'saldoMainData.transactions',
+      model: 'transactions',
+      populate: { path: 'event', model: 'events', select: 'nameEvent' }
     })
     .populate({
-      path: 'saldoMainData.transactions', // Peupler les transactions du solde principal
-      model: 'transactions' // Remplacez 'transactions' par le nom de votre modèle de transactions
+      path: 'saldoMainData.transfers',
+      model: 'transfers'
     })
     .populate({
-      path: 'saldoMainData.transfers', // Peupler les transferts du solde principal
-      model: 'transfers' // Remplacez 'transfers' par le nom de votre modèle de transferts
+      path: 'saldoOthersData.saldoInfo',
+      model: 'saldos'
     })
     .populate({
-      path: 'saldoOthersData.saldoInfo', // Peupler le soldeInfo de saldoOthersData
-      model: 'saldos' // Remplacez 'saldos' par le nom de votre modèle de soldeInfo
+      path: 'saldoOthersData.transactions',
+      model: 'transactions',
+      populate: { path: 'event', model: 'events', select: 'nameEvent' }
     })
     .populate({
-      path: 'saldoOthersData.transactions', // Peupler les transactions de saldoOthersData
-      model: 'transactions' // Remplacez 'transactions' par le nom de votre modèle de transactions
-    })
-    .populate({
-      path: 'saldoOthersData.transfers', // Peupler les transferts de saldoOthersData
-      model: 'transfers' // Remplacez 'transfers' par le nom de votre modèle de transferts
+      path: 'saldoOthersData.transfers',
+      model: 'transfers'
     })
     .exec()
     .then(data => {
@@ -161,7 +147,5 @@ router.post('/getInfoUserFinancial', (req, res) => {
       res.json({ result: false, error: error.message });
     });
 });
-
-
 
 module.exports = router;
