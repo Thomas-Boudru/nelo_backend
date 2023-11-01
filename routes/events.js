@@ -68,7 +68,6 @@ router.get('/search', async (req, res) => {
     }
   
     try {
-      // Vérifier si l'événement est déjà associé à l'utilisateur
       const existingUser = await User.findOne({ token: req.body.tokenUser, events: req.body.eventId });
   
       if (existingUser) {
@@ -78,22 +77,26 @@ router.get('/search', async (req, res) => {
       const user = await User.findOne({ token: req.body.tokenUser });
   
       if (user) {
-        // Ajouter l'événement à l'utilisateur
         user.events.push(req.body.eventId);
   
         const event = await Event.findById(req.body.eventId);
         
         if (event && event.saldoEvent) {
-          // Vérifier si le saldoEvent de l'événement est non nul
           const saldoExists = user.saldoOthersData.some((saldo) => saldo.saldoInfo.equals(event.saldoEvent));
   
           if (!saldoExists) {
-            // Si le saldo n'est pas présent, l'ajouter
-            user.saldoOthersData.push({ saldoInfo: event.saldoEvent, amount: 0 }); // Peut-être initialisé à 0
+            const newSaldoOtherData = {
+              amount: 0,
+              saldoInfo: event.saldoEvent,
+              transactions: [],
+              transfers: []
+            };
+  
+            user.saldoOthersData.push(newSaldoOtherData);
           }
         }
   
-        const savedUser = await user.save(); // Sauvegarder les modifications apportées à l'utilisateur
+        const savedUser = await user.save();
         return res.json({ result: true, user: savedUser });
       } else {
         return res.json({ result: false, error: 'User not found' });
