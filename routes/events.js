@@ -97,6 +97,30 @@ router.post('/addEvent', (req, res) => {
 });
 
 
+// Remove event from user
+router.post('/removeEvent', (req, res) => {
+  if (!req.body.eventId || !req.body.tokenUser) {
+    return res.json({ result: false, error: 'Missing or empty fields' });
+  }
+
+  User.findOne({ token: req.body.tokenUser })
+    .then(user => {
+      if (!user) {
+        return res.json({ result: false, error: 'User not found' });
+      }
+
+      // Retirer l'événement de la liste des événements de l'utilisateur
+      user.events.pull(req.body.eventId);
+
+      return user.save(); // Sauvegarder les modifications apportées à l'utilisateur
+    })
+    .then(savedUser => {
+      return res.json({ result: true, message: 'Event removed from the user', user: savedUser });
+    })
+    .catch(error => {
+      return res.json({ result: false, error: error.message });
+    });
+});
 
 
 // Get all event of user
