@@ -39,6 +39,7 @@ router.post("/signup", async (req, res) => {
       email: req.body.email,
       password: hash,
       language: 'fr',
+      isOpen : true,
       isActive: true,
       isConditions : req.body.isConditions,
       isMailing : req.body.isMailing,
@@ -222,5 +223,33 @@ router.post('/getInfoUserFinancial', (req, res) => {
       res.json({ result: false, error: error.message });
     });
 });
+
+
+// put account on isOpen false
+
+router.post('/closeAccount', (req, res) => {
+  const { tokenUser } = req.body;
+
+  if (!tokenUser) {
+    return res.json({ result: false, error: 'Missing tokenUser field' });
+  }
+
+  User.findOneAndUpdate(
+    { token: tokenUser },
+    { isOpen: false },
+    { new: true }
+  )
+  .then(updatedUser => {
+    if (updatedUser) {
+      return res.json({ result: true, message: 'Account closed successfully' });
+    } else {
+      return res.json({ result: false, error: 'User not found' });
+    }
+  })
+  .catch(error => {
+    return res.json({ result: false, error: error.message });
+  });
+});
+
 
 module.exports = router;

@@ -26,6 +26,7 @@ const usersSchema = mongoose.Schema({
   email: String,
   password: String,
   language : String,
+  isOpen : Boolean,
   isActive: Boolean,
   isConditions: Boolean,
   isMailing : Boolean,
