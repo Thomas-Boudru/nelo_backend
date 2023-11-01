@@ -71,20 +71,29 @@ router.post("/signup", async (req, res) => {
 
 // Signin
 
-router.post('/login', (req,res) => {
+router.post('/login', (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.json({ result: false, error: 'Missing or empty fields' });
-    return;}
+    return res.json({ result: false, error: 'Missing or empty fields' });
+  }
 
-  User.findOne({email : req.body.email})
-  .then(data => {
-    if(data && bcrypt.compareSync(req.body.password, data.password)){
-      res.json({ result: true, db: data})   
-    } else {
-      res.json({result: false, error : "Email or password"})
-    } 
-  })
+  User.findOne({ email: req.body.email })
+    .then(data => {
+      if (data) {
+        // Vérifier si le compte est ouvert (isOpen est true)
+        if (data.isOpen && bcrypt.compareSync(req.body.password, data.password)) {
+          return res.json({ result: true, db: data });
+        } else {
+          return res.json({ result: false, error: "Email or password" });
+        }
+      } else {
+        return res.json({ result: false, error: "No user found" });
+      }
+    })
+    .catch(error => {
+      return res.json({ result: false, error: error.message });
+    });
 });
+
 
 
 // Get info of user
