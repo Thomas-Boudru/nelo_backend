@@ -13,9 +13,13 @@ router.post("/signup", async (req, res) => {
       return res.json({ result: false, error: "Missing or empty fields" });
     }
     
-    const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) {
-      return res.json({ result: false, error: "Email already exists" });
+    const existingUsers = await User.find({ email: req.body.email });
+    
+    // Vérifier si au moins un des utilisateurs avec cet e-mail est ouvert
+    const isOpenExists = existingUsers.some(user => user.isOpen);
+
+    if (existingUsers.length > 0 && isOpenExists) {
+      return res.json({ result: false, error: 'Email already exists' });
     }
 
     const hash = bcrypt.hashSync(req.body.password, 10);
@@ -68,8 +72,6 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-
-// Signin
 
 // Signin
 
