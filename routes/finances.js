@@ -101,6 +101,8 @@ router.post("/createTransactionOut", async (req, res) => {
         (s) => s.saldoInfo.toString() === saldoInfoId
       );
 
+      console.log('saldoOtherData',saldoOtherData)
+
       if (!saldoOtherData) {
         return res.json({ result: false, message: "No money deposit on this saldo" });
       }
