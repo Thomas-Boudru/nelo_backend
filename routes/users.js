@@ -71,28 +71,29 @@ router.post("/signup", async (req, res) => {
 
 // Signin
 
+// Signin
+
 router.post('/login', (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.json({ result: false, error: 'Missing or empty fields' });
   }
 
-  User.findOne({ email: req.body.email })
-    .then(data => {
-      if (data) {
-        // Vérifier si le compte est ouvert (isOpen est true)
-        if (data.isOpen && bcrypt.compareSync(req.body.password, data.password)) {
-          return res.json({ result: true, db: data });
-        } else {
-          return res.json({ result: false, error: "Email or password" });
-        }
+  User.find({ email: req.body.email })
+    .then(users => {
+      // Filtrer l'utilisateur avec isOpen à true
+      const openUser = users.find(user => user.isOpen);
+
+      if (openUser && bcrypt.compareSync(req.body.password, openUser.password)) {
+        return res.json({ result: true, db: openUser });
       } else {
-        return res.json({ result: false, error: "No user found" });
+        return res.json({ result: false, error: "Email or password" });
       }
     })
     .catch(error => {
       return res.json({ result: false, error: error.message });
     });
 });
+
 
 
 
