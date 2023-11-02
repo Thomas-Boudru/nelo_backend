@@ -237,6 +237,8 @@ router.post('/createTransfer', async (req, res) => {
   try {
     const { userToken, saldoId, amount } = req.body;
 
+    console.log(typeof amount);
+
     // Retrieve the user initiating the transfer
     const user = await User.findOne({ token: userToken });
 
