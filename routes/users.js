@@ -111,10 +111,16 @@ router.post('/getInfoUser', (req, res) => {
     .populate({
       path: 'saldoOthersData.saldoInfo',
       model: 'saldos',
-      populate: {
-        path: 'event', // Chemin vers l'objet event dans le schéma saldos
-        model: 'events', // Modèle à utiliser pour la population
-      }
+      populate: [
+        {
+          path: 'event',
+          model: 'events'
+        },
+        {
+          path: 'organizer', // Chemin vers l'objet organizer dans le schéma saldos
+          model: 'organizers' // Modèle à utiliser pour la population de l'organizer
+        }
+      ]
     })
     .then(data => {
       if (data) {
@@ -127,6 +133,7 @@ router.post('/getInfoUser', (req, res) => {
       res.json({ result: false, error: error.message });
     });
 });
+
 
 
 
