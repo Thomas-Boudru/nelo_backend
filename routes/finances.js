@@ -244,8 +244,10 @@ router.post('/createTransfer', async (req, res) => {
       return res.json({ result: false, message: 'User not found' });
     }
 
+    let transferAmount = parseInt(amount, 10);
+
     // Check if the user has sufficient saldoMainData amount for the transfer
-    if (user.saldoMainData.amount < amount) {
+    if (user.saldoMainData.amount < transferAmount) {
       return res.json({ result: false, message: 'Insufficient funds in the main coin' });
     }
 
@@ -257,17 +259,18 @@ router.post('/createTransfer', async (req, res) => {
     }
 
     // Modify saldoMainData amount
-    user.saldoMainData.amount -= amount;
+    user.saldoMainData.amount -= transferAmount;
 
     // Update the saldoOtherData amount correctly
-    saldoOtherData.amount = parseInt(saldoOtherData.amount, 10); // Convertit en entier
-    saldoOtherData.amount += amount; 
+    saldoOtherData.amount += transferAmount;
 
     console.log(typeof saldoOtherData.amount);
+    console.log(typeof user.saldoMainData.amount);
+    console.log(typeof transferAmount);
 
     // Create the transfer
     const newTransfer = new Transfer({
-      amount,
+      transferAmount,
       creationDate: new Date(),
       user: user._id,
       saldo: saldoId
