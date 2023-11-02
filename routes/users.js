@@ -101,24 +101,33 @@ router.post('/login', (req, res) => {
 
 // Get info of user
 
-router.post('/getInfoUser', (req,res) => {
+router.post('/getInfoUser', (req, res) => {
   if (!req.body.tokenUser) {
     res.json({ result: false, error: 'Missing or empty fields' });
-    return;}
+    return;
+  }
 
-  User.findOne({token : req.body.tokenUser})
-  .populate({
-    path: 'saldoOthersData.saldoInfo',
-    model: 'saldos'
-  })
-  .then(data => {
-    if(data){
-      res.json({ result: true, message: "User found", db: data})   
-    } else {
-      res.json({result: false, error : "No user found"})
-    } 
-  })
+  User.findOne({ token: req.body.tokenUser })
+    .populate({
+      path: 'saldoOthersData.saldoInfo',
+      model: 'saldos',
+      populate: {
+        path: 'event', // Chemin vers l'objet event dans le schéma saldos
+        model: 'events', // Modèle à utiliser pour la population
+      }
+    })
+    .then(data => {
+      if (data) {
+        res.json({ result: true, message: "User found", db: data });
+      } else {
+        res.json({ result: false, error: "No user found" });
+      }
+    })
+    .catch(error => {
+      res.json({ result: false, error: error.message });
+    });
 });
+
 
 
 
