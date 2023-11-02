@@ -5,6 +5,7 @@ const Organizer = require("../models/organizers")
 const User = require("../models/users")
 const Transaction = require("../models/transactions")
 const Saldo = require("../models/saldos")
+const Transfer = require("../models/transfers")
 
 
 // Create Transaction In
@@ -228,6 +229,81 @@ router.post("/createSaldo", async (req, res) => {
         }
       })
   });
+
+
+
+// Route for creating a transfer
+router.post('/createTransfer', async (req, res) => {
+  try {
+    const { userToken, saldoId, amount } = req.body;
+
+    // Retrieve the user initiating the transfer
+    const user = await User.findOne({ token: userToken });
+
+    if (!user) {
+      return res.json({ result: false, message: 'User not found' });
+    }
+
+    // Check if the user has sufficient saldoMainData amount for the transfer
+    if (user.saldoMainData.amount < amount) {
+      return res.json({ result: false, message: 'Insufficient funds in the main coin' });
+    }
+
+    // Find the corresponding saldoOtherData based on saldoId
+    const saldoOtherData = user.saldoOthersData.find(s => s.saldoInfo._id.toString() === saldoId);
+
+    if (!saldoOtherData) {
+      return res.json({ result: false, message: 'No money deposit on this saldo' });
+    }
+
+    // Modify saldoMainData amount
+    user.saldoMainData.amount -= amount;
+
+    // Update the saldoOtherData amount correctly
+    saldoOtherData.amount = parseInt(saldoOtherData.amount, 10); // Convertit en entier
+    saldoOtherData.amount += amount; 
+
+    console.log(typeof saldoOtherData.amount);
+
+    // Create the transfer
+    const newTransfer = new Transfer({
+      amount,
+      creationDate: new Date(),
+      user: user._id,
+      saldo: saldoId
+    });
+
+    const savedTransfer = await newTransfer.save();
+
+    console.log("saldoOtherData.amount ", saldoOtherData.amount )
+
+    // Update user document with changes to saldoMainData and saldoOthersData
+    await User.findOneAndUpdate(
+      { 
+        _id: user._id 
+      },
+      { 
+        $push: { 'saldoMainData.transfers': savedTransfer._id },
+        $set: { 
+          'saldoMainData.amount': user.saldoMainData.amount,
+          'saldoOthersData.$[element].amount': saldoOtherData.amount 
+        }
+      },
+      {
+        arrayFilters: [{ 'element.saldoInfo': saldoId }]
+      }
+    );
+    
+
+    res.json({ result: true, message: 'Transfer successful', transfer: savedTransfer });
+  } catch (error) {
+    console.error('Error:', error);
+    res.json({ result: false, message: 'Error in performing the transfer' });
+  }
+});
+
+
+
 
 
   module.exports = router;

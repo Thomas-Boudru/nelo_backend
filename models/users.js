@@ -10,7 +10,6 @@ const saldoOthers = mongoose.Schema({
   amount: Number,
   saldoInfo : { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
   transactions : [{ type: mongoose.Schema.Types.ObjectId, ref: "transactions" }],
-  transfers : [{ type: mongoose.Schema.Types.ObjectId, ref: "transfers" }],
 })
 
 
