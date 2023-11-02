@@ -272,7 +272,7 @@ router.post('/createTransfer', async (req, res) => {
 
     // Create the transfer
     const newTransfer = new Transfer({
-      transferAmount,
+      amount: transferAmount, 
       creationDate: new Date(),
       user: user._id,
       saldo: saldoId
