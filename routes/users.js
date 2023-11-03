@@ -235,10 +235,6 @@ router.post('/getInfoUserFinancial', (req, res) => {
       model: 'transactions',
       populate: { path: 'event', model: 'events', select: 'nameEvent' }
     })
-    .populate({
-      path: 'saldoOthersData.transfers',
-      model: 'transfers'
-    })
     .exec()
     .then(data => {
       if (data) {
