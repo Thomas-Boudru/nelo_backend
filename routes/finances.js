@@ -239,6 +239,10 @@ router.post('/createTransfer', async (req, res) => {
 
     console.log(typeof amount);
 
+    if (!saldoId) {
+      return res.json({ result: false, message: 'No saldo' });
+    }
+
     // Retrieve the user initiating the transfer
     const user = await User.findOne({ token: userToken });
 
