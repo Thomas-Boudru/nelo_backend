@@ -16,6 +16,10 @@ router.post('/paynl-transaction', async (req, res) => {
 
     const user = await User.findOne({token : req.body.tokenUser});
 
+    let saldoInput = ""
+    if(req.body.saldoId){
+      saldoInput = req.body.saldoId
+    }
 
     const newDeposit = new Deposit({
       amount: req.body.amount,
@@ -23,7 +27,7 @@ router.post('/paynl-transaction', async (req, res) => {
       idPayment: "",
       user: user._id,
       isPaid: false,
-      saldo: req.body.saldoId
+      saldo: saldoInput
     });
 
     const amountToPut = req.body.amount*100
