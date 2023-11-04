@@ -13,12 +13,15 @@ const fetch = require('node-fetch');
 
 router.post('/paynl-transaction', async (req, res) => {
   try {
+
+    const user = await User.findOne({token : req.body.tokenUser});
+
     const newDeposit = new Deposit({
       amount: req.body.amount,
       token: req.body.token,
       creationDate: new Date(),
       idPayment: "",
-      user: req.body.userId,
+      user: user._id,
       isPaid: false,
       saldo: req.body.saldoId
     });
