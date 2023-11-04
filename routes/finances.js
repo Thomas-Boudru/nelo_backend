@@ -103,7 +103,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
     if (data.status.code === 100) {
       depositFound.isPaid = true;
       await depositFound.save();
-      
+     
       if (!depositFound.saldo) {
         // Effectuer des mises à jour spécifiques pour le dépôt qui n'a pas de "saldo"
         await User.findByIdAndUpdate(
@@ -116,17 +116,19 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
         );
       } else {
         // Effectuer des mises à jour spécifiques pour le dépôt ayant un "saldo"
-        const saldoInfoId = depositFound.saldo;
+        const saldoInfoId = depositFound.saldo._id;
         const user = await User.findById(depositFound.user);
-        const saldoOtherData = user.saldoOthersData.find(s => s.saldoInfo.toString() === saldoInfoId);
+        const saldoOtherData = user.saldoOthersData.find(s => s._id.toString() === saldoInfoId.toString());
+
+        console.log('saldoOtherData', saldoOtherData)
 
         if (saldoOtherData) {
           // Mettre à jour un solde "saldoOtherData" existant
           await User.findOneAndUpdate(
-            { _id: userIdentity, 'saldoOthersData.saldoInfo': saldoInfoId },
+            { _id: user._id, 'saldoOthersData._id': saldoInfoId },
             {
               $push: { 'saldoOthersData.$.deposit': depositFound._id },
-              $inc: { 'saldoOthersData.$.amount': req.body.amount }
+              $inc: { 'saldoOthersData.$.amount': depositFound.amount  }
             }
           );
         } else {
