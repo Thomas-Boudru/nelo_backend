@@ -16,6 +16,7 @@ router.post('/paynl-transaction', async (req, res) => {
 
     const user = await User.findOne({token : req.body.tokenUser});
 
+
     const newDeposit = new Deposit({
       amount: req.body.amount,
       creationDate: new Date(),
@@ -52,7 +53,7 @@ router.post('/paynl-transaction', async (req, res) => {
     const response = await fetch(url, options);
     const data = await response.json();
 
-    if (data._id) {
+    if (data.id) {
       await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data._id });
     }
 
@@ -77,7 +78,11 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
 
     const url = `https://rest.pay.nl/v2/transactions/${depositFound.idPayment}/status`;
     const options = {
-      // ... Vos options pour obtenir le statut de la transaction
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+      }
     };
 
     const response = await fetch(url, options);
