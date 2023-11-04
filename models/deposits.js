@@ -5,6 +5,7 @@ const depositsSchema = mongoose.Schema({
   token: Number,
   priceToken: Number,
   creationDate: Date,
+  idPayment : String,
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"}
 });

@@ -8,7 +8,7 @@ const Saldo = require("../models/saldos")
 const Transfer = require("../models/transfers")
 const fetch = require('node-fetch');
 
-// Payment 
+// create Payment 
 
 router.post('/paynl-transaction', async (req, res) => {
   const url = 'https://rest.pay.nl/v2/transactions';
@@ -26,7 +26,7 @@ router.post('/paynl-transaction', async (req, res) => {
       description: 'Exemple',
       reference: 'Exemple',
       returnUrl: 'https://demo.pay.nl/complete/',
-      exchangeUrl: 'https://demo.pay.nl/exchange.php'
+      exchangeUrl: `https://backend-coinpack-app.vercel.app/paynl-status`
     })
   };
 
@@ -40,7 +40,35 @@ router.post('/paynl-transaction', async (req, res) => {
   }
 });
 
+
+
+// get status
+
   
+  router.get('/paynl-status/:idPayment', async (req, res) => {
+    const { idPayment } = req.params;
+  
+    const url = `https://rest.pay.nl/v2/transactions/${idPayment}/status`;
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+      }
+    };
+  
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      res.json(data); // Renvoie le statut du paiement
+    } catch (error) {
+      console.error('Erreur:', error);
+      res.status(500).json({ message: 'Erreur lors de la récupération du statut du paiement' });
+    }
+  });
+  
+
+
 
 
 // Create Transaction In
