@@ -23,6 +23,8 @@ router.post('/paynl-transaction', async (req, res) => {
       saldo: req.body.saldoId
     });
 
+    const amountToPut = req.body.amount*100
+
     // Attendre l'enregistrement du dépôt
     const savedDeposit = await newDeposit.save();
 
@@ -35,7 +37,7 @@ router.post('/paynl-transaction', async (req, res) => {
         authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
       },
       body: JSON.stringify({
-        amount: { value: req.body.amount, currency: 'EUR' },
+        amount: { value: amountToPut, currency: 'EUR' },
         integration: { testMode: true },
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
