@@ -8,6 +8,55 @@ const Saldo = require("../models/saldos")
 const Transfer = require("../models/transfers")
 
 
+// Payment 
+
+router.post('/paynl-transaction', async (req, res) => {
+  try {
+
+    const transactionDetails = {
+     serviceId: "AT-0090-4068",
+     description: "Example description",
+     reference: "12345XXY0123",
+     returnUrl: "https://demo.pay.nl/complete/",
+     exchangeUrl: "https://demo.pay.nl/exchange.php",
+     amount: {
+          "value": `${req.body.amount}`,
+          "currency": "EUR"
+     },
+     paymentMethod: {
+      "id": "10",
+      "subId": "4"
+     },
+     integration: {
+          "testMode": true
+     },
+
+    };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        authorization: '165edd0726e8cda52eb425c5e7dc76b5a22ca6b8', 
+      },
+      body: JSON.stringify(transactionDetails)
+    };
+
+    const response = await fetch('https://rest.pay.nl/v1/transactions', options);
+
+   
+    const transactionResponse = await response.json();
+    console.log("response", transactionResponse)
+    res.json({ result: true, message: 'Transaction created', transaction: transactionResponse });
+  } catch (error) {
+    console.error('Error:', error);
+    res.json({ result: false, message: 'Error creating transaction' });
+  }
+});
+
+  
+
+
 // Create Transaction In
 router.post("/createTransactionIn", async (req, res) => {
     try {
