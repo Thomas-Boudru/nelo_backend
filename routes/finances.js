@@ -52,9 +52,10 @@ router.post('/paynl-transaction', async (req, res) => {
 
     const response = await fetch(url, options);
     const data = await response.json();
-
-    if (data.id) {
-      await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data._id });
+    console.log('data', data)
+    console.log('data', data)
+    if(data.id) {
+      await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data.id });
     }
 
     res.json(data);
