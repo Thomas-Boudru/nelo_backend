@@ -6,34 +6,53 @@ const User = require("../models/users")
 const Transaction = require("../models/transactions")
 const Saldo = require("../models/saldos")
 const Transfer = require("../models/transfers")
+const Deposit = require("../models/deposits")
 const fetch = require('node-fetch');
 
 // create Payment 
 
 router.post('/paynl-transaction', async (req, res) => {
-  const url = 'https://rest.pay.nl/v2/transactions';
-  const options = {
-    method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
-      authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=' 
-    },
-    body: JSON.stringify({
-      amount: { value: req.body.amount, currency: 'EUR' },
-      integration: { testMode: true },
-      serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
-      description: 'Exemple',
-      reference: 'Exemple',
-      returnUrl: 'https://demo.pay.nl/complete/',
-      exchangeUrl: `https://backend-coinpack-app.vercel.app/paynl-status`
-    })
-  };
-
   try {
+    const newDeposit = new Deposit({
+      amount: req.body.amount,
+      token: req.body.token,
+      creationDate: new Date(),
+      idPayment: "",
+      user: req.body.userId,
+      isPaid: false,
+      saldo: req.body.saldoId
+    });
+
+    // Attendre l'enregistrement du dépôt
+    const savedDeposit = await newDeposit.save();
+
+    const url = 'https://rest.pay.nl/v2/transactions';
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+      },
+      body: JSON.stringify({
+        amount: { value: req.body.amount, currency: 'EUR' },
+        integration: { testMode: true },
+        serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
+        description: `CoinPack - ${req.body.saldoName}`,
+        reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
+        returnUrl: 'https://coinpack.app',
+        exchangeUrl: `https://backend-coinpack-app.vercel.app/paynl-status/${savedDeposit._id}`
+      })
+    };
+
     const response = await fetch(url, options);
     const data = await response.json();
-    res.json(data); // Renvoie la réponse de Pay.nl
+
+    if (data._id) {
+      await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data._id });
+    }
+
+    res.json(data);
   } catch (error) {
     console.error('Erreur:', error);
     res.status(500).json({ message: 'Erreur lors du paiement' });
@@ -42,32 +61,36 @@ router.post('/paynl-transaction', async (req, res) => {
 
 
 
+
+
 // get status
 
   
-  router.get('/paynl-status/:idPayment', async (req, res) => {
-    const { idPayment } = req.params;
-  
-    const url = `https://rest.pay.nl/v2/transactions/${idPayment}/status`;
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
-      }
-    };
-  
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-      res.json(data); // Renvoie le statut du paiement
-    } catch (error) {
-      console.error('Erreur:', error);
-      res.status(500).json({ message: 'Erreur lors de la récupération du statut du paiement' });
-    }
-  });
-  
+router.get('/paynl-status/:idDeposit', async (req, res) => {
+  try {
+    const { idDeposit } = req.params;
+    const depositFound = await Deposit.findById(idDeposit);
 
+    const url = `https://rest.pay.nl/v2/transactions/${depositFound.idPayment}/status`;
+    const options = {
+      // ... Vos options pour obtenir le statut de la transaction
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.status.code === 100) {
+      depositFound.isPaid = true;
+      await depositFound.save();
+    }
+
+    res.json(data);
+  } catch (error) {
+    console.error('Erreur:', error);
+    res.status(500).json({ message: 'Erreur lors de la récupération du statut du paiement' });
+  }
+});
+  
 
 
 
