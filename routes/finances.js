@@ -13,22 +13,29 @@ const fetch = require('node-fetch');
 
 router.post('/paynl-transaction', async (req, res) => {
   try {
+    const user = await User.findOne({ token: req.body.tokenUser });
 
-    const user = await User.findOne({token : req.body.tokenUser});
+    let newDeposit;
+    let saldoInput = req.body.saldoId; // Assurez-vous de récupérer la valeur correctement
 
-    let saldoInput = ""
-    if(req.body.saldoId){
-      saldoInput = req.body.saldoId
+    if (saldoInput) {
+      newDeposit = new Deposit({
+        amount: req.body.amount,
+        creationDate: new Date(),
+        idPayment: "",
+        user: user._id,
+        isPaid: false,
+        saldo: saldoInput
+      });
+    } else {
+      newDeposit = new Deposit({
+        amount: req.body.amount,
+        creationDate: new Date(),
+        idPayment: "",
+        user: user._id,
+        isPaid: false,
+      });
     }
-
-    const newDeposit = new Deposit({
-      amount: req.body.amount,
-      creationDate: new Date(),
-      idPayment: "",
-      user: user._id,
-      isPaid: false,
-      saldo: saldoInput
-    });
 
     const amountToPut = req.body.amount*100
 
