@@ -1,0 +1,14 @@
+const mongoose = require("mongoose");
+
+const depositsSchema = mongoose.Schema({
+  amount: Number,
+  token: Number,
+  priceToken: Number,
+  creationDate: Date,
+  user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"}
+});
+
+const Deposit = mongoose.model("deposits", depositsSchema);
+
+module.exports = Deposit;
