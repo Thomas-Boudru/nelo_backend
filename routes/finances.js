@@ -6,52 +6,35 @@ const User = require("../models/users")
 const Transaction = require("../models/transactions")
 const Saldo = require("../models/saldos")
 const Transfer = require("../models/transfers")
-
+const fetch = require('node-fetch');
 
 // Payment 
 
 router.post('/paynl-transaction', async (req, res) => {
-  try {
 
-    const transactionDetails = {
-     serviceId: "AT-0090-4068",
-     description: "Example description",
-     reference: "12345XXY0123",
-     returnUrl: "https://demo.pay.nl/complete/",
-     exchangeUrl: "https://demo.pay.nl/exchange.php",
-     amount: {
-          "value": `${req.body.amount}`,
-          "currency": "EUR"
-     },
-     paymentMethod: {
-      "id": "10",
-      "subId": "4"
-     },
-     integration: {
-          "testMode": true
-     },
+const url = 'https://rest.pay.nl/v2/transactions';
+const options = {
+  method: 'POST',
+  headers: {
+    accept: 'application/json',
+    'content-type': 'application/json',
+    authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+  },
+  body: JSON.stringify({
+    amount: {value: req.body.amount, currency: 'EUR'},
+    integration: {"testMode": true},
+    serviceId: 'SL-5893-9892',
+    description: 'exemple',
+    reference: 'exempple',
+    returnUrl: 'https://demo.pay.nl/complete/',
+    exchangeUrl: 'https://demo.pay.nl/exchange.php'
+  })
+};
 
-    };
-
-    const options = {
-      method: 'POST',
-      headers: {
-        accept: 'application/json',
-        authorization: '165edd0726e8cda52eb425c5e7dc76b5a22ca6b8', 
-      },
-      body: JSON.stringify(transactionDetails)
-    };
-
-    const response = await fetch('https://rest.pay.nl/v1/transactions', options);
-
-   
-    const transactionResponse = await response.json();
-    console.log("response", transactionResponse)
-    res.json({ result: true, message: 'Transaction created', transaction: transactionResponse });
-  } catch (error) {
-    console.error('Error:', error);
-    res.json({ result: false, message: 'Error creating transaction' });
-  }
+fetch(url, options)
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('error:' + err));
 });
 
   
