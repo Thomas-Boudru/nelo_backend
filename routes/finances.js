@@ -18,7 +18,6 @@ router.post('/paynl-transaction', async (req, res) => {
 
     const newDeposit = new Deposit({
       amount: req.body.amount,
-      token: req.body.token,
       creationDate: new Date(),
       idPayment: "",
       user: user._id,
