@@ -89,11 +89,10 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
 
     const response = await fetch(url, options);
     const data = await response.json();
-
     if (data.status.code === 100) {
       depositFound.isPaid = true;
       await depositFound.save();
-
+      
       if (!depositFound.saldo) {
         // Effectuer des mises à jour spécifiques pour le dépôt qui n'a pas de "saldo"
         await User.findByIdAndUpdate(
