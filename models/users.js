@@ -4,12 +4,14 @@ const saldoMain = mongoose.Schema({
   amount: Number,
   transactions : [{ type: mongoose.Schema.Types.ObjectId, ref: "transactions" }],
   transfers : [{ type: mongoose.Schema.Types.ObjectId, ref: "transfers" }],
+  deposit: [{ type: mongoose.Schema.Types.ObjectId, ref: "deposits" }]
 })
 
 const saldoOthers = mongoose.Schema({
   amount: Number,
   saldoInfo : { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
   transactions : [{ type: mongoose.Schema.Types.ObjectId, ref: "transactions" }],
+  deposit: [{ type: mongoose.Schema.Types.ObjectId, ref: "deposits" }]
 })
 
 
