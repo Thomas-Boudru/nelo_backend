@@ -46,14 +46,12 @@ router.post('/paynl-transaction', async (req, res) => {
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
         returnUrl: 'https://coinpack.app',
-        exchangeUrl: `https://backend-coinpack-app.vercel.app/paynl-status/${savedDeposit._id}`
+        exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}`
       })
     };
 
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log('data', data)
-    console.log('data', data)
     if(data.id) {
       await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data.id });
     }
