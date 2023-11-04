@@ -11,30 +11,33 @@ const fetch = require('node-fetch');
 // Payment 
 
 router.post('/paynl-transaction', async (req, res) => {
+  const url = 'https://rest.pay.nl/v2/transactions';
+  const options = {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=' 
+    },
+    body: JSON.stringify({
+      amount: { value: req.body.amount, currency: 'EUR' },
+      integration: { testMode: true },
+      serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
+      description: 'Exemple',
+      reference: 'Exemple',
+      returnUrl: 'https://demo.pay.nl/complete/',
+      exchangeUrl: 'https://demo.pay.nl/exchange.php'
+    })
+  };
 
-const url = 'https://rest.pay.nl/v2/transactions';
-const options = {
-  method: 'POST',
-  headers: {
-    accept: 'application/json',
-    'content-type': 'application/json',
-    authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
-  },
-  body: JSON.stringify({
-    amount: {value: req.body.amount, currency: 'EUR'},
-    integration: {"testMode": true},
-    serviceId: 'SL-5893-9892',
-    description: 'exemple',
-    reference: 'exempple',
-    returnUrl: 'https://demo.pay.nl/complete/',
-    exchangeUrl: 'https://demo.pay.nl/exchange.php'
-  })
-};
-
-fetch(url, options)
-  .then(res => res.json())
-  .then(json => console.log(json))
-  .catch(err => console.error('error:' + err));
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    res.json(data); // Renvoie la réponse de Pay.nl
+  } catch (error) {
+    console.error('Erreur:', error);
+    res.status(500).json({ message: 'Erreur lors du paiement' });
+  }
 });
 
   
