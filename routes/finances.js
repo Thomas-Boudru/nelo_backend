@@ -45,7 +45,7 @@ router.post('/paynl-transaction', async (req, res) => {
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
-        returnUrl: 'https://coinpack.app',
+        returnUrl: `https://coinpack.app/statusPayment/${savedDeposit._id}`,
         exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}`
       })
     };
@@ -69,11 +69,14 @@ router.post('/paynl-transaction', async (req, res) => {
 
 // get status
 
-  
 router.get('/paynl-status/:idDeposit', async (req, res) => {
   try {
     const { idDeposit } = req.params;
     const depositFound = await Deposit.findById(idDeposit);
+
+    if (!depositFound) {
+      return res.status(404).json({ message: 'Dépôt non trouvé' });
+    }
 
     const url = `https://rest.pay.nl/v2/transactions/${depositFound.idPayment}/status`;
     const options = {
@@ -90,14 +93,45 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
     if (data.status.code === 100) {
       depositFound.isPaid = true;
       await depositFound.save();
+
+      if (!depositFound.saldo) {
+        // Effectuer des mises à jour spécifiques pour le dépôt qui n'a pas de "saldo"
+        await User.findByIdAndUpdate(
+          depositFound.user,
+          {
+            // Mettre à jour les données de solde principal
+            $push: { 'saldoMainData.deposit': depositFound._id },
+            $inc: { 'saldoMainData.amount': depositFound.amount }
+          }
+        );
+      } else {
+        // Effectuer des mises à jour spécifiques pour le dépôt ayant un "saldo"
+        const saldoInfoId = depositFound.saldo;
+        const user = await User.findById(depositFound.user);
+        const saldoOtherData = user.saldoOthersData.find(s => s.saldoInfo.toString() === saldoInfoId);
+
+        if (saldoOtherData) {
+          // Mettre à jour un solde "saldoOtherData" existant
+          await User.findOneAndUpdate(
+            { _id: userIdentity, 'saldoOthersData.saldoInfo': saldoInfoId },
+            {
+              $push: { 'saldoOthersData.$.deposit': depositFound._id },
+              $inc: { 'saldoOthersData.$.amount': req.body.amount }
+            }
+          );
+        } else {
+          return res.status(404).json({ message: 'Informations de solde manquantes' });
+        }
+      }
     }
 
-    res.json(data);
+    res.json({ result: true, status: data });
   } catch (error) {
     console.error('Erreur:', error);
     res.status(500).json({ message: 'Erreur lors de la récupération du statut du paiement' });
   }
 });
+
   
 
 
