@@ -56,7 +56,7 @@ router.post('/paynl-transaction', async (req, res) => {
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
-        returnUrl: `https://coinpack.app/statusPayment/${savedDeposit._id}`,
+        returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}`,
         exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}`
       })
     };
