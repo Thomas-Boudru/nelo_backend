@@ -14,7 +14,7 @@ const fetch = require('node-fetch');
 router.post('/paynl-transaction', async (req, res) => {
   try {
     const user = await User.findOne({ token: req.body.tokenUser });
-
+    console.log('idCoin',req.body.idCoin)
     let newDeposit;
     let saldoInput = req.body.saldoId; // Assurez-vous de récupérer la valeur correctement
 
