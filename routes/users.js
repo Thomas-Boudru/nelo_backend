@@ -247,6 +247,16 @@ router.post('/getInfoUserFinancial', (req, res) => {
         }
       ]
     })
+    .populate({
+      path: 'saldoMainData.deposit',
+      model: 'deposits',
+      populate: { path: 'saldo', model: 'saldos', select: 'ame' }
+    })
+    .populate({
+      path: 'saldoOthersData.deposit',
+      model: 'deposits',
+      populate: { path: 'saldo', model: 'saldos', select: 'ame' }
+    })
     .exec()
     .then(data => {
       if (data) {

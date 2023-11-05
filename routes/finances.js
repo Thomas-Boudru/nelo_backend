@@ -25,7 +25,8 @@ router.post('/paynl-transaction', async (req, res) => {
         idPayment: "",
         user: user._id,
         isPaid: false,
-        saldo: saldoInput
+        saldo: saldoInput,
+        coin : req.body.idCoin
       });
     } else {
       newDeposit = new Deposit({
@@ -120,7 +121,6 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
         const user = await User.findById(depositFound.user);
         const saldoOtherData = user.saldoOthersData.find(s => s._id.toString() === saldoInfoId.toString());
 
-        console.log('saldoOtherData', saldoOtherData)
 
         if (saldoOtherData) {
           // Mettre à jour un solde "saldoOtherData" existant

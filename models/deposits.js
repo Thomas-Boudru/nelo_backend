@@ -6,7 +6,8 @@ const depositsSchema = mongoose.Schema({
   idPayment : String,
   isPaid: Boolean,
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
-  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"}
+  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"},
+  coin: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"}
 });
 
 const Deposit = mongoose.model("deposits", depositsSchema);
