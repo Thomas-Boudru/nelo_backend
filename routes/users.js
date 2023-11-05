@@ -250,12 +250,12 @@ router.post('/getInfoUserFinancial', (req, res) => {
     .populate({
       path: 'saldoMainData.deposit',
       model: 'deposits',
-      populate: { path: 'saldo', model: 'saldos', select: 'ame' }
+      populate: { path: 'coin', model: 'saldos', select: 'name' }
     })
     .populate({
       path: 'saldoOthersData.deposit',
       model: 'deposits',
-      populate: { path: 'saldo', model: 'saldos', select: 'ame' }
+      populate: { path: 'coin', model: 'saldos', select: 'name' }
     })
     .exec()
     .then(data => {
