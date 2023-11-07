@@ -137,7 +137,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
       }
     }
 
-    res.json({ result: true, status: data });
+    res.status(200).json({ result: true, status: data });
   } catch (error) {
     console.error('Erreur:', error);
     res.status(500).json({ message: 'Erreur lors de la récupération du statut du paiement' });
