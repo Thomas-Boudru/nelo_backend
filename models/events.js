@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 
 const products = mongoose.Schema({
-    name: String,
-    token: Number
+  name: String,
+  tokens: Number,
+  stand: String
   })
 
 const stands = mongoose.Schema({
     name: String,
     backgroundColor: String,
+    code: {},
     productsData : [products],
   })
 
