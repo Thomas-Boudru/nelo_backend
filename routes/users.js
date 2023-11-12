@@ -42,7 +42,7 @@ router.post("/signup", async (req, res) => {
       token: uid2(32),
       email: req.body.email,
       password: hash,
-      language: 'fr',
+      language: req.body.language,
       isOpen : true,
       isActive: true,
       isConditions : req.body.isConditions,
