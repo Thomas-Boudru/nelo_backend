@@ -149,7 +149,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
 
 
 // Create Transaction In
-router.post("/createTransactionIn", async (req, res) => {
+/*router.post("/createTransactionIn", async (req, res) => {
     try {
       const newTransaction = new Transaction({
         amount: req.body.amount,
@@ -212,7 +212,7 @@ router.post("/createTransactionIn", async (req, res) => {
       res.json({ result: false, message: "Error saving transaction" });
     }
   });
-  
+  */
 
 // Create Transaction Out
 
