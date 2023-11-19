@@ -7,7 +7,7 @@ const Transfer = require('../models/transfers')
 
 const Recipient = require("mailersend").Recipient;
 const EmailParams = require("mailersend").EmailParams;
-const MailerSend = require("mailersend")
+const { MailerSend } = require("mailersend");
 
 const mailersend = new MailerSend({
   api_key: "mlsn.4ffd30652baeaa506e6465319df99f7cbafa4c6bb2a445efd1058f832fb5183a",
@@ -63,7 +63,7 @@ router.post("/signup", async (req, res) => {
     await newUser.save();
 
 
-    const recipients = [new Recipient(`${req.body.email}, ${req.body.firstname}`)];
+    const recipients = [new Recipient(`${req.body.email}`, `${req.body.firstname}`)];
 
     const personalization = [
       {
@@ -75,14 +75,12 @@ router.post("/signup", async (req, res) => {
     ];
     
     const emailParams = new EmailParams()
-        .setFrom("hello@coinpack.eu")
-        .setFromName("Thomas from Coinpack")
-        .setRecipients(recipients)
-        .setSubject("Welcome on Coinpack !")
-        .setTemplateId('3z0vklonm7147qrx')
-        .setPersonalization(personalization);
+      .setRecipients(recipients)
+      .setTemplateId('3z0vklonm7147qrx')
+      .setPersonalization(personalization);
+
     
-        await mailersend.send(emailParams); // Attendre l'envoi de l'e-mail
+        await mailersend.send(emailParams); 
 
         return res.json({ result: true, data: newUser });
       } catch (error) {
