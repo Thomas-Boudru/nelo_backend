@@ -316,4 +316,37 @@ router.post('/closeAccount', (req, res) => {
 });
 
 
+// set a random password and send email with send grid
+
+router.post('/sendNewPassword', (req, res) => {
+
+  User.findOne({email: req.body.email }).then((data) => {
+    if(!data){
+      res.json({result : false, error : "no email found"})
+    } else {
+      const temporaryPassword = uid2(5)
+      {/*sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+      const msg = {
+        to: `${req.body.email}`,
+        from: 'hello@heavent.co',
+        subject: 'Lost password - Heavent',
+        templateId: 'd-011f0f12a32c42c59dc64b1cd871311b',
+        dynamic_template_data: {
+          temporaryPassword : `${temporaryPassword}`,
+        },
+      };
+    
+    sgMail.send(msg);*/}
+
+      const hash = bcrypt.hashSync(temporaryPassword, 10)
+    
+      User.updateOne({email: req.body.email }, {password : hash})
+      .then(() => {
+          res.json({ result: true, message :'email sent' });
+        })
+    } 
+})
+})
+
+
 module.exports = router;
