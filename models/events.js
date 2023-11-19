@@ -26,6 +26,8 @@ const eventsSchema = mongoose.Schema({
   website : String,
 
   isActive: Boolean,
+  isVisible: Boolean,
+  isActiveAdmin: Boolean,
 
   namePlace: String,
   addressPlace : String,
