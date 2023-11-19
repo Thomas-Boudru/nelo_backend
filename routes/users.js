@@ -2,9 +2,16 @@ var express = require('express');
 var router = express.Router();
 const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
-const sgMail = require('@sendgrid/mail');
 const User = require("../models/users");
 const Transfer = require('../models/transfers')
+
+const Recipient = require("mailersend").Recipient;
+const EmailParams = require("mailersend").EmailParams;
+const MailerSend = require("mailersend")
+
+const mailersend = new MailerSend({
+  api_key: "mlsn.4ffd30652baeaa506e6465319df99f7cbafa4c6bb2a445efd1058f832fb5183a",
+});
 
 /* Signup */
 router.post("/signup", async (req, res) => {
@@ -55,16 +62,28 @@ router.post("/signup", async (req, res) => {
 
     await newUser.save();
 
-  { /*sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const msg = {
-      to: req.body.email,
-      from: 'hello@heavent.co',
-      subject: 'Welcome on heavent',
-      templateId: 'd-828d3d90fe1f4d82b53669bfdf5016ea',
-      dynamic_template_data: {
-      firstname: req.body.firstname,
-    }};
-  await sgMail.send(msg);*/}
+
+    const recipients = [new Recipient(`${req.body.email}, ${req.body.firstname}`)];
+
+    const personalization = [
+      {
+        email: req.body.email,
+        data: {
+          firstname: req.body.firstname
+        },
+      }
+    ];
+    
+    const emailParams = new EmailParams()
+        .setFrom("hello@coinpack.eu")
+        .setFromName("Thomas from Coinpack")
+        .setRecipients(recipients)
+        .setSubject("Welcome on Coinpack !")
+        .setTemplateId('3z0vklonm7147qrx')
+        .setPersonalization(personalization);
+    
+    mailersend.send(emailParams);
+
 
     return res.json({ result: true, data : newUser });
   } catch (error) {
