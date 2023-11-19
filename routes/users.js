@@ -82,13 +82,13 @@ router.post("/signup", async (req, res) => {
         .setTemplateId('3z0vklonm7147qrx')
         .setPersonalization(personalization);
     
-    mailersend.send(emailParams);
+        await mailersend.send(emailParams); // Attendre l'envoi de l'e-mail
 
-
-    return res.json({ result: true, data : newUser });
-  } catch (error) {
-    return res.json({ result: false, error: "An error occurred" });
-  }
+        return res.json({ result: true, data: newUser });
+      } catch (error) {
+        console.error(error);
+        return res.json({ result: false, error: "An error occurred" });
+      }
 });
 
 
