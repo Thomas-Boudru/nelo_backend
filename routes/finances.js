@@ -14,7 +14,6 @@ const fetch = require('node-fetch');
 router.post('/paynl-transaction', async (req, res) => {
   try {
     const user = await User.findOne({ token: req.body.tokenUser });
-    console.log('idCoin',req.body.idCoin)
     let newDeposit;
     let saldoInput = req.body.saldoId; // Assurez-vous de récupérer la valeur correctement
 
@@ -53,7 +52,7 @@ router.post('/paynl-transaction', async (req, res) => {
       },
       body: JSON.stringify({
         amount: { value: amountToPut, currency: 'EUR' },
-        integration: { testMode: true },
+        integration: { testMode: false },
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
@@ -145,75 +144,6 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
 });
 
   
-
-
-
-// Create Transaction In
-/*router.post("/createTransactionIn", async (req, res) => {
-    try {
-      const newTransaction = new Transaction({
-        amount: req.body.amount,
-        token: req.body.token,
-        creationDate: new Date(),
-        user: req.body.userId,
-        saldo: req.body.saldoId
-      });
-  
-      const savedTransaction = await newTransaction.save();
-  
-      // Now that the event is saved, let's update the Organizer
-      const userIdentity = req.body.userId;
-  
-      if (!req.body.saldoId) {
-        // Update saldoMainData.amount by adding req.body.amount
-        await User.findByIdAndUpdate(
-          userIdentity,
-          {
-            $push: { 'saldoMainData.transactions': savedTransaction._id },
-            $inc: { 'saldoMainData.amount': req.body.amount }
-          }
-        );
-      } else {
-        const saldoInfoId = req.body.saldoId;
-        const user = await User.findById(userIdentity);
-  
-       
-        // Check if saldoOthersData with saldoInfoId exists in the user's data
-        const saldoOtherData = user.saldoOthersData.find(
-          (s) => s.saldoInfo.toString() === saldoInfoId
-        );
-  
-        if (saldoOtherData) {
-          // Update an existing saldoOtherData
-          await User.findOneAndUpdate(
-            { _id: userIdentity, 'saldoOthersData.saldoInfo': saldoInfoId },
-            {
-              $push: { 'saldoOthersData.$.transactions': savedTransaction._id },
-              $inc: { 'saldoOthersData.$.amount': req.body.amount }
-            }
-          );
-        } else {
-          // Create a new saldoOtherData and add the transaction
-          const newSaldoOtherData = {
-            amount: req.body.amount,
-            saldoInfo: saldoInfoId,
-            transactions: [savedTransaction._id]
-          };
-  
-          user.saldoOthersData.push(newSaldoOtherData);
-          await user.save();
-        }
-      }
-  
-      res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
-  
-    } catch (error) {
-      console.error('Error:', error);
-      res.json({ result: false, message: "Error saving transaction" });
-    }
-  });
-  */
-
 // Create Transaction Out
 
 
@@ -377,7 +307,6 @@ router.post('/createTransfer', async (req, res) => {
   try {
     const { userToken, saldoId, amount } = req.body;
 
-    console.log(typeof amount);
 
     if (!saldoId) {
       return res.json({ result: false, message: 'No saldo' });
@@ -410,10 +339,6 @@ router.post('/createTransfer', async (req, res) => {
     // Update the saldoOtherData amount correctly
     saldoOtherData.amount += transferAmount;
 
-    console.log(typeof saldoOtherData.amount);
-    console.log(typeof user.saldoMainData.amount);
-    console.log(typeof transferAmount);
-
     // Create the transfer
     const newTransfer = new Transfer({
       amount: transferAmount, 
@@ -424,7 +349,6 @@ router.post('/createTransfer', async (req, res) => {
 
     const savedTransfer = await newTransfer.save();
 
-    console.log("saldoOtherData.amount ", saldoOtherData.amount )
 
     // Update user document with changes to saldoMainData and saldoOthersData
     await User.findOneAndUpdate(
