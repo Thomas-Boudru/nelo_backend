@@ -14,13 +14,10 @@ router.get('/maintenanceStatus', async (req, res) => {
   try {
     const status = await Status.findOne({});
 
-    console.log("Type of status.maintenance:", typeof status.maintenance); // Vérifier le type
-    console.log("Value of status.maintenance:", status.maintenance); // Vérifier la valeur
-
     if (status) {
-      res.json(status.maintenance);
+      res.json({result : status.maintenance});
     } else {
-      res.json(true); // Si aucun état de maintenance n'est trouvé, retourne true (ou une valeur par défaut)
+      res.json({result : true}); // Si aucun état de maintenance n'est trouvé, retourne true (ou une valeur par défaut)
     }
   } catch (error) {
     console.error('Error:', error);
