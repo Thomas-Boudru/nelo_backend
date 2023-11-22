@@ -4,7 +4,6 @@ const Organizer = require("../models/organizers");
 const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
 const cloudinary = require('cloudinary').v2;
-const sgMail = require('@sendgrid/mail');
 const Event = require("../models/events");
 
 cloudinary.config({

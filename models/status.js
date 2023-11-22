@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const statusSchema = mongoose.Schema({
-  maintenancce: Boolean
+  maintenance: Boolean
 });
 
-const Status = mongoose.model("deposits", statusSchema);
+const Status = mongoose.model("status", statusSchema);
 
 module.exports = Status;
