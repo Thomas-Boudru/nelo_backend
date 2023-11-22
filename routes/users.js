@@ -9,12 +9,13 @@ const Recipient = require("mailersend").Recipient;
 const EmailParams = require("mailersend").EmailParams;
 const { MailerSend } = require("mailersend");
 
-const mailersend = new MailerSend({
-  api_key: "mlsn.4ffd30652baeaa506e6465319df99f7cbafa4c6bb2a445efd1058f832fb5183a",
+const mailerSend  = new MailerSend({
+  apiKey: "mlsn.ec966144df727d733e9cbcb063830c03f1aafe443b54d11a1b92408a01b44ae8",
 });
 
 /* Signup */
 router.post("/signup", async (req, res) => {
+
   try {
     if (!req.body.password || !req.body.email ||!req.body.firstname ||!req.body.name) {
       return res.json({ result: false, error: "Missing or empty fields" });
@@ -75,12 +76,11 @@ router.post("/signup", async (req, res) => {
     ];
     
     const emailParams = new EmailParams()
-      .setRecipients(recipients)
-      .setTemplateId('3z0vklonm7147qrx')
-      .setPersonalization(personalization);
+        .setTo(recipients)
+        .setTemplateId('3z0vklonm7147qrx')
+        .setPersonalization(personalization);
 
-    
-        await mailersend.send(emailParams); 
+        await mailerSend.email.send(emailParams); 
 
         return res.json({ result: true, data: newUser });
       } catch (error) {
