@@ -216,7 +216,6 @@ router.post('/changePassword', (req, res) => {
       const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
       user.password = hashedNewPassword;
       
-      // Enregistrer les modifications dans la base de données
       user.save()
         .then(updatedUser => {
           return res.json({ result: true, message: 'Password updated successfully' });
@@ -330,19 +329,37 @@ router.post('/sendNewPassword', (req, res) => {
     if(!data){
       res.json({result : false, error : "no email found"})
     } else {
+
+      const firstnameData = data.userData.firstname
+
       const temporaryPassword = uid2(5)
-      {/*sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-      const msg = {
-        to: `${req.body.email}`,
-        from: 'hello@heavent.co',
-        subject: 'Lost password - Heavent',
-        templateId: 'd-011f0f12a32c42c59dc64b1cd871311b',
-        dynamic_template_data: {
-          temporaryPassword : `${temporaryPassword}`,
-        },
-      };
-    
-    sgMail.send(msg);*/}
+     
+
+      const sentFrom = new Sender("hello@coinpack.eu", "Thomas of Coinpack");
+
+      const recipients = [new Recipient(`${req.body.email}`, firstnameData)];
+
+      const personalization = [
+        {
+          email: req.body.email,
+          data: {
+            firstname: firstnameData,
+            password : temporaryPassword
+          },
+        }
+      ];
+      
+      const emailParams = new EmailParams()
+          .setFrom(sentFrom)
+          .setTo(recipients)
+          .setTemplateId('3zxk54v79814jy6v')
+          .setPersonalization(personalization);
+
+          mailerSend.email
+          .send(emailParams)
+          .then((response) => console.log(response))
+          .catch((error) => console.log(error))
+
 
       const hash = bcrypt.hashSync(temporaryPassword, 10)
     
