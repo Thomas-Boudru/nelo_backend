@@ -5,12 +5,13 @@ const bcrypt = require("bcrypt");
 const User = require("../models/users");
 const Transfer = require('../models/transfers')
 
+const Sender = require("mailersend").Sender;
 const Recipient = require("mailersend").Recipient;
 const EmailParams = require("mailersend").EmailParams;
 const { MailerSend } = require("mailersend");
 
 const mailerSend  = new MailerSend({
-  apiKey: "mlsn.ec966144df727d733e9cbcb063830c03f1aafe443b54d11a1b92408a01b44ae8",
+  apiKey: "mlsn.cb35e7e3e4df13671317cef2750ed1aca8227adb8f9abac599674f5464a45584",
 });
 
 /* Signup */
@@ -63,6 +64,7 @@ router.post("/signup", async (req, res) => {
 
     await newUser.save();
 
+    const sentFrom = new Sender("hello@coinpack.eu", "Thomas of Coinpack");
 
     const recipients = [new Recipient(`${req.body.email}`, `${req.body.firstname}`)];
 
@@ -76,11 +78,15 @@ router.post("/signup", async (req, res) => {
     ];
     
     const emailParams = new EmailParams()
+        .setFrom(sentFrom)
         .setTo(recipients)
         .setTemplateId('3z0vklonm7147qrx')
         .setPersonalization(personalization);
 
-        await mailerSend.email.send(emailParams); 
+        mailerSend.email
+        .send(emailParams)
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
 
         return res.json({ result: true, data: newUser });
       } catch (error) {
