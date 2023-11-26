@@ -320,6 +320,7 @@ router.post('/createTransfer', async (req, res) => {
     }
 
     let transferAmount = parseInt(amount, 10);
+    let coinAmount = parseInt(amountCoin, 10);
 
     // Check if the user has sufficient saldoMainData amount for the transfer
     if (user.saldoMainData.amount < transferAmount) {
@@ -337,12 +338,12 @@ router.post('/createTransfer', async (req, res) => {
     user.saldoMainData.amount -= transferAmount;
 
     // Update the saldoOtherData amount correctly
-    saldoOtherData.amount += amountCoin;
+    saldoOtherData.amount += coinAmount;
 
     // Create the transfer
     const newTransfer = new Transfer({
       amount: transferAmount, 
-      token : amountCoin,
+      token : coinAmount,
       creationDate: new Date(),
       user: user._id,
       saldo: saldoId
