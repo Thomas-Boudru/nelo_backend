@@ -305,7 +305,7 @@ router.post("/createSaldo", async (req, res) => {
 // Route for creating a transfer
 router.post('/createTransfer', async (req, res) => {
   try {
-    const { userToken, saldoId, amount } = req.body;
+    const { userToken, saldoId, amount, amountCoin } = req.body;
 
 
     if (!saldoId) {
@@ -337,12 +337,12 @@ router.post('/createTransfer', async (req, res) => {
     user.saldoMainData.amount -= transferAmount;
 
     // Update the saldoOtherData amount correctly
-    saldoOtherData.amount += req.body.amountCoin;
+    saldoOtherData.amount += amountCoin;
 
     // Create the transfer
     const newTransfer = new Transfer({
       amount: transferAmount, 
-      token : req.body.amountCoin,
+      token : amountCoin,
       creationDate: new Date(),
       user: user._id,
       saldo: saldoId
