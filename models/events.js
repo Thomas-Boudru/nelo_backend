@@ -37,7 +37,6 @@ const eventsSchema = mongoose.Schema({
   longitude: Number,
   backgroundColor: String,
 
-  priceToken: Number,
 
   isBaseToken: Boolean,
   baseToken: Number,
