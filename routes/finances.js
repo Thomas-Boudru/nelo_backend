@@ -337,11 +337,12 @@ router.post('/createTransfer', async (req, res) => {
     user.saldoMainData.amount -= transferAmount;
 
     // Update the saldoOtherData amount correctly
-    saldoOtherData.amount += transferAmount;
+    saldoOtherData.amount += req.body.amountCoin;
 
     // Create the transfer
     const newTransfer = new Transfer({
       amount: transferAmount, 
+      token : req.body.amountCoin,
       creationDate: new Date(),
       user: user._id,
       saldo: saldoId

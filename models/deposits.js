@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const depositsSchema = mongoose.Schema({
   amount: Number,
+  token: Number,
   creationDate: Date,
   idPayment : String,
   isPaid: Boolean,

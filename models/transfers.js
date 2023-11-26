@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const transfersSchema = mongoose.Schema({
   amount: Number,
+  token : Number,
   creationDate: Date,
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" }
