@@ -20,6 +20,7 @@ router.post('/paynl-transaction', async (req, res) => {
     if (saldoInput) {
       newDeposit = new Deposit({
         amount: req.body.amount,
+        token: req.body.tokenNumber,
         creationDate: new Date(),
         idPayment: "",
         user: user._id,
@@ -52,7 +53,7 @@ router.post('/paynl-transaction', async (req, res) => {
       },
       body: JSON.stringify({
         amount: { value: amountToPut, currency: 'EUR' },
-        integration: { testMode: false },
+        integration: { testMode: true },
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
@@ -127,7 +128,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
             { _id: user._id, 'saldoOthersData._id': saldoInfoId },
             {
               $push: { 'saldoOthersData.$.deposit': depositFound._id },
-              $inc: { 'saldoOthersData.$.amount': depositFound.amount  }
+              $inc: { 'saldoOthersData.$.amount': depositFound.token  }
             }
           );
         } else {
