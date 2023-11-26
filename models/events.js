@@ -42,6 +42,7 @@ const eventsSchema = mongoose.Schema({
   baseToken: Number,
   isReimburse: Boolean,
   reimburseCode: String,
+  priceToken : Number,
 
   isSaldoUnique : Boolean,
   saldoEvent: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
