@@ -181,11 +181,9 @@ router.post("/createTransactionOut", async (req, res) => {
         return res.json({ result: false, message: "Insufficient funds" });
       }
 
-      saldoOtherData.amount -= amountToDeduct;
+      saldoOtherData.amount -= numberToken;
       const newTransaction = new Transaction({
-        amount: -amountToDeduct,
         token: numberToken,
-        priceToken: priceToken,
         creationDate: new Date(),
         event: eventId,
         stand:standId,
