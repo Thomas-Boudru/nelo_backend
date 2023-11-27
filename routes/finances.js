@@ -177,7 +177,7 @@ router.post("/createTransactionOut", async (req, res) => {
         return res.json({ result: false, message: "No money deposit on this saldo" });
       }
 
-      if (saldoOtherData.amount < amountToDeduct) {
+      if (saldoOtherData.amount < numberToken) {
         return res.json({ result: false, message: "Insufficient funds" });
       }
 
