@@ -158,6 +158,7 @@ router.post("/createTransactionOut", async (req, res) => {
     const numberToken = req.body.numberToken;
     const priceToken = req.body.priceToken;
     const standId = req.body.standId;
+    const productsdata = req.body.products
     
 
     let amountToDeduct = numberToken * priceToken
@@ -187,6 +188,7 @@ router.post("/createTransactionOut", async (req, res) => {
         creationDate: new Date(),
         event: eventId,
         stand:standId,
+        products: productsData,
         user: user._id,
         saldo: saldoInfoId
       });

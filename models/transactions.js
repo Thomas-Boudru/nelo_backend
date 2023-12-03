@@ -4,6 +4,7 @@ const transactionsSchema = mongoose.Schema({
   amount: Number,
   token: Number,
   creationDate: Date,
+  products: [],
   event : { type: mongoose.Schema.Types.ObjectId, ref: "events" },
   stand: { type: mongoose.Schema.Types.ObjectId, ref: "stands" },
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
