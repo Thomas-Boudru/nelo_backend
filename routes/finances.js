@@ -188,7 +188,7 @@ router.post("/createTransactionOut", async (req, res) => {
         creationDate: new Date(),
         event: eventId,
         stand:standId,
-        products: productsData,
+        products: productsdata,
         user: user._id,
         saldo: saldoInfoId
       });
