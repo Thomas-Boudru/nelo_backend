@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const transactionsSchema = mongoose.Schema({
-  amount: Number,
   token: Number,
   creationDate: Date,
   products: [],
