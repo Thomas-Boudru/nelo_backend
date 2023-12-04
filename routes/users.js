@@ -33,13 +33,6 @@ router.post("/signup", async (req, res) => {
 
     const hash = bcrypt.hashSync(req.body.password, 10);
 
-
-    const newSaldoMain = {
-      amount: 0,
-      transactions : [],
-      transfers: []
-    };
-
     const newUserData = {
       firstname: req.body.firstname,
       name: req.body.name,
@@ -58,7 +51,6 @@ router.post("/signup", async (req, res) => {
       isMailing : req.body.isMailing,
       dateCreation: new Date(),
       userData: newUserData,
-      saldoMainData : newSaldoMain,
       saldoOthersData : []
     });
 
@@ -240,21 +232,6 @@ router.post('/getInfoUserFinancial', (req, res) => {
 
   User.findOne({ token: req.body.tokenUser })
     .populate({
-      path: 'saldoMainData.transactions',
-      model: 'transactions',
-      populate: [{ path: 'event', model: 'events', select: 'nameEvent' },
-      { path: 'saldo', model: 'saldos', select: 'name' }]
-    })
-    .populate({
-      path: 'saldoMainData.transfers',
-      model: 'transfers',
-      populate: { 
-        path: 'saldo', 
-        model: 'saldos', 
-        select: 'name' 
-      }
-    })
-    .populate({
       path: 'saldoOthersData.saldoInfo',
       model: 'saldos'
     })
@@ -269,11 +246,6 @@ router.post('/getInfoUserFinancial', (req, res) => {
           select: 'name' 
         }
       ]
-    })
-    .populate({
-      path: 'saldoMainData.deposit',
-      model: 'deposits',
-      populate: { path: 'coin', model: 'saldos', select: 'name' }
     })
     .populate({
       path: 'saldoOthersData.deposit',

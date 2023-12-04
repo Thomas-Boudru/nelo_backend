@@ -105,7 +105,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
       depositFound.isPaid = true;
       await depositFound.save();
      
-      if (!depositFound.saldo) {
+      {/*if (!depositFound.saldo) {
         // Effectuer des mises à jour spécifiques pour le dépôt qui n'a pas de "saldo"
         await User.findByIdAndUpdate(
           depositFound.user,
@@ -115,7 +115,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
             $inc: { 'saldoMainData.amount': depositFound.amount }
           }
         );
-      } else {
+      } else {*/}
         // Effectuer des mises à jour spécifiques pour le dépôt ayant un "saldo"
         const saldoInfoId = depositFound.saldo._id;
         const user = await User.findById(depositFound.user);
@@ -134,7 +134,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
         } else {
           return res.status(404).json({ message: 'Informations de solde manquantes' });
         }
-      }
+      
     }
 
     res.status(200).json(true);
@@ -169,7 +169,7 @@ router.post("/createTransactionOut", async (req, res) => {
       return res.json({ result: false, message: "User not found" });
     }
 
-    if (saldoInfoId) {
+    {/*if (saldoInfoId) {*/}
       const saldoOtherData = user.saldoOthersData.find(
         (s) => s.saldoInfo.toString() === saldoInfoId
       );
@@ -201,7 +201,7 @@ router.post("/createTransactionOut", async (req, res) => {
           $set: { 'saldoOthersData.$.amount': saldoOtherData.amount }
         }
       );
-    } else {
+    {/*} else {
       if (user.saldoMainData.amount < amountToDeduct) {
         return res.json({ result: false, message: "Insufficient funds" });
       }
@@ -225,7 +225,7 @@ router.post("/createTransactionOut", async (req, res) => {
           $set: { 'saldoMainData.amount': user.saldoMainData.amount }
         }
       );
-    }
+    */}
 
     res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
 
@@ -304,7 +304,7 @@ router.post("/createSaldo", async (req, res) => {
 
 
 // Route for creating a transfer
-router.post('/createTransfer', async (req, res) => {
+{/*router.post('/createTransfer', async (req, res) => {
   try {
     const { userToken, saldoId, amount, amountCoin } = req.body;
 
@@ -376,7 +376,7 @@ router.post('/createTransfer', async (req, res) => {
     console.error('Error:', error);
     res.json({ result: false, message: 'Error in performing the transfer' });
   }
-});
+})*/}
 
 
 

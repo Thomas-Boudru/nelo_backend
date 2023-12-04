@@ -1,12 +1,5 @@
 const mongoose = require("mongoose");
 
-const saldoMain = mongoose.Schema({
-  amount: Number,
-  transactions : [{ type: mongoose.Schema.Types.ObjectId, ref: "transactions" }],
-  transfers : [{ type: mongoose.Schema.Types.ObjectId, ref: "transfers" }],
-  deposit: [{ type: mongoose.Schema.Types.ObjectId, ref: "deposits" }]
-})
-
 const saldoOthers = mongoose.Schema({
   amount: Number,
   saldoInfo : { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
@@ -35,8 +28,7 @@ const usersSchema = mongoose.Schema({
   userData : userData,
 
   events : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
-
-  saldoMainData: saldoMain,
+  
   saldoOthersData : [saldoOthers]
 });
 
