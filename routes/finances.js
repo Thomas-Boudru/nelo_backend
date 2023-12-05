@@ -14,6 +14,7 @@ const fetch = require('node-fetch');
 router.post('/paynl-transaction', async (req, res) => {
   try {
     const user = await User.findOne({ token: req.body.tokenUser });
+    let lng = req.body.language
     let newDeposit;
     let saldoInput = req.body.saldoId; // Assurez-vous de récupérer la valeur correctement
 
@@ -57,7 +58,7 @@ router.post('/paynl-transaction', async (req, res) => {
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
-        returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}`,
+        returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
         exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}`
       })
     };
@@ -300,84 +301,6 @@ router.post("/createSaldo", async (req, res) => {
         }
       })
   });
-
-
-
-// Route for creating a transfer
-{/*router.post('/createTransfer', async (req, res) => {
-  try {
-    const { userToken, saldoId, amount, amountCoin } = req.body;
-
-
-    if (!saldoId) {
-      return res.json({ result: false, message: 'No saldo' });
-    }
-
-    // Retrieve the user initiating the transfer
-    const user = await User.findOne({ token: userToken });
-
-    if (!user) {
-      return res.json({ result: false, message: 'User not found' });
-    }
-
-    let transferAmount = parseInt(amount, 10);
-    let coinAmount = parseInt(amountCoin, 10);
-
-    // Check if the user has sufficient saldoMainData amount for the transfer
-    if (user.saldoMainData.amount < transferAmount) {
-      return res.json({ result: false, message: 'Insufficient funds in the main coin' });
-    }
-
-    // Find the corresponding saldoOtherData based on saldoId
-    const saldoOtherData = user.saldoOthersData.find(s => s.saldoInfo._id.toString() === saldoId);
-
-    if (!saldoOtherData) {
-      return res.json({ result: false, message: 'No money deposit on this saldo' });
-    }
-
-    // Modify saldoMainData amount
-    user.saldoMainData.amount -= transferAmount;
-
-    // Update the saldoOtherData amount correctly
-    saldoOtherData.amount += coinAmount;
-
-    // Create the transfer
-    const newTransfer = new Transfer({
-      amount: transferAmount, 
-      token : coinAmount,
-      creationDate: new Date(),
-      user: user._id,
-      saldo: saldoId
-    });
-
-    const savedTransfer = await newTransfer.save();
-
-
-    // Update user document with changes to saldoMainData and saldoOthersData
-    await User.findOneAndUpdate(
-      { 
-        _id: user._id 
-      },
-      { 
-        $push: { 'saldoMainData.transfers': savedTransfer._id },
-        $set: { 
-          'saldoMainData.amount': user.saldoMainData.amount,
-          'saldoOthersData.$[element].amount': saldoOtherData.amount 
-        }
-      },
-      {
-        arrayFilters: [{ 'element.saldoInfo': saldoId }]
-      }
-    );
-    
-
-    res.json({ result: true, message: 'Transfer successful', transfer: savedTransfer });
-  } catch (error) {
-    console.error('Error:', error);
-    res.json({ result: false, message: 'Error in performing the transfer' });
-  }
-})*/}
-
 
 
 
