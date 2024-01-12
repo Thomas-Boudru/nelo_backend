@@ -30,6 +30,7 @@ router.post("/createOrganizer", async (req, res) => {
       isActive: true,
       isAdmin: false,
       language: req.body.language,
+      authorization: ""
     });
 
     await newOrganizer.save();

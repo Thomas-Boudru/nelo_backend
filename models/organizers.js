@@ -33,6 +33,7 @@ const organizersSchema = mongoose.Schema({
     saldoOrganizer: [{ type: mongoose.Schema.Types.ObjectId, ref: "saldos" }],
     userData : [adminUser],
     bankData : bank,
+    authorization : String
     
 });
 

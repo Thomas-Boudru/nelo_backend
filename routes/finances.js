@@ -30,14 +30,21 @@ router.post('/paynl-transaction', async (req, res) => {
         coin : req.body.idCoin
       });
     } else {
-      newDeposit = new Deposit({
-        amount: req.body.amount,
-        creationDate: new Date(),
-        idPayment: "",
-        user: user._id,
-        isPaid: false,
-      });
+      res.status(500).json({ message: 'Erreur pas de saldoId' });
     }
+
+    // find the authorization of the organizer
+    let authorizationCode = 'QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+    Saldo.find({ saldo: req.body.saldoId})
+      .populate('organizer')
+      .then(data => {
+        if(data){
+          authorizationCode = data.authorization
+        } else {
+          res.status(500).json({ message: 'Missing authorization code' })
+        }
+      })
+
 
     const amountToPut = req.body.amount*100
 
@@ -50,9 +57,10 @@ router.post('/paynl-transaction', async (req, res) => {
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+        authorization: `Basic ${authorizationCode}`
       },
       body: JSON.stringify({
+        stats: {object: 'Coinpack'},
         amount: { value: amountToPut, currency: 'EUR' },
         integration: { testMode: false },
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
