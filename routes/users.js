@@ -18,7 +18,7 @@ const mailerSend  = new MailerSend({
 router.post("/signup", async (req, res) => {
 
   try {
-    if (!req.body.password || !req.body.email ||!req.body.firstname ||!req.body.name) {
+    if (!req.body.password || !req.body.email ||!req.body.pseudo ||!req.body.name) {
       return res.json({ result: false, error: "Missing or empty fields" });
     }
     
@@ -34,7 +34,7 @@ router.post("/signup", async (req, res) => {
     const hash = bcrypt.hashSync(req.body.password, 10);
 
     const newUserData = {
-      firstname: req.body.firstname,
+      pseudo: req.body.pseudo,
       name: req.body.name,
       picture: 'https://res.cloudinary.com/dqr6dghcl/image/upload/v1697270019/profilePicture_psfpf8.png'
     };
@@ -58,13 +58,13 @@ router.post("/signup", async (req, res) => {
 
     const sentFrom = new Sender("hello@coinpack.eu", "Thomas of Coinpack");
 
-    const recipients = [new Recipient(`${req.body.email}`, `${req.body.firstname}`)];
+    const recipients = [new Recipient(`${req.body.email}`, `${req.body.name}`)];
 
     const personalization = [
       {
         email: req.body.email,
         data: {
-          firstname: req.body.firstname
+          firstname: req.body.name
         },
       }
     ];
@@ -91,11 +91,18 @@ router.post("/signup", async (req, res) => {
 // Signin
 
 router.post('/login', (req, res) => {
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.email && !req.body.pseudo || !req.body.password) {
     return res.json({ result: false, error: 'Missing or empty fields' });
   }
 
-  User.find({ email: req.body.email })
+  const query = {
+    $or: [
+      { email: req.body.email },
+      { pseudo: req.body.pseudo }
+    ]
+  };
+
+  User.find(query)
     .then(users => {
       // Filtrer l'utilisateur avec isOpen à true
       const openUser = users.find(user => user.isOpen);
@@ -103,13 +110,14 @@ router.post('/login', (req, res) => {
       if (openUser && bcrypt.compareSync(req.body.password, openUser.password)) {
         return res.json({ result: true, db: openUser });
       } else {
-        return res.json({ result: false, error: "Email or password" });
+        return res.json({ result: false, error: "Email, pseudo, or password incorrect" });
       }
     })
     .catch(error => {
       return res.json({ result: false, error: error.message });
     });
 });
+
 
 
 
@@ -156,7 +164,7 @@ router.post('/getInfoUser', (req, res) => {
 // change info of user
 
 router.post('/updateUserInfo', (req, res) => {
-  const { token, email, language, firstname, picture, name } = req.body;
+  const { token, email, language, pseudo, picture, name } = req.body;
   
   if (!token) {
     return res.json({ result: false, error: 'Missing token field' });
@@ -166,7 +174,7 @@ router.post('/updateUserInfo', (req, res) => {
   const updatedInfo = {};
   if (email) updatedInfo.email = email;
   if (language) updatedInfo.language = language;
-  if (firstname) updatedInfo["userData.firstname"] = firstname;
+  if (pseudo) updatedInfo["userData.pseudo"] = pseudo;
   if (picture) updatedInfo["userData.picture"] = picture;
   if (name) updatedInfo["userData.name"] = name;
 
@@ -302,7 +310,7 @@ router.post('/sendNewPassword', (req, res) => {
       res.json({result : false, error : "no email found"})
     } else {
 
-      const firstnameData = data.userData.firstname
+      const firstnameData = data.userData.name
 
       const temporaryPassword = uid2(5)
      
@@ -341,6 +349,20 @@ router.post('/sendNewPassword', (req, res) => {
         })
     } 
 })
+})
+
+
+// check if pseudo already exist
+
+router.post('/checkPseudo', (req, res) => {
+
+  User.findOne({pseudo: req.body.pseudo }).then((data) => {
+    if(data){
+      res.json({ result: true, message :'pseudo already exists' });
+    } else {
+      res.json({ result: false, message :'pseudo doesnt already exist' });
+    }
+  })
 })
 
 

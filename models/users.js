@@ -9,8 +9,8 @@ const saldoOthers = mongoose.Schema({
 
 
 const userData = mongoose.Schema({
-  firstname :  String,
-  name: String,
+  pseudo :  String,
+  name : String,
   picture : String
 })
 
