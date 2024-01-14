@@ -91,14 +91,14 @@ router.post("/signup", async (req, res) => {
 // Signin
 
 router.post('/login', (req, res) => {
-  if (!req.body.email && !req.body.pseudo || !req.body.password) {
+  if (!req.body.email || !req.body.password) {
     return res.json({ result: false, error: 'Missing or empty fields' });
   }
 
   const query = {
     $or: [
       { email: req.body.email },
-      { pseudo: req.body.pseudo }
+      { pseudo: req.body.email }
     ]
   };
 
