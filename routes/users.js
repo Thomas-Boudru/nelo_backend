@@ -356,7 +356,7 @@ router.post('/sendNewPassword', (req, res) => {
 
 router.post('/checkPseudo', (req, res) => {
 
-  User.findOne({pseudo: req.body.pseudo }).then((data) => {
+  User.findOne({"userData.pseudo" : req.body.pseudo }).then((data) => {
     if(data){
       res.json({ result: true, message :'pseudo already exists' });
     } else {
