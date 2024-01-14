@@ -98,7 +98,7 @@ router.post('/login', (req, res) => {
   const query = {
     $or: [
       { email: req.body.email },
-      { pseudo: req.body.email }
+      { 'userData.pseudo': req.body.email }
     ]
   };
 
