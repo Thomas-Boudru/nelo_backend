@@ -39,8 +39,7 @@ router.get('/search', async (req, res) => {
 
   try {
     const eventResults = await Event.find({
-      nameEvent: { $regex: searchText, $options: 'i' },
-      endDateEvent: { $gte: today } // endDateEvent doit être supérieure ou égale à la date d'aujourd'hui (sans tenir compte de l'heure)
+      nameEvent: { $regex: searchText, $options: 'i' }
     })
       .populate('organizer')
       .populate('saldoEvent');
@@ -78,7 +77,7 @@ router.get('/search', async (req, res) => {
     })
     .populate('organizer')
     .populate('saldoEvent');
-    
+
   
       res.json({ result: true, currentEvents, upcomingEvents});
     } catch (error) {
