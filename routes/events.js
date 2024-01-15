@@ -64,14 +64,23 @@ router.get('/search', async (req, res) => {
     try {
       const today = new Date();
       today.setHours(0, 0, 0, 0);  // Met à 00:00:00 pour comparer uniquement les jours
-  
-      const upcomingEvents = await Event.find({
-        endDateEvent: { $gte: today }     
+
+      const currentEvents = await Event.find({
+        startDateEvent: { $lte: today },
+        endDateEvent: { $gte: today }
       })
       .populate('organizer')
       .populate('saldoEvent');
+
   
-      res.json({ result: true, upcomingEvents });
+      const upcomingEvents = await Event.find({
+      startDateEvent: { $gt: today }
+    })
+    .populate('organizer')
+    .populate('saldoEvent');
+    
+  
+      res.json({ result: true, currentEvents, upcomingEvents});
     } catch (error) {
       console.error('Error:', error);
       res.json({ result: false, error: "An error occurred while fetching upcoming events" });
