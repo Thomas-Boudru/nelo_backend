@@ -70,7 +70,7 @@ router.get('/search', async (req, res) => {
       })
       .populate('organizer')
       .populate('saldoEvent')
-      .sort({ startDateEvent: -1 });
+      .sort({ startDateEvent: 1 });
   
       const upcomingEvents = await Event.find({
       startDateEvent: { $gt: today }

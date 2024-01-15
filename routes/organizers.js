@@ -90,19 +90,23 @@ router.post('/getEventOrganizer', async (req, res) => {
 
     const passedEvents = await Event.find({
       organizer: req.body.organizerId,
-      startDateEvent: { $lt: today }
+      startDateEvent: { $lt: today },
+       endDateEvent: { $lt: today }
     })
       .populate('organizer')
       .populate('saldoEvent')
       .sort({ startDateEvent: -1 });
 
-    const upcomingEvents = await Event.find({
-      organizer: req.body.organizerId,
-      startDateEvent: { $gte: today }
-    })
-      .populate("saldoEvent")
-      .populate("organizer")
-      .sort({ startDateEvent: 1 });
+      const passedEventIds = passedEvents.map(event => event._id);
+
+      const upcomingEvents = await Event.find({
+        organizer: req.body.organizerId,
+        _id: { $nin: passedEventIds }
+      })
+        .populate("saldoEvent")
+        .populate("organizer")
+        .sort({ startDateEvent: 1 });
+      
 
     if (passedEvents.length > 0 || upcomingEvents.length > 0) {
       res.json({ result: true, passedEvents, upcomingEvents });
