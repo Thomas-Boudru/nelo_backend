@@ -80,30 +80,41 @@ router.post("/addUserData", async (req, res) => {
 
 // Get event of Organizer
 
-router.post('/getEventOrganizer', (req, res) => {
-  if (!req.body.organizerId) {
-    return res.json({ result: false, error: 'Missing or empty fields' });
-  }
+router.post('/getEventOrganizer', async (req, res) => {
+  try {
+    if (!req.body.organizerId) {
+      return res.json({ result: false, error: 'Missing or empty fields' });
+    }
 
-  const today = new Date(); // Define today's date here, ensuring it's correct in your system
+    const today = new Date(); // Define today's date here, ensuring it's correct in your system
 
-  Event.find({
-    organizer: req.body.organizerId,
-    endDateEvent: { $gte: today }
-  })
-    .populate("saldoEvent")
-    .populate("organizer")
-    .then(data => {
-      if (data.length > 0) {
-        res.json({ result: true, message: 'Events found', db: data });
-      } else {
-        res.json({ result: false, error: 'No events found' });
-      }
+    const passedEvents = await Event.find({
+      organizer: req.body.organizerId,
+      startDateEvent: { $lt: today }
     })
-    .catch(error => {
-      res.json({ result: false, error: error.message }); // Handle any potential errors
-    });
+      .populate('organizer')
+      .populate('saldoEvent')
+      .sort({ startDateEvent: -1 });
+
+    const upcomingEvents = await Event.find({
+      organizer: req.body.organizerId,
+      startDateEvent: { $gte: today }
+    })
+      .populate("saldoEvent")
+      .populate("organizer")
+      .sort({ startDateEvent: 1 });
+
+    if (passedEvents.length > 0 || upcomingEvents.length > 0) {
+      res.json({ result: true, passedEvents, upcomingEvents });
+    } else {
+      res.json({ result: false, error: 'No events found' });
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    res.json({ result: false, error: "An error occurred while fetching events" });
+  }
 });
+
 
 
 
