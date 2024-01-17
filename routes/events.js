@@ -65,8 +65,15 @@ router.get('/search', async (req, res) => {
       today.setHours(0, 0, 0, 0);  // Met à 00:00:00 pour comparer uniquement les jours
 
       const currentEvents = await Event.find({
-        startDateEvent: { $lte: today },
-        endDateEvent: { $gte: today }
+        $or: [
+          {
+            startDateEvent: { $lte: today },
+            endDateEvent: { $gte: today }
+          },
+          {
+            isPermanent: true
+          }
+        ]
       })
       .populate('organizer')
       .populate('saldoEvent')
