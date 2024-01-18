@@ -35,8 +35,7 @@ router.post('/paynl-transaction', async (req, res) => {
 
     // find the authorization of the organizer
     let authorizationCode = 'QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
-    Saldo.find({ saldo: req.body.saldoId})
-      .populate('organizer')
+    Organizer.find({ saldoOrganizer: saldoInput})
       .then(data => {
         if(data){
           authorizationCode = data.authorization
@@ -62,7 +61,7 @@ router.post('/paynl-transaction', async (req, res) => {
       body: JSON.stringify({
         stats: {object: 'Coinpack'},
         amount: { value: amountToPut, currency: 'EUR' },
-        integration: { testMode: false },
+        integration: { testMode: true },
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
