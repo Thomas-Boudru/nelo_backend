@@ -33,16 +33,14 @@ router.post('/paynl-transaction', async (req, res) => {
       res.status(500).json({ message: 'Erreur pas de saldoId' });
     }
 
-    // find the authorization of the organizer
-    let authorizationCode = 'QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
-    Organizer.findOne({ saldoOrganizer: saldoInput})
-      .then(data => {
-        if(data){
-          authorizationCode = data.authorization
-        } else {
-          res.status(500).json({ message: 'Missing authorization code' })
-        }
-      })
+  
+      let authorizationCode = 'QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+      const dataOrganizer = await Organizer.findOne({ saldoOrganizer: saldoInput });
+  
+      if (dataOrganizer) {
+        authorizationCode = data.authorization;
+      }
+
 
 
     const amountToPut = req.body.amount*100
@@ -56,7 +54,7 @@ router.post('/paynl-transaction', async (req, res) => {
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=`
+        authorization: `Basic ${authorizationCode}`
       },
       body: JSON.stringify({
         stats: {object: 'Coinpack'},
@@ -70,7 +68,6 @@ router.post('/paynl-transaction', async (req, res) => {
       })
     };
 
-    console.log('options',options)
     const response = await fetch(url, options);
     const data = await response.json();
     if(data.id) {
@@ -310,7 +307,5 @@ router.post("/createSaldo", async (req, res) => {
       })
   });
 
-
-
-
+  
   module.exports = router;
