@@ -70,6 +70,7 @@ router.post('/paynl-transaction', async (req, res) => {
       })
     };
 
+    console.log('options',options)
     const response = await fetch(url, options);
     const data = await response.json();
     if(data.id) {
