@@ -64,7 +64,7 @@ router.post('/paynl-transaction', async (req, res) => {
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
         returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
-        exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}`
+        exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}/${authorizationCode}`
       })
     };
 
@@ -87,7 +87,7 @@ router.post('/paynl-transaction', async (req, res) => {
 
 // get status
 
-router.get('/paynl-status/:idDeposit', async (req, res) => {
+router.get('/paynl-status/:idDeposit/:idAuthorization', async (req, res) => {
   try {
     const { idDeposit } = req.params;
     const depositFound = await Deposit.findById(idDeposit);
@@ -101,7 +101,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        authorization: 'Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
+        authorization: `Basic ${idAuthorization}`
       }
     };
 
