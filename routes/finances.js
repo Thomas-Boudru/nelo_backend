@@ -35,7 +35,7 @@ router.post('/paynl-transaction', async (req, res) => {
 
     // find the authorization of the organizer
     let authorizationCode = 'QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
-    Organizer.find({ saldoOrganizer: saldoInput})
+    Organizer.findOne({ saldoOrganizer: saldoInput})
       .then(data => {
         if(data){
           authorizationCode = data.authorization
@@ -56,7 +56,7 @@ router.post('/paynl-transaction', async (req, res) => {
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        authorization: `Basic ${authorizationCode}`
+        authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=`
       },
       body: JSON.stringify({
         stats: {object: 'Coinpack'},
