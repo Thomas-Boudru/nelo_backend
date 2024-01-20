@@ -38,7 +38,7 @@ router.post('/paynl-transaction', async (req, res) => {
       const dataOrganizer = await Organizer.findOne({ saldoOrganizer: saldoInput });
   
       if (dataOrganizer) {
-        authorizationCode = data.authorization;
+        authorizationCode = dataOrganizer.authorization;
       }
 
 
@@ -89,7 +89,7 @@ router.post('/paynl-transaction', async (req, res) => {
 
 router.get('/paynl-status/:idDeposit/:idAuthorization', async (req, res) => {
   try {
-    const { idDeposit } = req.params;
+    const { idDeposit, idAuthorization  } = req.params;
     const depositFound = await Deposit.findById(idDeposit);
 
     if (!depositFound) {
