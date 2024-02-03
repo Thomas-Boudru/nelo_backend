@@ -41,6 +41,8 @@ router.post('/paynl-transaction', async (req, res) => {
         authorizationCode = dataOrganizer.authorization;
       }
 
+      console.log('authorizationCode',authorizationCode)
+
 
 
     const amountToPut = req.body.amount*100
