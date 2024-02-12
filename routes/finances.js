@@ -110,6 +110,8 @@ router.post('/paynl-transaction', async (req, res) => {
   
       let authorizationCode = 'SL-5893-9892'
       const dataOrganizer = await Organizer.findOne({ saldoOrganizer: req.body.idCoin });
+
+      console.log('dataOrganizer',dataOrganizer)
   
       if (dataOrganizer) {
         authorizationCode = dataOrganizer.authorization;
