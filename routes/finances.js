@@ -138,7 +138,7 @@ router.post('/paynl-transaction', async (req, res) => {
         stats: {object: 'Coinpack'},
         serviceId: `${authorizationCode}`,
         amount: { value: amountToPut, currency: 'EUR' },
-        integration: { testMode: true },
+        integration: { testMode: false },
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
         returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
