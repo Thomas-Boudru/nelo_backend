@@ -11,7 +11,7 @@ const fetch = require('node-fetch');
 
 // create Payment 
 
-router.post('/paynl-transaction', async (req, res) => {
+{/*router.post('/paynl-transaction', async (req, res) => {
   try {
     const user = await User.findOne({ token: req.body.tokenUser });
     let lng = req.body.language
@@ -60,6 +60,81 @@ router.post('/paynl-transaction', async (req, res) => {
       },
       body: JSON.stringify({
         stats: {object: 'Coinpack'},
+        amount: { value: amountToPut, currency: 'EUR' },
+        integration: { testMode: true },
+        serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
+        description: `CoinPack - ${req.body.saldoName}`,
+        reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
+        returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
+        exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}/${authorizationCode}`
+      })
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if(data.id) {
+      await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data.id });
+    }
+
+    res.json(data);
+  } catch (error) {
+    console.error('Erreur:', error);
+    res.status(500).json({ message: 'Erreur lors du paiement' });
+  }
+});*/}
+
+
+
+router.post('/paynl-transaction', async (req, res) => {
+  try {
+    const user = await User.findOne({ token: req.body.tokenUser });
+    let lng = req.body.language
+    let newDeposit;
+    let saldoInput = req.body.saldoId; // Assurez-vous de récupérer la valeur correctement
+
+    if (saldoInput) {
+      newDeposit = new Deposit({
+        amount: req.body.amount,
+        token: req.body.tokenNumber,
+        creationDate: new Date(),
+        idPayment: "",
+        user: user._id,
+        isPaid: false,
+        saldo: saldoInput,
+        coin : req.body.idCoin
+      });
+    } else {
+      res.status(500).json({ message: 'Erreur pas de saldoId' });
+    }
+
+  
+      let authorizationCode = 'SL-5893-9892'
+      const dataOrganizer = await Organizer.findOne({ saldoOrganizer: req.body.idCoin });
+  
+      if (dataOrganizer) {
+        authorizationCode = dataOrganizer.authorization;
+      }
+
+      console.log('authorizationCode',authorizationCode)
+
+
+
+    const amountToPut = req.body.amount*100
+
+    // Attendre l'enregistrement du dépôt
+    const savedDeposit = await newDeposit.save();
+
+    const url = 'https://rest.pay.nl/v2/transactions';
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=`
+      },
+      body: JSON.stringify({
+        stats: {object: 'Coinpack'},
+        serviceId: `${authorizationCode}`,
         amount: { value: amountToPut, currency: 'EUR' },
         integration: { testMode: true },
         serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
