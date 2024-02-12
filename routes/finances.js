@@ -139,7 +139,6 @@ router.post('/paynl-transaction', async (req, res) => {
         serviceId: `${authorizationCode}`,
         amount: { value: amountToPut, currency: 'EUR' },
         integration: { testMode: true },
-        serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
         returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
