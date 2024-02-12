@@ -184,7 +184,14 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
     };
 
     const response = await fetch(url, options);
+
+    console.log('Statut de la réponse:', response);
+    
+
     const data = await response.json();
+
+    console.log('Données de la réponse:', data); 
+    
     if (data.status.code === 100) {
       depositFound.isPaid = true;
       await depositFound.save();
