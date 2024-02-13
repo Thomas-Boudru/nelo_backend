@@ -148,6 +148,7 @@ router.post('/paynl-transaction', async (req, res) => {
 
     const response = await fetch(url, options);
     const data = await response.json();
+    console.log("data",data)
     if(data.id) {
       await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data.id });
     }
@@ -169,6 +170,8 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
   try {
     const { idDeposit} = req.params;
     const depositFound = await Deposit.findById(idDeposit);
+    console.log("idDeposit",idDeposit)
+    console.log("data",depositFound)
 
     if (!depositFound) {
       return res.status(404).json({ message: 'Dépôt non trouvé' });
