@@ -127,7 +127,8 @@ router.get('/search', async (req, res) => {
               amount: 0,
               saldoInfo: event.saldoEvent,
               transactions: [],
-              transfers: []
+              transfers: [],
+              isActive: true
             };
   
             user.saldoOthersData.push(newSaldoOtherData);
