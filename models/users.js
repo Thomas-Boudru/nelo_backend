@@ -4,7 +4,8 @@ const saldoOthers = mongoose.Schema({
   amount: Number,
   saldoInfo : { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
   transactions : [{ type: mongoose.Schema.Types.ObjectId, ref: "transactions" }],
-  deposit: [{ type: mongoose.Schema.Types.ObjectId, ref: "deposits" }]
+  deposit: [{ type: mongoose.Schema.Types.ObjectId, ref: "deposits" }],
+  isActive: Boolean,
 })
 
 

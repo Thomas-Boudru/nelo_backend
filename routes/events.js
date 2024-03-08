@@ -118,7 +118,9 @@ router.get('/search', async (req, res) => {
         const event = await Event.findById(req.body.eventId);
         
         if (event && event.saldoEvent) {
-          const saldoExists = user.saldoOthersData.some((saldo) => saldo.saldoInfo.equals(event.saldoEvent));
+          const saldoExists = user.saldoOthersData.some(
+            (saldo) => saldo.saldoInfo.equals(event.saldoEvent) && saldo.isActive
+          );
   
           if (!saldoExists) {
             const newSaldoOtherData = {
@@ -167,6 +169,43 @@ router.post('/removeEvent', (req, res) => {
     .catch(error => {
       return res.json({ result: false, error: error.message });
     });
+});
+
+
+// remove saldo of event from user
+
+router.post('/removeSaldoData', async (req, res) => {
+  if (!req.body.saldoId || !req.body.tokenUser) {
+    return res.json({ result: false, error: 'Missing or empty fields' });
+  }
+
+  try {
+    const user = await User.findOne({ token: req.body.tokenUser });
+    if (!user) {
+      return res.json({ result: false, error: 'User not found' });
+    }
+
+    // Trouver le saldoOthersData correspondant et mettre à jour son état isActive
+    const saldoData = user.saldoOthersData.find(saldo => saldo._id.toString() === req.body.saldoId);
+    if (!saldoData) {
+      return res.json({ result: false, error: 'Saldo data not found' });
+    }
+    
+    saldoData.isActive = false;
+
+    // Trouver l'événement associé au saldoInfo et l'enlever de la liste des événements de l'utilisateur
+    const event = await Event.findOne({ saldoEvent: saldoData.saldoInfo });
+    if (event) {
+      user.events.pull(event._id);
+    }
+
+    // Sauvegarde des modifications
+    const savedUser = await user.save();
+    return res.json({ result: true, message: 'Saldo data updated and set to inactive', user: savedUser });
+    
+  } catch (error) {
+    return res.json({ result: false, error: error.message });
+  }
 });
 
 

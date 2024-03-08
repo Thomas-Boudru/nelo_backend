@@ -11,80 +11,6 @@ const fetch = require('node-fetch');
 
 // create Payment 
 
-{/*router.post('/paynl-transaction', async (req, res) => {
-  try {
-    const user = await User.findOne({ token: req.body.tokenUser });
-    let lng = req.body.language
-    let newDeposit;
-    let saldoInput = req.body.saldoId; // Assurez-vous de récupérer la valeur correctement
-
-    if (saldoInput) {
-      newDeposit = new Deposit({
-        amount: req.body.amount,
-        token: req.body.tokenNumber,
-        creationDate: new Date(),
-        idPayment: "",
-        user: user._id,
-        isPaid: false,
-        saldo: saldoInput,
-        coin : req.body.idCoin
-      });
-    } else {
-      res.status(500).json({ message: 'Erreur pas de saldoId' });
-    }
-
-  
-      let authorizationCode = 'QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg='
-      const dataOrganizer = await Organizer.findOne({ saldoOrganizer: req.body.idCoin });
-  
-      if (dataOrganizer) {
-        authorizationCode = dataOrganizer.authorization;
-      }
-
-      console.log('authorizationCode',authorizationCode)
-
-
-
-    const amountToPut = req.body.amount*100
-
-    // Attendre l'enregistrement du dépôt
-    const savedDeposit = await newDeposit.save();
-
-    const url = 'https://rest.pay.nl/v2/transactions';
-    const options = {
-      method: 'POST',
-      headers: {
-        accept: 'application/json',
-        'content-type': 'application/json',
-        authorization: `Basic ${authorizationCode}`
-      },
-      body: JSON.stringify({
-        stats: {object: 'Coinpack'},
-        amount: { value: amountToPut, currency: 'EUR' },
-        integration: { testMode: true },
-        serviceId: 'SL-5893-9892', // Remplacez ceci par votre ID de service Pay.nl
-        description: `CoinPack - ${req.body.saldoName}`,
-        reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
-        returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
-        exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}/${authorizationCode}`
-      })
-    };
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-    if(data.id) {
-      await Deposit.findByIdAndUpdate(savedDeposit._id, { idPayment: data.id });
-    }
-
-    res.json(data);
-  } catch (error) {
-    console.error('Erreur:', error);
-    res.status(500).json({ message: 'Erreur lors du paiement' });
-  }
-});*/}
-
-
-
 router.post('/paynl-transaction', async (req, res) => {
   try {
     const user = await User.findOne({ token: req.body.tokenUser });
@@ -140,7 +66,7 @@ router.post('/paynl-transaction', async (req, res) => {
         amount: { value: amountToPut, currency: 'EUR' },
         integration: { testMode: false },
         description: `CoinPack - ${req.body.saldoName}`,
-        reference: `${savedDeposit._id}`, // Utilisation de l'ID du dépôt nouvellement enregistré
+        reference: `${savedDeposit._id}`,
         returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
         exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}`
       })
@@ -263,9 +189,9 @@ router.post("/createTransactionOut", async (req, res) => {
     }
 
     {/*if (saldoInfoId) {*/}
-      const saldoOtherData = user.saldoOthersData.find(
-        (s) => s.saldoInfo.toString() === saldoInfoId
-      );
+    const saldoOtherData = user.saldoOthersData.find(
+      (s) => s.saldoInfo.toString() === saldoInfoId && s.isActive === true
+    );
 
       if (!saldoOtherData) {
         return res.json({ result: false, message: "No money deposit on this saldo" });
@@ -345,19 +271,7 @@ router.post("/createSaldo", async (req, res) => {
       });
   
       const savedSaldo = await newSaldo.save();
-  
-      // Now that the event is saved, let's update the Organizer
-      {/*const organizerIdentity = req.body.organizerId;
-  
-      if (organizerIdentity) {
-        await Organizer.findByIdAndUpdate(
-            organizerIdentity,
-          { $push: { 'saldoOrganizer': savedSaldo._id } }
-        );
-      } else (
-          res.json({ result: false, error: "No organizer id found" })
-      );*/}
-      
+
       res.json({ result: true, message: "Saldo saved", coin: savedSaldo });
   
     } catch (error) {
