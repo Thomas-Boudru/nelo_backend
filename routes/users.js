@@ -366,4 +366,19 @@ router.post('/checkPseudo', (req, res) => {
 })
 
 
+// test with limited people
+
+router.get('/checkNumber', (req, res) => {
+  User.countDocuments().then((count) => {
+    if(count < 2){
+      res.json({ result: true, message: 'still space for users' });
+    } else {
+      res.json({ result: false, message: 'no more users possible' });
+    }
+  }).catch(error => {
+    res.status(500).json({ result: false, message: 'Error checking user count' });
+  });
+});
+
+
 module.exports = router;
