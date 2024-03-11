@@ -370,7 +370,7 @@ router.post('/checkPseudo', (req, res) => {
 
 router.get('/checkNumber', (req, res) => {
   User.countDocuments().then((count) => {
-    if(count < 2){
+    if(count < 1){
       res.json({ result: true, message: 'still space for users' });
     } else {
       res.json({ result: false, message: 'no more users possible' });
