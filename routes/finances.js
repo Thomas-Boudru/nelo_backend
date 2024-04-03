@@ -178,6 +178,7 @@ router.post("/createTransactionOut", async (req, res) => {
     const priceToken = req.body.priceToken;
     const standId = req.body.standId;
     const productsdata = req.body.products
+    const warrantiesdata = req.body.warranties
     
 
     let amountToDeduct = numberToken * priceToken
@@ -208,6 +209,7 @@ router.post("/createTransactionOut", async (req, res) => {
         event: eventId,
         stand:standId,
         products: productsdata,
+        warranties : warrantiesdata,
         user: user._id,
         saldo: saldoInfoId
       });
@@ -307,6 +309,35 @@ router.post("/createSaldo", async (req, res) => {
         }
       })
   });
+
+
+
+router.get('/getBalance', async (req, res) => {
+  try {
+    const merchantId = 'M-2189-5921'; // Your merchant ID
+    const url = `https://rest-api.pay.nl/v5/Merchant/getBalance/xml/?merchantId=${merchantId}`;
+
+    const response = await fetch(url, {
+      method: 'GET', // Using GET as per the advice
+      headers: {
+        accept: 'application/xml', // Expecting XML response
+        authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=` // Your authorization
+      }
+    });
+
+    const data = await response.text(); // Using .text() since the response is expected to be XML
+
+    // You may need to parse the XML if you need to manipulate or extract specific data from it
+
+    res.type('application/xml'); // Set response type to XML
+    res.send(data); // Send the raw XML response
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ message: 'Error during payment process' });
+  }
+});
+
+  
 
   
   module.exports = router;

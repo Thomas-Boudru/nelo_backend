@@ -7,11 +7,19 @@ const products = mongoose.Schema({
   quantity: Number
   })
 
+const warranties = mongoose.Schema({
+  name: String,
+  tokens: Number,
+  stand: String,
+  quantity: Number
+  })
+
 const stands = mongoose.Schema({
     name: String,
     backgroundColor: String,
     code: {},
     productsData : [products],
+    warrantiesData : [warranties],
   })
 
 const eventsSchema = mongoose.Schema({
