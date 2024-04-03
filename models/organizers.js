@@ -25,6 +25,7 @@ const organizersSchema = mongoose.Schema({
     isAdmin: Boolean,
     language : String,
     address : String,
+    city: String,
     postCode: String,
     country: String,
     vat: String,
