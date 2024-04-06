@@ -105,13 +105,18 @@ router.get('/search', async (req, res) => {
   
     try {
       const existingUser = await User.findOne({ token: req.body.tokenUser, events: req.body.eventId });
-  
+
       if (existingUser) {
         return res.json({ result: true, message: 'Event already associated with the user' });
       }
   
       const user = await User.findOne({ token: req.body.tokenUser });
-  
+
+      if (user.events.length > 0) {
+        return res.json({ result: false, message: 'user has already an event' });
+      }
+
+
       if (user) {
         user.events.push(req.body.eventId);
   
