@@ -163,7 +163,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
 // Create Transaction Out
 
 
-/*router.post("/createTransactionOut", async (req, res) => {
+router.post("/createTransactionOut", async (req, res) => {
   let savedTransaction; // Declare the variable outside the try block.
 
   try {
@@ -226,10 +226,10 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
     console.error('Error:', error);
     res.json({ result: false, message: "Error saving transaction" });
   }
-});*/
+});
 
 
-router.post("/createTransactionOut", async (req, res) => {
+/*router.post("/createTransactionOut", async (req, res) => {
   let savedTransaction; // Declare the variable outside the try block.
 
   try {
@@ -295,7 +295,7 @@ router.post("/createTransactionOut", async (req, res) => {
     res.json({ result: false, message: "Error saving transaction" });
   }
 });
-
+*/
 
 
 
