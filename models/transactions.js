@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const transactionsSchema = mongoose.Schema({
+  transactionId: String,
   token: Number,
   creationDate: Date,
   products: [],
