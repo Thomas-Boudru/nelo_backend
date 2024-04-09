@@ -177,15 +177,12 @@ router.post("/createTransactionOut", async (req, res) => {
     const warrantiesdata = req.body.warranties
     
 
-    let amountToDeduct = numberToken * priceToken
-
     const user = await User.findOne({token : userIdentity});
 
     if (!user) {
       return res.json({ result: false, message: "User not found" });
     }
 
-    {/*if (saldoInfoId) {*/}
     const saldoOtherData = user.saldoOthersData.find(
       (s) => s.saldoInfo.toString() === saldoInfoId && s.isActive === true
     );
@@ -199,6 +196,7 @@ router.post("/createTransactionOut", async (req, res) => {
       }
 
       saldoOtherData.amount -= numberToken;
+
       const newTransaction = new Transaction({
         token: numberToken,
         creationDate: new Date(),
@@ -212,37 +210,15 @@ router.post("/createTransactionOut", async (req, res) => {
       savedTransaction = await newTransaction.save();
 
       await User.findOneAndUpdate(
-        { _id: user._id, 'saldoOthersData.saldoInfo': saldoInfoId },
+        { 
+          _id: user._id, 
+          "saldoOthersData._id": saldoOtherData._id,
+        },
         {
           $push: { 'saldoOthersData.$.transactions': savedTransaction._id },
           $set: { 'saldoOthersData.$.amount': saldoOtherData.amount }
         }
-      );
-    {/*} else {
-      if (user.saldoMainData.amount < amountToDeduct) {
-        return res.json({ result: false, message: "Insufficient funds" });
-      }
-
-      user.saldoMainData.amount -= amountToDeduct;
-      const newTransaction = new Transaction({
-        amount: -amountToDeduct,
-        token: numberToken,
-        priceToken: priceToken,
-        creationDate: new Date(),
-        event: eventId,
-        stand:standId,
-        user: user._id
-      });
-      savedTransaction = await newTransaction.save();
-
-      await User.findByIdAndUpdate(
-        user._id,
-        {
-          $push: { 'saldoMainData.transactions': savedTransaction._id },
-          $set: { 'saldoMainData.amount': user.saldoMainData.amount }
-        }
-      );
-    */}
+      )
 
     res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
 
