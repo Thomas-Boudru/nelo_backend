@@ -36,7 +36,7 @@ router.post("/signup", async (req, res) => {
     const newUserData = {
       pseudo: req.body.pseudo,
       name: req.body.name,
-      picture: 'https://res.cloudinary.com/dqr6dghcl/image/upload/v1697270019/profilePicture_psfpf8.png'
+      picture: 'https://res.cloudinary.com/dqr6dghcl/image/upload/v1709972669/Coinpack/Group_46_1_isxhjs.png'
     };
 
     
