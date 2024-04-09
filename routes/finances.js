@@ -163,7 +163,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
 // Create Transaction Out
 
 
-router.post("/createTransactionOut", async (req, res) => {
+/*router.post("/createTransactionOut", async (req, res) => {
   let savedTransaction; // Declare the variable outside the try block.
 
   try {
@@ -226,9 +226,75 @@ router.post("/createTransactionOut", async (req, res) => {
     console.error('Error:', error);
     res.json({ result: false, message: "Error saving transaction" });
   }
+});*/
+
+
+router.post("/createTransactionOut", async (req, res) => {
+  let savedTransaction; // Declare the variable outside the try block.
+
+  try {
+    // Introduire un délai artificiel pour simuler un traitement long
+    await new Promise(resolve => setTimeout(resolve, 10000)); // 10 secondes de délai
+
+    const userIdentity = req.body.userToken;
+    const eventId = req.body.eventId;
+    const saldoInfoId = req.body.saldoId;
+    const numberToken = req.body.numberToken;
+    const priceToken = req.body.priceToken;
+    const standId = req.body.standId;
+    const productsdata = req.body.products;
+    const warrantiesdata = req.body.warranties;
+    
+    const user = await User.findOne({token : userIdentity});
+
+    if (!user) {
+      return res.json({ result: false, message: "User not found" });
+    }
+
+    const saldoOtherData = user.saldoOthersData.find(
+      (s) => s.saldoInfo.toString() === saldoInfoId && s.isActive === true
+    );
+
+    if (!saldoOtherData) {
+      return res.json({ result: false, message: "No money deposit on this saldo" });
+    }
+
+    if (saldoOtherData.amount < numberToken) {
+      return res.json({ result: false, message: "Insufficient funds" });
+    }
+
+    saldoOtherData.amount -= numberToken;
+
+    const newTransaction = new Transaction({
+      token: numberToken,
+      creationDate: new Date(),
+      event: eventId,
+      stand:standId,
+      products: productsdata,
+      warranties : warrantiesdata,
+      user: user._id,
+      saldo: saldoInfoId
+    });
+    savedTransaction = await newTransaction.save();
+
+    await User.findOneAndUpdate(
+      { 
+        _id: user._id, 
+        "saldoOthersData._id": saldoOtherData._id,
+      },
+      {
+        $push: { 'saldoOthersData.$.transactions': savedTransaction._id },
+        $set: { 'saldoOthersData.$.amount': saldoOtherData.amount }
+      }
+    )
+
+    res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.json({ result: false, message: "Error saving transaction" });
+  }
 });
-
-
 
 
 
