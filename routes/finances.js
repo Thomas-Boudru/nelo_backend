@@ -234,7 +234,7 @@ router.post("/createTransactionOut", async (req, res) => {
 
   try {
     // Introduire un délai artificiel pour simuler un traitement long
-    await new Promise(resolve => setTimeout(resolve, 10000)); // 10 secondes de délai
+    await new Promise(resolve => setTimeout(resolve, 16000)); // 10 secondes de délai
 
     const userIdentity = req.body.userToken;
     const eventId = req.body.eventId;
