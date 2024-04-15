@@ -100,8 +100,16 @@ router.post('/getEventOrganizer', async (req, res) => {
       const passedEventIds = passedEvents.map(event => event._id);
 
       const upcomingEvents = await Event.find({
+        $or: [
+          {
         organizer: req.body.organizerId,
         _id: { $nin: passedEventIds }
+          },
+          {
+            organizer: req.body.organizerId,
+            isPermanent: true
+          }
+        ]
       })
         .populate("saldoEvent")
         .populate("organizer")
