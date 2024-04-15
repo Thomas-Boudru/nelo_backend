@@ -91,7 +91,8 @@ router.post('/getEventOrganizer', async (req, res) => {
     const passedEvents = await Event.find({
       organizer: req.body.organizerId,
       startDateEvent: { $lt: today },
-       endDateEvent: { $lt: today }
+       endDateEvent: { $lt: today },
+       isPermanent: false
     })
       .populate('organizer')
       .populate('saldoEvent')
