@@ -13,6 +13,7 @@ const saldosSchema = mongoose.Schema({
   creationDate: Date,
   endDate: Date,
   priceToken: [prices],
+  priceLimit : Number,
   organizer : { type: mongoose.Schema.Types.ObjectId, ref: "organizers" },
   event : { type: mongoose.Schema.Types.ObjectId, ref: "events" },
 });
