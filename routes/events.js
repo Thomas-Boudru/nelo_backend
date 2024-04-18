@@ -15,9 +15,9 @@ router.get('/maintenanceStatus', async (req, res) => {
     const status = await Status.findOne({});
 
     if (status) {
-      res.json({result : status.maintenance});
+      res.json({maintenance : status.maintenance, version: status.version });
     } else {
-      res.json({result : true}); // Si aucun état de maintenance n'est trouvé, retourne true (ou une valeur par défaut)
+      res.json({maintenance : true, version: '1.0.0'}); 
     }
   } catch (error) {
     console.error('Error:', error);
