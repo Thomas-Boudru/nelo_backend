@@ -4,6 +4,7 @@ const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
 const User = require("../models/users");
 const Transfer = require('../models/transfers')
+const Status = require('../models/status')
 
 const Sender = require("mailersend").Sender;
 const Recipient = require("mailersend").Recipient;
@@ -368,16 +369,21 @@ router.post('/checkPseudo', (req, res) => {
 
 // test with limited people
 
-router.get('/checkNumber', (req, res) => {
-  User.countDocuments().then((count) => {
-    if(count < 60){
-      res.json({ result: true, message: 'still space for users' });
+router.get('/checkNumber', async (req, res) => {
+  try {
+    const status = await Status.findOne();
+    const limit = status.limitUser;
+    const count = await User.countDocuments();
+
+    if (count < limit) {
+      res.json({ result: true, message: 'Still space for users' });
     } else {
-      res.json({ result: false, message: 'no more users possible' });
+      res.json({ result: false, message: 'No more users possible' });
     }
-  }).catch(error => {
+  } catch (error) {
+    console.error('Error fetching status or counting users:', error);
     res.status(500).json({ result: false, message: 'Error checking user count' });
-  });
+  }
 });
 
 
