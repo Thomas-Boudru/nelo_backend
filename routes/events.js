@@ -62,12 +62,14 @@ router.get('/search', async (req, res) => {
   router.get('/eventsUpcoming', async (req, res) => {
     try {
       const today = new Date();
+      const midnight = new Date();
       today.setHours(0, 0, 0, 0);  // Met à 00:00:00 pour comparer uniquement les jours
+      midnight.setHours(23, 59, 59, 999);
 
       const currentEvents = await Event.find({
         $or: [
           {
-            startDateEvent: { $lte: today },
+            startDateEvent: { $lte: midnight },
             endDateEvent: { $gte: today }
           },
           {
@@ -80,7 +82,7 @@ router.get('/search', async (req, res) => {
       .sort({ startDateEvent: 1 });
   
       const upcomingEvents = await Event.find({
-        startDateEvent: { $gt: today },
+        startDateEvent: { $gt: midnight },
         isPermanent: false
     })
     .populate('organizer')
