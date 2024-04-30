@@ -36,8 +36,6 @@ router.post('/paynl-transaction', async (req, res) => {
   
       let authorizationCode = 'SL-5893-9892'
       const dataOrganizer = await Organizer.findOne({ saldoOrganizer: req.body.idCoin });
-
-      console.log('dataOrganizer',dataOrganizer)
   
       if (dataOrganizer) {
         authorizationCode = dataOrganizer.authorization;
@@ -108,29 +106,13 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
     };
 
     const response = await fetch(url, options);
-
-    console.log('Statut de la réponse:', response);
     
-
     const data = await response.json();
-
-    console.log('Données de la réponse:', data); 
 
     if (data.status.code === 100) {
       depositFound.isPaid = true;
       await depositFound.save();
      
-      {/*if (!depositFound.saldo) {
-        // Effectuer des mises à jour spécifiques pour le dépôt qui n'a pas de "saldo"
-        await User.findByIdAndUpdate(
-          depositFound.user,
-          {
-            // Mettre à jour les données de solde principal
-            $push: { 'saldoMainData.deposit': depositFound._id },
-            $inc: { 'saldoMainData.amount': depositFound.amount }
-          }
-        );
-      } else {*/}
         // Effectuer des mises à jour spécifiques pour le dépôt ayant un "saldo"
         const saldoInfoId = depositFound.saldo._id;
         const user = await User.findById(depositFound.user);
