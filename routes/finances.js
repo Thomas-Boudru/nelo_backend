@@ -55,7 +55,7 @@ router.post('/paynl-transaction', async (req, res) => {
         authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=`
       },
       body: JSON.stringify({
-        language : "en",
+        language : "EN",
         stats: {object: 'Coinpack'},
         serviceId: `${authorizationCode}`,
         amount: { value: amountToPut, currency: 'EUR' },
