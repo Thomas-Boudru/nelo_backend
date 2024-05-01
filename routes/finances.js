@@ -157,6 +157,7 @@ router.post("/createTransactionOut", async (req, res) => {
     const standId = req.body.standId;
     const productsdata = req.body.products
     const warrantiesdata = req.body.warranties
+    const nameStand = req.body.standName
     
 
     const user = await User.findOne({token : userIdentity});
@@ -187,7 +188,8 @@ router.post("/createTransactionOut", async (req, res) => {
         products: productsdata,
         warranties : warrantiesdata,
         user: user._id,
-        saldo: saldoInfoId
+        saldo: saldoInfoId,
+        nameStand : nameStand
       });
       savedTransaction = await newTransaction.save();
 

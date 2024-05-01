@@ -9,7 +9,8 @@ const transactionsSchema = mongoose.Schema({
   event : { type: mongoose.Schema.Types.ObjectId, ref: "events" },
   stand: { type: mongoose.Schema.Types.ObjectId, ref: "stands" },
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
-  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"}
+  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"},
+  nameStand : String
 });
 
 const Transaction = mongoose.model("transactions", transactionsSchema);

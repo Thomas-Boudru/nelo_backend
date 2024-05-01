@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/users");
 const Transfer = require('../models/transfers')
 const Status = require('../models/status')
+const Event = require('../models/events')
 
 const Sender = require("mailersend").Sender;
 const Recipient = require("mailersend").Recipient;
@@ -231,7 +232,7 @@ router.post('/changePassword', (req, res) => {
 });
 
 
-// Get info of user financial
+// get info user
 
 router.post('/getInfoUserFinancial', (req, res) => {
   if (!req.body.tokenUser) {
@@ -253,7 +254,7 @@ router.post('/getInfoUserFinancial', (req, res) => {
           path: 'saldo',
           model: 'saldos',
           select: 'name' 
-        }
+        },
       ]
     })
     .populate({
@@ -263,6 +264,8 @@ router.post('/getInfoUserFinancial', (req, res) => {
     })
     .exec()
     .then(data => {
+
+
       if (data) {
         res.json({ result: true, message: "User found", db: data });
       } else {
@@ -272,7 +275,7 @@ router.post('/getInfoUserFinancial', (req, res) => {
     .catch(error => {
       res.json({ result: false, error: error.message });
     });
-});
+})
 
 
 // put account on isOpen false
