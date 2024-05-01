@@ -155,9 +155,13 @@ router.post("/createTransactionOut", async (req, res) => {
     const numberToken = req.body.numberToken;
     const priceToken = req.body.priceToken;
     const standId = req.body.standId;
-    const productsdata = req.body.products
+    const productsdata = req.body.products 
     const warrantiesdata = req.body.warranties
-    const nameStand = req.body.standName
+    let nameStand = ""
+    if(req.body.standName){
+      nameStand = req.body.standName
+    }
+
     
 
     const user = await User.findOne({token : userIdentity});
