@@ -43,8 +43,8 @@ router.post('/paynl-transaction', async (req, res) => {
 
     let languageBankDisplay = 'EN'
 
-    if(dataOrganizer.languagePayNl){
-      languageBankDisplay = dataOrganizer.languagePayNl
+    if(lng){
+      languageBankDisplay = lng.toUpperCase()
     }
 
     const amountToPut = req.body.amount*100
