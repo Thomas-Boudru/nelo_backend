@@ -24,6 +24,7 @@ const organizersSchema = mongoose.Schema({
     isActive: Boolean,
     isAdmin: Boolean,
     language : String,
+    languagePayNl: String,
     address : String,
     city: String,
     postCode: String,

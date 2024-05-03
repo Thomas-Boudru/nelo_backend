@@ -41,6 +41,12 @@ router.post('/paynl-transaction', async (req, res) => {
         authorizationCode = dataOrganizer.authorization;
       }
 
+    let languageBankDisplay = 'EN'
+
+    if(dataOrganizer.languagePayNl){
+      languageBankDisplay = dataOrganizer.languagePayNl
+    }
+
     const amountToPut = req.body.amount*100
 
     // Attendre l'enregistrement du dépôt
@@ -55,7 +61,7 @@ router.post('/paynl-transaction', async (req, res) => {
         authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=`
       },
       body: JSON.stringify({
-        customer: {language: 'FR'},
+        customer: {language: `${languageBankDisplay}`},
         stats: {object: 'Coinpack'},
         serviceId: `${authorizationCode}`,
         amount: { value: amountToPut, currency: 'EUR' },
