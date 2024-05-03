@@ -39,12 +39,18 @@ router.get('/search', async (req, res) => {
 
   try {
     const eventResults = await Event.find({
-      nameEvent: { $regex: searchText, $options: 'i' }
+      nameEvent: { $regex: searchText, $options: 'i' },
+      isVisible: true, 
+      isActive: true,
+      isActiveAdmin: true 
     })
       .populate('organizer')
       .populate('saldoEvent');
 
-    const organizerResults = await Organizer.find({ name: { $regex: searchText, $options: 'i' } });
+    const organizerResults = await Organizer.find({ 
+      name: { $regex: searchText, $options: 'i' },
+      isActive: true 
+    });
       
 
     res.json({ eventResults, organizerResults });
@@ -67,13 +73,22 @@ router.get('/search', async (req, res) => {
       midnight.setHours(23, 59, 59, 999);
 
       const currentEvents = await Event.find({
-        $or: [
+        $and: [ // Utiliser $and pour combiner les conditions
           {
-            startDateEvent: { $lte: midnight },
-            endDateEvent: { $gte: today }
+            $or: [
+              {
+                startDateEvent: { $lte: midnight },
+                endDateEvent: { $gte: today }
+              },
+              {
+                isPermanent: true
+              }
+            ]
           },
           {
-            isPermanent: true
+            isVisible: true, 
+            isActive: true,
+            isActiveAdmin: true 
           }
         ]
       })
@@ -83,7 +98,10 @@ router.get('/search', async (req, res) => {
   
       const upcomingEvents = await Event.find({
         startDateEvent: { $gt: midnight },
-        isPermanent: false
+        isPermanent: false,
+        isVisible: true, 
+        isActive: true,
+        isActiveAdmin: true 
     })
     .populate('organizer')
     .populate('saldoEvent')

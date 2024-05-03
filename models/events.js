@@ -37,6 +37,7 @@ const eventsSchema = mongoose.Schema({
   isActive: Boolean,
   isVisible: Boolean,
   isActiveAdmin: Boolean,
+  onlyAdmin : Boolean,
 
   namePlace: String,
   addressPlace : String,
