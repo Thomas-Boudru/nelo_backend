@@ -14,7 +14,6 @@ const connectionString = process.env.CONNECTION_STRING;
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    poolSize: 50, // Définissez ici la taille du pool de connexions
     connectTimeoutMS: 2000
 };
 
