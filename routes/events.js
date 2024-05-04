@@ -44,13 +44,21 @@ router.get('/search', async (req, res) => {
       isActive: true,
       isActiveAdmin: true 
     })
-      .populate('organizer')
-      .populate('saldoEvent');
+      .select('-standsData')
+      .populate({
+        path: 'organizer',
+        select: '_id name picture'  // Spécifiez ici les champs que vous voulez récupérer
+      })
+      .populate({
+        path: 'saldoEvent',
+        select: '-priceToken' // Exclure priceToken en ne le listant pas
+      });
 
     const organizerResults = await Organizer.find({ 
       name: { $regex: searchText, $options: 'i' },
       isActive: true 
-    });
+    })
+    .select('_id name picture')
       
 
     res.json({ eventResults, organizerResults });
