@@ -238,7 +238,7 @@ router.post('/removeSaldoData', async (req, res) => {
 // Get all event of user
 
 
-router.post('/eventByUser', (req, res) => {
+/*router.post('/eventByUser', (req, res) => {
   if (!req.body.tokenUser) {
     return res.json({ result: false, error: 'Missing or empty fields' });
   }
@@ -259,6 +259,31 @@ router.post('/eventByUser', (req, res) => {
         return res.json({ result: false, message: 'No Event found' })
       }
     })
+});*/
+
+router.post('/eventByUser', (req, res) => {
+  if (!req.body.tokenUser) {
+    return res.json({ result: false, error: 'Missing or empty fields' });
+  }
+
+  // Vérifier si l'événement est déjà associé à l'utilisateur
+  User.findOne({ token: req.body.tokenUser})
+  .select('-_id -token -email -password -language -isOpen -isActive -isConditions -isMailing -dateCreation -userData')
+  .populate({
+    path: 'events',
+    populate: [
+      { path: 'organizer', select: '_id name' }, ,
+      { path: 'saldoEvent'}
+    ]
+  })
+    .then(data => {
+      if(data){
+        return res.json({ result: true, message: 'Events found', data : data })
+      } else {
+        return res.json({ result: false, message: 'No Event found' })
+      }
+    })
 });
+  
   
   module.exports = router;
