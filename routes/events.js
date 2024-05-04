@@ -47,7 +47,7 @@ router.get('/search', async (req, res) => {
       .select('-standsData')
       .populate({
         path: 'organizer',
-        select: '_id name picture'  // Spécifiez ici les champs que vous voulez récupérer
+        select: '_id name picture userData'  // Spécifiez ici les champs que vous voulez récupérer
       })
       .populate({
         path: 'saldoEvent',
@@ -103,7 +103,7 @@ router.get('/search', async (req, res) => {
       .select('-standsData')
       .populate({
         path: 'organizer',
-        select: '_id name picture' 
+        select: '_id name picture userData' 
       })
       .populate({
         path: 'saldoEvent',
@@ -120,7 +120,7 @@ router.get('/search', async (req, res) => {
     })
     .populate({
       path: 'organizer',
-      select: '_id name picture' 
+      select: '_id name picture userData' 
     })
     .populate({
       path: 'saldoEvent',
