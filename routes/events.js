@@ -139,7 +139,7 @@ router.get('/search', async (req, res) => {
 
   // add event to user
 
-  router.post('/addEvent', async (req, res) => {
+  /*router.post('/addEvent', async (req, res) => {
     if (!req.body.eventId || !req.body.tokenUser) {
       return res.json({ result: false, error: 'Missing or empty fields' });
     }
@@ -182,41 +182,100 @@ router.get('/search', async (req, res) => {
         }
   
         const savedUser = await user.save();
-        return res.json({ result: true, user: savedUser });
+        return res.json({ result: true});
       } else {
         return res.json({ result: false, error: 'User not found' });
       }
     } catch (error) {
       return res.json({ result: false, error: error.message });
     }
-  });
+  });*/
   
-
-
-// Remove event from user
-router.post('/removeEvent', (req, res) => {
-  if (!req.body.eventId || !req.body.tokenUser) {
-    return res.json({ result: false, error: 'Missing or empty fields' });
-  }
-
-  User.findOne({ token: req.body.tokenUser })
-    .then(user => {
+  router.post('/addEvent', async (req, res) => {
+    const { eventId, tokenUser } = req.body;
+    
+    if (!eventId || !tokenUser) {
+      return res.json({ result: false, error: 'Missing or empty fields' });
+    }
+  
+    try {
+      const user = await User.findOne({ token: tokenUser });
+  
       if (!user) {
         return res.json({ result: false, error: 'User not found' });
       }
+  
+      if (user.events.includes(eventId)) {
+        return res.json({ result: true, message: 'Event already associated with the user' });
+      }
+  
+      if (user.events.length > 0) {
+        return res.json({ result: false, message: 'User already has an event' });
+      }
+  
+      user.events.push(eventId);
+  
+      const event = await Event.findById(eventId);
+      if (event && event.saldoEvent) {
+        const saldoExists = user.saldoOthersData.some(
+          saldo => saldo.saldoInfo.equals(event.saldoEvent) && saldo.isActive
+        );
+  
+        if (!saldoExists) {
+          const newSaldoOtherData = {
+            amount: 0,
+            saldoInfo: event.saldoEvent,
+            transactions: [],
+            transfers: [],
+            isActive: true
+          };
+  
+          user.saldoOthersData.push(newSaldoOtherData);
+        }
+      }
+  
+      const savedUser = await user.save();
+      return res.json({ result: true, message: 'Event added successfully'});
+  
+    } catch (error) {
+      console.error('Error when adding event to user', error);
+      return res.status(500).json({ result: false, error: error.message });
+    }
+  });
 
-      // Retirer l'événement de la liste des événements de l'utilisateur
-      user.events.pull(req.body.eventId);
 
-      return user.save(); // Sauvegarder les modifications apportées à l'utilisateur
-    })
-    .then(savedUser => {
-      return res.json({ result: true, message: 'Event removed from the user', user: savedUser });
-    })
-    .catch(error => {
-      return res.json({ result: false, error: error.message });
-    });
+// Remove event from user
+router.post('/removeEvent', async (req, res) => {
+  const { eventId, tokenUser } = req.body;
+
+  if (!eventId || !tokenUser) {
+    return res.json({ result: false, error: 'Missing or empty fields' });
+  }
+
+  try {
+    const user = await User.findOne({ token: tokenUser });
+
+    if (!user) {
+      return res.json({ result: false, error: 'User not found' });
+    }
+
+    // Vérifier si l'événement est dans la liste avant de tenter de le retirer
+    if (!user.events.includes(eventId)) {
+      return res.json({ result: false, error: 'Event not associated with the user' });
+    }
+
+    // Retirer l'événement du tableau d'événements
+    user.events.pull(eventId);
+    await user.save();
+
+    return res.json({ result: true, message: 'Event removed successfully' });
+
+  } catch (error) {
+    console.error('Error when removing event from user', error);
+    return res.status(500).json({ result: false, error: error.message });
+  }
 });
+
 
 
 // remove saldo of event from user
@@ -232,7 +291,6 @@ router.post('/removeSaldoData', async (req, res) => {
       return res.json({ result: false, error: 'User not found' });
     }
 
-    // Trouver le saldoOthersData correspondant et mettre à jour son état isActive
     const saldoData = user.saldoOthersData.find(saldo => saldo._id.toString() === req.body.saldoId);
     if (!saldoData) {
       return res.json({ result: false, error: 'Saldo data not found' });
@@ -240,7 +298,6 @@ router.post('/removeSaldoData', async (req, res) => {
     
     saldoData.isActive = false;
 
-    // Trouver l'événement associé au saldoInfo et l'enlever de la liste des événements de l'utilisateur
     const event = await Event.findOne({ saldoEvent: saldoData.saldoInfo });
     if (event) {
       user.events.pull(event._id);
@@ -248,7 +305,7 @@ router.post('/removeSaldoData', async (req, res) => {
 
     // Sauvegarde des modifications
     const savedUser = await user.save();
-    return res.json({ result: true, message: 'Saldo data updated and set to inactive', user: savedUser });
+    return res.json({ result: true, message: 'Saldo data updated and set to inactive'});
     
   } catch (error) {
     return res.json({ result: false, error: error.message });
