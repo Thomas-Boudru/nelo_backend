@@ -51,7 +51,7 @@ router.get('/search', async (req, res) => {
       })
       .populate({
         path: 'saldoEvent',
-        select: '-priceToken' // Exclure priceToken en ne le listant pas
+        select: 'name' // Exclure priceToken en ne le listant pas
       });
 
     const organizerResults = await Organizer.find({ 
@@ -100,8 +100,15 @@ router.get('/search', async (req, res) => {
           }
         ]
       })
-      .populate('organizer')
-      .populate('saldoEvent')
+      .select('-standsData')
+      .populate({
+        path: 'organizer',
+        select: '_id name picture' 
+      })
+      .populate({
+        path: 'saldoEvent',
+        select: 'name' 
+      })
       .sort({ startDateEvent: 1 });
   
       const upcomingEvents = await Event.find({
@@ -111,8 +118,14 @@ router.get('/search', async (req, res) => {
         isActive: true,
         isActiveAdmin: true 
     })
-    .populate('organizer')
-    .populate('saldoEvent')
+    .populate({
+      path: 'organizer',
+      select: '_id name picture' 
+    })
+    .populate({
+      path: 'saldoEvent',
+      select: '-priceToken' 
+    })
     .sort({ startDateEvent: 1 });
   
       res.json({ result: true, currentEvents, upcomingEvents});
