@@ -47,11 +47,11 @@ router.get('/search', async (req, res) => {
       .select('-standsData')
       .populate({
         path: 'organizer',
-        select: '_id name picture userData'  // Spécifiez ici les champs que vous voulez récupérer
+        select: '_id name picture userData' 
       })
       .populate({
         path: 'saldoEvent',
-        select: 'name' // Exclure priceToken en ne le listant pas
+        select: 'name' 
       });
 
     const organizerResults = await Organizer.find({ 
@@ -81,7 +81,7 @@ router.get('/search', async (req, res) => {
       midnight.setHours(23, 59, 59, 999);
 
       const currentEvents = await Event.find({
-        $and: [ // Utiliser $and pour combiner les conditions
+        $and: [ 
           {
             $or: [
               {

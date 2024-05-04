@@ -82,7 +82,7 @@ router.post("/signup", async (req, res) => {
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
 
-        return res.json({ result: true, data: newUser });
+        return res.json({ result: true, message : "User signed up" });
       } catch (error) {
         console.error(error);
         return res.json({ result: false, error: "An error occurred" });
@@ -110,7 +110,7 @@ router.post('/login', (req, res) => {
       const openUser = users.find(user => user.isOpen);
 
       if (openUser && bcrypt.compareSync(req.body.password, openUser.password)) {
-        return res.json({ result: true, db: openUser });
+        return res.json({ result: true, message: "User logged in" });
       } else {
         return res.json({ result: false, error: "Email, pseudo, or password incorrect" });
       }
@@ -139,11 +139,13 @@ router.post('/getInfoUser', (req, res) => {
       populate: [
         {
           path: 'event',
-          model: 'events'
+          model: 'events',
+          select: '_id nameEvent pictureEvent' 
         },
         {
-          path: 'organizer', // Chemin vers l'objet organizer dans le schéma saldos
-          model: 'organizers' // Modèle à utiliser pour la population de l'organizer
+          path: 'organizer', 
+          model: 'organizers',
+          select: '_id name picture' 
         }
       ]
     })
@@ -183,7 +185,7 @@ router.post('/updateUserInfo', (req, res) => {
   User.findOneAndUpdate({ token: token }, updatedInfo, { new: true })
     .then(updatedUser => {
       if (updatedUser) {
-        return res.json({ result: true, data: updatedUser });
+        return res.json({ result: true, message : "Data updated" });
       } else {
         return res.json({ result: false, error: 'User not found' });
       }
@@ -196,39 +198,33 @@ router.post('/updateUserInfo', (req, res) => {
 
 // change Password
 
-router.post('/changePassword', (req, res) => {
+router.post('/changePassword', async (req, res) => {
   const { token, oldPassword, newPassword } = req.body;
   
   if (!token || !oldPassword || !newPassword) {
     return res.json({ result: false, error: 'Missing fields' });
   }
 
-  User.findOne({ token })
-    .then(user => {
-      if (!user) {
-        return res.json({ result: false, error: 'User not found' });
-      }
-      
-      // Vérifier si l'ancien mot de passe correspond
-      if (!bcrypt.compareSync(oldPassword, user.password)) {
-        return res.json({ result: false, error: 'Old password is incorrect' });
-      }
-      
-      // Hasher et sauvegarder le nouveau mot de passe
-      const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
-      user.password = hashedNewPassword;
-      
-      user.save()
-        .then(updatedUser => {
-          return res.json({ result: true, message: 'Password updated successfully' });
-        })
-        .catch(error => {
-          return res.json({ result: false, error: error.message });
-        });
-    })
-    .catch(error => {
-      return res.json({ result: false, error: error.message });
-    });
+  try {
+    const user = await User.findOne({ token });
+    if (!user) {
+      return res.json({ result: false, error: 'User not found' });
+    }
+
+    // Vérifier si l'ancien mot de passe correspond
+    if (!bcrypt.compareSync(oldPassword, user.password)) {
+      return res.json({ result: false, error: 'Old password is incorrect' });
+    }
+
+    // Hasher et sauvegarder le nouveau mot de passe
+    user.password = bcrypt.hashSync(newPassword, 10);
+    
+    await user.save();
+    return res.json({ result: true, message: 'Password updated successfully' });
+
+  } catch (error) {
+    return res.json({ result: false, error: error.message });
+  }
 });
 
 

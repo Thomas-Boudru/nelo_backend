@@ -222,98 +222,6 @@ router.post("/createTransactionOut", async (req, res) => {
     res.json({ result: false, message: "Error saving transaction" });
   }
 });
-
-
-/*router.post("/createTransactionOut", async (req, res) => {
-  let savedTransaction; // Declare the variable outside the try block.
-
-  try {
-    // Introduire un délai artificiel pour simuler un traitement long
-    await new Promise(resolve => setTimeout(resolve, 16000)); // 10 secondes de délai
-
-    const userIdentity = req.body.userToken;
-    const eventId = req.body.eventId;
-    const saldoInfoId = req.body.saldoId;
-    const numberToken = req.body.numberToken;
-    const priceToken = req.body.priceToken;
-    const standId = req.body.standId;
-    const productsdata = req.body.products;
-    const warrantiesdata = req.body.warranties;
-    
-    const user = await User.findOne({token : userIdentity});
-
-    if (!user) {
-      return res.json({ result: false, message: "User not found" });
-    }
-
-    const saldoOtherData = user.saldoOthersData.find(
-      (s) => s.saldoInfo.toString() === saldoInfoId && s.isActive === true
-    );
-
-    if (!saldoOtherData) {
-      return res.json({ result: false, message: "No money deposit on this saldo" });
-    }
-
-    if (saldoOtherData.amount < numberToken) {
-      return res.json({ result: false, message: "Insufficient funds" });
-    }
-
-    saldoOtherData.amount -= numberToken;
-
-    const newTransaction = new Transaction({
-      token: numberToken,
-      creationDate: new Date(),
-      event: eventId,
-      stand:standId,
-      products: productsdata,
-      warranties : warrantiesdata,
-      user: user._id,
-      saldo: saldoInfoId
-    });
-    savedTransaction = await newTransaction.save();
-
-    await User.findOneAndUpdate(
-      { 
-        _id: user._id, 
-        "saldoOthersData._id": saldoOtherData._id,
-      },
-      {
-        $push: { 'saldoOthersData.$.transactions': savedTransaction._id },
-        $set: { 'saldoOthersData.$.amount': saldoOtherData.amount }
-      }
-    )
-
-    res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
-
-  } catch (error) {
-    console.error('Error:', error);
-    res.json({ result: false, message: "Error saving transaction" });
-  }
-});
-*/
-
-
-
-// Create Saldo / Coins type
-
-router.post("/createSaldo", async (req, res) => {
-    try {
-      const newSaldo = new Saldo({
-        name: req.body.saldoName,
-        creationDate: new Date(),
-        endDate: '2023-12-19T09:06:49.108+00:00',
-        organizer : req.body.organizerId,
-      });
-  
-      const savedSaldo = await newSaldo.save();
-
-      res.json({ result: true, message: "Saldo saved", coin: savedSaldo });
-  
-    } catch (error) {
-      console.error('Error:', error);
-      res.json({ result: false, message: "Error saving saldo" });
-    }
-  });
   
 
   // get all transactions of  events +  sum
@@ -342,35 +250,6 @@ router.post("/createSaldo", async (req, res) => {
         }
       })
   });
-
-
-
-router.get('/getBalance', async (req, res) => {
-  try {
-    const merchantId = 'M-2189-5921'; // Your merchant ID
-    const url = `https://rest-api.pay.nl/v5/Merchant/getBalance/xml/?merchantId=${merchantId}`;
-
-    const response = await fetch(url, {
-      method: 'GET', // Using GET as per the advice
-      headers: {
-        accept: 'application/xml', // Expecting XML response
-        authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=` // Your authorization
-      }
-    });
-
-    const data = await response.text(); // Using .text() since the response is expected to be XML
-
-    // You may need to parse the XML if you need to manipulate or extract specific data from it
-
-    res.type('application/xml'); // Set response type to XML
-    res.send(data); // Send the raw XML response
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ message: 'Error during payment process' });
-  }
-});
-
-  
 
   
   module.exports = router;
