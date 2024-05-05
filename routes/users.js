@@ -106,11 +106,10 @@ router.post('/login', (req, res) => {
 
   User.find(query)
     .then(users => {
-      // Filtrer l'utilisateur avec isOpen à true
       const openUser = users.find(user => user.isOpen);
 
       if (openUser && bcrypt.compareSync(req.body.password, openUser.password)) {
-        return res.json({ result: true, message: "User logged in" });
+        return res.json({ result: true, message: "User logged in", db: openUser});
       } else {
         return res.json({ result: false, error: "Email, pseudo, or password incorrect" });
       }
