@@ -350,7 +350,7 @@ router.post('/eventByUser', (req, res) => {
   .populate({
     path: 'events',
     populate: [
-      { path: 'organizer', select: '_id name' }, ,
+      { path: 'organizer', select: '_id name picture' }, ,
       { path: 'saldoEvent'}
     ]
   })
