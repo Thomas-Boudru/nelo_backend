@@ -135,61 +135,6 @@ router.get('/search', async (req, res) => {
     }
   });
   
-
-
-  // add event to user
-
-  /*router.post('/addEvent', async (req, res) => {
-    if (!req.body.eventId || !req.body.tokenUser) {
-      return res.json({ result: false, error: 'Missing or empty fields' });
-    }
-  
-    try {
-      const existingUser = await User.findOne({ token: req.body.tokenUser, events: req.body.eventId });
-
-      if (existingUser) {
-        return res.json({ result: true, message: 'Event already associated with the user' });
-      }
-  
-      const user = await User.findOne({ token: req.body.tokenUser });
-
-      if (user.events.length > 0) {
-        return res.json({ result: false, message: 'User has already an event' });
-      }
-
-
-      if (user) {
-        user.events.push(req.body.eventId);
-  
-        const event = await Event.findById(req.body.eventId);
-        
-        if (event && event.saldoEvent) {
-          const saldoExists = user.saldoOthersData.some(
-            (saldo) => saldo.saldoInfo.equals(event.saldoEvent) && saldo.isActive
-          );
-  
-          if (!saldoExists) {
-            const newSaldoOtherData = {
-              amount: 0,
-              saldoInfo: event.saldoEvent,
-              transactions: [],
-              transfers: [],
-              isActive: true
-            };
-  
-            user.saldoOthersData.push(newSaldoOtherData);
-          }
-        }
-  
-        const savedUser = await user.save();
-        return res.json({ result: true});
-      } else {
-        return res.json({ result: false, error: 'User not found' });
-      }
-    } catch (error) {
-      return res.json({ result: false, error: error.message });
-    }
-  });*/
   
   router.post('/addEvent', async (req, res) => {
     const { eventId, tokenUser } = req.body;
@@ -312,32 +257,6 @@ router.post('/removeSaldoData', async (req, res) => {
   }
 });
 
-
-// Get all event of user
-
-
-/*router.post('/eventByUser', (req, res) => {
-  if (!req.body.tokenUser) {
-    return res.json({ result: false, error: 'Missing or empty fields' });
-  }
-
-  // Vérifier si l'événement est déjà associé à l'utilisateur
-  User.findOne({ token: req.body.tokenUser})
-  .populate({
-    path: 'events',
-    populate: [
-      { path: 'organizer' },
-      { path: 'saldoEvent' }
-    ]
-  })
-    .then(data => {
-      if(data){
-        return res.json({ result: true, message: 'Events found', data : data })
-      } else {
-        return res.json({ result: false, message: 'No Event found' })
-      }
-    })
-});*/
 
 router.post('/eventByUser', (req, res) => {
   if (!req.body.tokenUser) {
