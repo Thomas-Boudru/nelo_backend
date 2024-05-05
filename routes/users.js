@@ -184,7 +184,7 @@ router.post('/updateUserInfo', (req, res) => {
   User.findOneAndUpdate({ token: token }, updatedInfo, { new: true })
     .then(updatedUser => {
       if (updatedUser) {
-        return res.json({ result: true, message : "Data updated" });
+        return res.json({ result: true, message : "Data updated", data : updatedUser });
       } else {
         return res.json({ result: false, error: 'User not found' });
       }
