@@ -82,7 +82,7 @@ router.post("/signup", async (req, res) => {
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
 
-        return res.json({ result: true, message : "User signed up" });
+        return res.json({ result: true, message : "User signed up", data : newUser });
       } catch (error) {
         console.error(error);
         return res.json({ result: false, error: "An error occurred" });
