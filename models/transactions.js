@@ -10,7 +10,9 @@ const transactionsSchema = mongoose.Schema({
   stand: { type: mongoose.Schema.Types.ObjectId, ref: "stands" },
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos"},
-  nameStand : String
+  nameStand : String,
+  code: String,
+
 });
 
 const Transaction = mongoose.model("transactions", transactionsSchema);

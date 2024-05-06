@@ -18,6 +18,7 @@ const stands = mongoose.Schema({
     name: String,
     backgroundColor: String,
     code: {},
+    codeExtra : [],
     productsData : [products],
     warrantiesData : [warranties],
   })
