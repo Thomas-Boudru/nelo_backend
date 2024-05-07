@@ -257,6 +257,7 @@ router.post('/getInfoUserFinancial', (req, res) => {
       model: 'deposits',
       populate: { path: 'coin', model: 'saldos', select: 'name' }
     })
+    
     .exec()
     .then(data => {
 
