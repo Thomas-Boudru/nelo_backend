@@ -51,7 +51,7 @@ router.get('/search', async (req, res) => {
       })
       .populate({
         path: 'saldoEvent',
-        select: 'name' 
+        select: 'name endDate' 
       });
 
     const organizerResults = await Organizer.find({ 
@@ -107,7 +107,7 @@ router.get('/search', async (req, res) => {
       })
       .populate({
         path: 'saldoEvent',
-        select: 'name' 
+        select: 'name endDate' 
       })
       .sort({ startDateEvent: 1 });
   
