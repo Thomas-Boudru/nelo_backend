@@ -5,12 +5,12 @@ const Organizer = require("../models/organizers")
 const User = require("../models/users")
 const Status = require("../models/status")
 
-
+const limiter = require('../limiter')
 
 // check if maintenance or not
 
 
-router.get('/maintenanceStatus', async (req, res) => {
+router.get('/maintenanceStatus', limiter,async (req, res) => {
   try {
     const status = await Status.findOne({});
 

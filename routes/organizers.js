@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 const Event = require("../models/events");
 
-
+const limiter = require('../limiter')
 
 // Get event of Organizer
 
-router.post('/getEventOrganizer', async (req, res) => {
+router.post('/getEventOrganizer', limiter, async (req, res) => {
   try {
     if (!req.body.organizerId) {
       return res.json({ result: false, error: 'Missing or empty fields' });

@@ -9,9 +9,11 @@ const Transfer = require("../models/transfers")
 const Deposit = require("../models/deposits")
 const fetch = require('node-fetch');
 
+const limiter = require('../limiter')
+
 // create Payment 
 
-router.post('/paynl-transaction', async (req, res) => {
+router.post('/paynl-transaction',limiter, async (req, res) => {
   try {
     const user = await User.findOne({ token: req.body.tokenUser });
     let lng = req.body.language

@@ -7,6 +7,8 @@ const Transfer = require('../models/transfers')
 const Status = require('../models/status')
 const Event = require('../models/events')
 
+const limiter = require('../limiter')
+
 const Sender = require("mailersend").Sender;
 const Recipient = require("mailersend").Recipient;
 const EmailParams = require("mailersend").EmailParams;
@@ -16,8 +18,9 @@ const mailerSend  = new MailerSend({
   apiKey: "mlsn.cb35e7e3e4df13671317cef2750ed1aca8227adb8f9abac599674f5464a45584",
 });
 
+
 /* Signup */
-router.post("/signup", async (req, res) => {
+router.post("/signup", limiter, async (req, res) => {
 
   try {
     if (!req.body.password || !req.body.email ||!req.body.pseudo ||!req.body.name) {
@@ -92,7 +95,7 @@ router.post("/signup", async (req, res) => {
 
 // Signin
 
-router.post('/login', (req, res) => {
+router.post('/login', limiter, (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.json({ result: false, error: 'Missing or empty fields' });
   }
@@ -125,7 +128,7 @@ router.post('/login', (req, res) => {
 
 // Get info of user
 
-router.post('/getInfoUser', (req, res) => {
+router.post('/getInfoUser', limiter, (req, res) => {
   if (!req.body.tokenUser) {
     res.json({ result: false, error: 'Missing or empty fields' });
     return;
@@ -166,7 +169,7 @@ router.post('/getInfoUser', (req, res) => {
 
 // change info of user
 
-router.post('/updateUserInfo', (req, res) => {
+router.post('/updateUserInfo', limiter, (req, res) => {
   const { token, email, language, pseudo, picture, name } = req.body;
   
   if (!token) {
@@ -197,7 +200,7 @@ router.post('/updateUserInfo', (req, res) => {
 
 // change Password
 
-router.post('/changePassword', async (req, res) => {
+router.post('/changePassword', limiter, async (req, res) => {
   const { token, oldPassword, newPassword } = req.body;
   
   if (!token || !oldPassword || !newPassword) {
@@ -229,7 +232,7 @@ router.post('/changePassword', async (req, res) => {
 
 // get info user
 
-router.post('/getInfoUserFinancial', (req, res) => {
+router.post('/getInfoUserFinancial', limiter, (req, res) => {
   if (!req.body.tokenUser) {
     res.json({ result: false, error: 'Missing or empty fields' });
     return;
@@ -276,7 +279,7 @@ router.post('/getInfoUserFinancial', (req, res) => {
 
 // put account on isOpen false
 
-router.post('/closeAccount', (req, res) => {
+router.post('/closeAccount', limiter, (req, res) => {
   const { tokenUser } = req.body;
 
   if (!tokenUser) {
@@ -303,7 +306,7 @@ router.post('/closeAccount', (req, res) => {
 
 // set a random password and send email with send grid
 
-router.post('/sendNewPassword', (req, res) => {
+router.post('/sendNewPassword', limiter, (req, res) => {
 
   User.findOne({email: req.body.email }).then((data) => {
     if(!data){
@@ -354,7 +357,7 @@ router.post('/sendNewPassword', (req, res) => {
 
 // check if pseudo already exist
 
-router.post('/checkPseudo', (req, res) => {
+router.post('/checkPseudo', limiter, (req, res) => {
 
   User.findOne({"userData.pseudo" : req.body.pseudo }).then((data) => {
     if(data){
@@ -368,7 +371,7 @@ router.post('/checkPseudo', (req, res) => {
 
 // test with limited people
 
-router.get('/checkNumber', async (req, res) => {
+router.get('/checkNumber', limiter, async (req, res) => {
   try {
     const status = await Status.findOne();
     const limit = status.limitUser;
