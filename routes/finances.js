@@ -236,13 +236,19 @@ router.post("/reimburseInitiation", async (req, res) => {
     const { userToken, saldoId } = req.body;
 
     if (!userToken || !saldoId) {
-      return res.status(400).json({ result: false, message: "Missing required data" });
+      return res.status(400).json({ result: false, error : "Missing", message: "Missing required data" });
     }
 
     const user = await User.findOne({ token: userToken });
 
     if (!user) {
-      return res.status(404).json({ result: false, message: "User not found" });
+      return res.status(404).json({ result: false, error: "Missing", message: "User not found" });
+    }
+
+    const existingReimburse = await Reimburse.findOne({ user: user._id, saldo: saldoId });
+
+    if (existingReimburse) {
+      return res.status(400).json({ result: false, error: "Already exists", message: "A reimbursement already exists for this user and saldo" });
     }
 
     const newReimburse = new Reimburse({
