@@ -7,6 +7,7 @@ const Transaction = require("../models/transactions")
 const Saldo = require("../models/saldos")
 const Transfer = require("../models/transfers")
 const Deposit = require("../models/deposits")
+const Reimburse = require("../models/reimburses")
 const fetch = require('node-fetch');
 
 const limiter = require('../limiter')
@@ -228,6 +229,42 @@ router.post("/createTransactionOut", async (req, res) => {
 });
   
 
+// reimburse initiation
 
+router.post("/reimburseInitiation", async (req, res) => {
+  try {
+    const { userToken, saldoId } = req.body;
+
+    if (!userToken || !saldoId) {
+      return res.status(400).json({ result: false, message: "Missing required data" });
+    }
+
+    const user = await User.findOne({ token: userToken });
+
+    if (!user) {
+      return res.status(404).json({ result: false, message: "User not found" });
+    }
+
+    const newReimburse = new Reimburse({
+      dateCreation: new Date(),
+      dateAsked: null, 
+      isAsked: false,
+      isDone: false,
+      accountNumber: '', 
+      numberToken: 0, 
+      amount: 0, 
+      user: user._id,
+      saldo: saldoId,
+    });
+
+    await newReimburse.save();
+
+    res.json({ result: true, message: "Reimburse created", data: newReimburse });
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ result: false, message: "Error creating reimburse" });
+  }
+});
   
   module.exports = router;
