@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -13,6 +13,12 @@ var eventsRouter = require('./routes/events');
 var financesRouter = require('./routes/finances');
 
 var app = express();
+
+app.set('trust proxy', true);
+
+const limiter = require('./limiter');
+
+app.use(limiter);
 
 app.use(logger('dev'));
 app.use(express.json());
