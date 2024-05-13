@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const connectionString = process.env.CONNECTION_STRING;
 
 mongoose.connect(connectionString, {
-  connectTimeoutMS: 30000,  
+  connectTimeoutMS: 40000,  
   socketTimeoutMS: 45000    
 })
 .then(() => console.log('Database connected'))
