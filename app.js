@@ -14,7 +14,7 @@ var financesRouter = require('./routes/finances');
 
 var app = express();
 
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 const limiter = require('./limiter');
 
