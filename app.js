@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var helmet = require('helmet');
 
 require('./models/connection');
 
@@ -19,6 +20,19 @@ app.set('trust proxy', 1);
 const limiter = require('./limiter');
 
 app.use(limiter);
+
+app.use(helmet()); 
+
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],  
+        scriptSrc: ["'self'"],  
+        objectSrc: ["'none'"],  
+        upgradeInsecureRequests: [],  
+        imgSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],  
+    }
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
