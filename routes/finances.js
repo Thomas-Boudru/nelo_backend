@@ -10,6 +10,8 @@ const Deposit = require("../models/deposits")
 const Reimburse = require("../models/reimburses")
 const fetch = require('node-fetch');
 
+const Checker = require("../models/checkers")
+
 const limiter = require('../limiter')
 
 // create Payment 
@@ -220,6 +222,8 @@ router.post("/createTransactionOut", async (req, res) => {
         }
       )
 
+      await notifyCheckers(savedTransaction);
+
     res.json({ result: true, message: "Transaction saved", transaction: savedTransaction });
 
   } catch (error) {
@@ -272,5 +276,60 @@ router.post("/reimburseInitiation", async (req, res) => {
     res.status(500).json({ result: false, message: "Error creating reimburse" });
   }
 });
+
+
+
+// route with push 
+
+
+const sendPushNotification = async (token, coin, stand, event ) => {
+  console.log("token",token)
+  const message = {
+    to: token,
+    sound: 'default',
+    title: `${event}`,
+    body: `${coin} coins for ${stand}`,
+    data: { data: "goes here" },
+  };
+
+  await fetch('https://exp.host/--/api/v2/push/send', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(message),
+  });
+}
+
+
+
+async function notifyCheckers(transaction) {
+  try {
+    const eventDetails = await Event.findById(transaction.event);
+    const transactionStandId = transaction.stand.toString();
+
+    const stand = eventDetails.standsData.find(s => s._id.toString() === transactionStandId);
   
+    if (stand && stand.codeExtra) {
+      const codeObject = stand.codeExtra.find(codeExtra => codeExtra.code.map(String).join('') === transaction.code);
+
+
+      if (codeObject) {
+        const checkerIds = codeObject.users;
+        const checkers = await Checker.find({ '_id': { $in: checkerIds.map(id => id.toString()) } });
+        for (const checker of checkers) {
+          if (checker.pushToken) {
+            await sendPushNotification(checker.pushToken, transaction.token, transaction.nameStand, eventDetails.nameEvent).catch(err => console.error("Error sending notification to checker", checker._id, err));
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Failed to send notification", error);
+    throw error;
+  }
+}
+
+
   module.exports = router;
