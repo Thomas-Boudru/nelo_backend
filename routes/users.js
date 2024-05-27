@@ -53,7 +53,7 @@ router.post("/signup", limiter, async (req, res) => {
       isOpen : true,
       isActive: true,
       isConditions : req.body.isConditions,
-      isMailing : req.body.isMailing,
+      isMailing : true,
       dateCreation: new Date(),
       userData: newUserData,
       saldoOthersData : []
