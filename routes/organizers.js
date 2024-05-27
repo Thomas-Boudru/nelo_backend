@@ -30,7 +30,7 @@ router.post('/getEventOrganizer', limiter, async (req, res) => {
       })
       .populate({
         path: 'saldoEvent',
-        select: 'name' 
+        select: 'name reimburse' 
       })
       .sort({ startDateEvent: -1 });
 
