@@ -283,7 +283,6 @@ router.post("/reimburseInitiation", async (req, res) => {
 
 
 const sendPushNotification = async (token, coin, stand, event ) => {
-  console.log("token",token)
   const message = {
     to: token,
     sound: 'default',
@@ -317,8 +316,6 @@ async function notifyCheckers(transaction) {
 
       if (codeObject) {
         const checkerIds = codeObject.users;
-        console.log("checkerIds",checkerIds)
-        console.log("codeObject",codeObject)
         const checkers = await Checker.find({ '_id': { $in: checkerIds.map(id => id.toString()) } });
         for (const checker of checkers) {
           if (checker.pushToken) {
