@@ -259,7 +259,8 @@ router.post("/reimburseInitiation", async (req, res) => {
     
     const newReimburse = new Reimburse({
       dateCreation: new Date(),
-      dateAsked: null, 
+      dateAsked: null,
+      dateDone: null, 
       isAsked: false,
       isDone: false,
       accountNumber: '', 
