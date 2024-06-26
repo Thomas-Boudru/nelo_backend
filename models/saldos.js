@@ -18,7 +18,9 @@ const saldosSchema = mongoose.Schema({
   organizer : { type: mongoose.Schema.Types.ObjectId, ref: "organizers" },
   event : { type: mongoose.Schema.Types.ObjectId, ref: "events" },
   reimburse: Boolean,
-  activateReimburse : Boolean
+  activateReimburse : Boolean,
+  priceReimburse: Number,
+  commissionReimburse : Number
 });
 
 const Saldo = mongoose.model("saldos", saldosSchema);

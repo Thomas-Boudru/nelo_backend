@@ -7,6 +7,8 @@ const reimbursesSchema = mongoose.Schema({
   isDone : Boolean,
   accountNumber : String,
   numberToken : Number,
+  priceToken: Number, 
+  commission: Number,
   amount: Number,
   user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   saldo : { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },

@@ -255,6 +255,8 @@ router.post("/reimburseInitiation", async (req, res) => {
       return res.status(400).json({ result: false, error: "Already exists", message: "A reimbursement already exists for this user and saldo" });
     }
 
+    const saldo = await Saldo.findOne({ token: userToken });
+    
     const newReimburse = new Reimburse({
       dateCreation: new Date(),
       dateAsked: null, 
@@ -262,6 +264,8 @@ router.post("/reimburseInitiation", async (req, res) => {
       isDone: false,
       accountNumber: '', 
       numberToken: 0, 
+      priceToken: saldo.priceReimburse, 
+      commission: saldo.commissionReimburse,
       amount: 0, 
       user: user._id,
       saldo: saldoId,
