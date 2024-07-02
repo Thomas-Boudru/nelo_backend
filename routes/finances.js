@@ -99,7 +99,7 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
 
 // get status
 
-router.get('/paynl-status/:idDeposit', async (req, res) => {
+/*router.get('/paynl-status/:idDeposit', async (req, res) => {
   try {
     const { idDeposit} = req.params;
     const depositFound = await Deposit.findById(idDeposit);
@@ -107,6 +107,7 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
     if (!depositFound) {
       return res.status(404).json({ message: 'Dépôt non trouvé' });
     }
+    
 
     const url = `https://rest.pay.nl/v2/transactions/${depositFound.idPayment}/status`;
     const options = {
@@ -152,7 +153,77 @@ router.get('/paynl-status/:idDeposit', async (req, res) => {
     res.status(500).json({ message: 'Erreur lors de la récupération du statut du paiement' });
   }
 });
+*/
 
+
+
+router.get('/paynl-status/:idDeposit', async (req, res) => {
+  try {
+    const { idDeposit } = req.params;
+    const depositFound = await Deposit.findById(idDeposit);
+
+    if (!depositFound) {
+      return res.status(404).json({ message: 'Dépôt non trouvé' });
+    }
+
+    // Vérifier si le dépôt a déjà été traité
+    if (depositFound.isPaid) {
+      return res.status(200).json({ message: 'Dépôt déjà traité', result: true });
+    }
+
+    const url = `https://rest.pay.nl/v2/transactions/${depositFound.idPayment}/status`;
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        authorization: `Basic QVQtMDA5MC00MDY4OjE2NWVkZDA3MjZlOGNkYTUyZWI0MjVjNWU3ZGM3NmI1YTIyY2E2Yjg=`
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.status.code === 100) {
+      const session = await mongoose.startSession();
+      session.startTransaction();
+
+      try {
+        depositFound.isPaid = true;
+        await depositFound.save({ session });
+
+        const saldoInfoId = depositFound.saldo._id;
+        const user = await User.findById(depositFound.user).session(session);
+        const saldoOtherData = user.saldoOthersData.find(s => s.saldoInfo.toString() === saldoInfoId.toString());
+
+        if (saldoOtherData) {
+          await User.findOneAndUpdate(
+            { _id: user._id, 'saldoOthersData.saldoInfo': saldoInfoId },
+            {
+              $push: { 'saldoOthersData.$.deposit': depositFound._id },
+              $inc: { 'saldoOthersData.$.amount': depositFound.token }
+            },
+            { session }
+          );
+        } else {
+          throw new Error('Informations de solde manquantes');
+        }
+
+        await session.commitTransaction();
+        session.endSession();
+        res.status(200).json({ message: 'Dépôt mis à jour', result: true });
+      } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
+        throw error;
+      }
+    } else {
+      res.status(200).json({ message: 'Paiement non confirmé', result: false });
+    }
+  } catch (error) {
+    console.error('Erreur:', error);
+    res.status(500).json({ message: 'Erreur lors de la récupération du statut du paiement' });
+  }
+});
   
 // Create Transaction Out
 
