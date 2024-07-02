@@ -133,13 +133,13 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
         // Effectuer des mises à jour spécifiques pour le dépôt ayant un "saldo"
         const saldoInfoId = depositFound.saldo._id;
         const user = await User.findById(depositFound.user);
-        const saldoOtherData = user.saldoOthersData.find(s => s._id.toString() === saldoInfoId.toString() && s.isActive);
+        const saldoOtherData = user.saldoOthersData.find(s => s._id.toString() === saldoInfoId.toString());
 
 
         if (saldoOtherData) {
           // Mettre à jour un solde "saldoOtherData" existant
           await User.findOneAndUpdate(
-            { _id: user._id, 'saldoOthersData._id': saldoInfoId, 'saldoOthersData.isActive': true },
+            { _id: user._id, 'saldoOthersData._id': saldoInfoId},
             {
               $push: { 'saldoOthersData.$.deposit': depositFound._id },
               $inc: { 'saldoOthersData.$.amount': depositFound.token  }
