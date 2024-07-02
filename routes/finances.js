@@ -109,9 +109,9 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
     }
 
     // Vérifier si le dépôt a déjà été traité
-    /*if (depositFound.isPaid) {
-      return res.status(200).json({ message: 'Dépôt déjà traité'});
-    }*/
+    if (depositFound.isPaid) {
+      return res.status(200).json({ message: 'Dépôt déjà traité', result: true });
+    }
     
     const url = `https://rest.pay.nl/v2/transactions/${depositFound.idPayment}/status`;
     const options = {
@@ -127,6 +127,11 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
     const data = await response.json();
 
     if (data.status.code === 100) {
+
+      if (depositFound.isPaid) {
+        return res.status(200).json({ message: 'Dépôt déjà traité', result: true });
+      }
+
       depositFound.isPaid = true;
       await depositFound.save();
      
@@ -139,7 +144,7 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
         if (saldoOtherData) {
           // Mettre à jour un solde "saldoOtherData" existant
           await User.findOneAndUpdate(
-            { _id: user._id, 'saldoOthersData._id': saldoInfoId},
+            { _id: user._id, 'saldoOthersData._id': saldoInfoId },
             {
               $push: { 'saldoOthersData.$.deposit': depositFound._id },
               $inc: { 'saldoOthersData.$.amount': depositFound.token  }
