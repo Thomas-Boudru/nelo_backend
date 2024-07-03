@@ -247,7 +247,7 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
       path: 'saldoOthersData.transactions',
       model: 'transactions',
       populate: [
-        { path: 'event', model: 'events', select: 'nameEvent pictureEvent'  },
+        { path: 'event', model: 'events', select: 'nameEvent pictureEvent timezone'  },
         {
           path: 'saldo',
           model: 'saldos',
