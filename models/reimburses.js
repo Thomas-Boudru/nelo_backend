@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const reimbursesSchema = mongoose.Schema({
-  dateCreation: Date,
+  creationDate: Date,
   dateAsked : Date,
   dateDone : Date,
   isAsked : Boolean,

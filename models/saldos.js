@@ -20,7 +20,9 @@ const saldosSchema = mongoose.Schema({
   reimburse: Boolean,
   activateReimburse : Boolean,
   priceReimburse: Number,
-  commissionReimburse : Number
+  commissionReimburse : Number,
+  reimburseStartDate: Date,
+  reimburseEndDate: Date
 });
 
 const Saldo = mongoose.model("saldos", saldosSchema);

@@ -6,6 +6,7 @@ const User = require("../models/users");
 const Transfer = require('../models/transfers')
 const Status = require('../models/status')
 const Event = require('../models/events')
+const Reimburses = require('../models/reimburses')
 
 const limiter = require('../limiter')
 
@@ -259,6 +260,11 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
       path: 'saldoOthersData.deposit',
       model: 'deposits',
       populate: { path: 'coin', model: 'saldos', select: 'name' }
+    })
+    .populate({
+      path: 'saldoOthersData.refund',
+      model: 'reimburses',
+      populate: { path: 'saldo', model: 'saldos', select: 'name' }
     })
     
     .exec()

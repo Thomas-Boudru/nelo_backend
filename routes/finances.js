@@ -243,13 +243,12 @@ router.post("/createTransactionOut", async (req, res) => {
   
 
 // reimburse initiation
-
 router.post("/reimburseInitiation", async (req, res) => {
   try {
     const { userToken, saldoId } = req.body;
 
     if (!userToken || !saldoId) {
-      return res.status(400).json({ result: false, error : "Missing", message: "Missing required data" });
+      return res.status(400).json({ result: false, error: "Missing", message: "Missing required data" });
     }
 
     const user = await User.findOne({ token: userToken });
@@ -258,39 +257,47 @@ router.post("/reimburseInitiation", async (req, res) => {
       return res.status(404).json({ result: false, error: "Missing", message: "User not found" });
     }
 
-    const existingReimburse = await Reimburse.findOne({ user: user._id, saldo: saldoId, isAsked : true });
+    const existingReimburse = await Reimburse.findOne({ user: user._id, saldo: saldoId, isAsked: true });
 
     if (existingReimburse) {
       return res.status(400).json({ result: false, error: "Already exists", message: "A reimbursement already exists for this user and saldo" });
     }
 
     const saldo = await Saldo.findOne({ _id: saldoId });
-    
+
     const newReimburse = new Reimburse({
-      dateCreation: new Date(),
+      creationDate: new Date(),
       dateAsked: null,
-      dateDone: null, 
+      dateDone: null,
       isAsked: false,
       isDone: false,
-      accountNumber: '', 
-      numberToken: 0, 
-      priceToken: saldo.priceReimburse, 
+      accountNumber: '',
+      numberToken: 0,
+      priceToken: saldo.priceReimburse,
       commission: saldo.commissionReimburse,
-      amount: 0, 
+      amount: 0,
       user: user._id,
       saldo: saldoId,
     });
 
     await newReimburse.save();
 
-    res.json({ result: true, message: "Reimburse created", data: newReimburse });
+    // Trouver le bon saldoOthers et ajouter l'ID du remboursement
+    const saldoOthers = user.saldoOthersData.find(
+      (so) => so.saldoInfo.toString() === saldoId.toString() && so.isActive
+    );
 
+    if (saldoOthers) {
+      saldoOthers.refund.push(newReimburse._id);
+      await user.save();
+    }
+
+    res.json({ result: true, message: "Reimburse created", data: newReimburse });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ result: false, message: "Error creating reimburse" });
   }
 });
-
 
 
 // route with push 
