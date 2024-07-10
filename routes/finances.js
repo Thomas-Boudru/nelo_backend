@@ -324,7 +324,7 @@ const sendPushNotification = async (token, coin, stand, event ) => {
 
 
 
-async function notifyCheckers(transaction) {
+/*async function notifyCheckers(transaction) {
   try {
     const eventDetails = await Event.findById(transaction.event);
     const transactionStandId = transaction.stand.toString();
@@ -349,7 +349,51 @@ async function notifyCheckers(transaction) {
     console.error("Failed to send notification", error);
     throw error;
   }
-}
+}*/
 
+
+async function notifyCheckers(transaction) {
+  try {
+    const eventDetails = await Event.findById(transaction.event);
+    const transactionStandId = transaction.stand.toString();
+
+    const stand = eventDetails.standsData.find(s => s._id.toString() === transactionStandId);
+
+    if (stand && stand.codeExtra) {
+      const codeObject = stand.codeExtra.find(codeExtra => codeExtra.code.map(String).join('') === transaction.code);
+
+      if (codeObject) {
+        const checkerIds = codeObject.users;
+        const checkers = await Checker.find({ '_id': { $in: checkerIds.map(id => id.toString()) } });
+
+        for (const checker of checkers) {
+          if (checker.pushToken) {
+            await sendPushNotification(checker.pushToken, transaction.token, transaction.nameStand, eventDetails.nameEvent)
+              .catch(err => console.error("Error sending notification to checker", checker._id, err));
+          }
+
+          // Ajout de la transaction dans l'array transactions du checker
+          const actionPlaceIndex = checker.actionPlace.findIndex(
+            ap => ap.event.toString() === transaction.event.toString()
+          );
+
+          if (actionPlaceIndex !== -1) {
+            const standIndex = checker.actionPlace[actionPlaceIndex].stand.findIndex(
+              s => s.standId.toString() === transaction.stand.toString()
+            );
+
+            if (standIndex !== -1) {
+              checker.actionPlace[actionPlaceIndex].stand[standIndex].transactions.push(transaction._id);
+              await checker.save().catch(err => console.error("Error saving transaction to checker", checker._id, err));
+            }
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Failed to send notification", error);
+    throw error;
+  }
+}
 
   module.exports = router;
