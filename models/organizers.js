@@ -12,6 +12,7 @@ const adminUser = mongoose.Schema({
     email: String,
     password: String,
     phoneNumber: String,
+    isActive: Boolean,
   })
 
 
