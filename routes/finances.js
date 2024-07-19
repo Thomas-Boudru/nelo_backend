@@ -313,7 +313,8 @@ const sendPushNotification = async (token, coin, stand, event) => {
   };
 
   try {
-    const response = await fetch('https://exp.host/--/api/v2/push/send', {
+    const response = await fetch('https://exp.host/--/api/v2/push/send?useFcmV1=true'
+    /*const response = await fetch('https://exp.host/--/api/v2/push/send'*/, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
