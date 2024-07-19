@@ -303,25 +303,37 @@ router.post("/reimburseInitiation", async (req, res) => {
 // route with push 
 
 
-const sendPushNotification = async (token, coin, stand, event ) => {
+const sendPushNotification = async (token, coin, stand, event) => {
   const message = {
     to: token,
     sound: 'default',
     title: `${event}`,
-    body: `${coin} coins for ${stand}`,
+    body: `You received ${coin} coins for ${stand}`,
     data: { data: "goes here" },
   };
 
-  await fetch('https://exp.host/--/api/v2/push/send', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(message),
-  });
-}
+  try {
+    const response = await fetch('https://exp.host/--/api/v2/push/send', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    });
 
+    const data = await response.json();
+    console.log('Push notification response:', data);
+
+    if (response.ok) {
+      console.log('Notification sent successfully:', data);
+    } else {
+      console.error('Error sending notification:', data);
+    }
+  } catch (error) {
+    console.error('Error sending push notification:', error);
+  }
+};
 
 
 /*async function notifyCheckers(transaction) {
