@@ -226,18 +226,11 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-cloudinary-core@^2.13.0:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/cloudinary-core/-/cloudinary-core-2.13.0.tgz#b59f90871b6c708c3d0735b9be47ac08181c57fb"
-  integrity sha512-Nt0Q5I2FtenmJghtC4YZ3MZZbGg1wLm84SsxcuVwZ83OyJqG9CNIGp86CiI6iDv3QobaqBUpOT7vg+HqY5HxEA==
-
-cloudinary@^1.41.0:
-  version "1.41.0"
-  resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.41.0.tgz#f9ac2653222ed8fb52d4b3d78ddcf7b5556f8c70"
-  integrity sha512-qFf2McjvILJITePf4VF1PrY/8c2zy+/q5FVV6V3VWrP/gpIZsusPqXL4QZ6ZKXibPRukzMYqsQEhaSQgJHKKow==
+cloudinary@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-2.3.0.tgz#48d74ea574cddb8a69e84b9bef03ed68401004b2"
+  integrity sha512-QBa/ePVVfVcVOB1Vut236rjAbTZAArzOm0e2IWUkQJSZFS65Sjf+i3DyRGen4QX8GZzrcbzvKI9b8BTHAv1zqQ==
   dependencies:
-    cloudinary-core "^2.13.0"
-    core-js "^3.30.1"
     lodash "^4.17.21"
     q "^1.5.1"
 
@@ -295,11 +288,6 @@ cookie@0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.1.tgz#afd713fe26ebd21ba95ceb61f9a8116e50a537d1"
   integrity sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==
-
-core-js@^3.30.1:
-  version "3.33.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.33.0.tgz#70366dbf737134761edb017990cf5ce6c6369c40"
-  integrity sha512-HoZr92+ZjFEKar5HS6MC776gYslNOKHt75mEBKWKnPeFDpZ6nH5OeF3S6HFT1mUAUZKrzkez05VboaX8myjSuw==
 
 core-util-is@1.0.2:
   version "1.0.2"

@@ -19,6 +19,15 @@ const mailerSend  = new MailerSend({
   apiKey: "mlsn.cb35e7e3e4df13671317cef2750ed1aca8227adb8f9abac599674f5464a45584",
 });
 
+const cloudinary = require('cloudinary').v2;
+
+
+cloudinary.config({
+  cloud_name: 'dqr6dghcl',
+  api_key: '752741783166574',
+  api_secret: '7HNh_PCm0PsWUAa_vlyJtpYoFoc'
+  });
+
 
 /* Signup */
 router.post("/signup", limiter, async (req, res) => {
@@ -391,6 +400,33 @@ router.get('/checkNumber', limiter, async (req, res) => {
   } catch (error) {
     console.error('Error fetching status or counting users:', error);
     res.status(500).json({ result: false, message: 'Error checking user count' });
+  }
+});
+
+
+
+/* Change profile picture */
+router.post('/updateProfilePicture', limiter, async (req, res) => {
+  const { token, picture } = req.body;
+
+  if (!token || !picture) {
+    return res.json({ result: false, error: 'Missing fields' });
+  }
+
+  try {
+    const user = await User.findOne({ token });
+    if (!user) {
+      return res.json({ result: false, error: 'User not found' });
+    }
+
+    // Update user's profile picture URL
+    user.userData.picture = picture;
+    await user.save();
+
+    return res.json({ result: true, message: 'Profile picture updated successfully', picture: picture });
+  } catch (error) {
+    console.error(error);
+    return res.json({ result: false, error: 'An error occurred while updating profile picture' });
   }
 });
 
