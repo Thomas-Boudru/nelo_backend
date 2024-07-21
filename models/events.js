@@ -81,8 +81,14 @@ const eventsSchema = mongoose.Schema({
   saldoEvent: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
   organizer: { type: mongoose.Schema.Types.ObjectId, ref: "organizers" },
   standsData: [standsSchema],
-  competition: [competitionsSchema],
-  statistic: statisticsSchema
+  competition: { 
+    active: Boolean, 
+    competitions: [competitionsSchema] 
+  },
+  statistic: { 
+    visible: Boolean,
+    statistics: statisticsSchema 
+  }
 });
 
 const Event = mongoose.model("events", eventsSchema);
