@@ -116,7 +116,7 @@ router.post('/randomUserByEvent', limiter, async (req, res) => {
       const event = await Event.findOne({
         _id: eventObjectId,
         'competition.competitions._id': competitionObjectId,
-        'competition.competitions.winner': { $exists: false }
+        'competition.competitions.winner': null
       }).session(session);
   
       if (!event) {
