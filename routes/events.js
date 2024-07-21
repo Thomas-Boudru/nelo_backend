@@ -269,8 +269,13 @@ router.post('/eventByUser', (req, res) => {
   .populate({
     path: 'events',
     populate: [
-      { path: 'organizer', select: '_id name picture' }, ,
-      { path: 'saldoEvent'}
+      { path: 'organizer', select: '_id name picture' },
+      { path: 'saldoEvent' },
+      { 
+        path: 'competition.competitions.winner',
+        model: 'users',
+        select: '_id userData.pseudo userData.picture'
+      }
     ]
   })
     .then(data => {
