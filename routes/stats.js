@@ -98,30 +98,42 @@ router.post('/rankUsersByEvent', limiter, async (req, res) => {
 
 
 router.post('/randomUserByEvent', limiter, async (req, res) => {
-    const { eventId, numberToken, saldoId, nameEvent } = req.body;
+    const { eventId, numberToken, saldoId, nameEvent, competitionId } = req.body;
   
-    if (!eventId) {
-      return res.json({ result: false, error: 'Missing eventID field' });
+    if (!eventId || !numberToken || !saldoId || !competitionId) {
+      return res.json({ result: false, error: 'Missing required fields' });
     }
   
-    if (!numberToken) {
-      return res.json({ result: false, error: 'Missing numberToken field' });
-    }
-  
-    if (!saldoId) {
-      return res.json({ result: false, error: 'Missing saldoID field' });
-    }
+    const session = await mongoose.startSession();
+    session.startTransaction();
   
     try {
       const eventObjectId = new mongoose.Types.ObjectId(eventId);
       const saldoObjectId = new mongoose.Types.ObjectId(saldoId);
+      const competitionObjectId = new mongoose.Types.ObjectId(competitionId);
   
+      // Rechercher l'événement et vérifier la compétition
+      const event = await Event.findOne({
+        _id: eventObjectId,
+        'competition.competitions._id': competitionObjectId,
+        'competition.competitions.winner': { $exists: false }
+      }).session(session);
+  
+      if (!event) {
+        await session.abortTransaction();
+        session.endSession();
+        return res.json({ result: false, error: 'Competition already has a winner or does not exist' });
+      }
+  
+      // Sélectionner un utilisateur au hasard parmi ceux qui participent à l'événement et ont `isStats` à true
       const users = await User.aggregate([
-        { $match: { events: eventObjectId, isStats: true } }, // Filtrer les utilisateurs par eventID et isStats
-        { $sample: { size: 1 } }, // Sélectionner un utilisateur au hasard
+        { $match: { events: eventObjectId, isStats: true } },
+        { $sample: { size: 1 } },
       ]);
   
       if (users.length === 0) {
+        await session.abortTransaction();
+        session.endSession();
         return res.json({ result: false, error: 'No users found for this event' });
       }
   
@@ -135,12 +147,31 @@ router.post('/randomUserByEvent', limiter, async (req, res) => {
           'saldoOthersData.isActive': true,
         },
         { $inc: { 'saldoOthersData.$.amount': numberToken } },
-        { new: true }
+        { new: true, session }
       );
   
       if (!updatedUser) {
+        await session.abortTransaction();
+        session.endSession();
         return res.json({ result: false, error: 'Failed to update user saldo' });
       }
+  
+      // Mettre à jour le champ `winner` dans la compétition
+      await Event.updateOne(
+        {
+          _id: eventObjectId,
+          'competition.competitions._id': competitionObjectId
+        },
+        {
+          $set: {
+            'competition.competitions.$.winner': randomUser._id
+          }
+        },
+        { session }
+      );
+  
+      await session.commitTransaction();
+      session.endSession();
   
       // Envoi de l'email
       const sentFrom = new Sender("hello@coinpack.eu", "Thomas of Coinpack");
@@ -160,7 +191,7 @@ router.post('/randomUserByEvent', limiter, async (req, res) => {
       const emailParams = new EmailParams()
         .setFrom(sentFrom)
         .setTo(recipients)
-        .setTemplateId('z86org8351k4ew13') // Remplacez par votre template ID
+        .setTemplateId('z86org8351k4ew13')
         .setPersonalization(personalization);
   
       mailerSend.email
@@ -170,6 +201,8 @@ router.post('/randomUserByEvent', limiter, async (req, res) => {
   
       res.json({ result: true, userId: randomUser._id });
     } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
       console.error(error);
       res.json({ result: false, error: 'An error occurred while fetching a random user and updating saldo' });
     }
