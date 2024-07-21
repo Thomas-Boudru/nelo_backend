@@ -187,6 +187,8 @@ router.post('/updateUserInfo', limiter, (req, res) => {
     return res.json({ result: false, error: 'Missing token field' });
   }
 
+  console.log("isSwitch",isSwitch)
+
   // Créer un objet contenant uniquement les champs modifiables
   const updatedInfo = {};
   if (email) updatedInfo.email = email;
