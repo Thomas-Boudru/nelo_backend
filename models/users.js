@@ -28,6 +28,7 @@ const usersSchema = mongoose.Schema({
   isMailing : Boolean,
   dateCreation: Date,
   userData : userData,
+  isStats: Boolean,
 
   events : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
   

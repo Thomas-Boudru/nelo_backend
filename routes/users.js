@@ -66,6 +66,7 @@ router.post("/signup", limiter, async (req, res) => {
       isMailing : true,
       dateCreation: new Date(),
       userData: newUserData,
+      isStats: true,
       saldoOthersData : []
     });
 
@@ -180,7 +181,7 @@ router.post('/getInfoUser', limiter, (req, res) => {
 // change info of user
 
 router.post('/updateUserInfo', limiter, (req, res) => {
-  const { token, email, language, pseudo, picture, name } = req.body;
+  const { token, email, language, pseudo, picture, name, isSwitch } = req.body;
   
   if (!token) {
     return res.json({ result: false, error: 'Missing token field' });
@@ -190,9 +191,11 @@ router.post('/updateUserInfo', limiter, (req, res) => {
   const updatedInfo = {};
   if (email) updatedInfo.email = email;
   if (language) updatedInfo.language = language;
+  if (isSwitch) updatedInfo.isStats = isSwitch;
   if (pseudo) updatedInfo["userData.pseudo"] = pseudo;
   if (picture) updatedInfo["userData.picture"] = picture;
   if (name) updatedInfo["userData.name"] = name;
+
 
   User.findOneAndUpdate({ token: token }, updatedInfo, { new: true })
     .then(updatedUser => {
@@ -429,6 +432,7 @@ router.post('/updateProfilePicture', limiter, async (req, res) => {
     return res.json({ result: false, error: 'An error occurred while updating profile picture' });
   }
 });
+
 
 
 module.exports = router;
