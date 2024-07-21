@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var organizersRouter = require('./routes/organizers');
 var eventsRouter = require('./routes/events');
 var financesRouter = require('./routes/finances');
+var statsRouter = require('./routes/stats');
 
 var app = express();
 
@@ -45,5 +46,6 @@ app.use('/users', usersRouter);
 app.use('/organizers', organizersRouter);
 app.use('/events', eventsRouter);
 app.use('/finances', financesRouter);
+app.use('/stats', statsRouter);
 
 module.exports = app;

@@ -1,5 +1,17 @@
 const mongoose = require("mongoose");
 
+const statistics = mongoose.Schema({
+  topUsersByTokens: [],
+  topTransactionsByTokens: [],
+  generatedAtUTC: Date
+  })
+
+const competitions = mongoose.Schema({
+  time: Date,
+  winner: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+  numberToken: Number,
+  })
+
 const products = mongoose.Schema({
   name: String,
   tokens: Number,
@@ -58,7 +70,9 @@ const eventsSchema = mongoose.Schema({
   saldoEvent: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
 
   organizer : { type: mongoose.Schema.Types.ObjectId, ref: "organizers" },
-  standsData : [stands]
+  standsData : [stands],
+  competition : [competitions],
+  statistic : {statistics}
 });
 
 const Event = mongoose.model("events", eventsSchema);
