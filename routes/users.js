@@ -196,6 +196,8 @@ router.post('/updateUserInfo', limiter, (req, res) => {
   if (picture) updatedInfo["userData.picture"] = picture;
   if (name) updatedInfo["userData.name"] = name;
 
+  console.log("updatedInfo",updatedInfo)
+
 
   User.findOneAndUpdate({ token: token }, updatedInfo, { new: true })
     .then(updatedUser => {
