@@ -44,11 +44,17 @@ const warrantiesSchema = mongoose.Schema({
   quantity: Number
 });
 
+const codeExtraSchema = mongoose.Schema({
+  code: [Number],
+  users: [{ type: mongoose.Schema.Types.ObjectId, ref: "checkers" }],
+});
+
+
 const standsSchema = mongoose.Schema({
   name: String,
   backgroundColor: String,
   code: {},
-  codeExtra: [],
+  codeExtra: [codeExtraSchema],
   productsData: [productsSchema],
   warrantiesData: [warrantiesSchema],
 });
@@ -56,22 +62,27 @@ const standsSchema = mongoose.Schema({
 const eventsSchema = mongoose.Schema({
   nameEvent: String,
   descriptionEvent: String,
+
   isPermanent: Boolean,
   startDateEvent: Date,
   endDateEvent: Date,
   timezone: String,
+
   pictureEvent: String,
   website: String,
+
   isActive: Boolean,
   isVisible: Boolean,
   isActiveAdmin: Boolean,
   onlyAdmin: Boolean,
+
   namePlace: String,
   addressPlace: String,
   cityPlace: String,
   countryPlace: String,
   latitude: Number,
   longitude: Number,
+  
   backgroundColor: String,
   isBaseToken: Boolean,
   baseToken: Number,
