@@ -48,10 +48,23 @@ router.post("/signup", limiter, async (req, res) => {
 
     const hash = bcrypt.hashSync(req.body.password, 10);
 
+    let dateOfBirth =  new Date(2000, 0, 1)
+
+    if(req.body.date){
+      dateOfBirth = new Date(req.body.date)
+    }
+
+    let pictureProfile = "https://res.cloudinary.com/dqr6dghcl/image/upload/v1709972669/Coinpack/Group_46_1_isxhjs.png"
+
+    if(req.body.picture){
+      pictureProfile = req.body.picture
+    }
+
     const newUserData = {
       pseudo: req.body.pseudo,
       name: req.body.name,
-      picture: 'https://res.cloudinary.com/dqr6dghcl/image/upload/v1709972669/Coinpack/Group_46_1_isxhjs.png'
+      picture: pictureProfile,
+      birthDate: dateOfBirth,
     };
 
     

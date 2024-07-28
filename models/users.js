@@ -13,6 +13,7 @@ const saldoOthers = mongoose.Schema({
 const userData = mongoose.Schema({
   pseudo :  String,
   name : String,
+  birthDate: String,
   picture : String
 })
 
