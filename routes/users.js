@@ -447,6 +447,32 @@ router.post('/updateProfilePicture', limiter, async (req, res) => {
   }
 });
 
+// search other user
 
+router.post('/searchUsers', async (req, res) => {
+  const { query } = req.body;
+
+  if (!query) {
+    return res.json({ result: false, error: 'Missing query parameter' });
+  }
+
+  try {
+    // Recherche des utilisateurs correspondant à l'email, pseudo ou nom
+    const users = await User.find({
+      $or: [
+        { email: { $regex: query, $options: 'i' } },
+        { 'userData.pseudo': { $regex: query, $options: 'i' } },
+        { 'userData.name': { $regex: query, $options: 'i' } }
+      ]
+    })
+    .limit(5)
+    .select('_id userData.pseudo userData.name userData.picture');
+
+    res.json({ result: true, users });
+  } catch (error) {
+    console.error('Erreur lors de la recherche des utilisateurs :', error);
+    res.status(500).json({ result: false, error: 'Une erreur est survenue lors de la recherche des utilisateurs' });
+  }
+});
 
 module.exports = router;
