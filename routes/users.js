@@ -194,13 +194,11 @@ router.post('/getInfoUser', limiter, (req, res) => {
 // change info of user
 
 router.post('/updateUserInfo', limiter, (req, res) => {
-  const { token, email, language, pseudo, picture, name, isSwitch } = req.body;
+  const { token, email, language, pseudo, picture, name, isSwitch, birthdateInfo } = req.body;
   
   if (!token) {
     return res.json({ result: false, error: 'Missing token field' });
   }
-
-  console.log("isSwitch",isSwitch)
 
   // Créer un objet contenant uniquement les champs modifiables
   const updatedInfo = {};
@@ -210,8 +208,7 @@ router.post('/updateUserInfo', limiter, (req, res) => {
   if (pseudo) updatedInfo["userData.pseudo"] = pseudo;
   if (picture) updatedInfo["userData.picture"] = picture;
   if (name) updatedInfo["userData.name"] = name;
-
-  console.log("updatedInfo",updatedInfo)
+  if (birthdateInfo) updatedInfo["userData.birthDate"] = birthdateInfo
 
 
   User.findOneAndUpdate({ token: token }, updatedInfo, { new: true })
