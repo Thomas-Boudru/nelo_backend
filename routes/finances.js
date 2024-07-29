@@ -449,17 +449,18 @@ router.post('/transferTokens', async (req, res) => {
 
     if (!receiverSaldo) {
       receiverSaldo = {
-        amount: 0,
+        amount: numberToken, // Set initial amount to numberToken
         saldoInfo: saldoInfoId,
         transactions: [],
         deposit: [],
+        transfers: [],
         refund: [],
         isActive: true,
       };
       receiver.saldoOthersData.push(receiverSaldo);
+    } else {
+      receiverSaldo.amount += numberToken;
     }
-
-    receiverSaldo.amount += numberToken;
 
     const newTransfer = new Transfer({
       amount: numberToken,
@@ -470,7 +471,12 @@ router.post('/transferTokens', async (req, res) => {
       saldo: saldoInfoId,
     });
 
-    await newTransfer.save();
+    const savedTransfer = await newTransfer.save();
+
+    // Ajouter l'ID du transfert dans les transferts de l'émetteur et du récepteur
+    senderSaldo.transfers.push(savedTransfer._id);
+    receiverSaldo.transfers.push(savedTransfer._id);
+
     await sender.save();
     await receiver.save();
 
@@ -478,7 +484,7 @@ router.post('/transferTokens', async (req, res) => {
     const senderEmailParams = new EmailParams()
       .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
       .setTo([new Recipient(sender.email, sender.userData.name)])
-      .setTemplateId('3zxk54vjjyq4jy6v') // replace with your template ID
+      .setTemplateId('senderTemplateId') // replace with your template ID
       .setPersonalization([{
         email: sender.email,
         data: {
@@ -497,7 +503,7 @@ router.post('/transferTokens', async (req, res) => {
     const receiverEmailParams = new EmailParams()
       .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
       .setTo([new Recipient(receiver.email, receiver.userData.name)])
-      .setTemplateId('o65qngk66kj4wr12') // replace with your template ID
+      .setTemplateId('receiverTemplateId') // replace with your template ID
       .setPersonalization([{
         email: receiver.email,
         data: {
@@ -519,4 +525,5 @@ router.post('/transferTokens', async (req, res) => {
     res.status(500).json({ message: "An error occurred during the transfer" });
   }
 });
+
   module.exports = router;
