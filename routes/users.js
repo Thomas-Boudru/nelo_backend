@@ -459,7 +459,8 @@ router.post('/searchUsers', async (req, res) => {
   try {
     // Recherche des utilisateurs correspondant à l'email, pseudo ou nom
     const users = await User.find({
-      isActive: true, 
+      isActive: true,
+      isOpen: true,  
       $or: [
         { email: { $regex: query, $options: 'i' } },
         { 'userData.pseudo': { $regex: query, $options: 'i' } },
