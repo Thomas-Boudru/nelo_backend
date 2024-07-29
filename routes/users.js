@@ -292,6 +292,14 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
       model: 'reimburses',
       populate: { path: 'saldo', model: 'saldos', select: 'name' }
     })
+    .populate({
+      path: 'saldoOthersData.transfers',
+      model: 'transfers',
+      populate:[ { path: 'sender', model: 'users', select: 'userData.pseudo' },
+                 { path: 'receiver', model: 'users', select: 'userData.pseudo' }, 
+                 { path: 'saldo', model: 'saldos', select: 'name' },
+      ]
+    })
     
     .exec()
     .then(data => {
