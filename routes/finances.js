@@ -478,7 +478,7 @@ router.post('/transferTokens', async (req, res) => {
     const senderEmailParams = new EmailParams()
       .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
       .setTo([new Recipient(sender.email, sender.userData.name)])
-      .setTemplateId('senderTemplateId') // replace with your template ID
+      .setTemplateId('3zxk54vjjyq4jy6v') // replace with your template ID
       .setPersonalization([{
         email: sender.email,
         data: {
@@ -497,7 +497,7 @@ router.post('/transferTokens', async (req, res) => {
     const receiverEmailParams = new EmailParams()
       .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
       .setTo([new Recipient(receiver.email, receiver.userData.name)])
-      .setTemplateId('receiverTemplateId') // replace with your template ID
+      .setTemplateId('o65qngk66kj4wr12') // replace with your template ID
       .setPersonalization([{
         email: receiver.email,
         data: {
