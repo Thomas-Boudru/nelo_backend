@@ -14,6 +14,15 @@ const Checker = require("../models/checkers")
 
 const limiter = require('../limiter')
 
+const Sender = require("mailersend").Sender;
+const Recipient = require("mailersend").Recipient;
+const EmailParams = require("mailersend").EmailParams;
+const { MailerSend } = require("mailersend");
+
+const mailerSend  = new MailerSend({
+  apiKey: "mlsn.cb35e7e3e4df13671317cef2750ed1aca8227adb8f9abac599674f5464a45584",
+});
+
 // create Payment 
 
 router.post('/paynl-transaction',limiter, async (req, res) => {
@@ -409,4 +418,105 @@ async function notifyCheckers(transaction) {
   }
 }
 
+
+// transfer between users
+
+router.post('/transferTokens', async (req, res) => {
+  const { tokenSender, idReceiver, numberToken, saldoOthersId, saldoInfoId, saldoName } = req.body;
+
+  try {
+    const sender = await User.findOne({ token: tokenSender });
+    if (!sender) {
+      return res.status(404).json({ message: "Sender not found" });
+    }
+
+    const receiver = await User.findById(idReceiver);
+    if (!receiver) {
+      return res.status(404).json({ message: "Receiver not found" });
+    }
+
+    const senderSaldo = sender.saldoOthersData.find(saldo => saldo._id.toString() === saldoOthersId && saldo.isActive);
+    if (!senderSaldo) {
+      return res.status(400).json({ message: "Sender's saldo is not active or not found" });
+    }
+
+    if (senderSaldo.amount < numberToken) {
+      return res.status(400).json({ message: "Sender has insufficient tokens" });
+    }
+
+    senderSaldo.amount -= numberToken;
+    let receiverSaldo = receiver.saldoOthersData.find(saldo => saldo.saldoInfo.toString() === saldoInfoId && saldo.isActive);
+
+    if (!receiverSaldo) {
+      receiverSaldo = {
+        amount: 0,
+        saldoInfo: saldoInfoId,
+        transactions: [],
+        deposit: [],
+        refund: [],
+        isActive: true,
+      };
+      receiver.saldoOthersData.push(receiverSaldo);
+    }
+
+    receiverSaldo.amount += numberToken;
+
+    const newTransfer = new Transfer({
+      amount: numberToken,
+      token: numberToken,
+      creationDate: new Date(),
+      sender: sender._id,
+      receiver: receiver._id,
+      saldo: saldoInfoId,
+    });
+
+    await newTransfer.save();
+    await sender.save();
+    await receiver.save();
+
+    // Send email to sender
+    const senderEmailParams = new EmailParams()
+      .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
+      .setTo([new Recipient(sender.email, sender.userData.name)])
+      .setTemplateId('senderTemplateId') // replace with your template ID
+      .setPersonalization([{
+        email: sender.email,
+        data: {
+          firstname: sender.userData.name,
+          receivername: receiver.userData.name,
+          tokenamount: numberToken,
+          saldoname: saldoName,
+        },
+      }]);
+
+    mailerSend.email.send(senderEmailParams)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+
+    // Send email to receiver
+    const receiverEmailParams = new EmailParams()
+      .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
+      .setTo([new Recipient(receiver.email, receiver.userData.name)])
+      .setTemplateId('receiverTemplateId') // replace with your template ID
+      .setPersonalization([{
+        email: receiver.email,
+        data: {
+          firstname: receiver.userData.name,
+          sendername: sender.userData.name,
+          tokenamount: numberToken,
+          saldoname: saldoName,
+        },
+      }]);
+
+    mailerSend.email.send(receiverEmailParams)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+
+    res.status(200).json({ message: "Transfer completed successfully" });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "An error occurred during the transfer" });
+  }
+});
   module.exports = router;

@@ -4,7 +4,8 @@ const transfersSchema = mongoose.Schema({
   amount: Number,
   token : Number,
   creationDate: Date,
-  user : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+  sender : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+  receiver : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" }
 });
 
