@@ -427,29 +427,36 @@ router.post('/transferTokens', async (req, res) => {
   try {
     const sender = await User.findOne({ token: tokenSender });
     if (!sender) {
-      return res.status(404).json({ message: "Sender not found" });
+      return res.status(404).json({result : false, message: "Sender not found" });
     }
 
     const receiver = await User.findById(idReceiver);
     if (!receiver) {
-      return res.status(404).json({ message: "Receiver not found" });
+      return res.status(404).json({result : false, message: "Receiver not found" });
     }
 
     const senderSaldo = sender.saldoOthersData.find(saldo => saldo._id.toString() === saldoOthersId && saldo.isActive);
     if (!senderSaldo) {
-      return res.status(400).json({ message: "Sender's saldo is not active or not found" });
+      return res.status(400).json({result : false, message: "Sender's saldo is not active or not found" });
     }
 
     if (senderSaldo.amount < numberToken) {
-      return res.status(400).json({ message: "Sender has insufficient tokens" });
+      return res.status(400).json({result : false, message: "Sender has insufficient tokens" });
     }
 
-    senderSaldo.amount -= numberToken;
+    // Décrémente le montant du solde de l'expéditeur
+    senderSaldo.amount -= Number(numberToken);
+    
+    // Sauvegarde les modifications de l'expéditeur
+    await sender.save();
+
+    // Recherche et mise à jour du solde du récepteur
     let receiverSaldo = receiver.saldoOthersData.find(saldo => saldo.saldoInfo.toString() === saldoInfoId && saldo.isActive);
 
     if (!receiverSaldo) {
+      // Si le solde n'existe pas, créez-le avec le montant initial
       receiverSaldo = {
-        amount: numberToken, // Set initial amount to numberToken
+        amount: numberToken,
         saldoInfo: saldoInfoId,
         transactions: [],
         deposit: [],
@@ -459,11 +466,16 @@ router.post('/transferTokens', async (req, res) => {
       };
       receiver.saldoOthersData.push(receiverSaldo);
     } else {
-      receiverSaldo.amount += numberToken;
+      // Sinon, incrémente le montant du solde existant
+      receiverSaldo.amount += Number(numberToken);
     }
 
+    // Sauvegarde les modifications du récepteur
+    await receiver.save();
+
+    // Création et sauvegarde d'un nouveau transfert
     const newTransfer = new Transfer({
-      amount: numberToken,
+      amount: 0,
       token: numberToken,
       creationDate: new Date(),
       sender: sender._id,
@@ -473,18 +485,18 @@ router.post('/transferTokens', async (req, res) => {
 
     const savedTransfer = await newTransfer.save();
 
-    // Ajouter l'ID du transfert dans les transferts de l'émetteur et du récepteur
+    // Ajout de l'ID du transfert dans les transferts de l'expéditeur et du récepteur
     senderSaldo.transfers.push(savedTransfer._id);
     receiverSaldo.transfers.push(savedTransfer._id);
 
     await sender.save();
     await receiver.save();
 
-    // Send email to sender
+    // Envoi d'un email à l'expéditeur
     const senderEmailParams = new EmailParams()
       .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
       .setTo([new Recipient(sender.email, sender.userData.name)])
-      .setTemplateId('3zxk54vjjyq4jy6v') // replace with your template ID
+      .setTemplateId('3zxk54vjjyq4jy6v') // Remplacez par votre ID de template
       .setPersonalization([{
         email: sender.email,
         data: {
@@ -499,11 +511,11 @@ router.post('/transferTokens', async (req, res) => {
       .then(response => console.log(response))
       .catch(error => console.log(error));
 
-    // Send email to receiver
+    // Envoi d'un email au récepteur
     const receiverEmailParams = new EmailParams()
       .setFrom(new Sender("hello@coinpack.eu", "Coinpack"))
       .setTo([new Recipient(receiver.email, receiver.userData.name)])
-      .setTemplateId('o65qngk66kj4wr12') // replace with your template ID
+      .setTemplateId('o65qngk66kj4wr12') // Remplacez par votre ID de template
       .setPersonalization([{
         email: receiver.email,
         data: {
@@ -518,11 +530,11 @@ router.post('/transferTokens', async (req, res) => {
       .then(response => console.log(response))
       .catch(error => console.log(error));
 
-    res.status(200).json({ message: "Transfer completed successfully" });
+    res.status(200).json({ result : true, message: "Transfer completed successfully" });
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "An error occurred during the transfer" });
+    res.status(500).json({result : false, message: "An error occurred during the transfer" });
   }
 });
 
