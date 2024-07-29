@@ -421,42 +421,40 @@ async function notifyCheckers(transaction) {
 
 // transfer between users
 
+
 router.post('/transferTokens', async (req, res) => {
   const { tokenSender, idReceiver, numberToken, saldoOthersId, saldoInfoId, saldoName } = req.body;
 
   try {
     const sender = await User.findOne({ token: tokenSender });
     if (!sender) {
-      return res.status(404).json({result : false, message: "Sender not found" });
+      return res.status(404).json({ result: false, message: "Sender not found" });
     }
 
     const receiver = await User.findById(idReceiver);
     if (!receiver) {
-      return res.status(404).json({result : false, message: "Receiver not found" });
+      return res.status(404).json({ result: false, message: "Receiver not found" });
     }
 
     const senderSaldo = sender.saldoOthersData.find(saldo => saldo._id.toString() === saldoOthersId && saldo.isActive);
     if (!senderSaldo) {
-      return res.status(400).json({result : false, message: "Sender's saldo is not active or not found" });
+      return res.status(400).json({ result: false, message: "Sender's saldo is not active or not found" });
     }
 
     if (senderSaldo.amount < numberToken) {
-      return res.status(400).json({result : false, message: "Sender has insufficient tokens" });
+      return res.status(400).json({ result: false, message: "Sender has insufficient tokens" });
     }
 
-    // Décrémente le montant du solde de l'expéditeur
     senderSaldo.amount -= Number(numberToken);
     
-    // Sauvegarde les modifications de l'expéditeur
     await sender.save();
 
-    // Recherche et mise à jour du solde du récepteur
     let receiverSaldo = receiver.saldoOthersData.find(saldo => saldo.saldoInfo.toString() === saldoInfoId && saldo.isActive);
 
     if (!receiverSaldo) {
       // Si le solde n'existe pas, créez-le avec le montant initial
       receiverSaldo = {
-        amount: numberToken,
+        amount: Number(numberToken),
         saldoInfo: saldoInfoId,
         transactions: [],
         deposit: [],
@@ -465,13 +463,12 @@ router.post('/transferTokens', async (req, res) => {
         isActive: true,
       };
       receiver.saldoOthersData.push(receiverSaldo);
+      await receiver.save(); // Sauvegarder le récepteur pour obtenir l'ID du nouvel objet
+      receiverSaldo = receiver.saldoOthersData.find(saldo => saldo.saldoInfo.toString() === saldoInfoId && saldo.isActive);
     } else {
-      // Sinon, incrémente le montant du solde existant
       receiverSaldo.amount += Number(numberToken);
+      await receiver.save(); // Sauvegarder les modifications du récepteur si le solde existe déjà
     }
-
-    // Sauvegarde les modifications du récepteur
-    await receiver.save();
 
     // Création et sauvegarde d'un nouveau transfert
     const newTransfer = new Transfer({
@@ -530,12 +527,13 @@ router.post('/transferTokens', async (req, res) => {
       .then(response => console.log(response))
       .catch(error => console.log(error));
 
-    res.status(200).json({ result : true, message: "Transfer completed successfully" });
+    res.status(200).json({ result: true, message: "Transfer completed successfully" });
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({result : false, message: "An error occurred during the transfer" });
+    res.status(500).json({ result: false, message: "An error occurred during the transfer" });
   }
 });
+
 
   module.exports = router;

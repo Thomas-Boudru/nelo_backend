@@ -450,10 +450,14 @@ router.post('/updateProfilePicture', limiter, async (req, res) => {
 // search other user
 
 router.post('/searchUsers', async (req, res) => {
-  const { query } = req.body;
+  const { query, token } = req.body;
 
   if (!query) {
     return res.json({ result: false, error: 'Missing query parameter' });
+  }
+
+  if (!token) {
+    return res.json({ result: false, error: 'Missing token parameter' });
   }
 
   try {
@@ -461,6 +465,7 @@ router.post('/searchUsers', async (req, res) => {
     const users = await User.find({
       isActive: true,
       isOpen: true,  
+      token: { $ne: token },
       $or: [
         { email: { $regex: query, $options: 'i' } },
         { 'userData.pseudo': { $regex: query, $options: 'i' } },
