@@ -274,11 +274,11 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
       path: 'saldoOthersData.transactions',
       model: 'transactions',
       populate: [
-        { path: 'event', model: 'events', select: 'nameEvent pictureEvent timezone'  },
+        { path: 'event', model: 'events', select: 'nameEvent pictureEvent timezone' },
         {
           path: 'saldo',
           model: 'saldos',
-          select: 'name' 
+          select: 'name'
         },
       ]
     })
@@ -295,18 +295,42 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
     .populate({
       path: 'saldoOthersData.transfers',
       model: 'transfers',
-      populate:[ { path: 'sender', model: 'users', select: 'userData.pseudo' },
-                 { path: 'receiver', model: 'users', select: 'userData.pseudo' }, 
-                 { path: 'saldo', model: 'saldos', select: 'name' },
+      populate: [
+        { path: 'sender', model: 'users', select: 'userData.pseudo' }, // Removed 'token' from select
+        { path: 'receiver', model: 'users', select: 'userData.pseudo' }, // Removed 'token' from select
+        { path: 'saldo', model: 'saldos', select: 'name' },
       ]
     })
-    
     .exec()
     .then(data => {
-
-
       if (data) {
-        res.json({ result: true, message: "User found", db: data });
+        // Convertir en objet simple pour pouvoir modifier facilement
+        const result = data.toObject();
+
+        // Supprimer les informations sensibles de l'utilisateur principal
+        delete result._id;
+        delete result.token;
+        delete result.email;
+        delete result.password;
+        delete result.language;
+        delete result.isOpen;
+        delete result.isActive;
+        delete result.isConditions;
+        delete result.isMailing;
+        delete result.dateCreation;
+        delete result.userData;
+        delete result.isStats;
+        delete result.events;
+        delete result.__v;
+
+        // Parcourir les transferts et ajouter senderIsUser: true ou false
+        result.saldoOthersData.forEach(saldo => {
+          saldo.transfers.forEach(transfer => {
+            transfer.senderIsUser = transfer.sender.pseudo === req.body.tokenUser;
+          });
+        });
+
+        res.json({ result: true, message: "User found", db: result });
       } else {
         res.json({ result: false, error: "No user found" });
       }
@@ -314,8 +338,7 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
     .catch(error => {
       res.json({ result: false, error: error.message });
     });
-})
-
+});
 
 // put account on isOpen false
 

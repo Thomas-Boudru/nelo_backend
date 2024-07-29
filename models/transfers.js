@@ -6,7 +6,7 @@ const transfersSchema = mongoose.Schema({
   creationDate: Date,
   sender : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   receiver : { type: mongoose.Schema.Types.ObjectId, ref: "users" },
-  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" }
+  saldo: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
 });
 
 const Transfer = mongoose.model("transfers", transfersSchema);
