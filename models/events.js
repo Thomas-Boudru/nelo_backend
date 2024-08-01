@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+const sponsorsSchema = mongoose.Schema({
+  active: Boolean,
+  sponsorItems : [String]
+});
+
 const statisticsSchema = mongoose.Schema({
   topUsersByTokens: [
     {
@@ -99,7 +104,8 @@ const eventsSchema = mongoose.Schema({
   statistic: { 
     visible: Boolean,
     statistics: statisticsSchema 
-  }
+  },
+  sponsor : sponsorsSchema
 });
 
 const Event = mongoose.model("events", eventsSchema);
