@@ -548,4 +548,41 @@ router.post('/toggleFavoriteEvent', async (req, res) => {
   }
 });
 
+
+// get favorite events from user 
+
+router.post('/getFavoriteEvents', async (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+    return res.json({ result: false, error: 'Missing token' });
+  }
+
+  try {
+    const user = await User.findOne({ token }).populate({
+      path: 'favoriteEvents',
+      match: {
+        isVisible: true,
+        isActive: true,
+        isActiveAdmin: true,
+      },
+      select: '-priceToken',
+      populate: [
+        { path: 'organizer', select: '_id name picture userData' },
+        { path: 'saldoEvent', select: '-priceToken' },
+      ],
+      options: { sort: { startDateEvent: 1 } },
+    });
+
+    if (!user) {
+      return res.json({ result: false, error: 'User not found' });
+    }
+
+    res.json({ result: true, favoriteEvents: user.favoriteEvents });
+  } catch (error) {
+    console.error('Error:', error);
+    res.json({ result: false, error: 'An error occurred while fetching favorite events' });
+  }
+});
+
 module.exports = router;
