@@ -33,6 +33,7 @@ const usersSchema = mongoose.Schema({
   isStats: Boolean,
 
   events : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
+  favoriteEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
   
   saldoOthersData : [saldoOthers]
 });
