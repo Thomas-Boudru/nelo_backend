@@ -513,4 +513,39 @@ router.post('/searchUsers', async (req, res) => {
   }
 });
 
+// toggle favorite event user
+
+router.post('/toggleFavoriteEvent', async (req, res) => {
+  const { token, eventId } = req.body;
+
+  if (!token || !eventId) {
+    return res.json({ result: false, error: 'Missing token or eventId' });
+  }
+
+  try {
+    const user = await User.findOne({ token });
+
+    if (!user) {
+      return res.json({ result: false, error: 'User not found' });
+    }
+
+    const eventIndex = user.favoriteEvents.indexOf(eventId);
+
+    if (eventIndex === -1) {
+      // Event is not in favorites, add it
+      user.favoriteEvents.push(eventId);
+      await user.save();
+      return res.json({ result: true, message: 'Event added to favorites', favoriteEvents: user.favoriteEvents });
+    } else {
+      // Event is in favorites, remove it
+      user.favoriteEvents.splice(eventIndex, 1);
+      await user.save();
+      return res.json({ result: true, message: 'Event removed from favorites', favoriteEvents: user.favoriteEvents });
+    }
+  } catch (error) {
+    console.error('Error toggling favorite event:', error);
+    return res.status(500).json({ result: false, error: 'An error occurred while toggling favorite event' });
+  }
+});
+
 module.exports = router;
