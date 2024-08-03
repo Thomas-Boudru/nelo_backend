@@ -22,7 +22,8 @@ const saldosSchema = mongoose.Schema({
   priceReimburse: Number,
   commissionReimburse : Number,
   reimburseStartDate: Date,
-  reimburseEndDate: Date
+  reimburseEndDate: Date,
+  type: String
 });
 
 const Saldo = mongoose.model("saldos", saldosSchema);

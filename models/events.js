@@ -73,6 +73,7 @@ const eventsSchema = mongoose.Schema({
   endDateEvent: Date,
   timezone: String,
 
+  coverEvent: String,
   pictureEvent: String,
   website: String,
 
