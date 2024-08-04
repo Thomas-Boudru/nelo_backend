@@ -534,19 +534,36 @@ router.post('/toggleFavoriteEvent', async (req, res) => {
     if (eventIndex === -1) {
       // Event is not in favorites, add it
       user.favoriteEvents.push(eventId);
-      await user.save();
-      return res.json({ result: true, message: 'Event added to favorites', favoriteEvents: user.favoriteEvents });
     } else {
       // Event is in favorites, remove it
       user.favoriteEvents.splice(eventIndex, 1);
-      await user.save();
-      return res.json({ result: true, message: 'Event removed from favorites', favoriteEvents: user.favoriteEvents });
     }
+
+    await user.save();
+
+    // Populate favorite events after saving
+    const populatedUser = await User.findOne({ token }).populate({
+      path: 'favoriteEvents',
+      match: {
+        isVisible: true,
+        isActive: true,
+        isActiveAdmin: true,
+      },
+      select: '-priceToken',
+      populate: [
+        { path: 'organizer', select: '_id name picture userData' },
+        { path: 'saldoEvent', select: '-priceToken' },
+      ],
+      options: { sort: { startDateEvent: 1 } },
+    });
+
+    return res.json({ result: true, message: 'Favorite events updated', favoriteEvents: populatedUser.favoriteEvents });
   } catch (error) {
     console.error('Error toggling favorite event:', error);
     return res.status(500).json({ result: false, error: 'An error occurred while toggling favorite event' });
   }
 });
+
 
 
 // get favorite events from user 
