@@ -278,19 +278,19 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
         {
           path: 'saldo',
           model: 'saldos',
-          select: 'name'
+          select: 'name type'
         },
       ]
     })
     .populate({
       path: 'saldoOthersData.deposit',
       model: 'deposits',
-      populate: { path: 'coin', model: 'saldos', select: 'name' }
+      populate: { path: 'coin', model: 'saldos', select:'name type' }
     })
     .populate({
       path: 'saldoOthersData.refund',
       model: 'reimburses',
-      populate: { path: 'saldo', model: 'saldos', select: 'name' }
+      populate: { path: 'saldo', model: 'saldos', select: 'name type' }
     })
     .populate({
       path: 'saldoOthersData.transfers',
@@ -298,7 +298,7 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
       populate: [
         { path: 'sender', model: 'users', select: 'userData.pseudo' }, // Removed 'token' from select
         { path: 'receiver', model: 'users', select: 'userData.pseudo' }, // Removed 'token' from select
-        { path: 'saldo', model: 'saldos', select: 'name' },
+        { path: 'saldo', model: 'saldos', select: 'name type'},
       ]
     })
     .exec()
