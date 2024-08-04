@@ -189,6 +189,58 @@ router.get('/search', async (req, res) => {
   });
 
 
+
+  router.post('/addRemoveEvent', async (req, res) => {
+    const { eventId, tokenUser } = req.body;
+  
+    if (!eventId || !tokenUser) {
+      return res.json({ result: false, error: 'Missing or empty fields' });
+    }
+  
+    try {
+      const user = await User.findOne({ token: tokenUser });
+  
+      if (!user) {
+        return res.json({ result: false, error: 'User not found' });
+      }
+  
+      // Check if the user already has an event
+      if (user.events.length > 0) {
+        // Replace the existing event with the new one
+        user.events[0] = eventId;
+      } else {
+        // Add the new event if no events are currently associated
+        user.events.push(eventId);
+      }
+  
+      const event = await Event.findById(eventId);
+      if (event && event.saldoEvent) {
+        const saldoExists = user.saldoOthersData.some(
+          saldo => saldo.saldoInfo.equals(event.saldoEvent) && saldo.isActive
+        );
+  
+        if (!saldoExists) {
+          const newSaldoOtherData = {
+            amount: 0,
+            saldoInfo: event.saldoEvent,
+            transactions: [],
+            transfers: [],
+            isActive: true
+          };
+  
+          user.saldoOthersData.push(newSaldoOtherData);
+        }
+      }
+  
+      const savedUser = await user.save();
+      return res.json({ result: true, message: 'Event added successfully' });
+  
+    } catch (error) {
+      console.error('Error when adding event to user', error);
+      return res.status(500).json({ result: false, error: error.message });
+    }
+  });
+
 // Remove event from user
 router.post('/removeEvent', async (req, res) => {
   const { eventId, tokenUser } = req.body;
