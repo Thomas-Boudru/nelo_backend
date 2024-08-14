@@ -327,7 +327,11 @@ router.post('/getInfoUserFinancial', limiter, (req, res) => {
         // Parcourir les transferts et ajouter senderIsUser: true ou false
         result.saldoOthersData.forEach(saldo => {
           saldo.transfers.forEach(transfer => {
-            transfer.senderIsUser = transfer.sender.pseudo === req.body.tokenUser;
+            if (data._id.equals(transfer.sender._id)) {
+              transfer.senderIsUser = true;
+            } else {
+              transfer.senderIsUser = false;
+            }
           });
         });
 
