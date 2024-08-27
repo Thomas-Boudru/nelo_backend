@@ -95,6 +95,7 @@ const eventsSchema = mongoose.Schema({
   isReimburse: Boolean,
   reimburseCode: String,
   isSaldoUnique: Boolean,
+  typeEvent: String,
   saldoEvent: { type: mongoose.Schema.Types.ObjectId, ref: "saldos" },
   organizer: { type: mongoose.Schema.Types.ObjectId, ref: "organizers" },
   standsData: [standsSchema],

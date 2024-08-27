@@ -38,6 +38,8 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
         token: req.body.tokenNumber,
         creationDate: new Date(),
         idPayment: "",
+        method: "OnlineBanking",
+        operator: null,
         user: user._id,
         isPaid: false,
         saldo: saldoInput,
