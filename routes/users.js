@@ -237,6 +237,7 @@ router.post('/getSaldoUser', limiter, (req, res) => {
           reimburseStartDate: saldo.saldoInfo.reimburseStartDate,
           reimburseEndDate: saldo.saldoInfo.reimburseEndDate,
           reimburse: saldo.saldoInfo.reimburse,
+          priceLimit : saldo.saldoInfo.priceLimit,
           event: saldo.saldoInfo.event ? {
             id: saldo.saldoInfo.event._id,
             nameEvent: saldo.saldoInfo.event.nameEvent,
