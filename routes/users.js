@@ -152,7 +152,6 @@ router.post('/login', limiter, (req, res) => {
 
 
 // Get info of user
-
 router.post('/getInfoUser', limiter, (req, res) => {
   if (!req.body.tokenUser) {
     res.json({ result: false, error: 'Missing or empty fields' });
@@ -178,7 +177,17 @@ router.post('/getInfoUser', limiter, (req, res) => {
     })
     .then(data => {
       if (data) {
-        res.json({ result: true, message: "User found", db: data });
+        // Filtrer pour ne récupérer que les champs nécessaires
+        const filteredSaldoOthersData = data.saldoOthersData.map(saldo => ({
+          id: saldo.saldoInfo._id,
+          name: saldo.saldoInfo.name,
+          amount: saldo.amount,
+          type: saldo.saldoInfo.type,
+          isActive: saldo.isActive
+        }));
+
+        // Inclure les données filtrées dans la réponse
+        res.json({ result: true, message: "User found", db: data, saldoOthersData: filteredSaldoOthersData });
       } else {
         res.json({ result: false, error: "No user found" });
       }
