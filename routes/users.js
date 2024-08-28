@@ -189,6 +189,40 @@ router.post('/getInfoUser', limiter, (req, res) => {
 });
 
 
+// Get saldo of user
+
+router.post('/getSaldoUser', limiter, (req, res) => {
+  if (!req.body.tokenUser) {
+    res.json({ result: false, error: 'Missing or empty fields' });
+    return;
+  }
+
+  User.findOne({ token: req.body.tokenUser })
+    .populate({
+      path: 'saldoOthersData.saldoInfo',
+      model: 'saldos',
+    })
+    .then(data => {
+      if (data) {
+        // Filtrer pour ne récupérer que les champs nécessaires
+        const filteredSaldoOthersData = data.saldoOthersData.map(saldo => ({
+          id: saldo.saldoInfo._id,
+          name: saldo.saldoInfo.name,
+          amount: saldo.amount,
+          type: saldo.saldoInfo.type,
+        }));
+
+        res.json({ result: true, message: "User found", saldoOthersData: filteredSaldoOthersData });
+      } else {
+        res.json({ result: false, error: "No user found" });
+      }
+    })
+    .catch(error => {
+      res.json({ result: false, error: error.message });
+    });
+});
+
+
 
 
 
