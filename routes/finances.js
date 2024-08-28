@@ -227,7 +227,10 @@ router.post("/createTransactionOut", async (req, res) => {
         user: user._id,
         saldo: saldoInfoId,
         nameStand : nameStand,
-        code : codeData
+        code : codeData,
+        operator: null,
+        split: '',
+        type: 'code'
       });
       savedTransaction = await newTransaction.save();
 
