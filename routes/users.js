@@ -210,6 +210,7 @@ router.post('/getSaldoUser', limiter, (req, res) => {
           name: saldo.saldoInfo.name,
           amount: saldo.amount,
           type: saldo.saldoInfo.type,
+          isActive : saldo.isActive
         }));
 
         res.json({ result: true, message: "User found", saldoOthersData: filteredSaldoOthersData });
