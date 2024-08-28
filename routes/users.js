@@ -210,6 +210,18 @@ router.post('/getSaldoUser', limiter, (req, res) => {
     .populate({
       path: 'saldoOthersData.saldoInfo',
       model: 'saldos',
+      populate: [
+        {
+          path: 'event',
+          model: 'events',
+          select: '_id nameEvent pictureEvent' 
+        },
+        {
+          path: 'organizer', 
+          model: 'organizers',
+          select: '_id name picture' 
+        }
+      ]
     })
     .then(data => {
       if (data) {
@@ -219,7 +231,22 @@ router.post('/getSaldoUser', limiter, (req, res) => {
           name: saldo.saldoInfo.name,
           amount: saldo.amount,
           type: saldo.saldoInfo.type,
-          isActive : saldo.isActive
+          isActive: saldo.isActive,
+          endDate: saldo.saldoInfo.endDate,
+          unique: saldo.saldoInfo.unique,
+          reimburseStartDate: saldo.saldoInfo.reimburseStartDate,
+          reimburseEndDate: saldo.saldoInfo.reimburseEndDate,
+          reimburse: saldo.saldoInfo.reimburse,
+          event: saldo.saldoInfo.event ? {
+            id: saldo.saldoInfo.event._id,
+            nameEvent: saldo.saldoInfo.event.nameEvent,
+            pictureEvent: saldo.saldoInfo.event.pictureEvent,
+          } : null,
+          organizer: saldo.saldoInfo.organizer ? {
+            id: saldo.saldoInfo.organizer._id,
+            name: saldo.saldoInfo.organizer.name,
+            picture: saldo.saldoInfo.organizer.picture,
+          } : null,
         }));
 
         res.json({ result: true, message: "User found", saldoOthersData: filteredSaldoOthersData });
