@@ -239,6 +239,7 @@ router.post('/getSaldoUser', limiter, (req, res) => {
           reimburse: saldo.saldoInfo.reimburse,
           activateReimburse: saldo.saldoInfo.activateReimburse,
           priceLimit : saldo.saldoInfo.priceLimit,
+          priceToken: saldo.saldoInfo.priceToken,
           event: saldo.saldoInfo.event ? {
             id: saldo.saldoInfo.event._id,
             nameEvent: saldo.saldoInfo.event.nameEvent,
