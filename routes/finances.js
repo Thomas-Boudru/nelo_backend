@@ -151,7 +151,7 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
         console.log("saldoInfoId",saldoInfoId)
         const user = await User.findById(depositFound.user);
         console.log("user",user)
-        const saldoOtherData = user.saldoOthersData.find(s => s._id.toString() === saldoInfoId.toString());
+        const saldoOtherData = user.saldoOthersData.find(s => s.saldoInfo._id.toString() === saldoInfoId.toString());
 
         console.log("saldoInfoId.toString()",saldoInfoId.toString())
         console.log("saldoOtherData",saldoOtherData)
