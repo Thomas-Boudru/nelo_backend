@@ -31,6 +31,7 @@ const usersSchema = mongoose.Schema({
   dateCreation: Date,
   userData : userData,
   isStats: Boolean,
+  automaticCreated: Boolean,
 
   events : [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],
   favoriteEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: "events" }],

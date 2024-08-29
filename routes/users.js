@@ -80,6 +80,7 @@ router.post("/signup", limiter, async (req, res) => {
       dateCreation: new Date(),
       userData: newUserData,
       isStats: true,
+      automaticCreated: false,
       saldoOthersData : [],
       favoriteEvents: []
     });
