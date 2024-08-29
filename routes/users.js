@@ -229,6 +229,7 @@ router.post('/getSaldoUser', limiter, (req, res) => {
         // Filtrer pour ne récupérer que les champs nécessaires
         const filteredSaldoOthersData = data.saldoOthersData.map(saldo => ({
           id: saldo.saldoInfo._id,
+          coinId: saldo._id ,
           name: saldo.saldoInfo.name,
           amount: saldo.amount,
           type: saldo.saldoInfo.type,
