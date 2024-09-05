@@ -60,6 +60,12 @@ router.post("/signup", limiter, async (req, res) => {
       pictureProfile = req.body.picture
     }
 
+    let languageSetting = 'fr'
+
+    if (req.body.language){
+      languageSetting = req.body.language
+    }
+
     const newUserData = {
       pseudo: req.body.pseudo,
       name: req.body.name,
@@ -72,7 +78,7 @@ router.post("/signup", limiter, async (req, res) => {
       token: uid2(32),
       email: req.body.email,
       password: hash,
-      language: req.body.language,
+      language: languageSetting,
       isOpen : true,
       isActive: true,
       isConditions : req.body.isConditions,
