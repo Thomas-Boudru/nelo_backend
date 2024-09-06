@@ -136,7 +136,8 @@ router.post('/login', limiter, (req, res) => {
     $or: [
       { email: req.body.email },
       { 'userData.pseudo': req.body.email }
-    ]
+    ],
+    automaticCreated: false 
   };
 
   User.find(query)
