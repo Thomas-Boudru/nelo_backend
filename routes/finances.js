@@ -299,14 +299,14 @@ router.post("/reimburseInitiation", async (req, res) => {
     await newReimburse.save();
 
     // Trouver le bon saldoOthers et ajouter l'ID du remboursement
-    const saldoOthers = user.saldoOthersData.find(
+    {/*const saldoOthers = user.saldoOthersData.find(
       (so) => so.saldoInfo.toString() === saldoId.toString() && so.isActive
     );
 
     if (saldoOthers) {
       saldoOthers.refund.push(newReimburse._id);
       await user.save();
-    }
+    }*/}
 
     res.json({ result: true, message: "Reimburse created", data: newReimburse });
   } catch (error) {
