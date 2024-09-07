@@ -291,6 +291,9 @@ router.post("/reimburseInitiation", async (req, res) => {
       amount: 0,
       user: user._id,
       saldo: saldoId,
+      isDonation : false,
+      amountDonation:  0,
+      amountReceived: 0,
     });
 
     await newReimburse.save();
