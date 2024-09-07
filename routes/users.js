@@ -7,7 +7,7 @@ const Transfer = require('../models/transfers')
 const Status = require('../models/status')
 const Event = require('../models/events')
 const Reimburses = require('../models/reimburses')
-
+const CryptoJS = require('crypto-js');
 const limiter = require('../limiter')
 
 const Sender = require("mailersend").Sender;
