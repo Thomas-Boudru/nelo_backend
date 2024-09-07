@@ -690,4 +690,24 @@ router.post('/getFavoriteEvents', async (req, res) => {
   }
 });
 
+
+router.post("/encrypt", async (req, res) => {
+  const { refundId } = req.body;
+
+  if (!refundId) {
+    return res.status(400).json({ result: false, error: "Missing refund ID" });
+  }
+
+  try {
+    const secretKey = process.env.REACT_APP_SECRET_CARD ;
+
+    const encryptedData = CryptoJS.AES.encrypt(refundId, secretKey).toString();
+
+    return res.status(200).json({ result: true, encryptedData });
+  } catch (error) {
+    console.error("Error encrypting refund:", error);
+    return res.status(500).json({ result: false, error: "Encryption failed" });
+  }
+});
+
 module.exports = router;
