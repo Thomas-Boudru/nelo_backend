@@ -5,6 +5,11 @@ const prices = mongoose.Schema({
   price: Number,
   })
 
+const donationSchema = mongoose.Schema({
+  isDonation: Boolean,
+  textDonation: String,
+  pictureDonation : String,
+  })
 
 const saldosSchema = mongoose.Schema({
   name: String,
@@ -23,7 +28,8 @@ const saldosSchema = mongoose.Schema({
   commissionReimburse : Number,
   reimburseStartDate: Date,
   reimburseEndDate: Date,
-  type: String
+  type: String,
+  donation: donationSchema
 });
 
 const Saldo = mongoose.model("saldos", saldosSchema);
