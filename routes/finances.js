@@ -84,7 +84,7 @@ router.post('/paynl-transaction',limiter, async (req, res) => {
         integration: { testMode: false },
         description: `CoinPack - ${req.body.saldoName}`,
         reference: `${savedDeposit._id}`,
-        returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}`,
+        returnUrl: `https://coinpack.app/statusPayment?id=${savedDeposit._id}&lng=${lng}&origin=app`,
         exchangeUrl: `https://backend-coinpack-app.vercel.app/finances/paynl-status/${savedDeposit._id}`
       })
     };
