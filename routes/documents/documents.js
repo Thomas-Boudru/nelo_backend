@@ -1,8 +1,8 @@
 const express = require("express");
-const upload = require("../middleware/uploadMiddleware");
+const upload = require("../../middleware/uploadMiddleware");
 const {
   uploadAndAnalyzeDocument,
-} = require("../controllers/documentController");
+} = require("../../controllers/documentController");
 
 const router = express.Router();
 
