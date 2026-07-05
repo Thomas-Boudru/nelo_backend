@@ -1,51 +1,33 @@
-require('dotenv').config();
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var helmet = require('helmet');
+require("dotenv").config();
 
-require('./models/connection');
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const helmet = require("helmet");
+const cors = require("cors");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var organizersRouter = require('./routes/organizers');
-var eventsRouter = require('./routes/events');
-var financesRouter = require('./routes/finances');
-var statsRouter = require('./routes/stats');
+const documentsRouter = require("./routes/dociuments/documents");
 
-var app = express();
+const app = express();
 
-app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 
-const limiter = require('./limiter');
+app.use(helmet());
 
-app.use(limiter);
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:8081",
+    credentials: true,
+  }),
+);
 
-app.use(helmet()); 
-
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'"],  
-        scriptSrc: ["'self'"],  
-        objectSrc: ["'none'"],  
-        upgradeInsecureRequests: [],  
-        imgSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],  
-    }
-}));
-
-app.use(logger('dev'));
-app.use(express.json());
+app.use(logger("dev"));
+app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/organizers', organizersRouter);
-app.use('/events', eventsRouter);
-app.use('/finances', financesRouter);
-app.use('/stats', statsRouter);
+app.use("/api/documents", documentsRouter);
 
 module.exports = app;
