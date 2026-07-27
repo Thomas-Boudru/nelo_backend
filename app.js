@@ -7,7 +7,7 @@ const logger = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 
-const documentsRouter = require("./routes/documents/documents");
+//const documentsRouter = require("./routes/documents/documents");
 
 const app = express();
 
