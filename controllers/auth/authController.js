@@ -3,11 +3,9 @@ const { z } = require("zod");
 const authService = require("../../services/auth/authService");
 
 const requestLoginCodeSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .email("A valid email address is required.")
-    .max(320, "The email address is too long."),
+  email: z.string().trim().email("A valid email address is required.").max(320),
+
+  locale: z.enum(["fr", "en", "de", "es", "it", "nl", "pt"]).default("en"),
 });
 
 const verifyLoginCodeSchema = z.object({
