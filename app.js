@@ -4,9 +4,11 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const logger = require("morgan");
-const pool = require("./db/pool");
 
+const pool = require("./db/pool");
 const limiter = require("./limiter");
+const authRoutes = require("./routes/auth/authRoutes");
+const userRoutes = require("./routes/users/userRoutes");
 
 const app = express();
 
@@ -25,8 +27,6 @@ app.use(logger(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: false }));
-
-app.use(limiter);
 
 app.get("/", (req, res) => {
   res.json({
@@ -56,6 +56,14 @@ app.get("/health/database", async (req, res, next) => {
   }
 });
 
+// Protection générale des routes API
+app.use("/api", limiter);
+
+// Routes API
+app.use("/api/auth", authRoutes);
+app.use("/api", userRoutes);
+
+// Route inconnue
 app.use((req, res) => {
   res.status(404).json({
     error: {
@@ -65,18 +73,21 @@ app.use((req, res) => {
   });
 });
 
+// Gestionnaire centralisé des erreurs
 app.use((error, req, res, next) => {
   console.error(error);
 
-  res.status(error.status || 500).json({
+  const status = error.status || 500;
+  const isUnexpectedError = status >= 500;
+
+  res.status(status).json({
     error: {
       code: error.code || "INTERNAL_SERVER_ERROR",
       message:
-        process.env.NODE_ENV === "production"
+        process.env.NODE_ENV === "production" && isUnexpectedError
           ? "An unexpected error occurred."
           : error.message,
     },
   });
 });
-
 module.exports = app;

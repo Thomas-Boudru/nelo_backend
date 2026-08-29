@@ -1,0 +1,7 @@
+{
+  "migrations-dir": "migrations",
+  "database-url-var": "DATABASE_URL",
+  "migration-file-language": "js",
+  "check-order": true,
+  "verbose": true
+}
