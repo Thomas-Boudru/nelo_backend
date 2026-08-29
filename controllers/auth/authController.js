@@ -42,6 +42,7 @@ async function requestLoginCode(req, res, next) {
 
     const result = await authService.requestLoginCode({
       email: validation.data.email,
+      locale: validation.data.locale,
       ipAddress: req.ip,
     });
 
