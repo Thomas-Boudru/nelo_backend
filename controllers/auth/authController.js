@@ -15,6 +15,8 @@ const verifyLoginCodeSchema = z.object({
     .string()
     .regex(/^\d{6}$/, "The login code must contain exactly 6 digits."),
 
+  locale: z.enum(["fr", "en", "de", "es", "it", "nl", "pt"]).default("en"),
+
   deviceName: z.string().trim().max(150).optional(),
   platform: z.enum(["ios", "android", "web", "unknown"]).optional(),
   appVersion: z.string().trim().max(30).optional(),

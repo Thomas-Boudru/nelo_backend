@@ -189,6 +189,7 @@ function generateAccessToken({ userId, sessionId }) {
 async function verifyLoginCode({
   email,
   code,
+  locale = "en",
   deviceName,
   platform,
   appVersion,
@@ -312,34 +313,36 @@ async function verifyLoginCode({
 
     const userResult = await client.query(
       `
-        INSERT INTO users (
-          email,
-          email_verified_at,
-          last_login_at
-        )
-        VALUES ($1, NOW(), NOW())
+    INSERT INTO users (
+      email,
+      locale,
+      email_verified_at,
+      last_login_at
+    )
+    VALUES ($1, $2, NOW(), NOW())
 
-        ON CONFLICT (email)
-        WHERE deleted_at IS NULL
+    ON CONFLICT (email)
+    WHERE deleted_at IS NULL
 
-        DO UPDATE SET
-          email_verified_at = COALESCE(
-            users.email_verified_at,
-            EXCLUDED.email_verified_at
-          ),
-          last_login_at = NOW(),
-          updated_at = NOW()
+    DO UPDATE SET
+      locale = EXCLUDED.locale,
+      email_verified_at = COALESCE(
+        users.email_verified_at,
+        EXCLUDED.email_verified_at
+      ),
+      last_login_at = NOW(),
+      updated_at = NOW()
 
-        RETURNING
-          id,
-          email,
-          display_name,
-          locale,
-          timezone,
-          status,
-          onboarding_completed_at
-      `,
-      [normalizedEmail],
+    RETURNING
+      id,
+      email,
+      display_name,
+      locale,
+      timezone,
+      status,
+      onboarding_completed_at
+  `,
+      [normalizedEmail, locale],
     );
 
     const user = userResult.rows[0];
