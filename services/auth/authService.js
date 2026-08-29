@@ -1,6 +1,8 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
+const { sendLoginCodeEmail } = require("../email/emailService");
+
 const pool = require("../../db/pool");
 
 const LOGIN_CODE_EXPIRATION_MINUTES = 10;
@@ -27,12 +29,14 @@ function hashLoginCode(email, code) {
     .digest("hex");
 }
 
-async function requestLoginCode({ email, ipAddress }) {
+async function requestLoginCode({ email, locale = "en", ipAddress }) {
   const normalizedEmail = normalizeEmail(email);
   const loginCode = generateLoginCode();
   const codeHash = hashLoginCode(normalizedEmail, loginCode);
 
   const client = await pool.connect();
+
+  let loginCodeId;
 
   try {
     await client.query("BEGIN");
@@ -50,7 +54,7 @@ async function requestLoginCode({ email, ipAddress }) {
       [normalizedEmail],
     );
 
-    await client.query(
+    const insertResult = await client.query(
       `
         INSERT INTO login_codes (
           email,
@@ -68,6 +72,7 @@ async function requestLoginCode({ email, ipAddress }) {
           NOW() + ($3 * INTERVAL '1 minute'),
           $4
         )
+        RETURNING id
       `,
       [
         normalizedEmail,
@@ -77,6 +82,8 @@ async function requestLoginCode({ email, ipAddress }) {
       ],
     );
 
+    loginCodeId = insertResult.rows[0].id;
+
     await client.query("COMMIT");
   } catch (error) {
     await client.query("ROLLBACK");
@@ -85,9 +92,37 @@ async function requestLoginCode({ email, ipAddress }) {
     client.release();
   }
 
-  // Temporaire : uniquement pour tester sans fournisseur d’emails.
-  if (process.env.NODE_ENV !== "production") {
-    console.log(`Development login code for ${normalizedEmail}: ${loginCode}`);
+  try {
+    await sendLoginCodeEmail({
+      email: normalizedEmail,
+      code: loginCode,
+      locale,
+    });
+  } catch (error) {
+    console.error("Unable to send login email:", error);
+
+    /*
+     * Si l’email n’a pas pu être envoyé, le code correspondant
+     * devient immédiatement inutilisable.
+     */
+    await pool.query(
+      `
+        UPDATE login_codes
+        SET consumed_at = NOW()
+        WHERE id = $1
+          AND consumed_at IS NULL
+      `,
+      [loginCodeId],
+    );
+
+    const deliveryError = new Error(
+      "Unable to send the verification code. Please try again.",
+    );
+
+    deliveryError.status = 503;
+    deliveryError.code = "EMAIL_DELIVERY_FAILED";
+
+    throw deliveryError;
   }
 
   return {
