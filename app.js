@@ -1,13 +1,11 @@
 require("dotenv").config();
 
 const express = require("express");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-const helmet = require("helmet");
 const cors = require("cors");
+const helmet = require("helmet");
+const logger = require("morgan");
 
-//const documentsRouter = require("./routes/documents/documents");
+const limiter = require("./limiter");
 
 const app = express();
 
@@ -22,12 +20,48 @@ app.use(
   }),
 );
 
-app.use(logger("dev"));
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(logger(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 
-app.use("/api/documents", documentsRouter);
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: false }));
+
+app.use(limiter);
+
+app.get("/", (req, res) => {
+  res.json({
+    name: "Nelo API",
+    status: "running",
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "healthy",
+    timestamp: new Date().toISOString(),
+  });
+});
+
+app.use((req, res) => {
+  res.status(404).json({
+    error: {
+      code: "ROUTE_NOT_FOUND",
+      message: "Route not found.",
+    },
+  });
+});
+
+app.use((error, req, res, next) => {
+  console.error(error);
+
+  res.status(error.status || 500).json({
+    error: {
+      code: error.code || "INTERNAL_SERVER_ERROR",
+      message:
+        process.env.NODE_ENV === "production"
+          ? "An unexpected error occurred."
+          : error.message,
+    },
+  });
+});
 
 module.exports = app;

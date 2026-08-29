@@ -1,31 +1,27 @@
 {
-  "name": "backend",
-  "version": "0.0.0",
+  "name": "nelo-backend",
+  "version": "1.0.0",
   "private": true,
+  "description": "Backend API for Nelo",
+  "main": "bin/www",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "migrate": "node-pg-migrate up",
+    "migrate:down": "node-pg-migrate down"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1079.0",
-    "@sendgrid/mail": "^7.7.0",
-    "bcrypt": "^5.1.1",
-    "cloudinary": "^2.3.0",
-    "cookie-parser": "~1.4.4",
     "cors": "^2.8.6",
-    "crypto-js": "^4.2.0",
-    "debug": "~2.6.9",
     "dotenv": "^16.3.1",
-    "express": "~4.16.1",
+    "express": "^4.16.1",
     "express-rate-limit": "^7.2.0",
     "helmet": "^7.1.0",
-    "mailersend": "^2.2.0",
-    "mongoose": "^8.3.4",
-    "morgan": "~1.9.1",
-    "multer": "^2.2.0",
-    "node-fetch": "2",
-    "openai": "^6.45.0",
-    "paynl-sdk": "^1.1.4",
-    "uid2": "^1.0.0",
-    "uuid": "^14.0.1"
+    "morgan": "^1.9.1",
+    "pg": "^8.0.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "node-pg-migrate": "^8.0.0",
+    "nodemon": "^3.0.0"
   }
 }
