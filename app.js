@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const logger = require("morgan");
+const pool = require("./db/pool");
 
 const limiter = require("./limiter");
 
@@ -39,6 +40,20 @@ app.get("/health", (req, res) => {
     status: "healthy",
     timestamp: new Date().toISOString(),
   });
+});
+
+app.get("/health/database", async (req, res, next) => {
+  try {
+    const result = await pool.query("SELECT NOW() AS database_time");
+
+    res.status(200).json({
+      status: "healthy",
+      database: "connected",
+      databaseTime: result.rows[0].database_time,
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.use((req, res) => {
