@@ -77,9 +77,19 @@ function createLoginCodeEmail({ code, locale }) {
   const normalizedLocale = normalizeLocale(locale);
   const content = translations[normalizedLocale];
 
-  const subject = content["Your Nelo verification code"];
+  const translatedSubject = content["Your Nelo verification code"];
 
+  // Le code apparaît directement dans la notification de l’e-mail.
+  const subject = `${code} — ${translatedSubject}`;
+
+  const previewText = `${code} · ${
+    content["This code expires in 10 minutes."]
+  }`;
+
+  // Le code est également placé au début de la version texte.
   const text = [
+    `${code} — ${translatedSubject}`,
+    "",
     content["Use this code to sign in to Nelo:"],
     "",
     code,
@@ -91,26 +101,64 @@ function createLoginCodeEmail({ code, locale }) {
   const html = `
     <!doctype html>
     <html lang="${normalizedLocale}">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>${subject}</title>
+      </head>
+
       <body style="margin:0;background:#edf1fa;font-family:Arial,sans-serif;color:#26324a;">
+        <div
+          style="
+            display:none;
+            max-height:0;
+            overflow:hidden;
+            opacity:0;
+            color:transparent;
+          "
+        >
+          ${previewText}
+        </div>
+
         <div style="padding:32px 16px;">
-          <div style="max-width:520px;margin:0 auto;background:#ffffff;border-radius:24px;padding:36px 28px;text-align:center;">
+          <div
+            style="
+              max-width:520px;
+              margin:0 auto;
+              background:#ffffff;
+              border-radius:24px;
+              padding:36px 28px;
+              text-align:center;
+            "
+          >
             <div style="font-size:28px;font-weight:700;color:#5d8ff7;">
               Nelo
             </div>
 
-            <h1 style="margin:24px 0 12px;font-size:24px;line-height:32px;">
-              ${subject}
+            <div
+              style="
+                margin:24px auto 20px;
+                padding:18px 20px;
+                border-radius:16px;
+                background:#f1f5ff;
+                color:#26324a;
+                font-size:34px;
+                font-weight:700;
+                letter-spacing:8px;
+              "
+            >
+              ${code}
+            </div>
+
+            <h1 style="margin:0 0 12px;font-size:24px;line-height:32px;">
+              ${translatedSubject}
             </h1>
 
             <p style="margin:0;color:#65708a;font-size:16px;line-height:24px;">
               ${content["Use this code to sign in to Nelo:"]}
             </p>
 
-            <div style="margin:28px auto;padding:18px 20px;border-radius:16px;background:#f1f5ff;color:#26324a;font-size:34px;font-weight:700;letter-spacing:8px;">
-              ${code}
-            </div>
-
-            <p style="margin:0;color:#65708a;font-size:14px;line-height:22px;">
+            <p style="margin:24px 0 0;color:#65708a;font-size:14px;line-height:22px;">
               ${content["This code expires in 10 minutes."]}
             </p>
 
