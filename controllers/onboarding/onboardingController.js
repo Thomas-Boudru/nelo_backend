@@ -10,6 +10,49 @@ const nullableDateSchema = z
   .regex(DATE_PATTERN, "The date must use the YYYY-MM-DD format.")
   .nullable();
 
+const childSchema = z.object({
+  status: z.enum(["born", "expected"]),
+
+  displayName: z
+    .string()
+    .trim()
+    .max(100, "The child name must contain at most 100 characters.")
+    .nullable(),
+
+  gender: z.enum(["female", "male", "intersex", "unspecified"]).nullable(),
+
+  birthDate: nullableDateSchema,
+
+  birthTime: z
+    .string()
+    .regex(TIME_PATTERN, "The birth time must use the HH:mm format.")
+    .nullable(),
+
+  expectedBirthDate: nullableDateSchema,
+
+  isPremature: z.boolean(),
+
+  gestationalAgeWeeks: z.number().int().min(20).max(36).nullable(),
+
+  gestationalAgeDays: z.number().int().min(0).max(6).nullable(),
+});
+
+const membershipSchema = z.object({
+  relationship: z.enum([
+    "mother",
+    "father",
+    "parent",
+    "grandparent",
+    "family_or_friend",
+    "caregiver",
+    "other",
+  ]),
+});
+
+const preferencesSchema = z.object({
+  themeMode: z.string().trim().min(1).max(20),
+});
+
 const onboardingSchema = z
   .object({
     user: z.object({
@@ -20,52 +63,58 @@ const onboardingSchema = z
         .max(40, "The display name must contain at most 40 characters."),
     }),
 
-    child: z.object({
-      status: z.enum(["born", "expected"]),
+    child: childSchema.nullable(),
 
-      displayName: z
-        .string()
-        .trim()
-        .max(100, "The child name must contain at most 100 characters.")
-        .nullable(),
+    membership: membershipSchema.nullable(),
 
-      gender: z.enum(["female", "male", "intersex", "unspecified"]).nullable(),
-
-      birthDate: nullableDateSchema,
-
-      birthTime: z
-        .string()
-        .regex(TIME_PATTERN, "The birth time must use the HH:mm format.")
-        .nullable(),
-
-      expectedBirthDate: nullableDateSchema,
-
-      isPremature: z.boolean(),
-
-      gestationalAgeWeeks: z.number().int().min(20).max(36).nullable(),
-
-      gestationalAgeDays: z.number().int().min(0).max(6).nullable(),
-    }),
-
-    membership: z.object({
-      relationship: z.enum([
-        "mother",
-        "father",
-        "parent",
-        "grandparent",
-        "family_or_friend",
-        "caregiver",
-        "other",
-      ]),
-    }),
-
-    preferences: z.object({
-      themeMode: z.string().trim().min(1).max(20),
-    }),
+    preferences: preferencesSchema.nullable(),
   })
   .strict()
   .superRefine((data, context) => {
-    const { child } = data;
+    const { child, membership, preferences } = data;
+
+    /*
+     * Parcours "join" :
+     * aucun enfant et aucune relation ne sont créés maintenant.
+     */
+    if (child === null) {
+      if (membership !== null) {
+        context.addIssue({
+          code: "custom",
+          path: ["membership"],
+          message: "Membership must be empty when no child is being created.",
+        });
+      }
+
+      if (preferences !== null) {
+        context.addIssue({
+          code: "custom",
+          path: ["preferences"],
+          message: "Preferences must be empty when no child is being created.",
+        });
+      }
+
+      return;
+    }
+
+    /*
+     * Pour born/expected, membership et preferences sont obligatoires.
+     */
+    if (membership === null) {
+      context.addIssue({
+        code: "custom",
+        path: ["membership"],
+        message: "Membership is required when creating a child.",
+      });
+    }
+
+    if (preferences === null) {
+      context.addIssue({
+        code: "custom",
+        path: ["preferences"],
+        message: "Preferences are required when creating a child.",
+      });
+    }
 
     if (child.status === "born") {
       if (!child.displayName) {

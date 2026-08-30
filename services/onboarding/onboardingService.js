@@ -19,19 +19,23 @@ function mapExistingOnboarding(row) {
       displayName: row.user_display_name,
     },
 
-    family: {
-      id: row.family_id,
-      role: row.family_role,
-    },
+    family: row.family_id
+      ? {
+          id: row.family_id,
+          role: row.family_role,
+        }
+      : null,
 
-    child: {
-      id: row.child_id,
-      displayName: row.child_display_name,
-      status: row.birth_status,
-      role: row.child_role,
-      relationship: row.relationship_type,
-      themeMode: row.theme_mode,
-    },
+    child: row.child_id
+      ? {
+          id: row.child_id,
+          displayName: row.child_display_name,
+          status: row.birth_status,
+          role: row.child_role,
+          relationship: row.relationship_type,
+          themeMode: row.theme_mode,
+        }
+      : null,
   };
 }
 
@@ -44,7 +48,6 @@ async function findExistingOnboarding(client, userId) {
         u.onboarding_completed_at,
 
         f.id AS family_id,
-
         fm.family_role,
 
         c.id AS child_id,
@@ -58,25 +61,21 @@ async function findExistingOnboarding(client, userId) {
 
       FROM users u
 
-      INNER JOIN family_members fm
+      LEFT JOIN family_members fm
         ON fm.user_id = u.id
         AND fm.removed_at IS NULL
-        AND fm.family_role = 'owner'
 
-      INNER JOIN families f
+      LEFT JOIN families f
         ON f.id = fm.family_id
-        AND f.created_by_user_id = u.id
         AND f.deleted_at IS NULL
 
-      INNER JOIN children c
-        ON c.family_id = f.id
-        AND c.created_by_user_id = u.id
-        AND c.deleted_at IS NULL
-
-      INNER JOIN children_members cm
-        ON cm.child_id = c.id
-        AND cm.family_member_id = fm.id
+      LEFT JOIN children_members cm
+        ON cm.family_member_id = fm.id
         AND cm.revoked_at IS NULL
+
+      LEFT JOIN children c
+        ON c.id = cm.child_id
+        AND c.deleted_at IS NULL
 
       LEFT JOIN children_member_preferences cmp
         ON cmp.child_member_id = cm.id
@@ -85,8 +84,8 @@ async function findExistingOnboarding(client, userId) {
         AND u.deleted_at IS NULL
 
       ORDER BY
-        f.created_at ASC,
-        c.created_at ASC
+        f.created_at ASC NULLS LAST,
+        c.created_at ASC NULLS LAST
 
       LIMIT 1
     `,
@@ -175,6 +174,44 @@ async function completeOnboarding({ userId, data }) {
     );
 
     const updatedUser = updatedUserResult.rows[0];
+
+    /*
+     * Parcours "join" :
+     * l’utilisateur attend ou utilisera une invitation.
+     * On ne crée ni famille, ni enfant, ni children_member.
+     */
+    if (data.child === null) {
+      const completedUserResult = await client.query(
+        `
+      UPDATE users
+
+      SET
+        onboarding_completed_at = NOW(),
+        updated_at = NOW()
+
+      WHERE id = $1
+
+      RETURNING onboarding_completed_at
+    `,
+        [userId],
+      );
+
+      await client.query("COMMIT");
+      transactionOpen = false;
+
+      return {
+        alreadyCompleted: false,
+        completedAt: completedUserResult.rows[0].onboarding_completed_at,
+
+        user: {
+          id: updatedUser.id,
+          displayName: updatedUser.display_name,
+        },
+
+        family: null,
+        child: null,
+      };
+    }
 
     /*
      * 2. Créer la famille.
