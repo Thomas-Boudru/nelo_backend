@@ -299,6 +299,141 @@ async function verifyAppleIdentityToken(identityToken, nonce) {
   };
 }
 
+function getApplePrivateKey() {
+  const privateKey = process.env.APPLE_PRIVATE_KEY;
+
+  if (!privateKey) {
+    throw new Error("Missing APPLE_PRIVATE_KEY environment variable.");
+  }
+
+  return privateKey.replace(/\\n/g, "\n").trim();
+}
+
+function createAppleClientSecret() {
+  if (!process.env.APPLE_TEAM_ID) {
+    throw new Error("Missing APPLE_TEAM_ID environment variable.");
+  }
+
+  if (!process.env.APPLE_KEY_ID) {
+    throw new Error("Missing APPLE_KEY_ID environment variable.");
+  }
+
+  if (!process.env.APPLE_CLIENT_ID) {
+    throw new Error("Missing APPLE_CLIENT_ID environment variable.");
+  }
+
+  return jwt.sign({}, getApplePrivateKey(), {
+    algorithm: "ES256",
+    keyid: process.env.APPLE_KEY_ID,
+    issuer: process.env.APPLE_TEAM_ID,
+    audience: "https://appleid.apple.com",
+    subject: process.env.APPLE_CLIENT_ID,
+    expiresIn: "5m",
+  });
+}
+
+async function exchangeAppleAuthorizationCode(authorizationCode) {
+  const parameters = new URLSearchParams({
+    client_id: process.env.APPLE_CLIENT_ID,
+    client_secret: createAppleClientSecret(),
+    code: authorizationCode,
+    grant_type: "authorization_code",
+  });
+
+  let response;
+
+  try {
+    response = await fetch("https://appleid.apple.com/auth/token", {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+
+      body: parameters.toString(),
+    });
+  } catch (error) {
+    console.error("Unable to contact the Apple token endpoint:", error);
+
+    throw createAuthError(
+      "APPLE_SERVICE_UNAVAILABLE",
+      "Apple authentication is temporarily unavailable.",
+      503,
+    );
+  }
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    console.error("Apple token exchange failed:", {
+      status: response.status,
+      error: result.error,
+    });
+
+    throw createAuthError(
+      "APPLE_TOKEN_EXCHANGE_FAILED",
+      "Apple authentication could not be completed.",
+      401,
+    );
+  }
+
+  if (!result.refresh_token) {
+    throw createAuthError(
+      "APPLE_REFRESH_TOKEN_MISSING",
+      "Apple did not return the required refresh token.",
+      401,
+    );
+  }
+
+  return {
+    refreshToken: result.refresh_token,
+    accessToken: result.access_token || null,
+    identityToken: result.id_token || null,
+    expiresIn: result.expires_in || null,
+  };
+}
+
+function getOauthTokenEncryptionKey() {
+  const encodedKey = process.env.OAUTH_TOKEN_ENCRYPTION_KEY;
+
+  if (!encodedKey) {
+    throw new Error("Missing OAUTH_TOKEN_ENCRYPTION_KEY environment variable.");
+  }
+
+  const key = Buffer.from(encodedKey, "base64");
+
+  if (key.length !== 32) {
+    throw new Error(
+      "OAUTH_TOKEN_ENCRYPTION_KEY must contain exactly 32 bytes.",
+    );
+  }
+
+  return key;
+}
+
+function encryptOauthToken(token) {
+  const initializationVector = crypto.randomBytes(12);
+
+  const cipher = crypto.createCipheriv(
+    "aes-256-gcm",
+    getOauthTokenEncryptionKey(),
+    initializationVector,
+  );
+
+  const encryptedToken = Buffer.concat([
+    cipher.update(token, "utf8"),
+    cipher.final(),
+  ]);
+
+  const authenticationTag = cipher.getAuthTag();
+
+  return {
+    encryptedToken: encryptedToken.toString("base64"),
+    initializationVector: initializationVector.toString("base64"),
+    authenticationTag: authenticationTag.toString("base64"),
+  };
+}
+
 async function verifyLoginCode({
   email,
   code,
@@ -666,10 +801,6 @@ async function signInWithApple({
   ipAddress,
   userAgent,
 }) {
-  /*
-   * authorizationCode sera utilisé ensuite pour obtenir et stocker
-   * le refresh token Apple nécessaire à la révocation du compte.
-   */
   if (!authorizationCode) {
     throw createAuthError(
       "MISSING_APPLE_AUTHORIZATION_CODE",
@@ -680,6 +811,12 @@ async function signInWithApple({
 
   const appleIdentity = await verifyAppleIdentityToken(identityToken, nonce);
 
+  const appleTokens = await exchangeAppleAuthorizationCode(authorizationCode);
+
+  const encryptedAppleRefreshToken = encryptOauthToken(
+    appleTokens.refreshToken,
+  );
+
   const client = await pool.connect();
   let transactionOpen = false;
 
@@ -687,9 +824,11 @@ async function signInWithApple({
     await client.query("BEGIN");
     transactionOpen = true;
 
-    let userResult = await client.query(
+    const userResult = await client.query(
       `
         SELECT
+          ui.id AS user_identity_id,
+
           u.id,
           u.email,
           u.display_name,
@@ -715,9 +854,11 @@ async function signInWithApple({
     );
 
     let user;
+    let userIdentityId;
 
     if (userResult.rowCount > 0) {
       user = userResult.rows[0];
+      userIdentityId = userResult.rows[0].user_identity_id;
 
       await client.query(
         `
@@ -831,27 +972,31 @@ async function signInWithApple({
         user = createdUserResult.rows[0];
       }
 
-      await client.query(
+      const createdIdentityResult = await client.query(
         `
-          INSERT INTO user_identities (
-            user_id,
-            provider,
-            provider_subject,
-            provider_email,
-            email_verified_at,
-            last_used_at
-          )
-          VALUES (
-            $1,
-            'apple',
-            $2,
-            $3,
-            NOW(),
-            NOW()
-          )
-        `,
+    INSERT INTO user_identities (
+      user_id,
+      provider,
+      provider_subject,
+      provider_email,
+      email_verified_at,
+      last_used_at
+    )
+    VALUES (
+      $1,
+      'apple',
+      $2,
+      $3,
+      NOW(),
+      NOW()
+    )
+
+    RETURNING id
+  `,
         [user.id, appleIdentity.subject, appleIdentity.email],
       );
+
+      userIdentityId = createdIdentityResult.rows[0].id;
     }
 
     if (user.status === "suspended") {
@@ -861,6 +1006,33 @@ async function signInWithApple({
         403,
       );
     }
+
+    await client.query(
+      `
+    INSERT INTO oauth_credentials (
+      user_identity_id,
+      encrypted_refresh_token,
+      encryption_iv,
+      encryption_auth_tag
+    )
+    VALUES ($1, $2, $3, $4)
+
+    ON CONFLICT (user_identity_id)
+
+    DO UPDATE SET
+      encrypted_refresh_token = EXCLUDED.encrypted_refresh_token,
+      encryption_iv = EXCLUDED.encryption_iv,
+      encryption_auth_tag = EXCLUDED.encryption_auth_tag,
+      updated_at = NOW(),
+      revoked_at = NULL
+  `,
+      [
+        userIdentityId,
+        encryptedAppleRefreshToken.encryptedToken,
+        encryptedAppleRefreshToken.initializationVector,
+        encryptedAppleRefreshToken.authenticationTag,
+      ],
+    );
 
     const refreshToken = generateRefreshToken();
     const refreshTokenHash = hashRefreshToken(refreshToken);
