@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const jwksClient = require("jwks-rsa");
 
 const { sendLoginCodeEmail } = require("../email/emailService");
 
@@ -9,6 +10,15 @@ const LOGIN_CODE_EXPIRATION_MINUTES = 10;
 const MAX_LOGIN_CODE_ATTEMPTS = 5;
 const ACCESS_TOKEN_DURATION = "15m";
 const REFRESH_TOKEN_DURATION_DAYS = 30;
+
+const appleJwksClient = jwksClient({
+  jwksUri: "https://appleid.apple.com/auth/keys",
+  cache: true,
+  cacheMaxEntries: 5,
+  cacheMaxAge: 10 * 60 * 60 * 1000,
+  rateLimit: true,
+  jwksRequestsPerMinute: 10,
+});
 
 function normalizeEmail(email) {
   return email.trim().toLowerCase();
@@ -184,6 +194,109 @@ function generateAccessToken({ userId, sessionId }) {
       audience: "nelo-app",
     },
   );
+}
+
+function getAppleSigningKey(header, callback) {
+  if (!header.kid) {
+    callback(
+      createAuthError(
+        "INVALID_APPLE_TOKEN",
+        "The Apple identity token is invalid.",
+      ),
+    );
+
+    return;
+  }
+
+  appleJwksClient.getSigningKey(header.kid, (error, key) => {
+    if (error) {
+      callback(error);
+      return;
+    }
+
+    callback(null, key.getPublicKey());
+  });
+}
+
+function verifyAppleJwt(identityToken) {
+  if (!process.env.APPLE_CLIENT_ID) {
+    throw new Error("Missing APPLE_CLIENT_ID environment variable.");
+  }
+
+  return new Promise((resolve, reject) => {
+    jwt.verify(
+      identityToken,
+      getAppleSigningKey,
+      {
+        algorithms: ["RS256"],
+        issuer: "https://appleid.apple.com",
+        audience: process.env.APPLE_CLIENT_ID,
+      },
+      (error, payload) => {
+        if (error) {
+          reject(
+            createAuthError(
+              "INVALID_APPLE_TOKEN",
+              "The Apple identity token is invalid or has expired.",
+            ),
+          );
+
+          return;
+        }
+
+        resolve(payload);
+      },
+    );
+  });
+}
+
+function verifyAppleNonce(payloadNonce, rawNonce) {
+  if (!payloadNonce || !rawNonce) {
+    return false;
+  }
+
+  const expectedNonce = crypto
+    .createHash("sha256")
+    .update(rawNonce)
+    .digest("hex");
+
+  const receivedBuffer = Buffer.from(payloadNonce);
+  const expectedBuffer = Buffer.from(expectedNonce);
+
+  if (receivedBuffer.length !== expectedBuffer.length) {
+    return false;
+  }
+
+  return crypto.timingSafeEqual(receivedBuffer, expectedBuffer);
+}
+
+async function verifyAppleIdentityToken(identityToken, nonce) {
+  const payload = await verifyAppleJwt(identityToken);
+
+  if (!verifyAppleNonce(payload.nonce, nonce)) {
+    throw createAuthError(
+      "INVALID_APPLE_NONCE",
+      "The Apple authentication request could not be verified.",
+    );
+  }
+
+  if (!payload.sub) {
+    throw createAuthError(
+      "INVALID_APPLE_IDENTITY",
+      "The Apple user identifier is missing.",
+    );
+  }
+
+  return {
+    subject: payload.sub,
+    email: payload.email ? normalizeEmail(payload.email) : null,
+
+    emailVerified:
+      payload.email_verified === true || payload.email_verified === "true",
+
+    isPrivateEmail:
+      payload.is_private_email === true || payload.is_private_email === "true",
+  };
 }
 
 async function verifyLoginCode({
@@ -542,6 +655,287 @@ async function verifyLoginCode({
   }
 }
 
+async function signInWithApple({
+  identityToken,
+  authorizationCode,
+  nonce,
+  locale = "en",
+  deviceName,
+  platform,
+  appVersion,
+  ipAddress,
+  userAgent,
+}) {
+  /*
+   * authorizationCode sera utilisé ensuite pour obtenir et stocker
+   * le refresh token Apple nécessaire à la révocation du compte.
+   */
+  if (!authorizationCode) {
+    throw createAuthError(
+      "MISSING_APPLE_AUTHORIZATION_CODE",
+      "The Apple authorization code is required.",
+      400,
+    );
+  }
+
+  const appleIdentity = await verifyAppleIdentityToken(identityToken, nonce);
+
+  const client = await pool.connect();
+  let transactionOpen = false;
+
+  try {
+    await client.query("BEGIN");
+    transactionOpen = true;
+
+    let userResult = await client.query(
+      `
+        SELECT
+          u.id,
+          u.email,
+          u.display_name,
+          u.locale,
+          u.timezone,
+          u.status,
+          u.onboarding_completed_at
+
+        FROM user_identities ui
+
+        INNER JOIN users u
+          ON u.id = ui.user_id
+
+        WHERE ui.provider = 'apple'
+          AND ui.provider_subject = $1
+          AND u.deleted_at IS NULL
+
+        LIMIT 1
+
+        FOR UPDATE OF u, ui
+      `,
+      [appleIdentity.subject],
+    );
+
+    let user;
+
+    if (userResult.rowCount > 0) {
+      user = userResult.rows[0];
+
+      await client.query(
+        `
+          UPDATE user_identities
+
+          SET
+            provider_email = COALESCE($2, provider_email),
+            email_verified_at = CASE
+              WHEN $3 THEN COALESCE(email_verified_at, NOW())
+              ELSE email_verified_at
+            END,
+            last_used_at = NOW()
+
+          WHERE provider = 'apple'
+            AND provider_subject = $1
+        `,
+        [
+          appleIdentity.subject,
+          appleIdentity.email,
+          appleIdentity.emailVerified,
+        ],
+      );
+
+      await client.query(
+        `
+          UPDATE users
+
+          SET
+            last_login_at = NOW(),
+            updated_at = NOW()
+
+          WHERE id = $1
+        `,
+        [user.id],
+      );
+    } else {
+      if (!appleIdentity.email || !appleIdentity.emailVerified) {
+        throw createAuthError(
+          "APPLE_EMAIL_REQUIRED",
+          "A verified email address is required to create a Nelo account.",
+          400,
+        );
+      }
+
+      /*
+       * Si cette adresse possède déjà un compte Nelo, l’identité
+       * Apple vérifiée est associée à cet utilisateur.
+       */
+      const existingUserResult = await client.query(
+        `
+          SELECT
+            id,
+            email,
+            display_name,
+            locale,
+            timezone,
+            status,
+            onboarding_completed_at
+
+          FROM users
+
+          WHERE LOWER(email) = $1
+            AND deleted_at IS NULL
+
+          LIMIT 1
+
+          FOR UPDATE
+        `,
+        [appleIdentity.email],
+      );
+
+      if (existingUserResult.rowCount > 0) {
+        user = existingUserResult.rows[0];
+
+        await client.query(
+          `
+            UPDATE users
+
+            SET
+              email_verified_at = COALESCE(email_verified_at, NOW()),
+              last_login_at = NOW(),
+              updated_at = NOW()
+
+            WHERE id = $1
+          `,
+          [user.id],
+        );
+      } else {
+        const createdUserResult = await client.query(
+          `
+            INSERT INTO users (
+              email,
+              locale,
+              email_verified_at,
+              last_login_at
+            )
+            VALUES ($1, $2, NOW(), NOW())
+
+            RETURNING
+              id,
+              email,
+              display_name,
+              locale,
+              timezone,
+              status,
+              onboarding_completed_at
+          `,
+          [appleIdentity.email, locale],
+        );
+
+        user = createdUserResult.rows[0];
+      }
+
+      await client.query(
+        `
+          INSERT INTO user_identities (
+            user_id,
+            provider,
+            provider_subject,
+            provider_email,
+            email_verified_at,
+            last_used_at
+          )
+          VALUES (
+            $1,
+            'apple',
+            $2,
+            $3,
+            NOW(),
+            NOW()
+          )
+        `,
+        [user.id, appleIdentity.subject, appleIdentity.email],
+      );
+    }
+
+    if (user.status === "suspended") {
+      throw createAuthError(
+        "ACCOUNT_SUSPENDED",
+        "This account has been suspended.",
+        403,
+      );
+    }
+
+    const refreshToken = generateRefreshToken();
+    const refreshTokenHash = hashRefreshToken(refreshToken);
+
+    const sessionResult = await client.query(
+      `
+        INSERT INTO user_sessions (
+          user_id,
+          refresh_token_hash,
+          device_name,
+          platform,
+          app_version,
+          ip_address,
+          user_agent,
+          expires_at,
+          last_used_at
+        )
+        VALUES (
+          $1,
+          $2,
+          $3,
+          $4,
+          $5,
+          $6,
+          $7,
+          NOW() + ($8 * INTERVAL '1 day'),
+          NOW()
+        )
+        RETURNING id
+      `,
+      [
+        user.id,
+        refreshTokenHash,
+        deviceName || null,
+        platform || "ios",
+        appVersion || null,
+        ipAddress || null,
+        userAgent || null,
+        REFRESH_TOKEN_DURATION_DAYS,
+      ],
+    );
+
+    const accessToken = generateAccessToken({
+      userId: user.id,
+      sessionId: sessionResult.rows[0].id,
+    });
+
+    await client.query("COMMIT");
+    transactionOpen = false;
+
+    return {
+      accessToken,
+      refreshToken,
+      accessTokenExpiresIn: 15 * 60,
+
+      user: {
+        id: user.id,
+        email: user.email,
+        displayName: user.display_name,
+        locale: user.locale,
+        timezone: user.timezone,
+        onboardingCompletedAt: user.onboarding_completed_at,
+      },
+    };
+  } catch (error) {
+    if (transactionOpen) {
+      await client.query("ROLLBACK");
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 async function refreshSession({ refreshToken, ipAddress, userAgent }) {
   const currentRefreshTokenHash = hashRefreshToken(refreshToken);
   const client = await pool.connect();
@@ -684,6 +1078,7 @@ async function logout(refreshToken) {
 module.exports = {
   requestLoginCode,
   verifyLoginCode,
+  signInWithApple,
   refreshSession,
   logout,
 };

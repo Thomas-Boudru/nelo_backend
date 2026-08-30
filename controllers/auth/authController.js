@@ -22,6 +22,34 @@ const verifyLoginCodeSchema = z.object({
   appVersion: z.string().trim().max(30).optional(),
 });
 
+const signInWithAppleSchema = z.object({
+  identityToken: z
+    .string()
+    .trim()
+    .min(1, "The Apple identity token is required.")
+    .max(10000, "The Apple identity token is invalid."),
+
+  authorizationCode: z
+    .string()
+    .trim()
+    .min(1, "The Apple authorization code is required.")
+    .max(5000, "The Apple authorization code is invalid."),
+
+  nonce: z
+    .string()
+    .trim()
+    .regex(
+      /^[A-Za-z0-9_-]{32,128}$/,
+      "The Apple authentication nonce is invalid.",
+    ),
+
+  locale: z.enum(["fr", "en", "de", "es", "it", "nl", "pt"]).default("en"),
+
+  deviceName: z.string().trim().max(150).optional(),
+  platform: z.enum(["ios", "android", "web", "unknown"]).default("ios"),
+  appVersion: z.string().trim().max(30).optional(),
+});
+
 const refreshTokenSchema = z.object({
   refreshToken: z
     .string()
@@ -68,6 +96,31 @@ async function verifyLoginCode(req, res, next) {
     }
 
     const result = await authService.verifyLoginCode({
+      ...validation.data,
+      ipAddress: req.ip,
+      userAgent: req.get("user-agent"),
+    });
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+async function signInWithApple(req, res, next) {
+  try {
+    const validation = signInWithAppleSchema.safeParse(req.body);
+
+    if (!validation.success) {
+      return res.status(400).json({
+        error: {
+          code: "INVALID_REQUEST",
+          message: validation.error.issues[0].message,
+        },
+      });
+    }
+
+    const result = await authService.signInWithApple({
       ...validation.data,
       ipAddress: req.ip,
       userAgent: req.get("user-agent"),
@@ -128,6 +181,7 @@ async function logout(req, res, next) {
 module.exports = {
   requestLoginCode,
   verifyLoginCode,
+  signInWithApple,
   refreshSession,
   logout,
 };
