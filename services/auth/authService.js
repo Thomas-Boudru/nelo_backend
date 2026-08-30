@@ -313,39 +313,151 @@ async function verifyLoginCode({
 
     const userResult = await client.query(
       `
-    INSERT INTO users (
-      email,
-      locale,
-      email_verified_at,
-      last_login_at
-    )
-    VALUES ($1, $2, NOW(), NOW())
+    SELECT
+      u.id,
+      u.email,
+      u.display_name,
+      u.locale,
+      u.timezone,
+      u.status,
+      u.onboarding_completed_at
 
-    ON CONFLICT (email)
-    WHERE deleted_at IS NULL
+    FROM user_identities ui
 
-    DO UPDATE SET
-      locale = EXCLUDED.locale,
-      email_verified_at = COALESCE(
-        users.email_verified_at,
-        EXCLUDED.email_verified_at
-      ),
-      last_login_at = NOW(),
-      updated_at = NOW()
+    INNER JOIN users u
+      ON u.id = ui.user_id
 
-    RETURNING
-      id,
-      email,
-      display_name,
-      locale,
-      timezone,
-      status,
-      onboarding_completed_at
+    WHERE ui.provider = 'email'
+      AND ui.provider_subject = $1
+      AND u.deleted_at IS NULL
+
+    LIMIT 1
+
+    FOR UPDATE OF u, ui
   `,
-      [normalizedEmail, locale],
+      [normalizedEmail],
     );
 
-    const user = userResult.rows[0];
+    let user;
+
+    if (userResult.rowCount > 0) {
+      /*
+       * L’utilisateur existe déjà : actualiser ses informations
+       * et la dernière utilisation de son identité e-mail.
+       */
+      const updatedUserResult = await client.query(
+        `
+      UPDATE users
+
+      SET
+        locale = $2,
+        email_verified_at = COALESCE(email_verified_at, NOW()),
+        last_login_at = NOW(),
+        updated_at = NOW()
+
+      WHERE id = $1
+
+      RETURNING
+        id,
+        email,
+        display_name,
+        locale,
+        timezone,
+        status,
+        onboarding_completed_at
+    `,
+        [userResult.rows[0].id, locale],
+      );
+
+      user = updatedUserResult.rows[0];
+
+      await client.query(
+        `
+      UPDATE user_identities
+
+      SET
+        provider_email = $2,
+        email_verified_at = COALESCE(email_verified_at, NOW()),
+        last_used_at = NOW()
+
+      WHERE user_id = $1
+        AND provider = 'email'
+    `,
+        [user.id, normalizedEmail],
+      );
+    } else {
+      /*
+       * Première connexion : créer l’utilisateur puis son identité
+       * e-mail dans la même transaction.
+       */
+      const createdUserResult = await client.query(
+        `
+      INSERT INTO users (
+        email,
+        locale,
+        email_verified_at,
+        last_login_at
+      )
+      VALUES ($1, $2, NOW(), NOW())
+
+      ON CONFLICT (email)
+      WHERE deleted_at IS NULL
+
+      DO UPDATE SET
+        locale = EXCLUDED.locale,
+        email_verified_at = COALESCE(
+          users.email_verified_at,
+          EXCLUDED.email_verified_at
+        ),
+        last_login_at = NOW(),
+        updated_at = NOW()
+
+      RETURNING
+        id,
+        email,
+        display_name,
+        locale,
+        timezone,
+        status,
+        onboarding_completed_at
+    `,
+        [normalizedEmail, locale],
+      );
+
+      user = createdUserResult.rows[0];
+
+      await client.query(
+        `
+      INSERT INTO user_identities (
+        user_id,
+        provider,
+        provider_subject,
+        provider_email,
+        email_verified_at,
+        last_used_at
+      )
+      VALUES (
+        $1,
+        'email',
+        $2,
+        $2,
+        NOW(),
+        NOW()
+      )
+
+      ON CONFLICT (provider, provider_subject)
+
+      DO UPDATE SET
+        provider_email = EXCLUDED.provider_email,
+        email_verified_at = COALESCE(
+          user_identities.email_verified_at,
+          EXCLUDED.email_verified_at
+        ),
+        last_used_at = NOW()
+    `,
+        [user.id, normalizedEmail],
+      );
+    }
 
     if (user.status === "suspended") {
       throw createAuthError(
