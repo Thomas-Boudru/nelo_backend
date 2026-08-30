@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
+const { OAuth2Client } = require("google-auth-library");
 
 const { sendLoginCodeEmail } = require("../email/emailService");
 
@@ -19,6 +20,8 @@ const appleJwksClient = jwksClient({
   rateLimit: true,
   jwksRequestsPerMinute: 10,
 });
+
+const googleOauthClient = new OAuth2Client();
 
 function normalizeEmail(email) {
   return email.trim().toLowerCase();
@@ -299,6 +302,134 @@ async function verifyAppleIdentityToken(identityToken, nonce) {
   };
 }
 
+async function verifyGoogleIdentityToken(idToken) {
+  if (!process.env.GOOGLE_WEB_CLIENT_ID) {
+    throw new Error("Missing GOOGLE_WEB_CLIENT_ID environment variable.");
+  }
+
+  let ticket;
+
+  try {
+    ticket = await googleOauthClient.verifyIdToken({
+      idToken,
+      audience: process.env.GOOGLE_WEB_CLIENT_ID,
+    });
+  } catch {
+    throw createAuthError(
+      "INVALID_GOOGLE_TOKEN",
+      "The Google ID token is invalid or has expired.",
+    );
+  }
+
+  const payload = ticket.getPayload();
+
+  if (!payload?.sub) {
+    throw createAuthError(
+      "INVALID_GOOGLE_IDENTITY",
+      "The Google user identifier is missing.",
+    );
+  }
+
+  return {
+    subject: payload.sub,
+    email: payload.email ? normalizeEmail(payload.email) : null,
+    emailVerified:
+      payload.email_verified === true || payload.email_verified === "true",
+    hostedDomain: payload.hd || null,
+  };
+}
+
+function isGoogleAuthoritativeForEmail(googleIdentity) {
+  if (!googleIdentity.email || !googleIdentity.emailVerified) {
+    return false;
+  }
+
+  return (
+    googleIdentity.email.endsWith("@gmail.com") ||
+    Boolean(googleIdentity.hostedDomain)
+  );
+}
+
+async function attachGoogleIdentity(client, userId, googleIdentity) {
+  const subjectIdentityResult = await client.query(
+    `
+      SELECT user_id
+      FROM user_identities
+      WHERE provider = 'google'
+        AND provider_subject = $1
+      LIMIT 1
+      FOR UPDATE
+    `,
+    [googleIdentity.subject],
+  );
+
+  if (
+    subjectIdentityResult.rowCount > 0 &&
+    subjectIdentityResult.rows[0].user_id !== userId
+  ) {
+    throw createAuthError(
+      "GOOGLE_IDENTITY_ALREADY_LINKED",
+      "This Google account is already linked to another Nelo account.",
+      409,
+    );
+  }
+
+  const userIdentityResult = await client.query(
+    `
+      SELECT provider_subject
+      FROM user_identities
+      WHERE user_id = $1
+        AND provider = 'google'
+      LIMIT 1
+      FOR UPDATE
+    `,
+    [userId],
+  );
+
+  if (
+    userIdentityResult.rowCount > 0 &&
+    userIdentityResult.rows[0].provider_subject !== googleIdentity.subject
+  ) {
+    throw createAuthError(
+      "NELO_ACCOUNT_ALREADY_LINKED_TO_GOOGLE",
+      "This Nelo account is already linked to another Google account.",
+      409,
+    );
+  }
+
+  if (subjectIdentityResult.rowCount > 0) {
+    await client.query(
+      `
+        UPDATE user_identities
+        SET
+          provider_email = $2,
+          email_verified_at = COALESCE(email_verified_at, NOW()),
+          last_used_at = NOW()
+        WHERE provider = 'google'
+          AND provider_subject = $1
+      `,
+      [googleIdentity.subject, googleIdentity.email],
+    );
+
+    return;
+  }
+
+  await client.query(
+    `
+      INSERT INTO user_identities (
+        user_id,
+        provider,
+        provider_subject,
+        provider_email,
+        email_verified_at,
+        last_used_at
+      )
+      VALUES ($1, 'google', $2, $3, NOW(), NOW())
+    `,
+    [userId, googleIdentity.subject, googleIdentity.email],
+  );
+}
+
 function getApplePrivateKey() {
   const privateKey = process.env.APPLE_PRIVATE_KEY;
 
@@ -443,8 +574,24 @@ async function verifyLoginCode({
   appVersion,
   ipAddress,
   userAgent,
+  googleIdToken,
 }) {
   const normalizedEmail = normalizeEmail(email);
+  const googleIdentity = googleIdToken
+    ? await verifyGoogleIdentityToken(googleIdToken)
+    : null;
+
+  if (
+    googleIdentity &&
+    (!googleIdentity.emailVerified || googleIdentity.email !== normalizedEmail)
+  ) {
+    throw createAuthError(
+      "GOOGLE_EMAIL_MISMATCH",
+      "The verified Google email does not match this verification code.",
+      400,
+    );
+  }
+
   const client = await pool.connect();
 
   let transactionOpen = false;
@@ -713,6 +860,10 @@ async function verifyLoginCode({
         "This account has been suspended.",
         403,
       );
+    }
+
+    if (googleIdentity) {
+      await attachGoogleIdentity(client, user.id, googleIdentity);
     }
 
     const refreshToken = generateRefreshToken();
@@ -1108,6 +1259,272 @@ async function signInWithApple({
   }
 }
 
+async function signInWithGoogle({
+  idToken,
+  locale = "en",
+  deviceName,
+  platform,
+  appVersion,
+  ipAddress,
+  userAgent,
+}) {
+  const googleIdentity = await verifyGoogleIdentityToken(idToken);
+  const client = await pool.connect();
+  let transactionOpen = false;
+
+  try {
+    await client.query("BEGIN");
+    transactionOpen = true;
+
+    const identityUserResult = await client.query(
+      `
+        SELECT
+          u.id,
+          u.email,
+          u.display_name,
+          u.locale,
+          u.timezone,
+          u.status,
+          u.onboarding_completed_at
+        FROM user_identities ui
+        INNER JOIN users u
+          ON u.id = ui.user_id
+        WHERE ui.provider = 'google'
+          AND ui.provider_subject = $1
+          AND u.deleted_at IS NULL
+        LIMIT 1
+        FOR UPDATE OF u, ui
+      `,
+      [googleIdentity.subject],
+    );
+
+    let user;
+
+    if (identityUserResult.rowCount > 0) {
+      user = identityUserResult.rows[0];
+
+      await client.query(
+        `
+          UPDATE user_identities
+          SET
+            provider_email = COALESCE($2, provider_email),
+            email_verified_at = CASE
+              WHEN $3 THEN COALESCE(email_verified_at, NOW())
+              ELSE email_verified_at
+            END,
+            last_used_at = NOW()
+          WHERE provider = 'google'
+            AND provider_subject = $1
+        `,
+        [
+          googleIdentity.subject,
+          googleIdentity.email,
+          googleIdentity.emailVerified,
+        ],
+      );
+
+      await client.query(
+        `
+          UPDATE users
+          SET
+            last_login_at = NOW(),
+            updated_at = NOW()
+          WHERE id = $1
+        `,
+        [user.id],
+      );
+    } else {
+      if (!googleIdentity.email || !googleIdentity.emailVerified) {
+        throw createAuthError(
+          "GOOGLE_EMAIL_REQUIRED",
+          "A verified email address is required to create a Nelo account.",
+          400,
+        );
+      }
+
+      const existingUserResult = await client.query(
+        `
+          SELECT
+            id,
+            email,
+            display_name,
+            locale,
+            timezone,
+            status,
+            onboarding_completed_at
+          FROM users
+          WHERE LOWER(email) = $1
+            AND deleted_at IS NULL
+          LIMIT 1
+          FOR UPDATE
+        `,
+        [googleIdentity.email],
+      );
+
+      if (existingUserResult.rowCount > 0) {
+        user = existingUserResult.rows[0];
+
+        if (user.status === "suspended") {
+          throw createAuthError(
+            "ACCOUNT_SUSPENDED",
+            "This account has been suspended.",
+            403,
+          );
+        }
+
+        const linkedGoogleResult = await client.query(
+          `
+            SELECT provider_subject
+            FROM user_identities
+            WHERE user_id = $1
+              AND provider = 'google'
+            LIMIT 1
+            FOR UPDATE
+          `,
+          [user.id],
+        );
+
+        if (
+          linkedGoogleResult.rowCount > 0 &&
+          linkedGoogleResult.rows[0].provider_subject !== googleIdentity.subject
+        ) {
+          throw createAuthError(
+            "NELO_ACCOUNT_ALREADY_LINKED_TO_GOOGLE",
+            "This Nelo account is already linked to another Google account.",
+            409,
+          );
+        }
+
+        if (!isGoogleAuthoritativeForEmail(googleIdentity)) {
+          await client.query("COMMIT");
+          transactionOpen = false;
+
+          return {
+            verificationRequired: true,
+            email: googleIdentity.email,
+          };
+        }
+
+        await client.query(
+          `
+            UPDATE users
+            SET
+              email_verified_at = COALESCE(email_verified_at, NOW()),
+              last_login_at = NOW(),
+              updated_at = NOW()
+            WHERE id = $1
+          `,
+          [user.id],
+        );
+      } else {
+        const createdUserResult = await client.query(
+          `
+            INSERT INTO users (
+              email,
+              locale,
+              email_verified_at,
+              last_login_at
+            )
+            VALUES ($1, $2, NOW(), NOW())
+            RETURNING
+              id,
+              email,
+              display_name,
+              locale,
+              timezone,
+              status,
+              onboarding_completed_at
+          `,
+          [googleIdentity.email, locale],
+        );
+
+        user = createdUserResult.rows[0];
+      }
+
+      await attachGoogleIdentity(client, user.id, googleIdentity);
+    }
+
+    if (user.status === "suspended") {
+      throw createAuthError(
+        "ACCOUNT_SUSPENDED",
+        "This account has been suspended.",
+        403,
+      );
+    }
+
+    const refreshToken = generateRefreshToken();
+    const refreshTokenHash = hashRefreshToken(refreshToken);
+
+    const sessionResult = await client.query(
+      `
+        INSERT INTO user_sessions (
+          user_id,
+          refresh_token_hash,
+          device_name,
+          platform,
+          app_version,
+          ip_address,
+          user_agent,
+          expires_at,
+          last_used_at
+        )
+        VALUES (
+          $1,
+          $2,
+          $3,
+          $4,
+          $5,
+          $6,
+          $7,
+          NOW() + ($8 * INTERVAL '1 day'),
+          NOW()
+        )
+        RETURNING id
+      `,
+      [
+        user.id,
+        refreshTokenHash,
+        deviceName || null,
+        platform || "unknown",
+        appVersion || null,
+        ipAddress || null,
+        userAgent || null,
+        REFRESH_TOKEN_DURATION_DAYS,
+      ],
+    );
+
+    const accessToken = generateAccessToken({
+      userId: user.id,
+      sessionId: sessionResult.rows[0].id,
+    });
+
+    await client.query("COMMIT");
+    transactionOpen = false;
+
+    return {
+      accessToken,
+      refreshToken,
+      accessTokenExpiresIn: 15 * 60,
+      user: {
+        id: user.id,
+        email: user.email,
+        displayName: user.display_name,
+        locale: user.locale,
+        timezone: user.timezone,
+        onboardingCompletedAt: user.onboarding_completed_at,
+      },
+    };
+  } catch (error) {
+    if (transactionOpen) {
+      await client.query("ROLLBACK");
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 async function refreshSession({ refreshToken, ipAddress, userAgent }) {
   const currentRefreshTokenHash = hashRefreshToken(refreshToken);
   const client = await pool.connect();
@@ -1251,6 +1668,7 @@ module.exports = {
   requestLoginCode,
   verifyLoginCode,
   signInWithApple,
+  signInWithGoogle,
   refreshSession,
   logout,
 };
