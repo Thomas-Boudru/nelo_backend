@@ -8,6 +8,7 @@ const logger = require("morgan");
 const pool = require("./db/pool");
 const limiter = require("./limiter");
 const authRoutes = require("./routes/auth/authRoutes");
+const childrenRoutes = require("./routes/children/childrenRoutes");
 const onboardingRoutes = require("./routes/onboarding/onboardingRoutes");
 const userRoutes = require("./routes/users/userRoutes");
 
@@ -62,6 +63,7 @@ app.use("/api", limiter);
 
 // Routes API
 app.use("/api/auth", authRoutes);
+app.use("/api/children", childrenRoutes);
 app.use("/api/onboarding", onboardingRoutes);
 app.use("/api", userRoutes);
 
