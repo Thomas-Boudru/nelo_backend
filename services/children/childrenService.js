@@ -1,6 +1,22 @@
 const pool = require("../../db/pool");
 
-function mapChild(row) {
+const { createSignedDownloadUrl } = require("../storage/r2StorageService");
+
+async function mapChild(row) {
+  let avatar = null;
+
+  if (row.avatar_attachment_id && row.avatar_storage_key) {
+    avatar = {
+      attachmentId: row.avatar_attachment_id,
+
+      url: await createSignedDownloadUrl({
+        storageKey: row.avatar_storage_key,
+      }),
+
+      cacheKey: `child-avatar:${row.id}:${row.avatar_attachment_id}`,
+    };
+  }
+
   return {
     id: row.id,
     displayName: row.display_name,
@@ -8,11 +24,7 @@ function mapChild(row) {
     birthDate: row.birth_date,
     expectedBirthDate: row.expected_due_date,
     gender: row.sex_at_birth,
-    avatar: row.avatar_attachment_id
-      ? {
-          attachmentId: row.avatar_attachment_id,
-        }
-      : null,
+    avatar,
     themeMode: row.theme_mode,
     familyId: row.family_id,
     role: row.child_role,
@@ -35,9 +47,13 @@ async function getAccessibleChildren(userId) {
 
         cm.child_role,
 
-        COALESCE(cmp.theme_mode, c.default_theme_mode) AS theme_mode,
+        COALESCE(
+          cmp.theme_mode,
+          c.default_theme_mode
+        ) AS theme_mode,
 
-        avatar.id AS avatar_attachment_id
+        avatar.id AS avatar_attachment_id,
+        avatar.storage_key AS avatar_storage_key
 
       FROM family_members fm
 
@@ -64,12 +80,14 @@ async function getAccessibleChildren(userId) {
       WHERE fm.user_id = $1
         AND fm.removed_at IS NULL
 
-      ORDER BY c.created_at ASC, c.id ASC
+      ORDER BY
+        c.created_at ASC,
+        c.id ASC
     `,
     [userId],
   );
 
-  return result.rows.map(mapChild);
+  return Promise.all(result.rows.map(mapChild));
 }
 
 module.exports = {

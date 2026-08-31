@@ -10,9 +10,13 @@
     "test": "node --test",
     "migrate": "node-pg-migrate up",
     "migrate:down": "node-pg-migrate down",
-    "migrate:create": "node-pg-migrate create"
+    "migrate:create": "node-pg-migrate create",
+    "check:r2": "node scripts/checkR2Connection.js",
+    "check:r2-storage": "node scripts/checkR2Storage.js"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1122.0",
+    "@aws-sdk/s3-request-presigner": "^3.1122.0",
     "cors": "^2.8.6",
     "dotenv": "^16.3.1",
     "express": "^4.16.1",
@@ -22,8 +26,10 @@
     "jsonwebtoken": "^9.0.3",
     "jwks-rsa": "^4.1.0",
     "morgan": "^1.9.1",
+    "multer": "^2.3.0",
     "pg": "^8.0.0",
     "resend": "^6.25.0",
+    "sharp": "^0.35.4",
     "zod": "^4.0.0"
   },
   "devDependencies": {
