@@ -215,6 +215,98 @@ async function saveChildAvatar({
   };
 }
 
+async function removeChildAvatar({ childId, userId }) {
+  if (!childId) {
+    throw createServiceError("MISSING_CHILD_ID", "Missing child ID.", 400);
+  }
+
+  if (!userId) {
+    throw createServiceError("MISSING_USER_ID", "Missing user ID.", 400);
+  }
+
+  const client = await pool.connect();
+  let previousAvatarStorageKey = null;
+
+  try {
+    await client.query("BEGIN");
+
+    /*
+     * The child row is locked while the avatar reference
+     * is removed.
+     */
+    const child = await getEditableChild(client, {
+      childId,
+      userId,
+    });
+
+    previousAvatarStorageKey = child.previous_avatar_storage_key;
+
+    if (!child.avatar_attachment_id) {
+      await client.query("COMMIT");
+
+      return {
+        removed: false,
+      };
+    }
+
+    await client.query(
+      `
+        UPDATE children
+        SET
+          avatar_attachment_id = NULL,
+          updated_by_user_id = $1,
+          updated_at = NOW()
+        WHERE id = $2
+      `,
+      [userId, childId],
+    );
+
+    await client.query(
+      `
+        UPDATE attachments
+        SET deleted_at = NOW()
+        WHERE id = $1
+          AND deleted_at IS NULL
+      `,
+      [child.avatar_attachment_id],
+    );
+
+    await client.query("COMMIT");
+  } catch (error) {
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      console.error("Unable to roll back the avatar removal:", {
+        message: rollbackError.message,
+      });
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+
+  /*
+   * PostgreSQL is already committed. An R2 cleanup failure
+   * must not restore the removed avatar in the application.
+   */
+  if (previousAvatarStorageKey) {
+    try {
+      await deleteObject(previousAvatarStorageKey);
+    } catch (error) {
+      console.error("Unable to delete the removed R2 avatar:", {
+        childId,
+        message: error.message,
+      });
+    }
+  }
+
+  return {
+    removed: true,
+  };
+}
+
 module.exports = {
+  removeChildAvatar,
   saveChildAvatar,
 };

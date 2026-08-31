@@ -50,7 +50,24 @@ async function saveChildAvatar(req, res, next) {
   }
 }
 
+async function removeChildAvatar(req, res, next) {
+  try {
+    const result = await childAvatarService.removeChildAvatar({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+    });
+
+    return res.status(200).json({
+      removed: result.removed,
+      avatar: null,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   getAccessibleChildren,
+  removeChildAvatar,
   saveChildAvatar,
 };
