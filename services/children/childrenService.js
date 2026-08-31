@@ -8,7 +8,11 @@ function mapChild(row) {
     birthDate: row.birth_date,
     expectedBirthDate: row.expected_due_date,
     gender: row.sex_at_birth,
-    avatarUrl: row.avatar_storage_key,
+    avatar: row.avatar_attachment_id
+      ? {
+          attachmentId: row.avatar_attachment_id,
+        }
+      : null,
     themeMode: row.theme_mode,
     familyId: row.family_id,
     role: row.child_role,
@@ -33,7 +37,7 @@ async function getAccessibleChildren(userId) {
 
         COALESCE(cmp.theme_mode, c.default_theme_mode) AS theme_mode,
 
-        avatar.storage_key AS avatar_storage_key
+        avatar.id AS avatar_attachment_id
 
       FROM family_members fm
 
