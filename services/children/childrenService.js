@@ -2,6 +2,52 @@ const pool = require("../../db/pool");
 
 const { createSignedDownloadUrl } = require("../storage/r2StorageService");
 
+const DEFAULT_VISIBLE_TRACKING_TYPES = [
+  "feeding",
+  "sleep",
+  "diaper",
+  "mood",
+  "medication",
+  "temperature",
+  "symptoms",
+  "teething",
+  "weight",
+  "height",
+  "headCircumference",
+  "note",
+];
+
+const DEFAULT_VISIBLE_FEEDING_METHODS = [
+  "breastfeeding",
+  "bottle",
+  "solids",
+  "pumping",
+];
+
+const ALLOWED_THEME_MODES = new Set(["blue", "pink", "green"]);
+
+const ALLOWED_TRACKING_TYPES = new Set([
+  "feeding",
+  "sleep",
+  "diaper",
+  "mood",
+  "medication",
+  "temperature",
+  "symptoms",
+  "teething",
+  "weight",
+  "height",
+  "headCircumference",
+  "note",
+]);
+
+const ALLOWED_FEEDING_METHODS = new Set([
+  "breastfeeding",
+  "bottle",
+  "solids",
+  "pumping",
+]);
+
 async function mapChild(row) {
   let avatar = null;
 
@@ -47,6 +93,13 @@ async function mapChild(row) {
 
     avatar,
     themeMode: row.theme_mode,
+
+    visibleTrackingTypes:
+      row.visible_tracking_types ?? DEFAULT_VISIBLE_TRACKING_TYPES,
+
+    visibleFeedingMethods:
+      row.visible_feeding_methods ?? DEFAULT_VISIBLE_FEEDING_METHODS,
+
     familyId: row.family_id,
     role: row.child_role,
     updatedAt: row.updated_at,
@@ -162,6 +215,120 @@ function validateChildData(data) {
   };
 }
 
+function hasOwnProperty(object, property) {
+  return Object.prototype.hasOwnProperty.call(object, property);
+}
+
+function validateChildPreferences(data) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw createServiceError(
+      "INVALID_CHILD_PREFERENCES",
+      "The child preferences are required.",
+      400,
+    );
+  }
+
+  const hasThemeMode = hasOwnProperty(data, "themeMode");
+
+  const hasVisibleTrackingTypes = hasOwnProperty(data, "visibleTrackingTypes");
+
+  const hasVisibleFeedingMethods = hasOwnProperty(
+    data,
+    "visibleFeedingMethods",
+  );
+
+  if (!hasThemeMode && !hasVisibleTrackingTypes && !hasVisibleFeedingMethods) {
+    throw createServiceError(
+      "EMPTY_CHILD_PREFERENCES",
+      "At least one child preference must be provided.",
+      400,
+    );
+  }
+
+  let themeMode = null;
+
+  if (hasThemeMode) {
+    if (!ALLOWED_THEME_MODES.has(data.themeMode)) {
+      throw createServiceError(
+        "INVALID_THEME_MODE",
+        "The selected theme is invalid.",
+        400,
+      );
+    }
+
+    themeMode = data.themeMode;
+  }
+
+  let visibleTrackingTypes = null;
+
+  if (hasVisibleTrackingTypes) {
+    if (!Array.isArray(data.visibleTrackingTypes)) {
+      throw createServiceError(
+        "INVALID_VISIBLE_TRACKING_TYPES",
+        "The visible tracking types must be an array.",
+        400,
+      );
+    }
+
+    visibleTrackingTypes = [...new Set(data.visibleTrackingTypes)];
+
+    const hasInvalidTrackingType = visibleTrackingTypes.some(
+      (trackingType) => !ALLOWED_TRACKING_TYPES.has(trackingType),
+    );
+
+    if (hasInvalidTrackingType) {
+      throw createServiceError(
+        "INVALID_VISIBLE_TRACKING_TYPES",
+        "One or more tracking types are invalid.",
+        400,
+      );
+    }
+  }
+
+  let visibleFeedingMethods = null;
+
+  if (hasVisibleFeedingMethods) {
+    if (!Array.isArray(data.visibleFeedingMethods)) {
+      throw createServiceError(
+        "INVALID_VISIBLE_FEEDING_METHODS",
+        "The visible feeding methods must be an array.",
+        400,
+      );
+    }
+
+    visibleFeedingMethods = [...new Set(data.visibleFeedingMethods)];
+
+    if (visibleFeedingMethods.length === 0) {
+      throw createServiceError(
+        "MISSING_VISIBLE_FEEDING_METHOD",
+        "At least one feeding method must remain enabled.",
+        400,
+      );
+    }
+
+    const hasInvalidFeedingMethod = visibleFeedingMethods.some(
+      (feedingMethod) => !ALLOWED_FEEDING_METHODS.has(feedingMethod),
+    );
+
+    if (hasInvalidFeedingMethod) {
+      throw createServiceError(
+        "INVALID_VISIBLE_FEEDING_METHODS",
+        "One or more feeding methods are invalid.",
+        400,
+      );
+    }
+  }
+
+  return {
+    hasThemeMode,
+    hasVisibleTrackingTypes,
+    hasVisibleFeedingMethods,
+    themeMode,
+    visibleTrackingTypes,
+    visibleFeedingMethods,
+  };
+}
+
 async function getAccessibleChildren(userId) {
   const result = await pool.query(
     `
@@ -183,6 +350,9 @@ async function getAccessibleChildren(userId) {
           cmp.theme_mode,
           c.default_theme_mode
         ) AS theme_mode,
+
+        cmp.visible_tracking_types,
+        cmp.visible_feeding_methods,
 
         avatar.id AS avatar_attachment_id,
         avatar.storage_key AS avatar_storage_key
@@ -421,6 +591,9 @@ async function createChild({ userId, data }) {
             c.default_theme_mode
           ) AS theme_mode,
 
+          cmp.visible_tracking_types,
+          cmp.visible_feeding_methods,
+
           avatar.id AS avatar_attachment_id,
           avatar.storage_key AS avatar_storage_key
 
@@ -612,6 +785,9 @@ async function updateChild({ childId, userId, data }) {
             c.default_theme_mode
           ) AS theme_mode,
 
+          cmp.visible_tracking_types,
+          cmp.visible_feeding_methods,
+
           avatar.id AS avatar_attachment_id,
           avatar.storage_key AS avatar_storage_key
 
@@ -669,8 +845,154 @@ async function updateChild({ childId, userId, data }) {
   }
 }
 
+async function updateChildPreferences({ childId, userId, data }) {
+  if (!childId) {
+    throw createServiceError(
+      "MISSING_CHILD_ID",
+      "The child ID is required.",
+      400,
+    );
+  }
+
+  const preferences = validateChildPreferences(data);
+
+  const client = await pool.connect();
+  let transactionOpen = false;
+
+  try {
+    await client.query("BEGIN");
+    transactionOpen = true;
+
+    /*
+     * On cherche l’association propre à l’utilisateur.
+     * Aucun rôle owner n’est requis.
+     */
+    const membershipResult = await client.query(
+      `
+        SELECT cm.id AS child_member_id
+
+        FROM children_members cm
+
+        INNER JOIN family_members fm
+          ON fm.id = cm.family_member_id
+          AND fm.removed_at IS NULL
+
+        INNER JOIN children c
+          ON c.id = cm.child_id
+          AND c.family_id = fm.family_id
+          AND c.deleted_at IS NULL
+
+        INNER JOIN families f
+          ON f.id = c.family_id
+          AND f.deleted_at IS NULL
+
+        WHERE cm.child_id = $1
+          AND fm.user_id = $2
+          AND cm.revoked_at IS NULL
+
+        LIMIT 1
+      `,
+      [childId, userId],
+    );
+
+    if (membershipResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_NOT_FOUND",
+        "The child could not be found.",
+        404,
+      );
+    }
+
+    const childMemberId = membershipResult.rows[0].child_member_id;
+
+    const result = await client.query(
+      `
+        INSERT INTO children_member_preferences AS preferences (
+          child_member_id,
+          theme_mode,
+          visible_tracking_types,
+          visible_feeding_methods
+        )
+        VALUES ($1, $2, $3, $4)
+
+        ON CONFLICT (child_member_id)
+        DO UPDATE SET
+          theme_mode =
+            CASE
+              WHEN $5
+                THEN EXCLUDED.theme_mode
+              ELSE preferences.theme_mode
+            END,
+
+          visible_tracking_types =
+            CASE
+              WHEN $6
+                THEN EXCLUDED.visible_tracking_types
+              ELSE preferences.visible_tracking_types
+            END,
+
+          visible_feeding_methods =
+            CASE
+              WHEN $7
+                THEN EXCLUDED.visible_feeding_methods
+              ELSE preferences.visible_feeding_methods
+            END,
+
+          updated_at = NOW()
+
+        RETURNING
+          theme_mode,
+          visible_tracking_types,
+          visible_feeding_methods
+      `,
+      [
+        childMemberId,
+        preferences.themeMode,
+        preferences.visibleTrackingTypes,
+        preferences.visibleFeedingMethods,
+        preferences.hasThemeMode,
+        preferences.hasVisibleTrackingTypes,
+        preferences.hasVisibleFeedingMethods,
+      ],
+    );
+
+    await client.query("COMMIT");
+    transactionOpen = false;
+
+    const savedPreferences = result.rows[0];
+
+    return {
+      themeMode: savedPreferences.theme_mode ?? "blue",
+
+      visibleTrackingTypes:
+        savedPreferences.visible_tracking_types ??
+        DEFAULT_VISIBLE_TRACKING_TYPES,
+
+      visibleFeedingMethods:
+        savedPreferences.visible_feeding_methods ??
+        DEFAULT_VISIBLE_FEEDING_METHODS,
+    };
+  } catch (error) {
+    if (transactionOpen) {
+      try {
+        await client.query("ROLLBACK");
+      } catch (rollbackError) {
+        console.error(
+          "Unable to rollback child preferences update:",
+          rollbackError,
+        );
+      }
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   createChild,
   getAccessibleChildren,
   updateChild,
+  updateChildPreferences,
 };

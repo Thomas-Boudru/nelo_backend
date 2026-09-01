@@ -97,10 +97,27 @@ async function updateChild(req, res, next) {
   }
 }
 
+async function updateChildPreferences(req, res, next) {
+  try {
+    const preferences = await childrenService.updateChildPreferences({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+      data: req.body,
+    });
+
+    return res.status(200).json({
+      preferences,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   createChild,
   getAccessibleChildren,
   removeChildAvatar,
   saveChildAvatar,
   updateChild,
+  updateChildPreferences,
 };
