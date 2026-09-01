@@ -66,8 +66,41 @@ async function removeChildAvatar(req, res, next) {
   }
 }
 
+async function createChild(req, res, next) {
+  try {
+    const child = await childrenService.createChild({
+      userId: req.auth.userId,
+      data: req.body,
+    });
+
+    return res.status(201).json({
+      child,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
+async function updateChild(req, res, next) {
+  try {
+    const child = await childrenService.updateChild({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+      data: req.body,
+    });
+
+    return res.status(200).json({
+      child,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
+  createChild,
   getAccessibleChildren,
   removeChildAvatar,
   saveChildAvatar,
+  updateChild,
 };
