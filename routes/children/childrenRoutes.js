@@ -11,6 +11,7 @@ const {
   saveChildAvatar,
   updateChild,
   updateChildPreferences,
+  updateCurrentUserRelationship,
 } = require("../../controllers/children/childrenController");
 
 const router = express.Router();
@@ -23,8 +24,6 @@ router.patch("/:childId/preferences", authenticate, updateChildPreferences);
 
 router.patch("/:childId", authenticate, updateChild);
 
-router.patch("/:childId/preferences", authenticate, updateChildPreferences);
-
 router.put(
   "/:childId/avatar",
   authenticate,
@@ -32,6 +31,12 @@ router.put(
   uploadChildAvatar,
 
   saveChildAvatar,
+);
+
+router.patch(
+  "/:childId/members/me",
+  authenticate,
+  updateCurrentUserRelationship,
 );
 
 router.delete("/:childId/avatar", authenticate, removeChildAvatar);

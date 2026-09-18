@@ -2,6 +2,16 @@ const pool = require("../../db/pool");
 
 const { createSignedDownloadUrl } = require("../storage/r2StorageService");
 
+const ALLOWED_RELATIONSHIP_TYPES = new Set([
+  "mother",
+  "father",
+  "parent",
+  "grandparent",
+  "family_or_friend",
+  "caregiver",
+  "other",
+]);
+
 const DEFAULT_VISIBLE_TRACKING_TYPES = [
   "feeding",
   "sleep",
@@ -47,6 +57,102 @@ const ALLOWED_FEEDING_METHODS = new Set([
   "solids",
   "pumping",
 ]);
+
+function validateRelationshipData(data) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw createServiceError(
+      "INVALID_RELATIONSHIP_DATA",
+      "The relationship data is required.",
+      400,
+    );
+  }
+
+  const relationship =
+    typeof data.relationship === "string" ? data.relationship.trim() : "";
+
+  if (!ALLOWED_RELATIONSHIP_TYPES.has(relationship)) {
+    throw createServiceError(
+      "INVALID_RELATIONSHIP",
+      "The selected relationship is invalid.",
+      400,
+    );
+  }
+
+  return {
+    relationship,
+    relationshipLabel: null,
+  };
+}
+
+async function updateCurrentUserRelationship({ childId, userId, data }) {
+  if (!childId) {
+    throw createServiceError(
+      "MISSING_CHILD_ID",
+      "The child ID is required.",
+      400,
+    );
+  }
+
+  const relationshipData = validateRelationshipData(data);
+
+  const result = await pool.query(
+    `
+      UPDATE children_members cm
+
+      SET
+        relationship_type = $3,
+        relationship_label = $4,
+        updated_at = NOW()
+
+      FROM family_members fm,
+           children c,
+           families f
+
+      WHERE cm.child_id = $1
+        AND cm.family_member_id = fm.id
+        AND fm.user_id = $2
+        AND fm.removed_at IS NULL
+
+        AND c.id = cm.child_id
+        AND c.family_id = fm.family_id
+        AND c.deleted_at IS NULL
+
+        AND f.id = c.family_id
+        AND f.deleted_at IS NULL
+
+        AND cm.revoked_at IS NULL
+
+      RETURNING
+        cm.child_id,
+        cm.child_role,
+        cm.relationship_type,
+        cm.relationship_label
+    `,
+    [
+      childId,
+      userId,
+      relationshipData.relationship,
+      relationshipData.relationshipLabel,
+    ],
+  );
+
+  if (result.rowCount === 0) {
+    throw createServiceError(
+      "CHILD_NOT_FOUND",
+      "The child could not be found.",
+      404,
+    );
+  }
+
+  const membership = result.rows[0];
+
+  return {
+    childId: membership.child_id,
+    role: membership.child_role,
+    relationship: membership.relationship_type,
+    relationshipLabel: membership.relationship_label,
+  };
+}
 
 async function mapChild(row) {
   let avatar = null;
@@ -102,6 +208,10 @@ async function mapChild(row) {
 
     familyId: row.family_id,
     role: row.child_role,
+
+    currentUserRelationship: row.relationship_type,
+    currentUserRelationshipLabel: row.relationship_label,
+
     updatedAt: row.updated_at,
   };
 }
@@ -345,6 +455,8 @@ async function getAccessibleChildren(userId) {
         c.updated_at,
 
         cm.child_role,
+        cm.relationship_type,
+cm.relationship_label,
 
         COALESCE(
           cmp.theme_mode,
@@ -585,6 +697,8 @@ async function createChild({ userId, data }) {
           c.updated_at,
 
           cm.child_role,
+          cm.relationship_type,
+cm.relationship_label,
 
           COALESCE(
             cmp.theme_mode,
@@ -779,6 +893,8 @@ async function updateChild({ childId, userId, data }) {
           c.updated_at,
 
           cm.child_role,
+          cm.relationship_type,
+cm.relationship_label,
 
           COALESCE(
             cmp.theme_mode,
@@ -995,4 +1111,5 @@ module.exports = {
   getAccessibleChildren,
   updateChild,
   updateChildPreferences,
+  updateCurrentUserRelationship,
 };

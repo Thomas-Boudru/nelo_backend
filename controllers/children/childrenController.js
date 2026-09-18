@@ -113,6 +113,22 @@ async function updateChildPreferences(req, res, next) {
   }
 }
 
+async function updateCurrentUserRelationship(req, res, next) {
+  try {
+    const membership = await childrenService.updateCurrentUserRelationship({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+      data: req.body,
+    });
+
+    return res.status(200).json({
+      membership,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   createChild,
   getAccessibleChildren,
@@ -120,4 +136,5 @@ module.exports = {
   saveChildAvatar,
   updateChild,
   updateChildPreferences,
+  updateCurrentUserRelationship,
 };
