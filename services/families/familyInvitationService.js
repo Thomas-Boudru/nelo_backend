@@ -786,9 +786,164 @@ async function getChildSharing({ childId, userId }) {
   }
 }
 
+async function removeChildMember({ childId, childMemberId, userId }) {
+  if (!isValidUuid(childId)) {
+    throw createServiceError(
+      "INVALID_CHILD_ID",
+      "The child ID is invalid.",
+      400,
+    );
+  }
+
+  if (!isValidUuid(childMemberId)) {
+    throw createServiceError(
+      "INVALID_CHILD_MEMBER_ID",
+      "The child member ID is invalid.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    /*
+     * Vérifie que l'utilisateur connecté est propriétaire de l'enfant.
+     */
+    const childResult = await client.query(
+      `
+        SELECT
+          c.id,
+          c.family_id
+        FROM children c
+
+        INNER JOIN families f
+          ON f.id = c.family_id
+          AND f.deleted_at IS NULL
+
+        INNER JOIN children_members owner_cm
+          ON owner_cm.child_id = c.id
+          AND owner_cm.child_role = 'owner'
+          AND owner_cm.revoked_at IS NULL
+
+        INNER JOIN family_members owner_fm
+          ON owner_fm.id = owner_cm.family_member_id
+          AND owner_fm.family_id = c.family_id
+          AND owner_fm.user_id = $2
+          AND owner_fm.removed_at IS NULL
+
+        WHERE c.id = $1
+          AND c.deleted_at IS NULL
+
+        LIMIT 1
+        FOR UPDATE OF c
+      `,
+      [childId, userId],
+    );
+
+    if (childResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_NOT_FOUND_OR_FORBIDDEN",
+        "The child was not found or you cannot remove members from this profile.",
+        403,
+      );
+    }
+
+    const child = childResult.rows[0];
+
+    /*
+     * Récupère et verrouille l'accès à supprimer.
+     */
+    const memberResult = await client.query(
+      `
+        SELECT
+          cm.id AS child_member_id,
+          cm.child_id,
+          cm.child_role,
+          fm.user_id
+        FROM children_members cm
+
+        INNER JOIN family_members fm
+          ON fm.id = cm.family_member_id
+          AND fm.family_id = $3
+          AND fm.removed_at IS NULL
+
+        WHERE cm.id = $1
+          AND cm.child_id = $2
+          AND cm.revoked_at IS NULL
+
+        LIMIT 1
+        FOR UPDATE OF cm
+      `,
+      [childMemberId, childId, child.family_id],
+    );
+
+    if (memberResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_MEMBER_NOT_FOUND",
+        "The child member was not found.",
+        404,
+      );
+    }
+
+    const member = memberResult.rows[0];
+
+    if (member.user_id === userId) {
+      throw createServiceError(
+        "CANNOT_REMOVE_YOURSELF",
+        "You cannot remove your own access here.",
+        409,
+      );
+    }
+
+    if (member.child_role === "owner") {
+      throw createServiceError(
+        "CANNOT_REMOVE_OWNER",
+        "The profile owner cannot be removed.",
+        409,
+      );
+    }
+
+    const removedMemberResult = await client.query(
+      `
+        UPDATE children_members
+        SET
+          revoked_at = NOW(),
+          revoked_by_user_id = $2,
+          updated_at = NOW()
+        WHERE id = $1
+        RETURNING
+          id,
+          child_id,
+          revoked_at
+      `,
+      [member.child_member_id, userId],
+    );
+
+    await client.query("COMMIT");
+
+    const removedMember = removedMemberResult.rows[0];
+
+    return {
+      childMemberId: removedMember.id,
+      userId: member.user_id,
+      childId: removedMember.child_id,
+      revokedAt: removedMember.revoked_at,
+    };
+  } catch (error) {
+    await client.query("ROLLBACK");
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   createFamilyInvitation,
   getChildSharing,
+  removeChildMember,
   resendFamilyInvitation,
   revokeFamilyInvitation,
 };

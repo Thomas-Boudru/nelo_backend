@@ -65,9 +65,26 @@ async function revokeFamilyInvitation(req, res, next) {
   }
 }
 
+async function removeChildMember(req, res, next) {
+  try {
+    const member = await familyInvitationService.removeChildMember({
+      childId: req.params.childId,
+      childMemberId: req.params.childMemberId,
+      userId: req.auth.userId,
+    });
+
+    return res.status(200).json({
+      member,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   createFamilyInvitation,
   getChildSharing,
+  removeChildMember,
   resendFamilyInvitation,
   revokeFamilyInvitation,
 };

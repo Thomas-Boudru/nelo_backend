@@ -5,6 +5,7 @@ const authenticate = require("../../middleware/authenticate");
 const {
   createFamilyInvitation,
   getChildSharing,
+  removeChildMember,
   resendFamilyInvitation,
   revokeFamilyInvitation,
 } = require("../../controllers/families/familyInvitationController");
@@ -27,4 +28,9 @@ router.delete(
   revokeFamilyInvitation,
 );
 
+router.delete(
+  "/:childId/members/:childMemberId",
+  authenticate,
+  removeChildMember,
+);
 module.exports = router;
