@@ -208,6 +208,13 @@ async function mapChild(row) {
 
     familyId: row.family_id,
     role: row.child_role,
+    currentUserRole: row.child_role,
+
+    memberCount: Number(row.member_count ?? 0),
+
+    memberCount: Number(row.member_count ?? 0),
+
+    pendingInvitationCount: Number(row.pending_invitation_count ?? 0),
 
     currentUserRelationship: row.relationship_type,
     currentUserRelationshipLabel: row.relationship_label,
@@ -456,7 +463,7 @@ async function getAccessibleChildren(userId) {
 
         cm.child_role,
         cm.relationship_type,
-cm.relationship_label,
+        cm.relationship_label,
 
         COALESCE(
           cmp.theme_mode,
@@ -467,7 +474,36 @@ cm.relationship_label,
         cmp.visible_feeding_methods,
 
         avatar.id AS avatar_attachment_id,
-        avatar.storage_key AS avatar_storage_key
+        avatar.storage_key AS avatar_storage_key,
+
+        (
+          SELECT COUNT(*)
+          FROM children_members counted_cm
+
+          INNER JOIN family_members counted_fm
+            ON counted_fm.id = counted_cm.family_member_id
+            AND counted_fm.removed_at IS NULL
+
+          INNER JOIN users counted_user
+            ON counted_user.id = counted_fm.user_id
+            AND counted_user.deleted_at IS NULL
+            AND counted_user.status = 'active'
+
+          WHERE counted_cm.child_id = c.id
+            AND counted_cm.revoked_at IS NULL
+        ) AS member_count,
+
+        CASE
+          WHEN cm.child_role = 'owner' THEN (
+            SELECT COUNT(*)
+            FROM family_invitations fi
+            WHERE fi.child_id = c.id
+              AND fi.accepted_at IS NULL
+              AND fi.revoked_at IS NULL
+              AND fi.expires_at > NOW()
+          )
+          ELSE 0
+        END AS pending_invitation_count
 
       FROM family_members fm
 
