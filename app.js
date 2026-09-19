@@ -24,6 +24,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
   process.env.WEBSITE_URL,
   "http://localhost:3000",
+  "http://localhost:3001",
   "http://localhost:8081",
   "https://joinnelo.app",
   "https://www.joinnelo.app",
