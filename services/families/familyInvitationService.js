@@ -607,8 +607,188 @@ async function revokeFamilyInvitation({ childId, invitationId, userId }) {
   }
 }
 
+async function getChildSharing({ childId, userId }) {
+  if (!isValidUuid(childId)) {
+    throw createServiceError(
+      "INVALID_CHILD_ID",
+      "The child ID is invalid.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query(
+      "BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY",
+    );
+
+    /*
+     * Vérifie que l'utilisateur possède toujours un accès actif à l'enfant
+     * et récupère son rôle.
+     */
+    const accessResult = await client.query(
+      `
+        SELECT
+          c.id AS child_id,
+          c.family_id,
+          cm.child_role AS current_user_role
+        FROM children c
+
+        INNER JOIN families f
+          ON f.id = c.family_id
+          AND f.deleted_at IS NULL
+
+        INNER JOIN children_members cm
+          ON cm.child_id = c.id
+          AND cm.revoked_at IS NULL
+
+        INNER JOIN family_members fm
+          ON fm.id = cm.family_member_id
+          AND fm.family_id = c.family_id
+          AND fm.user_id = $2
+          AND fm.removed_at IS NULL
+
+        WHERE c.id = $1
+          AND c.deleted_at IS NULL
+
+        LIMIT 1
+      `,
+      [childId, userId],
+    );
+
+    if (accessResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_NOT_FOUND_OR_FORBIDDEN",
+        "The child was not found or you do not have access to this profile.",
+        404,
+      );
+    }
+
+    const access = accessResult.rows[0];
+    const canManageMembers = access.current_user_role === "owner";
+
+    /*
+     * Récupère tous les membres possédant encore un accès actif.
+     */
+    const membersResult = await client.query(
+      `
+        SELECT
+          u.id AS user_id,
+          cm.id AS child_member_id,
+
+          COALESCE(
+            NULLIF(TRIM(u.display_name), ''),
+            SPLIT_PART(u.email, '@', 1)
+          ) AS first_name,
+
+          cm.child_role,
+          cm.relationship_type,
+          cm.relationship_label,
+          cm.joined_at
+
+        FROM children_members cm
+
+        INNER JOIN family_members fm
+          ON fm.id = cm.family_member_id
+          AND fm.family_id = $2
+          AND fm.removed_at IS NULL
+
+        INNER JOIN users u
+          ON u.id = fm.user_id
+          AND u.deleted_at IS NULL
+          AND u.status = 'active'
+
+        WHERE cm.child_id = $1
+          AND cm.revoked_at IS NULL
+
+        ORDER BY
+          CASE
+            WHEN cm.child_role = 'owner' THEN 0
+            ELSE 1
+          END,
+          cm.joined_at ASC,
+          cm.id ASC
+      `,
+      [childId, access.family_id],
+    );
+
+    const members = membersResult.rows.map((row) => ({
+      id: row.user_id,
+      childMemberId: row.child_member_id,
+      firstName: row.first_name,
+      role: row.child_role,
+      relationshipType: row.relationship_type,
+      relationshipLabel: row.relationship_label,
+      joinedAt: row.joined_at,
+    }));
+
+    /*
+     * Seul le propriétaire reçoit les invitations en attente.
+     * Le token et son hash ne sont jamais retournés.
+     */
+    let pendingInvitations = [];
+
+    if (canManageMembers) {
+      const invitationsResult = await client.query(
+        `
+          SELECT
+            id,
+            email,
+            child_role,
+            relationship_type,
+            relationship_label,
+            expires_at,
+            created_at
+
+          FROM family_invitations
+
+          WHERE child_id = $1
+            AND family_id = $2
+            AND accepted_at IS NULL
+            AND revoked_at IS NULL
+            AND expires_at > NOW()
+
+          ORDER BY
+            created_at DESC,
+            id DESC
+        `,
+        [childId, access.family_id],
+      );
+
+      pendingInvitations = invitationsResult.rows.map((row) => ({
+        id: row.id,
+        email: row.email,
+        childRole: row.child_role,
+        relationshipType: row.relationship_type,
+        relationshipLabel: row.relationship_label,
+        expiresAt: row.expires_at,
+        createdAt: row.created_at,
+      }));
+    }
+
+    await client.query("COMMIT");
+
+    return {
+      currentUserRole: access.current_user_role,
+      canManageMembers,
+      memberCount: members.length,
+      pendingInvitationCount: pendingInvitations.length,
+      members,
+      pendingInvitations,
+    };
+  } catch (error) {
+    await client.query("ROLLBACK");
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   createFamilyInvitation,
+  getChildSharing,
   resendFamilyInvitation,
   revokeFamilyInvitation,
 };

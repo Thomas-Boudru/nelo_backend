@@ -17,6 +17,21 @@ async function createFamilyInvitation(req, res, next) {
   }
 }
 
+async function getChildSharing(req, res, next) {
+  try {
+    const sharing = await familyInvitationService.getChildSharing({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+    });
+
+    return res.status(200).json({
+      sharing,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 async function resendFamilyInvitation(req, res, next) {
   try {
     const invitation = await familyInvitationService.resendFamilyInvitation({
@@ -52,6 +67,7 @@ async function revokeFamilyInvitation(req, res, next) {
 
 module.exports = {
   createFamilyInvitation,
+  getChildSharing,
   resendFamilyInvitation,
   revokeFamilyInvitation,
 };
