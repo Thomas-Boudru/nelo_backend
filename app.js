@@ -20,9 +20,29 @@ app.set("trust proxy", 1);
 
 app.use(helmet());
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.WEBSITE_URL,
+  "http://localhost:3000",
+  "http://localhost:8081",
+  "https://joinnelo.app",
+  "https://www.joinnelo.app",
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:8081",
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      const error = new Error("This origin is not allowed.");
+      error.code = "CORS_ORIGIN_NOT_ALLOWED";
+      error.status = 403;
+
+      return callback(error);
+    },
+
     credentials: true,
   }),
 );
