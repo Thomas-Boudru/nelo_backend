@@ -292,6 +292,323 @@ async function createFamilyInvitation({ childId, userId, email, locale }) {
   }
 }
 
+async function resendFamilyInvitation({
+  childId,
+  invitationId,
+  userId,
+  locale,
+}) {
+  if (!isValidUuid(childId)) {
+    throw createServiceError(
+      "INVALID_CHILD_ID",
+      "The child ID is invalid.",
+      400,
+    );
+  }
+
+  if (!isValidUuid(invitationId)) {
+    throw createServiceError(
+      "INVALID_INVITATION_ID",
+      "The invitation ID is invalid.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    /*
+     * Vérifie que l'utilisateur connecté est propriétaire de l'enfant.
+     * L'enfant est verrouillé pendant le renouvellement de l'invitation.
+     */
+    const childResult = await client.query(
+      `
+        SELECT
+          c.id,
+          c.family_id,
+          c.display_name,
+          u.email AS inviter_email,
+          u.display_name AS inviter_name
+        FROM children c
+        INNER JOIN children_members cm
+          ON cm.child_id = c.id
+          AND cm.revoked_at IS NULL
+        INNER JOIN family_members fm
+          ON fm.id = cm.family_member_id
+          AND fm.family_id = c.family_id
+          AND fm.removed_at IS NULL
+        INNER JOIN users u
+          ON u.id = fm.user_id
+          AND u.deleted_at IS NULL
+          AND u.status = 'active'
+        WHERE c.id = $1
+          AND c.deleted_at IS NULL
+          AND fm.user_id = $2
+          AND cm.child_role = 'owner'
+        LIMIT 1
+        FOR UPDATE OF c
+      `,
+      [childId, userId],
+    );
+
+    if (childResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_NOT_FOUND_OR_FORBIDDEN",
+        "The child was not found or you cannot manage invitations for this profile.",
+        403,
+      );
+    }
+
+    const child = childResult.rows[0];
+
+    /*
+     * Verrouille l'invitation pour empêcher deux renvois simultanés.
+     * On ne filtre pas ici sur revoked_at ou accepted_at afin de pouvoir
+     * retourner une erreur précise.
+     */
+    const invitationResult = await client.query(
+      `
+        SELECT
+          id,
+          family_id,
+          child_id,
+          email,
+          child_role,
+          relationship_type,
+          relationship_label,
+          accepted_at,
+          revoked_at,
+          expires_at,
+          created_at
+        FROM family_invitations
+        WHERE id = $1
+          AND child_id = $2
+          AND family_id = $3
+        LIMIT 1
+        FOR UPDATE
+      `,
+      [invitationId, child.id, child.family_id],
+    );
+
+    if (invitationResult.rowCount === 0) {
+      throw createServiceError(
+        "INVITATION_NOT_FOUND",
+        "The invitation was not found.",
+        404,
+      );
+    }
+
+    const existingInvitation = invitationResult.rows[0];
+
+    if (existingInvitation.accepted_at) {
+      throw createServiceError(
+        "INVITATION_ALREADY_ACCEPTED",
+        "This invitation has already been accepted.",
+        409,
+      );
+    }
+
+    if (existingInvitation.revoked_at) {
+      throw createServiceError(
+        "INVITATION_ALREADY_REVOKED",
+        "This invitation has already been cancelled.",
+        409,
+      );
+    }
+
+    /*
+     * Le token précédent devient immédiatement invalide.
+     * L'identifiant de l'invitation reste identique.
+     */
+    const rawToken = createInvitationToken();
+    const tokenHash = hashInvitationToken(rawToken);
+    const inviteUrl = createInvitationUrl(rawToken);
+
+    const updatedInvitationResult = await client.query(
+      `
+        UPDATE family_invitations
+        SET
+          token_hash = $1,
+          expires_at = NOW() + ($2 * INTERVAL '1 day'),
+          invited_by_user_id = $3
+        WHERE id = $4
+        RETURNING
+          id,
+          family_id,
+          child_id,
+          email,
+          child_role,
+          relationship_type,
+          relationship_label,
+          expires_at,
+          created_at
+      `,
+      [tokenHash, INVITATION_DURATION_DAYS, userId, existingInvitation.id],
+    );
+
+    const updatedInvitation = updatedInvitationResult.rows[0];
+
+    /*
+     * Si l'envoi échoue, le changement de token est annulé.
+     * L'ancien token reste donc utilisable jusqu'à son expiration.
+     */
+    await sendFamilyInvitationEmail({
+      email: updatedInvitation.email,
+      inviterName: child.inviter_name || child.inviter_email.split("@")[0],
+      childName: child.display_name,
+      inviteUrl,
+      locale,
+    });
+
+    await client.query("COMMIT");
+
+    return mapInvitation(updatedInvitation, inviteUrl);
+  } catch (error) {
+    await client.query("ROLLBACK");
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
+async function revokeFamilyInvitation({ childId, invitationId, userId }) {
+  if (!isValidUuid(childId)) {
+    throw createServiceError(
+      "INVALID_CHILD_ID",
+      "The child ID is invalid.",
+      400,
+    );
+  }
+
+  if (!isValidUuid(invitationId)) {
+    throw createServiceError(
+      "INVALID_INVITATION_ID",
+      "The invitation ID is invalid.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    /*
+     * Vérifie que l'utilisateur connecté est propriétaire de l'enfant.
+     */
+    const childResult = await client.query(
+      `
+        SELECT
+          c.id,
+          c.family_id
+        FROM children c
+        INNER JOIN children_members cm
+          ON cm.child_id = c.id
+          AND cm.revoked_at IS NULL
+        INNER JOIN family_members fm
+          ON fm.id = cm.family_member_id
+          AND fm.family_id = c.family_id
+          AND fm.removed_at IS NULL
+        WHERE c.id = $1
+          AND c.deleted_at IS NULL
+          AND fm.user_id = $2
+          AND cm.child_role = 'owner'
+        LIMIT 1
+        FOR UPDATE OF c
+      `,
+      [childId, userId],
+    );
+
+    if (childResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_NOT_FOUND_OR_FORBIDDEN",
+        "The child was not found or you cannot manage invitations for this profile.",
+        403,
+      );
+    }
+
+    const child = childResult.rows[0];
+
+    const invitationResult = await client.query(
+      `
+        SELECT
+          id,
+          accepted_at,
+          revoked_at
+        FROM family_invitations
+        WHERE id = $1
+          AND child_id = $2
+          AND family_id = $3
+        LIMIT 1
+        FOR UPDATE
+      `,
+      [invitationId, child.id, child.family_id],
+    );
+
+    if (invitationResult.rowCount === 0) {
+      throw createServiceError(
+        "INVITATION_NOT_FOUND",
+        "The invitation was not found.",
+        404,
+      );
+    }
+
+    const invitation = invitationResult.rows[0];
+
+    if (invitation.accepted_at) {
+      throw createServiceError(
+        "INVITATION_ALREADY_ACCEPTED",
+        "This invitation has already been accepted.",
+        409,
+      );
+    }
+
+    if (invitation.revoked_at) {
+      throw createServiceError(
+        "INVITATION_ALREADY_REVOKED",
+        "This invitation has already been cancelled.",
+        409,
+      );
+    }
+
+    const revokedInvitationResult = await client.query(
+      `
+        UPDATE family_invitations
+        SET revoked_at = NOW()
+        WHERE id = $1
+        RETURNING
+          id,
+          child_id,
+          email,
+          revoked_at
+      `,
+      [invitation.id],
+    );
+
+    await client.query("COMMIT");
+
+    const revokedInvitation = revokedInvitationResult.rows[0];
+
+    return {
+      id: revokedInvitation.id,
+      childId: revokedInvitation.child_id,
+      email: revokedInvitation.email,
+      revokedAt: revokedInvitation.revoked_at,
+    };
+  } catch (error) {
+    await client.query("ROLLBACK");
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   createFamilyInvitation,
+  resendFamilyInvitation,
+  revokeFamilyInvitation,
 };
