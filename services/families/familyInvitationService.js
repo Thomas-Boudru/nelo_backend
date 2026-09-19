@@ -292,6 +292,88 @@ async function createFamilyInvitation({ childId, userId, email, locale }) {
   }
 }
 
+async function getFamilyInvitationPreview({ token }) {
+  const normalizedToken = String(token || "").trim();
+
+  /*
+   * Un token créé avec randomBytes(32).toString("base64url")
+   * contient normalement 43 caractères.
+   */
+  if (!normalizedToken || !/^[A-Za-z0-9_-]{43}$/.test(normalizedToken)) {
+    throw createServiceError(
+      "INVALID_INVITATION_TOKEN",
+      "The invitation link is invalid.",
+      400,
+    );
+  }
+
+  const tokenHash = hashInvitationToken(normalizedToken);
+
+  const invitationResult = await pool.query(
+    `
+      SELECT
+        fi.accepted_at,
+        fi.revoked_at,
+        fi.expires_at,
+
+        c.display_name AS child_name,
+
+        NULLIF(
+          TRIM(inviter.display_name),
+          ''
+        ) AS inviter_name
+
+      FROM family_invitations fi
+
+      INNER JOIN families f
+        ON f.id = fi.family_id
+        AND f.deleted_at IS NULL
+
+      INNER JOIN children c
+        ON c.id = fi.child_id
+        AND c.family_id = fi.family_id
+        AND c.deleted_at IS NULL
+
+      LEFT JOIN users inviter
+        ON inviter.id = fi.invited_by_user_id
+        AND inviter.deleted_at IS NULL
+        AND inviter.status = 'active'
+
+      WHERE fi.token_hash = $1
+
+      LIMIT 1
+    `,
+    [tokenHash],
+  );
+
+  if (invitationResult.rowCount === 0) {
+    throw createServiceError(
+      "INVITATION_NOT_FOUND",
+      "The invitation link is invalid.",
+      404,
+    );
+  }
+
+  const invitation = invitationResult.rows[0];
+
+  let status = "pending";
+
+  if (invitation.accepted_at) {
+    status = "accepted";
+  } else if (invitation.revoked_at) {
+    status = "revoked";
+  } else if (new Date(invitation.expires_at).getTime() <= Date.now()) {
+    status = "expired";
+  }
+
+  return {
+    status,
+    inviterFirstName: invitation.inviter_name || null,
+    childFirstName: invitation.child_name,
+    expiresAt: invitation.expires_at,
+  };
+}
+
 async function resendFamilyInvitation({
   childId,
   invitationId,
@@ -943,6 +1025,7 @@ async function removeChildMember({ childId, childMemberId, userId }) {
 module.exports = {
   createFamilyInvitation,
   getChildSharing,
+  getFamilyInvitationPreview,
   removeChildMember,
   resendFamilyInvitation,
   revokeFamilyInvitation,

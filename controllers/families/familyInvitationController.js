@@ -17,6 +17,22 @@ async function createFamilyInvitation(req, res, next) {
   }
 }
 
+async function getFamilyInvitationPreview(req, res, next) {
+  try {
+    const invitation = await familyInvitationService.getFamilyInvitationPreview(
+      {
+        token: req.query?.token,
+      },
+    );
+
+    return res.status(200).json({
+      invitation,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 async function getChildSharing(req, res, next) {
   try {
     const sharing = await familyInvitationService.getChildSharing({
@@ -83,6 +99,7 @@ async function removeChildMember(req, res, next) {
 
 module.exports = {
   createFamilyInvitation,
+  getFamilyInvitationPreview,
   getChildSharing,
   removeChildMember,
   resendFamilyInvitation,

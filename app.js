@@ -12,6 +12,7 @@ const childrenRoutes = require("./routes/children/childrenRoutes");
 const onboardingRoutes = require("./routes/onboarding/onboardingRoutes");
 const userRoutes = require("./routes/users/userRoutes");
 const familyInvitationRoutes = require("./routes/families/familyInvitationRoutes");
+const publicInvitationRoutes = require("./routes/families/publicInvitationRoutes");
 
 const app = express();
 
@@ -67,6 +68,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/children", childrenRoutes);
 app.use("/api/children", familyInvitationRoutes);
 app.use("/api/onboarding", onboardingRoutes);
+app.use("/api/invitations", publicInvitationRoutes);
 app.use("/api", userRoutes);
 
 // Route inconnue
