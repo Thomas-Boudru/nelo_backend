@@ -118,6 +118,7 @@ async function acceptFamilyInvitation(req, res, next) {
       invitationId: req.params.invitationId,
       userId: req.auth.userId,
       relationshipType: req.body?.relationshipType,
+      displayName: req.body?.displayName,
     });
 
     return res.status(200).json(result);

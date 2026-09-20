@@ -1128,6 +1128,7 @@ async function acceptFamilyInvitation({
   invitationId,
   userId,
   relationshipType,
+  displayName,
 }) {
   if (!isValidUuid(invitationId)) {
     throw createServiceError(
@@ -1157,15 +1158,15 @@ async function acceptFamilyInvitation({
     await client.query("BEGIN");
 
     /*
-     * Récupère l'utilisateur authentifié.
-     * L'adresse utilisée pour la comparaison vient exclusivement
-     * de la session authentifiée.
+     * Récupère et verrouille l'utilisateur authentifié.
      */
     const userResult = await client.query(
       `
         SELECT
           id,
-          email
+          email,
+          display_name,
+          onboarding_completed_at
         FROM users
         WHERE id = $1
           AND deleted_at IS NULL
@@ -1185,6 +1186,30 @@ async function acceptFamilyInvitation({
     }
 
     const user = userResult.rows[0];
+
+    /*
+     * Un utilisateur existant conserve son prénom.
+     * Un nouvel utilisateur utilise celui saisi dans ParentNameScreen.
+     */
+    const normalizedDisplayName = String(
+      displayName || user.display_name || "",
+    ).trim();
+
+    if (!normalizedDisplayName) {
+      throw createServiceError(
+        "MISSING_DISPLAY_NAME",
+        "A display name is required.",
+        400,
+      );
+    }
+
+    if (normalizedDisplayName.length > 40) {
+      throw createServiceError(
+        "DISPLAY_NAME_TOO_LONG",
+        "The display name cannot exceed 40 characters.",
+        400,
+      );
+    }
 
     /*
      * Verrouille l'invitation afin d'empêcher deux acceptations
@@ -1235,10 +1260,6 @@ async function acceptFamilyInvitation({
 
     const invitation = invitationResult.rows[0];
 
-    /*
-     * Même si quelqu'un connaît l'UUID de l'invitation,
-     * il ne peut pas l'accepter avec une autre adresse.
-     */
     if (normalizeEmail(invitation.email) !== normalizeEmail(user.email)) {
       throw createServiceError(
         "INVITATION_EMAIL_MISMATCH",
@@ -1272,11 +1293,8 @@ async function acceptFamilyInvitation({
     }
 
     /*
-     * Réutilise l'appartenance active à la famille si elle existe.
-     * Sinon, crée une nouvelle appartenance.
-     *
-     * Les anciennes lignes avec removed_at ne sont pas effacées :
-     * elles restent disponibles pour l'historique.
+     * Crée l'appartenance à la famille ou réutilise
+     * l'appartenance active existante.
      */
     const familyMemberResult = await client.query(
       `
@@ -1311,9 +1329,8 @@ async function acceptFamilyInvitation({
     const familyMember = familyMemberResult.rows[0];
 
     /*
-     * Crée l'accès actif à l'enfant.
-     * relationship_label reste toujours NULL conformément
-     * à ta migration actuelle.
+     * Crée l'accès à l'enfant.
+     * relationship_label reste toujours NULL.
      */
     const childMemberResult = await client.query(
       `
@@ -1363,8 +1380,35 @@ async function acceptFamilyInvitation({
     const childMember = childMemberResult.rows[0];
 
     /*
-     * L'invitation est finalisée uniquement après la création
-     * réussie des accès.
+     * Enregistre le prénom et termine l'onboarding.
+     */
+    const updatedUserResult = await client.query(
+      `
+        UPDATE users
+        SET
+          display_name = $2,
+          onboarding_completed_at = COALESCE(
+            onboarding_completed_at,
+            NOW()
+          ),
+          updated_at = NOW()
+        WHERE id = $1
+        RETURNING
+          id,
+          email,
+          display_name,
+          locale,
+          timezone,
+          status,
+          onboarding_completed_at
+      `,
+      [userId, normalizedDisplayName],
+    );
+
+    const updatedUser = updatedUserResult.rows[0];
+
+    /*
+     * Finalise l'invitation après la création des accès.
      */
     const acceptedInvitationResult = await client.query(
       `
@@ -1380,9 +1424,9 @@ async function acceptFamilyInvitation({
       [invitation.id, userId],
     );
 
-    await client.query("COMMIT");
-
     const acceptedInvitation = acceptedInvitationResult.rows[0];
+
+    await client.query("COMMIT");
 
     return {
       invitation: {
@@ -1397,6 +1441,16 @@ async function acceptFamilyInvitation({
         childMemberId: childMember.id,
         relationshipType: childMember.relationship_type,
         relationshipLabel: null,
+      },
+
+      user: {
+        id: updatedUser.id,
+        email: updatedUser.email,
+        displayName: updatedUser.display_name,
+        locale: updatedUser.locale,
+        timezone: updatedUser.timezone,
+        status: updatedUser.status,
+        onboardingCompletedAt: updatedUser.onboarding_completed_at,
       },
     };
   } catch (error) {
