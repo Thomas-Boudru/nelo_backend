@@ -6,6 +6,16 @@ const { sendFamilyInvitationEmail } = require("../email/emailService");
 
 const INVITATION_DURATION_DAYS = 7;
 
+const ALLOWED_RELATIONSHIP_TYPES = new Set([
+  "mother",
+  "father",
+  "parent",
+  "grandparent",
+  "family_or_friend",
+  "caregiver",
+  "other",
+]);
+
 function createServiceError(code, message, status) {
   const error = new Error(message);
 
@@ -1022,10 +1032,387 @@ async function removeChildMember({ childId, childMemberId, userId }) {
   }
 }
 
+async function getPendingFamilyInvitations({ userId }) {
+  if (!isValidUuid(userId)) {
+    throw createServiceError("INVALID_USER_ID", "The user ID is invalid.", 400);
+  }
+
+  /*
+   * L'adresse e-mail provient exclusivement de l'utilisateur
+   * authentifié. Elle n'est jamais fournie par le frontend.
+   */
+  const userResult = await pool.query(
+    `
+      SELECT
+        id,
+        email
+      FROM users
+      WHERE id = $1
+        AND deleted_at IS NULL
+        AND status = 'active'
+      LIMIT 1
+    `,
+    [userId],
+  );
+
+  if (userResult.rowCount === 0) {
+    throw createServiceError(
+      "USER_NOT_FOUND",
+      "The authenticated user was not found.",
+      404,
+    );
+  }
+
+  const normalizedEmail = normalizeEmail(userResult.rows[0].email);
+
+  const invitationsResult = await pool.query(
+    `
+      SELECT
+        fi.id,
+        fi.child_id,
+        fi.child_role,
+        fi.relationship_type,
+        fi.relationship_label,
+        fi.expires_at,
+        fi.created_at,
+
+        c.display_name AS child_name,
+
+        NULLIF(
+          TRIM(inviter.display_name),
+          ''
+        ) AS inviter_name
+
+      FROM family_invitations fi
+
+      INNER JOIN families f
+        ON f.id = fi.family_id
+        AND f.deleted_at IS NULL
+
+      INNER JOIN children c
+        ON c.id = fi.child_id
+        AND c.family_id = fi.family_id
+        AND c.deleted_at IS NULL
+
+      LEFT JOIN users inviter
+        ON inviter.id = fi.invited_by_user_id
+        AND inviter.deleted_at IS NULL
+        AND inviter.status = 'active'
+
+      WHERE LOWER(fi.email) = $1
+        AND fi.accepted_at IS NULL
+        AND fi.revoked_at IS NULL
+        AND fi.expires_at > NOW()
+
+      ORDER BY
+        fi.created_at DESC,
+        fi.id DESC
+    `,
+    [normalizedEmail],
+  );
+
+  return invitationsResult.rows.map((row) => ({
+    id: row.id,
+    childId: row.child_id,
+    childFirstName: row.child_name,
+    inviterFirstName: row.inviter_name,
+    childRole: row.child_role,
+    relationshipType: row.relationship_type,
+    relationshipLabel: row.relationship_label,
+    expiresAt: row.expires_at,
+    createdAt: row.created_at,
+  }));
+}
+
+async function acceptFamilyInvitation({
+  invitationId,
+  userId,
+  relationshipType,
+}) {
+  if (!isValidUuid(invitationId)) {
+    throw createServiceError(
+      "INVALID_INVITATION_ID",
+      "The invitation ID is invalid.",
+      400,
+    );
+  }
+
+  if (!isValidUuid(userId)) {
+    throw createServiceError("INVALID_USER_ID", "The user ID is invalid.", 400);
+  }
+
+  const normalizedRelationshipType = String(relationshipType || "").trim();
+
+  if (!ALLOWED_RELATIONSHIP_TYPES.has(normalizedRelationshipType)) {
+    throw createServiceError(
+      "INVALID_RELATIONSHIP_TYPE",
+      "The relationship type is invalid.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    /*
+     * Récupère l'utilisateur authentifié.
+     * L'adresse utilisée pour la comparaison vient exclusivement
+     * de la session authentifiée.
+     */
+    const userResult = await client.query(
+      `
+        SELECT
+          id,
+          email
+        FROM users
+        WHERE id = $1
+          AND deleted_at IS NULL
+          AND status = 'active'
+        LIMIT 1
+        FOR UPDATE
+      `,
+      [userId],
+    );
+
+    if (userResult.rowCount === 0) {
+      throw createServiceError(
+        "USER_NOT_FOUND",
+        "The authenticated user was not found.",
+        404,
+      );
+    }
+
+    const user = userResult.rows[0];
+
+    /*
+     * Verrouille l'invitation afin d'empêcher deux acceptations
+     * simultanées.
+     */
+    const invitationResult = await client.query(
+      `
+        SELECT
+          fi.id,
+          fi.family_id,
+          fi.child_id,
+          fi.invited_by_user_id,
+          fi.email,
+          fi.child_role,
+          fi.accepted_at,
+          fi.accepted_by_user_id,
+          fi.revoked_at,
+          fi.expires_at,
+
+          c.display_name AS child_name
+
+        FROM family_invitations fi
+
+        INNER JOIN families f
+          ON f.id = fi.family_id
+          AND f.deleted_at IS NULL
+
+        INNER JOIN children c
+          ON c.id = fi.child_id
+          AND c.family_id = fi.family_id
+          AND c.deleted_at IS NULL
+
+        WHERE fi.id = $1
+
+        LIMIT 1
+        FOR UPDATE OF fi
+      `,
+      [invitationId],
+    );
+
+    if (invitationResult.rowCount === 0) {
+      throw createServiceError(
+        "INVITATION_NOT_FOUND",
+        "The invitation was not found.",
+        404,
+      );
+    }
+
+    const invitation = invitationResult.rows[0];
+
+    /*
+     * Même si quelqu'un connaît l'UUID de l'invitation,
+     * il ne peut pas l'accepter avec une autre adresse.
+     */
+    if (normalizeEmail(invitation.email) !== normalizeEmail(user.email)) {
+      throw createServiceError(
+        "INVITATION_EMAIL_MISMATCH",
+        "This invitation was sent to another email address.",
+        403,
+      );
+    }
+
+    if (invitation.accepted_at) {
+      throw createServiceError(
+        "INVITATION_ALREADY_ACCEPTED",
+        "This invitation has already been accepted.",
+        409,
+      );
+    }
+
+    if (invitation.revoked_at) {
+      throw createServiceError(
+        "INVITATION_REVOKED",
+        "This invitation has been cancelled.",
+        409,
+      );
+    }
+
+    if (new Date(invitation.expires_at).getTime() <= Date.now()) {
+      throw createServiceError(
+        "INVITATION_EXPIRED",
+        "This invitation has expired.",
+        410,
+      );
+    }
+
+    /*
+     * Réutilise l'appartenance active à la famille si elle existe.
+     * Sinon, crée une nouvelle appartenance.
+     *
+     * Les anciennes lignes avec removed_at ne sont pas effacées :
+     * elles restent disponibles pour l'historique.
+     */
+    const familyMemberResult = await client.query(
+      `
+        INSERT INTO family_members (
+          family_id,
+          user_id,
+          family_role,
+          created_by_user_id
+        )
+        VALUES (
+          $1,
+          $2,
+          'contributor',
+          $3
+        )
+
+        ON CONFLICT (family_id, user_id)
+        WHERE removed_at IS NULL
+
+        DO UPDATE SET
+          updated_at = NOW()
+
+        RETURNING
+          id,
+          family_id,
+          user_id,
+          family_role
+      `,
+      [invitation.family_id, userId, invitation.invited_by_user_id],
+    );
+
+    const familyMember = familyMemberResult.rows[0];
+
+    /*
+     * Crée l'accès actif à l'enfant.
+     * relationship_label reste toujours NULL conformément
+     * à ta migration actuelle.
+     */
+    const childMemberResult = await client.query(
+      `
+        INSERT INTO children_members (
+          child_id,
+          family_member_id,
+          child_role,
+          relationship_type,
+          relationship_label,
+          created_by_user_id
+        )
+        VALUES (
+          $1,
+          $2,
+          $3,
+          $4,
+          NULL,
+          $5
+        )
+
+        ON CONFLICT (child_id, family_member_id)
+        WHERE revoked_at IS NULL
+
+        DO UPDATE SET
+          relationship_type = EXCLUDED.relationship_type,
+          relationship_label = NULL,
+          updated_at = NOW()
+
+        RETURNING
+          id,
+          child_id,
+          family_member_id,
+          child_role,
+          relationship_type,
+          relationship_label,
+          joined_at
+      `,
+      [
+        invitation.child_id,
+        familyMember.id,
+        invitation.child_role,
+        normalizedRelationshipType,
+        invitation.invited_by_user_id,
+      ],
+    );
+
+    const childMember = childMemberResult.rows[0];
+
+    /*
+     * L'invitation est finalisée uniquement après la création
+     * réussie des accès.
+     */
+    const acceptedInvitationResult = await client.query(
+      `
+        UPDATE family_invitations
+        SET
+          accepted_at = NOW(),
+          accepted_by_user_id = $2
+        WHERE id = $1
+        RETURNING
+          id,
+          accepted_at
+      `,
+      [invitation.id, userId],
+    );
+
+    await client.query("COMMIT");
+
+    const acceptedInvitation = acceptedInvitationResult.rows[0];
+
+    return {
+      invitation: {
+        id: acceptedInvitation.id,
+        acceptedAt: acceptedInvitation.accepted_at,
+      },
+
+      child: {
+        id: invitation.child_id,
+        displayName: invitation.child_name,
+        role: childMember.child_role,
+        childMemberId: childMember.id,
+        relationshipType: childMember.relationship_type,
+        relationshipLabel: null,
+      },
+    };
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
+  acceptFamilyInvitation,
   createFamilyInvitation,
   getChildSharing,
   getFamilyInvitationPreview,
+  getPendingFamilyInvitations,
   removeChildMember,
   resendFamilyInvitation,
   revokeFamilyInvitation,

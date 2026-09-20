@@ -33,6 +33,21 @@ async function getFamilyInvitationPreview(req, res, next) {
   }
 }
 
+async function getPendingFamilyInvitations(req, res, next) {
+  try {
+    const invitations =
+      await familyInvitationService.getPendingFamilyInvitations({
+        userId: req.auth.userId,
+      });
+
+    return res.status(200).json({
+      invitations,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 async function getChildSharing(req, res, next) {
   try {
     const sharing = await familyInvitationService.getChildSharing({
@@ -97,10 +112,26 @@ async function removeChildMember(req, res, next) {
   }
 }
 
+async function acceptFamilyInvitation(req, res, next) {
+  try {
+    const result = await familyInvitationService.acceptFamilyInvitation({
+      invitationId: req.params.invitationId,
+      userId: req.auth.userId,
+      relationshipType: req.body?.relationshipType,
+    });
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
+  acceptFamilyInvitation,
   createFamilyInvitation,
-  getFamilyInvitationPreview,
   getChildSharing,
+  getFamilyInvitationPreview,
+  getPendingFamilyInvitations,
   removeChildMember,
   resendFamilyInvitation,
   revokeFamilyInvitation,
