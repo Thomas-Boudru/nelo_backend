@@ -821,38 +821,41 @@ async function verifyLoginCode({
 
       user = createdUserResult.rows[0];
 
-      await client.query(
-        `
-      INSERT INTO user_identities (
-        user_id,
-        provider,
-        provider_subject,
-        provider_email,
-        email_verified_at,
-        last_used_at
-      )
-      VALUES (
-        $1,
-        'email',
-        $2,
-        $2,
-        NOW(),
-        NOW()
-      )
+     await client.query(
+  `
+    INSERT INTO user_identities (
+      user_id,
+      provider,
+      provider_subject,
+      provider_email,
+      email_verified_at,
+      last_used_at
+    )
+    VALUES (
+      $1,
+      'email',
+      $2,
+      $3,
+      NOW(),
+      NOW()
+    )
 
-      ON CONFLICT (provider, provider_subject)
+    ON CONFLICT (provider, provider_subject)
 
-      DO UPDATE SET
-        provider_email = EXCLUDED.provider_email,
-        email_verified_at = COALESCE(
-          user_identities.email_verified_at,
-          EXCLUDED.email_verified_at
-        ),
-        last_used_at = NOW()
-    `,
-        [user.id, normalizedEmail],
-      );
-    }
+    DO UPDATE SET
+      provider_email = EXCLUDED.provider_email,
+      email_verified_at = COALESCE(
+        user_identities.email_verified_at,
+        EXCLUDED.email_verified_at
+      ),
+      last_used_at = NOW()
+  `,
+  [
+    user.id,
+    normalizedEmail,
+    normalizedEmail,
+  ],
+);
 
     if (user.status === "suspended") {
       throw createAuthError(
