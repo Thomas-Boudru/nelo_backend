@@ -821,8 +821,8 @@ async function verifyLoginCode({
 
       user = createdUserResult.rows[0];
 
-     await client.query(
-  `
+      await client.query(
+        `
     INSERT INTO user_identities (
       user_id,
       provider,
@@ -850,12 +850,9 @@ async function verifyLoginCode({
       ),
       last_used_at = NOW()
   `,
-  [
-    user.id,
-    normalizedEmail,
-    normalizedEmail,
-  ],
-);
+        [user.id, normalizedEmail, normalizedEmail],
+      );
+    }
 
     if (user.status === "suspended") {
       throw createAuthError(
