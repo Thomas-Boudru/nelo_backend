@@ -4,30 +4,27 @@ const {
   updateNotificationPreferencesForUser,
 } = require("../../services/users/notificationPreferencesService");
 
-function sendError(res, error) {
-  console.error("Notification preferences error:", error);
-
-  return res.status(500).json({
-    error: "Unable to save notification preferences",
-  });
-}
-
-async function getNotificationPreferences(req, res) {
+async function getNotificationPreferences(req, res, next) {
   try {
-    const preferences = await getNotificationPreferencesForUser(req.user.id);
+    const preferences = await getNotificationPreferencesForUser(
+      req.auth.userId,
+    );
 
-    return res.json({ preferences });
+    return res.status(200).json({ preferences });
   } catch (error) {
-    return sendError(res, error);
+    return next(error);
   }
 }
 
-async function updateNotificationPreferences(req, res) {
+async function updateNotificationPreferences(req, res, next) {
   const changes = req.body;
 
   if (!changes || typeof changes !== "object" || Array.isArray(changes)) {
     return res.status(400).json({
-      error: "Invalid notification preferences",
+      error: {
+        code: "INVALID_NOTIFICATION_PREFERENCES",
+        message: "Invalid notification preferences.",
+      },
     });
   }
 
@@ -41,19 +38,22 @@ async function updateNotificationPreferences(req, res) {
     )
   ) {
     return res.status(400).json({
-      error: "Invalid notification preferences",
+      error: {
+        code: "INVALID_NOTIFICATION_PREFERENCES",
+        message: "Invalid notification preferences.",
+      },
     });
   }
 
   try {
     const preferences = await updateNotificationPreferencesForUser(
-      req.user.id,
+      req.auth.userId,
       changes,
     );
 
-    return res.json({ preferences });
+    return res.status(200).json({ preferences });
   } catch (error) {
-    return sendError(res, error);
+    return next(error);
   }
 }
 
