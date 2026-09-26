@@ -8,19 +8,29 @@ const ALLOWED_FIELDS = [
   "important_shared_activity_enabled",
 ];
 
+const RETURNING_FIELDS = `
+  notifications_enabled,
+  tracking_reminders_enabled,
+  daily_tip_enabled,
+  invitation_accepted_enabled,
+  important_shared_activity_enabled
+`;
+
 async function getNotificationPreferencesForUser(userId) {
-  const { rows } = await pool.query(
+  await pool.query(
     `
       INSERT INTO user_notification_preferences (user_id)
       VALUES ($1)
-      ON CONFLICT (user_id) DO UPDATE
-        SET user_id = EXCLUDED.user_id
-      RETURNING
-        notifications_enabled,
-        tracking_reminders_enabled,
-        daily_tip_enabled,
-        invitation_accepted_enabled,
-        important_shared_activity_enabled
+      ON CONFLICT (user_id) DO NOTHING
+    `,
+    [userId],
+  );
+
+  const { rows } = await pool.query(
+    `
+      SELECT ${RETURNING_FIELDS}
+      FROM user_notification_preferences
+      WHERE user_id = $1
     `,
     [userId],
   );
@@ -30,13 +40,16 @@ async function getNotificationPreferencesForUser(userId) {
 
 async function updateNotificationPreferencesForUser(userId, changes) {
   const fields = Object.keys(changes);
-  const values = fields.map((field) => changes[field]);
 
+  // Les noms des colonnes viennent uniquement de la liste autorisée
+  // vérifiée dans le controller.
   const assignments = fields
     .map((field, index) => `${field} = $${index + 2}`)
     .join(", ");
 
-  const { rows } = await pool.query(
+  const values = fields.map((field) => changes[field]);
+
+  await pool.query(
     `
       INSERT INTO user_notification_preferences (user_id)
       VALUES ($1)
@@ -45,23 +58,17 @@ async function updateNotificationPreferencesForUser(userId, changes) {
     [userId],
   );
 
-  // L'INSERT garantit qu'une ligne existe aussi pour un nouveau compte.
-  const result = await pool.query(
+  const { rows } = await pool.query(
     `
       UPDATE user_notification_preferences
       SET ${assignments}, updated_at = now()
       WHERE user_id = $1
-      RETURNING
-        notifications_enabled,
-        tracking_reminders_enabled,
-        daily_tip_enabled,
-        invitation_accepted_enabled,
-        important_shared_activity_enabled
+      RETURNING ${RETURNING_FIELDS}
     `,
     [userId, ...values],
   );
 
-  return result.rows[0];
+  return rows[0];
 }
 
 module.exports = {
