@@ -90,6 +90,7 @@ app.use("/api/children", childrenRoutes);
 app.use("/api/children", familyInvitationRoutes);
 app.use("/api/onboarding", onboardingRoutes);
 app.use("/api/invitations", publicInvitationRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api", userRoutes);
 
 // Route inconnue
