@@ -11,6 +11,7 @@ const {
   getCurrentUser,
   updatePreferredName,
   deleteCurrentUser,
+  getAccountDeletionCheck,
 } = require("../../controllers/users/userController");
 
 const {
