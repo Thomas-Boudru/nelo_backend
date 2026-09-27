@@ -2,6 +2,25 @@ const pool = require("../../db/pool");
 
 const SUPPORTED_LANGUAGES = new Set(["en", "fr", "de", "es", "it", "nl", "pt"]);
 
+const PREFERENCE_FIELDS = {
+  languageCode: {
+    column: "language_code",
+    isValid: (value) => value === null || SUPPORTED_LANGUAGES.has(value),
+  },
+  weightUnit: {
+    column: "weight_unit",
+    isValid: (value) => value === "kg" || value === "lb",
+  },
+  lengthUnit: {
+    column: "length_unit",
+    isValid: (value) => value === "cm" || value === "in",
+  },
+  temperatureUnit: {
+    column: "temperature_unit",
+    isValid: (value) => value === "c" || value === "f",
+  },
+};
+
 function createServiceError(code, message, status) {
   const error = new Error(message);
   error.code = code;
@@ -44,38 +63,54 @@ async function getUserPreferences(userId) {
 }
 
 async function updateUserPreferences(userId, changes) {
+  if (!changes || typeof changes !== "object" || Array.isArray(changes)) {
+    throw createServiceError(
+      "INVALID_USER_PREFERENCES",
+      "Invalid user preferences.",
+      400,
+    );
+  }
+
+  const entries = Object.entries(changes);
+
   if (
-    !changes ||
-    typeof changes !== "object" ||
-    Array.isArray(changes) ||
-    !Object.prototype.hasOwnProperty.call(changes, "languageCode") ||
-    Object.keys(changes).some((key) => key !== "languageCode")
+    entries.length === 0 ||
+    entries.some(
+      ([field, value]) =>
+        !PREFERENCE_FIELDS[field] || !PREFERENCE_FIELDS[field].isValid(value),
+    )
   ) {
     throw createServiceError(
       "INVALID_USER_PREFERENCES",
-      "Only languageCode can be updated.",
+      "One or more user preferences are invalid.",
       400,
     );
   }
 
-  const { languageCode } = changes;
+  // Crée la ligne avec ses valeurs par défaut si elle manque.
+  await pool.query(
+    `
+      INSERT INTO user_preferences (user_id)
+      VALUES ($1)
+      ON CONFLICT (user_id) DO NOTHING
+    `,
+    [userId],
+  );
 
-  if (languageCode !== null && !SUPPORTED_LANGUAGES.has(languageCode)) {
-    throw createServiceError(
-      "INVALID_LANGUAGE_CODE",
-      "Choose a supported language or null for the device language.",
-      400,
-    );
-  }
+  // Les noms de colonnes viennent exclusivement de PREFERENCE_FIELDS.
+  // Les valeurs utilisateur restent des paramètres SQL.
+  const assignments = entries.map(
+    ([field], index) => `${PREFERENCE_FIELDS[field].column} = $${index + 2}`,
+  );
+
+  const values = [userId, ...entries.map(([, value]) => value)];
 
   const result = await pool.query(
     `
-      INSERT INTO user_preferences (user_id, language_code)
-      VALUES ($1, $2)
-      ON CONFLICT (user_id)
-      DO UPDATE SET
-        language_code = EXCLUDED.language_code,
-        updated_at = NOW()
+      UPDATE user_preferences
+      SET ${assignments.join(", ")},
+          updated_at = NOW()
+      WHERE user_id = $1
       RETURNING
         language_code,
         weight_unit,
@@ -85,7 +120,7 @@ async function updateUserPreferences(userId, changes) {
         crash_reports_enabled,
         ai_improvement_enabled
     `,
-    [userId, languageCode],
+    values,
   );
 
   return mapPreferences(result.rows[0]);
