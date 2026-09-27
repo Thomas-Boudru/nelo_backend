@@ -19,6 +19,18 @@ const PREFERENCE_FIELDS = {
     column: "temperature_unit",
     isValid: (value) => value === "c" || value === "f",
   },
+  analyticsEnabled: {
+    column: "analytics_enabled",
+    isValid: (value) => typeof value === "boolean",
+  },
+  crashReportsEnabled: {
+    column: "crash_reports_enabled",
+    isValid: (value) => typeof value === "boolean",
+  },
+  aiImprovementEnabled: {
+    column: "ai_improvement_enabled",
+    isValid: (value) => typeof value === "boolean",
+  },
 };
 
 function createServiceError(code, message, status) {
@@ -87,7 +99,7 @@ async function updateUserPreferences(userId, changes) {
     );
   }
 
-  // Crée la ligne avec ses valeurs par défaut si elle manque.
+  // Crée les préférences par défaut si ce compte n'a pas encore de ligne.
   await pool.query(
     `
       INSERT INTO user_preferences (user_id)
@@ -97,8 +109,8 @@ async function updateUserPreferences(userId, changes) {
     [userId],
   );
 
-  // Les noms de colonnes viennent exclusivement de PREFERENCE_FIELDS.
-  // Les valeurs utilisateur restent des paramètres SQL.
+  // Seuls les noms de colonnes définis dans PREFERENCE_FIELDS
+  // peuvent être insérés dans la requête SQL.
   const assignments = entries.map(
     ([field], index) => `${PREFERENCE_FIELDS[field].column} = $${index + 2}`,
   );
