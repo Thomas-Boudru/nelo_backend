@@ -40,7 +40,17 @@ async function updatePreferredName(req, res, next) {
   }
 }
 
+async function deleteCurrentUser(req, res, next) {
+  try {
+    const result = await userService.softDeleteCurrentUser(req.auth.userId);
+    return res.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   getCurrentUser,
   updatePreferredName,
+  deleteCurrentUser,
 };

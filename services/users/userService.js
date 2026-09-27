@@ -89,7 +89,64 @@ async function updatePreferredName(userId, displayName) {
   return getCurrentUser(userId);
 }
 
+async function softDeleteCurrentUser(userId) {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    const result = await client.query(
+      `
+        UPDATE users
+        SET deleted_at = NOW(),
+            updated_at = NOW()
+        WHERE id = $1
+          AND deleted_at IS NULL
+        RETURNING id
+      `,
+      [userId],
+    );
+
+    if (result.rowCount === 0) {
+      const error = new Error("Account not found.");
+      error.code = "USER_NOT_FOUND";
+      error.status = 404;
+      throw error;
+    }
+
+    await client.query(
+      `
+        UPDATE user_sessions
+        SET revoked_at = COALESCE(revoked_at, NOW())
+        WHERE user_id = $1
+          AND revoked_at IS NULL
+      `,
+      [userId],
+    );
+
+    await client.query(
+      `
+        UPDATE email_change_requests
+        SET consumed_at = NOW()
+        WHERE user_id = $1
+          AND consumed_at IS NULL
+      `,
+      [userId],
+    );
+
+    await client.query("COMMIT");
+
+    return { deleted: true };
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   getCurrentUser,
   updatePreferredName,
+  softDeleteCurrentUser,
 };

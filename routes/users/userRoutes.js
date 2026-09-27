@@ -10,6 +10,7 @@ const {
 const {
   getCurrentUser,
   updatePreferredName,
+  deleteCurrentUser,
 } = require("../../controllers/users/userController");
 
 const {
@@ -34,6 +35,8 @@ router.patch("/me", authenticate, updatePreferredName);
 
 router.post("/me/email-change/request", authenticate, requestEmailChange);
 router.post("/me/email-change/verify", authenticate, verifyEmailChange);
+
+router.delete("/me", authenticate, deleteCurrentUser);
 
 router.get(
   "/me/notification-preferences",
