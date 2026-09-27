@@ -19,6 +19,12 @@ const PREFERENCE_FIELDS = {
     column: "temperature_unit",
     isValid: (value) => value === "c" || value === "f",
   },
+
+  volumeUnit: {
+    column: "volume_unit",
+    isValid: (value) => value === "ml" || value === "fl_oz",
+  },
+
   analyticsEnabled: {
     column: "analytics_enabled",
     isValid: (value) => typeof value === "boolean",
@@ -49,6 +55,7 @@ function mapPreferences(row) {
     analyticsEnabled: row.analytics_enabled,
     crashReportsEnabled: row.crash_reports_enabled,
     aiImprovementEnabled: row.ai_improvement_enabled,
+    volumeUnit: row.volume_unit,
   };
 }
 
@@ -64,6 +71,7 @@ async function getUserPreferences(userId) {
         weight_unit,
         length_unit,
         temperature_unit,
+        volume_unit,
         analytics_enabled,
         crash_reports_enabled,
         ai_improvement_enabled
@@ -128,6 +136,7 @@ async function updateUserPreferences(userId, changes) {
         weight_unit,
         length_unit,
         temperature_unit,
+        volume_unit,
         analytics_enabled,
         crash_reports_enabled,
         ai_improvement_enabled
