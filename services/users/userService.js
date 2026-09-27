@@ -95,24 +95,176 @@ async function softDeleteCurrentUser(userId) {
   try {
     await client.query("BEGIN");
 
-    const result = await client.query(
+    const userResult = await client.query(
       `
-        UPDATE users
-        SET deleted_at = NOW(),
-            updated_at = NOW()
+        SELECT id
+        FROM users
         WHERE id = $1
           AND deleted_at IS NULL
-        RETURNING id
+          AND status = 'active'
+        FOR UPDATE
       `,
       [userId],
     );
 
-    if (result.rowCount === 0) {
+    if (userResult.rowCount === 0) {
       const error = new Error("Account not found.");
       error.code = "USER_NOT_FOUND";
       error.status = 404;
       throw error;
     }
+
+    /*
+     * Pour chaque enfant dont cet utilisateur est propriétaire :
+     * - compter les autres membres actifs ;
+     * - compter les autres propriétaires actifs.
+     *
+     * Le verrou sur children évite qu'une modification concurrente
+     * du profil intervienne pendant cette décision.
+     */
+    const ownedChildrenResult = await client.query(
+      `
+        SELECT
+          c.id,
+          (
+            SELECT COUNT(*)::integer
+            FROM children_members cm
+            INNER JOIN family_members fm
+              ON fm.id = cm.family_member_id
+            INNER JOIN users u
+              ON u.id = fm.user_id
+            WHERE cm.child_id = c.id
+              AND cm.revoked_at IS NULL
+              AND fm.removed_at IS NULL
+              AND u.deleted_at IS NULL
+              AND u.status = 'active'
+              AND u.id <> $1
+          ) AS other_members_count,
+          (
+            SELECT COUNT(*)::integer
+            FROM children_members cm
+            INNER JOIN family_members fm
+              ON fm.id = cm.family_member_id
+            INNER JOIN users u
+              ON u.id = fm.user_id
+            WHERE cm.child_id = c.id
+              AND cm.child_role = 'owner'
+              AND cm.revoked_at IS NULL
+              AND fm.removed_at IS NULL
+              AND u.deleted_at IS NULL
+              AND u.status = 'active'
+              AND u.id <> $1
+          ) AS other_owners_count
+        FROM children c
+        INNER JOIN children_members own_membership
+          ON own_membership.child_id = c.id
+        INNER JOIN family_members own_family_membership
+          ON own_family_membership.id = own_membership.family_member_id
+        WHERE own_family_membership.user_id = $1
+          AND own_family_membership.removed_at IS NULL
+          AND own_membership.revoked_at IS NULL
+          AND own_membership.child_role = 'owner'
+          AND c.deleted_at IS NULL
+        FOR UPDATE OF c
+      `,
+      [userId],
+    );
+
+    const ownedChildren = ownedChildrenResult.rows;
+
+    const childNeedingTransfer = ownedChildren.find(
+      (child) =>
+        child.other_members_count > 0 && child.other_owners_count === 0,
+    );
+
+    if (childNeedingTransfer) {
+      const error = new Error(
+        "Transfer ownership of your shared child profiles before deleting your account.",
+      );
+      error.code = "CHILD_OWNERSHIP_TRANSFER_REQUIRED";
+      error.status = 409;
+      throw error;
+    }
+
+    const childrenToDelete = ownedChildren
+      .filter((child) => child.other_members_count === 0)
+      .map((child) => child.id);
+
+    if (childrenToDelete.length > 0) {
+      await client.query(
+        `
+          UPDATE children
+          SET deleted_at = NOW(),
+              deleted_by_user_id = $1,
+              updated_at = NOW()
+          WHERE id = ANY($2::uuid[])
+            AND deleted_at IS NULL
+        `,
+        [userId, childrenToDelete],
+      );
+    }
+
+    // Retirer cet utilisateur des profils enfant.
+    await client.query(
+      `
+        UPDATE children_members cm
+        SET revoked_at = NOW(),
+            updated_at = NOW()
+        FROM family_members fm
+        WHERE cm.family_member_id = fm.id
+          AND fm.user_id = $1
+          AND cm.revoked_at IS NULL
+      `,
+      [userId],
+    );
+
+    // Retirer cet utilisateur de ses familles.
+    await client.query(
+      `
+        UPDATE family_members
+        SET removed_at = NOW(),
+            updated_at = NOW()
+        WHERE user_id = $1
+          AND removed_at IS NULL
+      `,
+      [userId],
+    );
+
+    // Marquer les familles sans membre actif comme supprimées.
+    await client.query(
+      `
+        UPDATE families f
+        SET deleted_at = NOW(),
+            updated_at = NOW()
+        WHERE f.deleted_at IS NULL
+          AND f.id IN (
+            SELECT family_id
+            FROM family_members
+            WHERE user_id = $1
+          )
+          AND NOT EXISTS (
+            SELECT 1
+            FROM family_members fm
+            INNER JOIN users u
+              ON u.id = fm.user_id
+            WHERE fm.family_id = f.id
+              AND fm.removed_at IS NULL
+              AND u.deleted_at IS NULL
+              AND u.status = 'active'
+          )
+      `,
+      [userId],
+    );
+
+    await client.query(
+      `
+        UPDATE email_change_requests
+        SET consumed_at = NOW()
+        WHERE user_id = $1
+          AND consumed_at IS NULL
+      `,
+      [userId],
+    );
 
     await client.query(
       `
@@ -126,10 +278,10 @@ async function softDeleteCurrentUser(userId) {
 
     await client.query(
       `
-        UPDATE email_change_requests
-        SET consumed_at = NOW()
-        WHERE user_id = $1
-          AND consumed_at IS NULL
+        UPDATE users
+        SET deleted_at = NOW(),
+            updated_at = NOW()
+        WHERE id = $1
       `,
       [userId],
     );
