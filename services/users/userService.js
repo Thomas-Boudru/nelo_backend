@@ -47,6 +47,49 @@ async function getCurrentUser(userId) {
   };
 }
 
+async function updatePreferredName(userId, displayName) {
+  if (typeof displayName !== "string") {
+    const error = new Error("Preferred name must be text.");
+    error.status = 400;
+    error.code = "INVALID_PREFERRED_NAME";
+    throw error;
+  }
+
+  const normalizedName = displayName.trim();
+
+  if (normalizedName.length === 0 || normalizedName.length > 80) {
+    const error = new Error(
+      "Preferred name must contain between 1 and 80 characters.",
+    );
+    error.status = 400;
+    error.code = "INVALID_PREFERRED_NAME";
+    throw error;
+  }
+
+  const result = await pool.query(
+    `
+      UPDATE users
+      SET display_name = $2,
+          updated_at = NOW()
+      WHERE id = $1
+        AND deleted_at IS NULL
+        AND status = 'active'
+      RETURNING id
+    `,
+    [userId, normalizedName],
+  );
+
+  if (result.rowCount === 0) {
+    const error = new Error("The user could not be found.");
+    error.status = 404;
+    error.code = "USER_NOT_FOUND";
+    throw error;
+  }
+
+  return getCurrentUser(userId);
+}
+
 module.exports = {
   getCurrentUser,
+  updatePreferredName,
 };

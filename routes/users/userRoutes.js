@@ -2,7 +2,10 @@ const express = require("express");
 
 const authenticate = require("../../middleware/authenticate");
 
-const { getCurrentUser } = require("../../controllers/users/userController");
+const {
+  getCurrentUser,
+  updatePreferredName,
+} = require("../../controllers/users/userController");
 
 const {
   getUserPreferences,
@@ -21,6 +24,8 @@ router.get("/me", authenticate, getCurrentUser);
 router.get("/me/preferences", authenticate, getUserPreferences);
 
 router.patch("/me/preferences", authenticate, updateUserPreferences);
+
+router.patch("/me", authenticate, updatePreferredName);
 
 router.get(
   "/me/notification-preferences",
