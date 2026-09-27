@@ -12,6 +12,7 @@ const {
   updateChild,
   updateChildPreferences,
   updateCurrentUserRelationship,
+  deleteChild,
 } = require("../../controllers/children/childrenController");
 
 const router = express.Router();
@@ -40,5 +41,6 @@ router.patch(
 );
 
 router.delete("/:childId/avatar", authenticate, removeChildAvatar);
+router.delete("/:childId", authenticate, deleteChild);
 
 module.exports = router;

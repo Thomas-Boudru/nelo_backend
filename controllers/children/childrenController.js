@@ -129,6 +129,19 @@ async function updateCurrentUserRelationship(req, res, next) {
   }
 }
 
+async function deleteChild(req, res, next) {
+  try {
+    const result = await childrenService.deleteChild({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+    });
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   createChild,
   getAccessibleChildren,
@@ -137,4 +150,5 @@ module.exports = {
   updateChild,
   updateChildPreferences,
   updateCurrentUserRelationship,
+  deleteChild,
 };

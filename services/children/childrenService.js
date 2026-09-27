@@ -1142,10 +1142,115 @@ async function updateChildPreferences({ childId, userId, data }) {
   }
 }
 
+async function deleteChild({ childId, userId }) {
+  if (!childId) {
+    throw createServiceError(
+      "MISSING_CHILD_ID",
+      "The child ID is required.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    // Verrouille le profil : deux suppressions simultanées ne peuvent
+    // pas toutes les deux réussir.
+    const childResult = await client.query(
+      `
+        SELECT id, family_id
+        FROM children
+        WHERE id = $1
+          AND deleted_at IS NULL
+        FOR UPDATE
+      `,
+      [childId],
+    );
+
+    if (childResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_NOT_FOUND",
+        "The child could not be found.",
+        404,
+      );
+    }
+
+    const ownerResult = await client.query(
+      `
+        SELECT cm.id
+        FROM children_members cm
+        JOIN family_members fm
+          ON fm.id = cm.family_member_id
+         AND fm.removed_at IS NULL
+        JOIN families f
+          ON f.id = fm.family_id
+         AND f.deleted_at IS NULL
+        JOIN users u
+          ON u.id = fm.user_id
+         AND u.deleted_at IS NULL
+         AND u.status = 'active'
+        WHERE cm.child_id = $1
+          AND fm.family_id = $2
+          AND fm.user_id = $3
+          AND cm.child_role = 'owner'
+          AND cm.revoked_at IS NULL
+        LIMIT 1
+      `,
+      [childId, childResult.rows[0].family_id, userId],
+    );
+
+    if (ownerResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_OWNER_REQUIRED",
+        "Only a profile owner can delete this child profile.",
+        403,
+      );
+    }
+
+    await client.query(
+      `
+        UPDATE children
+        SET deleted_at = NOW(),
+            deleted_by_user_id = $2,
+            updated_at = NOW(),
+            updated_by_user_id = $2
+        WHERE id = $1
+          AND deleted_at IS NULL
+      `,
+      [childId, userId],
+    );
+
+    // Une invitation encore ouverte ne doit plus pouvoir donner accès
+    // à ce profil.
+    await client.query(
+      `
+        UPDATE family_invitations
+        SET revoked_at = NOW()
+        WHERE child_id = $1
+          AND accepted_at IS NULL
+          AND revoked_at IS NULL
+      `,
+      [childId],
+    );
+
+    await client.query("COMMIT");
+
+    return { childId, deleted: true };
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   createChild,
   getAccessibleChildren,
   updateChild,
   updateChildPreferences,
   updateCurrentUserRelationship,
+  deleteChild,
 };
