@@ -324,20 +324,20 @@ async function verifyEmailChange({ userId, email, code }) {
      */
     await client.query(
       `
-        INSERT INTO user_identities (
-          user_id,
-          provider,
-          provider_subject,
-          provider_email,
-          email_verified_at
-        )
-        VALUES ($1, 'email', $2, $2, NOW())
-        ON CONFLICT (user_id, provider)
-        DO UPDATE SET
-          provider_subject = EXCLUDED.provider_subject,
-          provider_email = EXCLUDED.provider_email,
-          email_verified_at = NOW()
-      `,
+    INSERT INTO user_identities (
+      user_id,
+      provider,
+      provider_subject,
+      provider_email,
+      email_verified_at
+    )
+    VALUES ($1, 'email', $2::varchar(255), $2::text, NOW())
+    ON CONFLICT (user_id, provider)
+    DO UPDATE SET
+      provider_subject = EXCLUDED.provider_subject,
+      provider_email = EXCLUDED.provider_email,
+      email_verified_at = NOW()
+  `,
       [userId, newEmail],
     );
 
