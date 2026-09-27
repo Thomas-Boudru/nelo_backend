@@ -38,6 +38,8 @@ router.post("/me/email-change/verify", authenticate, verifyEmailChange);
 
 router.delete("/me", authenticate, deleteCurrentUser);
 
+router.get("/me/account-deletion-check", authenticate, getAccountDeletionCheck);
+
 router.get(
   "/me/notification-preferences",
   authenticate,

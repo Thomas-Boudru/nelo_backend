@@ -49,8 +49,18 @@ async function deleteCurrentUser(req, res, next) {
   }
 }
 
+async function getAccountDeletionCheck(req, res, next) {
+  try {
+    const result = await userService.getAccountDeletionCheck(req.auth.userId);
+    return res.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   getCurrentUser,
   updatePreferredName,
   deleteCurrentUser,
+  getAccountDeletionCheck,
 };

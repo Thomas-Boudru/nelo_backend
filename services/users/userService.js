@@ -297,8 +297,70 @@ async function softDeleteCurrentUser(userId) {
   }
 }
 
+async function getAccountDeletionCheck(userId) {
+  const result = await pool.query(
+    `
+      SELECT DISTINCT
+        c.id AS child_id,
+        c.display_name AS child_name
+      FROM children c
+      JOIN children_members mine
+        ON mine.child_id = c.id
+       AND mine.revoked_at IS NULL
+      JOIN family_members my_family_member
+        ON my_family_member.id = mine.family_member_id
+       AND my_family_member.user_id = $1
+       AND my_family_member.removed_at IS NULL
+      WHERE c.deleted_at IS NULL
+        AND mine.child_role = 'owner'
+
+        -- Un autre membre conserve l'accès à cet enfant.
+        AND EXISTS (
+          SELECT 1
+          FROM children_members other_member
+          JOIN family_members other_family_member
+            ON other_family_member.id = other_member.family_member_id
+          JOIN users other_user
+            ON other_user.id = other_family_member.user_id
+          WHERE other_member.child_id = c.id
+            AND other_member.revoked_at IS NULL
+            AND other_family_member.removed_at IS NULL
+            AND other_user.deleted_at IS NULL
+            AND other_family_member.user_id <> $1
+        )
+
+        -- Aucun autre membre n'est encore propriétaire.
+        AND NOT EXISTS (
+          SELECT 1
+          FROM children_members other_owner
+          JOIN family_members other_owner_family_member
+            ON other_owner_family_member.id = other_owner.family_member_id
+          JOIN users other_owner_user
+            ON other_owner_user.id = other_owner_family_member.user_id
+          WHERE other_owner.child_id = c.id
+            AND other_owner.child_role = 'owner'
+            AND other_owner.revoked_at IS NULL
+            AND other_owner_family_member.removed_at IS NULL
+            AND other_owner_user.deleted_at IS NULL
+            AND other_owner_family_member.user_id <> $1
+        )
+      ORDER BY child_name, child_id
+    `,
+    [userId],
+  );
+
+  return {
+    requiresOwnershipTransfer: result.rows.length > 0,
+    children: result.rows.map((row) => ({
+      id: row.child_id,
+      name: row.child_name,
+    })),
+  };
+}
+
 module.exports = {
   getCurrentUser,
   updatePreferredName,
   softDeleteCurrentUser,
+  getAccountDeletionCheck,
 };
