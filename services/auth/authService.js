@@ -152,6 +152,38 @@ function createAuthError(code, message, status = 401) {
   return error;
 }
 
+async function assertAccountNotDeleted({ email, provider, providerSubject }) {
+  const normalizedEmail = email ? normalizeEmail(email) : null;
+
+  const result = await pool.query(
+    `
+      SELECT 1
+      FROM users u
+      WHERE u.deleted_at IS NOT NULL
+        AND (
+          ($1::text IS NOT NULL AND LOWER(u.email) = $1::text)
+          OR EXISTS (
+            SELECT 1
+            FROM user_identities ui
+            WHERE ui.user_id = u.id
+              AND ui.provider = $2::text
+              AND ui.provider_subject = $3::text
+          )
+        )
+      LIMIT 1
+    `,
+    [normalizedEmail, provider || null, providerSubject || null],
+  );
+
+  if (result.rowCount > 0) {
+    throw createAuthError(
+      "ACCOUNT_DELETED",
+      "This account has been deleted.",
+      403,
+    );
+  }
+}
+
 function compareLoginCode(email, submittedCode, storedHash) {
   const submittedHash = hashLoginCode(email, submittedCode);
 
@@ -577,6 +609,13 @@ async function verifyLoginCode({
   googleIdToken,
 }) {
   const normalizedEmail = normalizeEmail(email);
+
+  await assertAccountNotDeleted({
+    email: normalizedEmail,
+    provider: "email",
+    providerSubject: normalizedEmail,
+  });
+
   const googleIdentity = googleIdToken
     ? await verifyGoogleIdentityToken(googleIdToken)
     : null;
@@ -962,6 +1001,12 @@ async function signInWithApple({
 
   const appleIdentity = await verifyAppleIdentityToken(identityToken, nonce);
 
+  await assertAccountNotDeleted({
+    email: appleIdentity.email,
+    provider: "apple",
+    providerSubject: appleIdentity.subject,
+  });
+
   const appleTokens = await exchangeAppleAuthorizationCode(authorizationCode);
 
   const encryptedAppleRefreshToken = encryptOauthToken(
@@ -1269,6 +1314,13 @@ async function signInWithGoogle({
   userAgent,
 }) {
   const googleIdentity = await verifyGoogleIdentityToken(idToken);
+
+  await assertAccountNotDeleted({
+    email: googleIdentity.email,
+    provider: "google",
+    providerSubject: googleIdentity.subject,
+  });
+
   const client = await pool.connect();
   let transactionOpen = false;
 
