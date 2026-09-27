@@ -3,6 +3,10 @@ const { Resend } = require("resend");
 const { createLoginCodeEmail } = require("./templates/loginCodeEmail");
 
 const {
+  createEmailChangeCodeEmail,
+} = require("./templates/emailChangeCodeEmail");
+
+const {
   createFamilyInvitationEmail,
 } = require("./templates/familyInvitationEmail");
 
@@ -105,7 +109,39 @@ async function sendFamilyInvitationEmail({
   return data;
 }
 
+async function sendEmailChangeCodeEmail({ email, code, locale }) {
+  if (process.env.EMAIL_DELIVERY_MODE === "log") {
+    console.log(`Development email change code for ${email}: ${code}`);
+    return;
+  }
+
+  if (!process.env.AUTH_EMAIL_FROM) {
+    throw new Error("Missing AUTH_EMAIL_FROM environment variable.");
+  }
+
+  const content = createEmailChangeCodeEmail({ code, locale });
+  const resend = getResendClient();
+
+  const { data, error } = await resend.emails.send({
+    from: process.env.AUTH_EMAIL_FROM,
+    to: [email],
+    subject: content.subject,
+    html: content.html,
+    text: content.text,
+  });
+
+  if (error) {
+    const deliveryError = new Error("Unable to send the email change code.");
+    deliveryError.code = "EMAIL_DELIVERY_FAILED";
+    deliveryError.details = error;
+    throw deliveryError;
+  }
+
+  return data;
+}
+
 module.exports = {
   sendFamilyInvitationEmail,
   sendLoginCodeEmail,
+  sendEmailChangeCodeEmail,
 };
