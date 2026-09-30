@@ -4,7 +4,7 @@ const {
   getBottleEntry,
   createBottleEntry,
   updateBottleEntry,
-} = require("../../../controllers/tracking/bottle/bottleController");
+} = require("../../../controllers/tracking/feed/bottleController");
 
 const router = express.Router();
 
