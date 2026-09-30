@@ -14,6 +14,7 @@ const userRoutes = require("./routes/users/userRoutes");
 const familyInvitationRoutes = require("./routes/families/familyInvitationRoutes");
 const publicInvitationRoutes = require("./routes/families/publicInvitationRoutes");
 const childOwnershipRoutes = require("./routes/children/childOwnershipRoutes");
+const trackingRoutes = require("./routes/tracking");
 
 const app = express();
 
@@ -94,6 +95,7 @@ app.use("/api/invitations", publicInvitationRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api", userRoutes);
 app.use("/api/children", childOwnershipRoutes);
+app.use("/api/children", trackingRoutes);
 
 // Route inconnue
 app.use((req, res) => {

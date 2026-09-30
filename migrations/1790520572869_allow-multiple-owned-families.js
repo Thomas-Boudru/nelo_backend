@@ -1,7 +1,7 @@
 exports.up = (pgm) => {
-  pgm.dropIndex("family_members", "user_id", {
-    name: "family_members_user_unique_active_owner_idx",
-  });
+  pgm.sql(`
+    DROP INDEX IF EXISTS public.family_members_user_unique_active_owner_idx;
+  `);
 };
 
 exports.down = (pgm) => {
