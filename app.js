@@ -15,7 +15,6 @@ const familyInvitationRoutes = require("./routes/families/familyInvitationRoutes
 const publicInvitationRoutes = require("./routes/families/publicInvitationRoutes");
 const childOwnershipRoutes = require("./routes/children/childOwnershipRoutes");
 const trackingRoutes = require("./routes/tracking");
-
 const app = express();
 
 app.set("trust proxy", 1);
