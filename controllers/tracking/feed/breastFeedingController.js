@@ -1,4 +1,4 @@
-const service = require("../../../services/tracking/feed/breastfFeedingService");
+const service = require("../../../services/tracking/feed/breastFeedingService");
 
 async function getBreastfeedingEntry(req, res, next) {
   try {
