@@ -8,6 +8,9 @@ const bottlePresetRoutes = require("./feed/bottlePresetRoutes");
 const bottlePresetUpdateRoutes = require("./feed/bottlePresetUpdateRoutes");
 const breastfeedingRoutes = require("./feed/breastFeedingRoutes");
 const pumpingRoutes = require("./feed/pumpingRoutes");
+const customFoodRoutes = require("./feed/customFoodRoutes");
+const solidFeedingRoutes = require("./feed/solidFeedingRoutes");
+const trackingPhotoRoutes = require("./trackingPhotoRoutes");
 
 const router = express.Router();
 
@@ -19,5 +22,8 @@ router.use(bottlePresetRoutes);
 router.use(bottlePresetUpdateRoutes);
 router.use(breastfeedingRoutes);
 router.use(pumpingRoutes);
+router.use(customFoodRoutes);
+router.use(solidFeedingRoutes);
+router.use(trackingPhotoRoutes);
 
 module.exports = router;

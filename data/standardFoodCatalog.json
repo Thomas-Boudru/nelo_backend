@@ -1,0 +1,560 @@
+{
+  "banana": {
+    "translationKey": "Banana"
+  },
+  "avocado": {
+    "translationKey": "Avocado"
+  },
+  "apple": {
+    "translationKey": "Apple"
+  },
+  "pear": {
+    "translationKey": "Pear"
+  },
+  "strawberry": {
+    "translationKey": "Strawberry"
+  },
+  "raspberry": {
+    "translationKey": "Raspberry"
+  },
+  "blueberry": {
+    "translationKey": "Blueberry"
+  },
+  "blackberry": {
+    "translationKey": "Blackberry"
+  },
+  "grape": {
+    "translationKey": "Grape"
+  },
+  "peach": {
+    "translationKey": "Peach"
+  },
+  "nectarine": {
+    "translationKey": "Nectarine"
+  },
+  "apricot": {
+    "translationKey": "Apricot"
+  },
+  "plum": {
+    "translationKey": "Plum"
+  },
+  "cherry": {
+    "translationKey": "Cherry"
+  },
+  "orange": {
+    "translationKey": "Orange"
+  },
+  "mandarin": {
+    "translationKey": "Mandarin"
+  },
+  "clementine": {
+    "translationKey": "Clementine"
+  },
+  "lemon": {
+    "translationKey": "Lemon"
+  },
+  "kiwi": {
+    "translationKey": "Kiwi"
+  },
+  "mango": {
+    "translationKey": "Mango"
+  },
+  "pineapple": {
+    "translationKey": "Pineapple"
+  },
+  "papaya": {
+    "translationKey": "Papaya"
+  },
+  "melon": {
+    "translationKey": "Melon"
+  },
+  "watermelon": {
+    "translationKey": "Watermelon"
+  },
+  "pomegranate": {
+    "translationKey": "Pomegranate"
+  },
+  "fig": {
+    "translationKey": "Fig"
+  },
+  "date": {
+    "translationKey": "Date"
+  },
+  "coconut": {
+    "translationKey": "Coconut"
+  },
+  "carrot": {
+    "translationKey": "Carrot"
+  },
+  "zucchini": {
+    "translationKey": "Zucchini"
+  },
+  "sweet-potato": {
+    "translationKey": "Sweet potato"
+  },
+  "potato": {
+    "translationKey": "Potato"
+  },
+  "winter-squash": {
+    "translationKey": "Winter squash"
+  },
+  "red-kuri-squash": {
+    "translationKey": "Red kuri squash"
+  },
+  "butternut-squash": {
+    "translationKey": "Butternut squash"
+  },
+  "pumpkin": {
+    "translationKey": "Pumpkin"
+  },
+  "parsnip": {
+    "translationKey": "Parsnip"
+  },
+  "turnip": {
+    "translationKey": "Turnip"
+  },
+  "beetroot": {
+    "translationKey": "Beetroot"
+  },
+  "broccoli": {
+    "translationKey": "Broccoli"
+  },
+  "cauliflower": {
+    "translationKey": "Cauliflower"
+  },
+  "green-bean": {
+    "translationKey": "Green bean"
+  },
+  "pea": {
+    "translationKey": "Pea"
+  },
+  "spinach": {
+    "translationKey": "Spinach"
+  },
+  "leek": {
+    "translationKey": "Leek"
+  },
+  "celery": {
+    "translationKey": "Celery"
+  },
+  "fennel": {
+    "translationKey": "Fennel"
+  },
+  "eggplant": {
+    "translationKey": "Eggplant"
+  },
+  "bell-pepper": {
+    "translationKey": "Bell pepper"
+  },
+  "tomato": {
+    "translationKey": "Tomato"
+  },
+  "cucumber": {
+    "translationKey": "Cucumber"
+  },
+  "artichoke": {
+    "translationKey": "Artichoke"
+  },
+  "asparagus": {
+    "translationKey": "Asparagus"
+  },
+  "cabbage": {
+    "translationKey": "Cabbage"
+  },
+  "brussels-sprout": {
+    "translationKey": "Brussels sprout"
+  },
+  "corn": {
+    "translationKey": "Corn"
+  },
+  "mushroom": {
+    "translationKey": "Mushroom"
+  },
+  "onion": {
+    "translationKey": "Onion"
+  },
+  "garlic": {
+    "translationKey": "Garlic"
+  },
+  "endive": {
+    "translationKey": "Endive"
+  },
+  "lettuce": {
+    "translationKey": "Lettuce"
+  },
+  "kale": {
+    "translationKey": "Kale"
+  },
+  "swiss-chard": {
+    "translationKey": "Swiss chard"
+  },
+  "rutabaga": {
+    "translationKey": "Rutabaga"
+  },
+  "radish": {
+    "translationKey": "Radish"
+  },
+  "watercress": {
+    "translationKey": "Watercress"
+  },
+  "cassava": {
+    "translationKey": "Cassava"
+  },
+  "yam": {
+    "translationKey": "Yam"
+  },
+  "rice": {
+    "translationKey": "Rice"
+  },
+  "oat": {
+    "translationKey": "Oats"
+  },
+  "wheat": {
+    "translationKey": "Wheat"
+  },
+  "barley": {
+    "translationKey": "Barley"
+  },
+  "rye": {
+    "translationKey": "Rye"
+  },
+  "quinoa": {
+    "translationKey": "Quinoa"
+  },
+  "millet": {
+    "translationKey": "Millet"
+  },
+  "buckwheat": {
+    "translationKey": "Buckwheat"
+  },
+  "semolina": {
+    "translationKey": "Semolina"
+  },
+  "couscous": {
+    "translationKey": "Couscous"
+  },
+  "pasta": {
+    "translationKey": "Pasta"
+  },
+  "bread": {
+    "translationKey": "Bread"
+  },
+  "bulgur": {
+    "translationKey": "Bulgur"
+  },
+  "polenta": {
+    "translationKey": "Polenta"
+  },
+  "whole-wheat-bread": {
+    "translationKey": "Whole wheat bread"
+  },
+  "rusk": {
+    "translationKey": "Rusk"
+  },
+  "cracker": {
+    "translationKey": "Cracker"
+  },
+  "rice-cake": {
+    "translationKey": "Rice cake"
+  },
+  "baby-cereal": {
+    "translationKey": "Baby cereal"
+  },
+  "baby-porridge": {
+    "translationKey": "Baby porridge"
+  },
+  "lentil": {
+    "translationKey": "Lentils"
+  },
+  "red-lentil": {
+    "translationKey": "Red lentils"
+  },
+  "chickpea": {
+    "translationKey": "Chickpeas"
+  },
+  "white-bean": {
+    "translationKey": "White beans"
+  },
+  "kidney-bean": {
+    "translationKey": "Kidney beans"
+  },
+  "black-bean": {
+    "translationKey": "Black beans"
+  },
+  "split-pea": {
+    "translationKey": "Split peas"
+  },
+  "broad-bean": {
+    "translationKey": "Broad beans"
+  },
+  "soybean": {
+    "translationKey": "Soybeans"
+  },
+  "tofu": {
+    "translationKey": "Tofu"
+  },
+  "chicken": {
+    "translationKey": "Chicken"
+  },
+  "turkey": {
+    "translationKey": "Turkey"
+  },
+  "beef": {
+    "translationKey": "Beef"
+  },
+  "veal": {
+    "translationKey": "Veal"
+  },
+  "pork": {
+    "translationKey": "Pork"
+  },
+  "lamb": {
+    "translationKey": "Lamb"
+  },
+  "duck": {
+    "translationKey": "Duck"
+  },
+  "ham": {
+    "translationKey": "Ham"
+  },
+  "salmon": {
+    "translationKey": "Salmon"
+  },
+  "cod": {
+    "translationKey": "Cod"
+  },
+  "pollock": {
+    "translationKey": "Pollock"
+  },
+  "hake": {
+    "translationKey": "Hake"
+  },
+  "sole": {
+    "translationKey": "Sole"
+  },
+  "trout": {
+    "translationKey": "Trout"
+  },
+  "sardine": {
+    "translationKey": "Sardine"
+  },
+  "mackerel": {
+    "translationKey": "Mackerel"
+  },
+  "tuna": {
+    "translationKey": "Tuna"
+  },
+  "shrimp": {
+    "translationKey": "Shrimp"
+  },
+  "egg": {
+    "translationKey": "Egg"
+  },
+  "egg-yolk": {
+    "translationKey": "Egg yolk"
+  },
+  "egg-white": {
+    "translationKey": "Egg white"
+  },
+  "omelette": {
+    "translationKey": "Omelette"
+  },
+  "scrambled-egg": {
+    "translationKey": "Scrambled eggs"
+  },
+  "hard-boiled-egg": {
+    "translationKey": "Hard-boiled egg"
+  },
+  "plain-yogurt": {
+    "translationKey": "Plain yogurt"
+  },
+  "fruit-yogurt": {
+    "translationKey": "Fruit yogurt"
+  },
+  "fromage-blanc": {
+    "translationKey": "Fromage blanc"
+  },
+  "petit-suisse": {
+    "translationKey": "Petit-suisse"
+  },
+  "skyr": {
+    "translationKey": "Skyr"
+  },
+  "cottage-cheese": {
+    "translationKey": "Cottage cheese"
+  },
+  "ricotta": {
+    "translationKey": "Ricotta"
+  },
+  "mozzarella": {
+    "translationKey": "Mozzarella"
+  },
+  "cream-cheese": {
+    "translationKey": "Cream cheese"
+  },
+  "hard-cheese": {
+    "translationKey": "Hard cheese"
+  },
+  "cow-milk": {
+    "translationKey": "Cow's milk"
+  },
+  "goat-milk": {
+    "translationKey": "Goat's milk"
+  },
+  "peanut-butter": {
+    "translationKey": "Peanut butter"
+  },
+  "almond": {
+    "translationKey": "Almond"
+  },
+  "almond-butter": {
+    "translationKey": "Almond butter"
+  },
+  "walnut": {
+    "translationKey": "Walnut"
+  },
+  "cashew": {
+    "translationKey": "Cashew"
+  },
+  "hazelnut": {
+    "translationKey": "Hazelnut"
+  },
+  "pistachio": {
+    "translationKey": "Pistachio"
+  },
+  "sesame": {
+    "translationKey": "Sesame"
+  },
+  "tahini": {
+    "translationKey": "Tahini"
+  },
+  "chia-seed": {
+    "translationKey": "Chia seeds"
+  },
+  "flaxseed": {
+    "translationKey": "Flaxseeds"
+  },
+  "sunflower-seed": {
+    "translationKey": "Sunflower seeds"
+  },
+  "pumpkin-seed": {
+    "translationKey": "Pumpkin seeds"
+  },
+  "fruit-compote": {
+    "translationKey": "Fruit compote"
+  },
+  "apple-banana-compote": {
+    "translationKey": "Apple and banana compote"
+  },
+  "apple-pear-compote": {
+    "translationKey": "Apple and pear compote"
+  },
+  "vegetable-puree": {
+    "translationKey": "Vegetable puree"
+  },
+  "fruit-puree": {
+    "translationKey": "Fruit puree"
+  },
+  "carrot-potato-puree": {
+    "translationKey": "Carrot and potato puree"
+  },
+  "zucchini-potato-puree": {
+    "translationKey": "Zucchini and potato puree"
+  },
+  "sweet-potato-carrot-puree": {
+    "translationKey": "Sweet potato and carrot puree"
+  },
+  "broccoli-potato-puree": {
+    "translationKey": "Broccoli and potato puree"
+  },
+  "vegetable-soup": {
+    "translationKey": "Vegetable soup"
+  },
+  "porridge": {
+    "translationKey": "Porridge"
+  },
+  "rice-pudding": {
+    "translationKey": "Rice pudding"
+  },
+  "semolina-pudding": {
+    "translationKey": "Semolina pudding"
+  },
+  "pancake": {
+    "translationKey": "Pancake"
+  },
+  "crepe": {
+    "translationKey": "Crepe"
+  },
+  "waffle": {
+    "translationKey": "Waffle"
+  },
+  "french-toast": {
+    "translationKey": "French toast"
+  },
+  "muffin": {
+    "translationKey": "Muffin"
+  },
+  "vegetable-omelette": {
+    "translationKey": "Vegetable omelette"
+  },
+  "pasta-tomato-sauce": {
+    "translationKey": "Pasta with tomato sauce"
+  },
+  "shepherds-pie": {
+    "translationKey": "Cottage pie"
+  },
+  "risotto": {
+    "translationKey": "Risotto"
+  },
+  "vegetable-couscous": {
+    "translationKey": "Vegetable couscous"
+  },
+  "lentil-dal": {
+    "translationKey": "Lentil dal"
+  },
+  "hummus": {
+    "translationKey": "Hummus"
+  },
+  "olive-oil": {
+    "translationKey": "Olive oil"
+  },
+  "rapeseed-oil": {
+    "translationKey": "Rapeseed oil"
+  },
+  "sunflower-oil": {
+    "translationKey": "Sunflower oil"
+  },
+  "butter": {
+    "translationKey": "Butter"
+  },
+  "margarine": {
+    "translationKey": "Margarine"
+  },
+  "cream": {
+    "translationKey": "Cream"
+  },
+  "tomato-sauce": {
+    "translationKey": "Tomato sauce"
+  },
+  "vegetable-baby-food-jar": {
+    "translationKey": "Vegetable baby food jar"
+  },
+  "fruit-baby-food-jar": {
+    "translationKey": "Fruit baby food jar"
+  },
+  "meat-vegetable-baby-food-jar": {
+    "translationKey": "Meat and vegetable baby food jar"
+  },
+  "fish-vegetable-baby-food-jar": {
+    "translationKey": "Fish and vegetable baby food jar"
+  },
+  "fruit-puree-pouch": {
+    "translationKey": "Fruit puree pouch"
+  },
+  "baby-biscuit": {
+    "translationKey": "Baby biscuit"
+  },
+  "baby-puff-snack": {
+    "translationKey": "Baby puff snack"
+  }
+}

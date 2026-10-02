@@ -26,10 +26,10 @@
     "jsonwebtoken": "^9.0.3",
     "jwks-rsa": "^4.1.0",
     "morgan": "^1.9.1",
-    "multer": "^2.3.0",
+    "multer": "^2.4.0",
     "pg": "^8.0.0",
     "resend": "^6.25.0",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "zod": "^4.0.0"
   },
   "devDependencies": {
