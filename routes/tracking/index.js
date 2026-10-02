@@ -6,7 +6,7 @@ const trackingRoutes = require("./trackingRoutes");
 const bottleRoutes = require("./feed/bottleRoutes");
 const bottlePresetRoutes = require("./feed/bottlePresetRoutes");
 const bottlePresetUpdateRoutes = require("./feed/bottlePresetUpdateRoutes");
-const breastfeedingRoutes = require("./feed/breastfeedingRoutes");
+const breastfeedingRoutes = require("./feed/breastFeedingRoutes");
 
 const router = express.Router();
 
