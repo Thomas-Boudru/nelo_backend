@@ -13,6 +13,7 @@ const solidFeedingRoutes = require("./feed/solidFeedingRoutes");
 const trackingPhotoRoutes = require("./trackingPhotoRoutes");
 const sleepRoutes = require("./sleep/sleepRoutes");
 const toiletingRoutes = require("./diaper/toiletingRoutes");
+const moodRoutes = require("./mood/moodRoutes");
 
 const router = express.Router();
 
@@ -29,5 +30,6 @@ router.use(solidFeedingRoutes);
 router.use(trackingPhotoRoutes);
 router.use(sleepRoutes);
 router.use(toiletingRoutes);
+router.use(moodRoutes);
 
 module.exports = router;
