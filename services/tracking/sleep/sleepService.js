@@ -360,8 +360,320 @@ async function updateSleepEntry({ childId, userId, entryId, data }) {
   }
 }
 
+async function getActiveSleepEntry({ childId, userId }) {
+  await requireChildTrackingAccess({ childId, userId });
+
+  const result = await pool.query(
+    `
+      ${SELECT_SLEEP}
+      WHERE t.child_id = $1
+        AND t.entry_type = 'sleep'
+        AND t.ended_at IS NULL
+        AND t.deleted_at IS NULL
+      LIMIT 1
+    `,
+    [childId],
+  );
+
+  return result.rows[0] ? mapSleep(result.rows[0]) : null;
+}
+
+async function startSleepEntry({ childId, userId, data }) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw createTrackingError(
+      "INVALID_SLEEP_ENTRY",
+      "Invalid sleep entry.",
+      400,
+    );
+  }
+
+  if (!SLEEP_TYPES.includes(data.sleepType)) {
+    throw createTrackingError("INVALID_SLEEP_TYPE", "Invalid sleep type.", 400);
+  }
+
+  const startedAt = validateDate(data.startedAt, "start date");
+
+  if (Date.parse(startedAt) > Date.now()) {
+    throw createTrackingError(
+      "INVALID_SLEEP_DATE",
+      "Start time cannot be in the future.",
+      400,
+    );
+  }
+
+  const entryId = data.id ?? randomUUID();
+
+  validateUuid(entryId, "tracking entry ID");
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    await requireChildTrackingAccess({
+      childId,
+      userId,
+      write: true,
+      database: client,
+    });
+
+    const inserted = await client.query(
+      `
+        INSERT INTO tracking_entries (
+          id,
+          child_id,
+          entry_type,
+          started_at,
+          source,
+          created_by_user_id
+        )
+        VALUES ($1, $2, 'sleep', $3, 'timer', $4)
+        ON CONFLICT (id) DO NOTHING
+        RETURNING id
+      `,
+      [entryId, childId, startedAt, userId],
+    );
+
+    if (inserted.rowCount === 0) {
+      const existing = await readSleep(client, childId, entryId);
+
+      const sameStart =
+        existing &&
+        existing.source === "timer" &&
+        existing.created_by_user_id === userId.toLowerCase() &&
+        existing.sleep_type === data.sleepType &&
+        new Date(existing.started_at).toISOString() === startedAt;
+
+      if (!sameStart) {
+        throw createTrackingError(
+          "TRACKING_ENTRY_ID_CONFLICT",
+          "This tracking entry ID is already used.",
+          409,
+        );
+      }
+
+      // Une nouvelle tentative ne redémarre jamais le sommeil,
+      // même s'il a déjà été terminé ou supprimé.
+      await client.query("COMMIT");
+
+      return {
+        created: false,
+        entry: mapSleep(existing),
+      };
+    }
+
+    await client.query(
+      `
+        INSERT INTO sleep_details (
+          tracking_entry_id,
+          sleep_type
+        )
+        VALUES ($1, $2)
+      `,
+      [entryId, data.sleepType],
+    );
+
+    const row = await readSleep(client, childId, entryId);
+
+    await client.query("COMMIT");
+
+    return {
+      created: true,
+      entry: mapSleep(row),
+    };
+  } catch (error) {
+    await client.query("ROLLBACK");
+
+    if (
+      error.code === "23505" &&
+      error.constraint === "idx_tracking_entries_one_active_sleep"
+    ) {
+      throw createTrackingError(
+        "SLEEP_ALREADY_RUNNING",
+        "A sleep timer is already running for this child.",
+        409,
+      );
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
+async function stopSleepEntry({ childId, userId, entryId, data }) {
+  validateUuid(entryId, "tracking entry ID");
+
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw createTrackingError(
+      "INVALID_SLEEP_ENTRY",
+      "Invalid sleep entry.",
+      400,
+    );
+  }
+
+  const endedAt = validateDate(data.endedAt, "end date");
+
+  if (Date.parse(endedAt) > Date.now()) {
+    throw createTrackingError(
+      "INVALID_SLEEP_DATE",
+      "End time cannot be in the future.",
+      400,
+    );
+  }
+
+  if (!Number.isInteger(data.version) || data.version < 1) {
+    throw createTrackingError(
+      "INVALID_TRACKING_VERSION",
+      "A valid tracking version is required.",
+      400,
+    );
+  }
+
+  if (
+    data.note != null &&
+    (typeof data.note !== "string" || data.note.length > 10000)
+  ) {
+    throw createTrackingError(
+      "INVALID_SLEEP_NOTE",
+      "The note must not exceed 10000 characters.",
+      400,
+    );
+  }
+
+  const note = data.note?.trim() || null;
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    await requireChildTrackingAccess({
+      childId,
+      userId,
+      write: true,
+      database: client,
+    });
+
+    const locked = await client.query(
+      `
+        SELECT *
+        FROM tracking_entries
+        WHERE id = $1
+          AND child_id = $2
+          AND entry_type = 'sleep'
+          AND deleted_at IS NULL
+        FOR UPDATE
+      `,
+      [entryId, childId],
+    );
+
+    if (locked.rowCount === 0) {
+      throw createTrackingError(
+        "TRACKING_ENTRY_NOT_FOUND",
+        "Tracking entry not found.",
+        404,
+      );
+    }
+
+    const existing = locked.rows[0];
+
+    if (existing.source !== "timer") {
+      throw createTrackingError(
+        "INVALID_SLEEP_SOURCE",
+        "This sleep entry was not started with a timer.",
+        400,
+      );
+    }
+
+    const row = await readSleep(client, childId, entryId);
+
+    if (!row) {
+      throw createTrackingError(
+        "SLEEP_DETAILS_MISSING",
+        "Sleep details are missing.",
+        500,
+      );
+    }
+
+    if (existing.ended_at != null) {
+      // Accepter une nouvelle tentative du même arrêt
+      // si la première réponse réseau a été perdue.
+      const sameStop =
+        existing.version === data.version + 1 &&
+        new Date(existing.ended_at).toISOString() === endedAt &&
+        (existing.note_text ?? null) === note &&
+        row.ended_by_user_id === userId.toLowerCase();
+
+      if (!sameStop) {
+        throw createTrackingError(
+          "SLEEP_ALREADY_STOPPED",
+          "This sleep has already been stopped. Reload it.",
+          409,
+        );
+      }
+
+      await client.query("COMMIT");
+
+      return mapSleep(row);
+    }
+
+    if (existing.version !== data.version) {
+      throw createTrackingError(
+        "TRACKING_VERSION_CONFLICT",
+        "This entry was modified. Reload it before saving.",
+        409,
+      );
+    }
+
+    if (Date.parse(endedAt) <= new Date(existing.started_at).getTime()) {
+      throw createTrackingError(
+        "INVALID_SLEEP_PERIOD",
+        "End time must be after start time.",
+        400,
+      );
+    }
+
+    await client.query(
+      `
+        UPDATE tracking_entries
+        SET
+          ended_at = $3,
+          note_text = $4,
+          updated_by_user_id = $5,
+          updated_at = clock_timestamp(),
+          version = version + 1
+        WHERE id = $1 AND child_id = $2
+      `,
+      [entryId, childId, endedAt, note, userId],
+    );
+
+    await client.query(
+      `
+        UPDATE sleep_details
+        SET ended_by_user_id = $2
+        WHERE tracking_entry_id = $1
+      `,
+      [entryId, userId],
+    );
+
+    const completed = await readSleep(client, childId, entryId);
+
+    await client.query("COMMIT");
+
+    return mapSleep(completed);
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   getSleepEntry,
   createSleepEntry,
   updateSleepEntry,
+  getActiveSleepEntry,
+  startSleepEntry,
+  stopSleepEntry,
 };
