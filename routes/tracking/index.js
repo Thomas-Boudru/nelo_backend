@@ -11,6 +11,7 @@ const pumpingRoutes = require("./feed/pumpingRoutes");
 const customFoodRoutes = require("./feed/customFoodRoutes");
 const solidFeedingRoutes = require("./feed/solidFeedingRoutes");
 const trackingPhotoRoutes = require("./trackingPhotoRoutes");
+const sleepRoutes = require("./sleep/sleepRoutes");
 
 const router = express.Router();
 
@@ -25,5 +26,6 @@ router.use(pumpingRoutes);
 router.use(customFoodRoutes);
 router.use(solidFeedingRoutes);
 router.use(trackingPhotoRoutes);
+router.use(sleepRoutes);
 
 module.exports = router;

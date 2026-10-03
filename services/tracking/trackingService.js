@@ -32,6 +32,23 @@ function mapEntry(row) {
     entry.milkType = row.content_type;
   }
 
+  if (row.entry_type === "sleep") {
+    entry.sleepType = row.sleep_type ?? null;
+    entry.endedByUserId = row.ended_by_user_id ?? null;
+
+    entry.durationSeconds =
+      row.started_at != null && row.ended_at != null
+        ? Math.max(
+            0,
+            Math.floor(
+              (new Date(row.ended_at).getTime() -
+                new Date(row.started_at).getTime()) /
+                1000,
+            ),
+          )
+        : null;
+  }
+
   return entry;
 }
 
@@ -174,19 +191,24 @@ async function getTrackingEntries({ childId, userId, query = {} }) {
 
   const result = await pool.query(
     `
-      SELECT
-        t.*,
-        b.amount_ml,
-        b.bottle_capacity_ml,
-        b.content_type
-      FROM tracking_entries t
-      LEFT JOIN bottle_details b
-        ON b.tracking_entry_id = t.id
-        AND t.entry_type = 'bottle'
-      WHERE ${conditions.join(" AND ")}
-      ORDER BY t.started_at DESC, t.id DESC
-      LIMIT ${limitParameter}
-    `,
+    SELECT
+      t.*,
+      b.amount_ml,
+      b.bottle_capacity_ml,
+      b.content_type,
+      s.sleep_type,
+      s.ended_by_user_id
+    FROM tracking_entries t
+    LEFT JOIN bottle_details b
+      ON b.tracking_entry_id = t.id
+      AND t.entry_type = 'bottle'
+    LEFT JOIN sleep_details s
+      ON s.tracking_entry_id = t.id
+      AND t.entry_type = 'sleep'
+    WHERE ${conditions.join(" AND ")}
+    ORDER BY t.started_at DESC, t.id DESC
+    LIMIT ${limitParameter}
+  `,
     parameters,
   );
 
