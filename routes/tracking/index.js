@@ -18,6 +18,7 @@ const customProductsRoutes = require("./medication/customProductsRoutes");
 const medicationRoutes = require("./medication/medicationRoutes");
 const vaccinationRoutes = require("./medication/vaccinationRoutes");
 const temperatureRoutes = require("./temperature/temperatureRoutes");
+const symptomsRoutes = require("./symptoms/symptomsRoutes");
 
 const router = express.Router();
 
@@ -39,5 +40,6 @@ router.use(customProductsRoutes);
 router.use(medicationRoutes);
 router.use(vaccinationRoutes);
 router.use(temperatureRoutes);
+router.use(symptomsRoutes);
 
 module.exports = router;
