@@ -14,6 +14,9 @@ const trackingPhotoRoutes = require("./trackingPhotoRoutes");
 const sleepRoutes = require("./sleep/sleepRoutes");
 const toiletingRoutes = require("./diaper/toiletingRoutes");
 const moodRoutes = require("./mood/moodRoutes");
+const customProductsRoutes = require("./medication/customProductsRoutes");
+const medicationRoutes = require("./medication/medicationRoutes");
+const vaccinationRoutes = require("./medication/vaccinationRoutes");
 
 const router = express.Router();
 
@@ -31,5 +34,8 @@ router.use(trackingPhotoRoutes);
 router.use(sleepRoutes);
 router.use(toiletingRoutes);
 router.use(moodRoutes);
+router.use(customProductsRoutes);
+router.use(medicationRoutes);
+router.use(vaccinationRoutes);
 
 module.exports = router;

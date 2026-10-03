@@ -1,0 +1,25 @@
+const MEDICATION_CODES = new Set([
+  "paracetamol",
+  "ibuprofen",
+  "amoxicillin",
+  "amoxicillin-clavulanic-acid",
+  "azithromycin",
+  "clarithromycin",
+  "cefuroxime",
+  "cefalexin",
+  "cetirizine",
+  "desloratadine",
+  "dimetindene",
+  "salbutamol",
+  "budesonide",
+  "fluticasone",
+  "prednisolone",
+  "omeprazole",
+  "esomeprazole",
+  "lactulose",
+  "macrogol",
+  "vitamin-d",
+  "iron",
+]);
+
+module.exports = { MEDICATION_CODES };
