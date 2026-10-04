@@ -1,4 +1,8 @@
 const pool = require("../../db/pool");
+const {
+  readTrackingPage,
+  signTrackingPagePhotos,
+} = require("./trackingReadService");
 
 const {
   createTrackingError,
@@ -109,8 +113,6 @@ function decodeCursor(value) {
 }
 
 async function getTrackingEntries({ childId, userId, query = {} }) {
-  await requireChildTrackingAccess({ childId, userId });
-
   const rawLimit = query.limit ?? "30";
 
   if (typeof rawLimit !== "string" || !/^\d+$/.test(rawLimit)) {
@@ -168,7 +170,24 @@ async function getTrackingEntries({ childId, userId, query = {} }) {
   }
 
   if (from) {
-    conditions.push(`t.started_at >= ${addParameter(from)}::timestamptz`);
+    const fromParameter = addParameter(from);
+
+    conditions.push(`
+    (
+      (
+        t.entry_type = 'sleep'
+        AND (
+          t.ended_at IS NULL
+          OR t.ended_at > ${fromParameter}::timestamptz
+        )
+      )
+      OR
+      (
+        t.entry_type <> 'sleep'
+        AND t.started_at >= ${fromParameter}::timestamptz
+      )
+    )
+  `);
   }
 
   if (to) {
@@ -189,34 +208,59 @@ async function getTrackingEntries({ childId, userId, query = {} }) {
 
   const limitParameter = addParameter(limit + 1);
 
-  const result = await pool.query(
-    `
-    SELECT
-      t.*,
-      b.amount_ml,
-      b.bottle_capacity_ml,
-      b.content_type,
-      s.sleep_type,
-      s.ended_by_user_id
-    FROM tracking_entries t
-    LEFT JOIN bottle_details b
-      ON b.tracking_entry_id = t.id
-      AND t.entry_type = 'bottle'
-    LEFT JOIN sleep_details s
-      ON s.tracking_entry_id = t.id
-      AND t.entry_type = 'sleep'
-    WHERE ${conditions.join(" AND ")}
-    ORDER BY t.started_at DESC, t.id DESC
-    LIMIT ${limitParameter}
-  `,
-    parameters,
-  );
+  const client = await pool.connect();
 
-  const hasMore = result.rows.length > limit;
-  const rows = result.rows.slice(0, limit);
+  let rows;
+  let entries;
+  let hasMore;
+
+  try {
+    await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ");
+
+    // Vérification dans la même transaction que les lectures.
+    await requireChildTrackingAccess({
+      childId,
+      userId,
+      database: client,
+    });
+
+    const result = await client.query(
+      `
+        SELECT t.*
+        FROM tracking_entries t
+        WHERE ${conditions.join(" AND ")}
+        ORDER BY t.started_at DESC, t.id DESC
+        LIMIT ${limitParameter}
+      `,
+      parameters,
+    );
+
+    hasMore = result.rows.length > limit;
+    rows = result.rows.slice(0, limit);
+
+    entries = await readTrackingPage({
+      database: client,
+      childId,
+      rows,
+    });
+
+    await client.query("COMMIT");
+  } catch (error) {
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      console.error("Unable to roll back tracking history read:", {
+        message: rollbackError.message,
+      });
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
 
   return {
-    entries: rows.map(mapEntry),
+    entries: await signTrackingPagePhotos(entries),
     nextCursor:
       hasMore && rows.length > 0 ? encodeCursor(rows[rows.length - 1]) : null,
   };
