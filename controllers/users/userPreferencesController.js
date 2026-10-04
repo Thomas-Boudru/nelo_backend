@@ -4,6 +4,12 @@ async function getUserPreferences(req, res, next) {
   try {
     const preferences = await userPreferencesService.getUserPreferences(
       req.auth.userId,
+      {
+        weightUnit: req.query.weightUnit,
+        lengthUnit: req.query.lengthUnit,
+        temperatureUnit: req.query.temperatureUnit,
+        volumeUnit: req.query.volumeUnit,
+      },
     );
 
     return res.status(200).json({ preferences });

@@ -59,11 +59,34 @@ function mapPreferences(row) {
   };
 }
 
-async function getUserPreferences(userId) {
+async function getUserPreferences(userId, initialUnits = {}) {
+  const defaults = {
+    weightUnit: initialUnits.weightUnit ?? "kg",
+    lengthUnit: initialUnits.lengthUnit ?? "cm",
+    temperatureUnit: initialUnits.temperatureUnit ?? "c",
+    volumeUnit: initialUnits.volumeUnit ?? "ml",
+  };
+
+  for (const [field, value] of Object.entries(defaults)) {
+    if (!PREFERENCE_FIELDS[field].isValid(value)) {
+      throw createServiceError(
+        "INVALID_USER_PREFERENCES",
+        "Invalid initial measurement units.",
+        400,
+      );
+    }
+  }
+
   const result = await pool.query(
     `
-      INSERT INTO user_preferences (user_id)
-      VALUES ($1)
+      INSERT INTO user_preferences (
+        user_id,
+        weight_unit,
+        length_unit,
+        temperature_unit,
+        volume_unit
+      )
+      VALUES ($1, $2, $3, $4, $5)
       ON CONFLICT (user_id)
       DO UPDATE SET user_id = EXCLUDED.user_id
       RETURNING
@@ -76,7 +99,13 @@ async function getUserPreferences(userId) {
         crash_reports_enabled,
         ai_improvement_enabled
     `,
-    [userId],
+    [
+      userId,
+      defaults.weightUnit,
+      defaults.lengthUnit,
+      defaults.temperatureUnit,
+      defaults.volumeUnit,
+    ],
   );
 
   return mapPreferences(result.rows[0]);
