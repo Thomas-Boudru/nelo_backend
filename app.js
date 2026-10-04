@@ -15,6 +15,7 @@ const familyInvitationRoutes = require("./routes/families/familyInvitationRoutes
 const publicInvitationRoutes = require("./routes/families/publicInvitationRoutes");
 const childOwnershipRoutes = require("./routes/children/childOwnershipRoutes");
 const trackingRoutes = require("./routes/tracking");
+const momentRoutes = require("./routes/moments");
 const app = express();
 
 app.set("trust proxy", 1);
@@ -97,6 +98,7 @@ app.use("/api/users", userRoutes);
 app.use("/api", userRoutes);
 app.use("/api/children", childOwnershipRoutes);
 app.use("/api/children", trackingRoutes);
+app.use("/api/children", momentRoutes);
 
 // Route inconnue
 app.use((req, res) => {
