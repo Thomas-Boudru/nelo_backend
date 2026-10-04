@@ -61,9 +61,17 @@ app.get("/", (req, res) => {
   });
 });
 
+/*app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "healthy",
+    timestamp: new Date().toISOString(),
+  });
+});*/
+
 app.get("/health", (req, res) => {
   res.status(200).json({
     status: "healthy",
+    debugVersion: "growth-debug-1",
     timestamp: new Date().toISOString(),
   });
 });
