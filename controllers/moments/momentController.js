@@ -96,6 +96,21 @@ async function publishMoment(req, res, next) {
   }
 }
 
+async function syncMoments(req, res, next) {
+  try {
+    const result = await momentService.syncMoments({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+      cursor: req.query.cursor,
+      limit: req.query.limit,
+    });
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   listMoments,
   getMoment,
@@ -103,4 +118,5 @@ module.exports = {
   updateMoment,
   deleteMoment,
   publishMoment,
+  syncMoments,
 };

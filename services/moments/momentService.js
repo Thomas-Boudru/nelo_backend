@@ -957,6 +957,70 @@ async function deleteMoment({ childId, userId, momentId, data }) {
   });
 }
 
+async function syncMoments({ childId, userId, cursor, limit }) {
+  const pageLimit = parseLimit(limit);
+
+  let afterId = null;
+
+  if (cursor !== undefined) {
+    validateUuid(cursor, "moment synchronization cursor");
+    afterId = cursor;
+  }
+
+  const result = await withTransaction(async (client) => {
+    await requireChildTrackingAccess({
+      childId,
+      userId,
+      database: client,
+    });
+
+    /*
+     * Pagination par ID pour parcourir tous les souvenirs.
+     *
+     * Inclure les souvenirs supprimés.
+     * Les brouillons ne sont visibles que par leur auteur.
+     */
+    const selected = await client.query(
+      `
+        ${MOMENT_SELECT}
+        WHERE m.child_id = $1
+          AND (
+            m.status = 'published'
+            OR m.created_by_user_id = $2
+          )
+          AND ($3::uuid IS NULL OR m.id > $3::uuid)
+        ORDER BY m.id ASC
+        LIMIT $4
+        FOR SHARE OF m
+      `,
+      [childId, userId, afterId, pageLimit + 1],
+    );
+
+    const hasMore = selected.rows.length > pageLimit;
+    const rows = selected.rows.slice(0, pageLimit);
+
+    // Les souvenirs supprimés n'ont pas besoin de photos.
+    const activeIds = rows
+      .filter((row) => !row.deleted_at)
+      .map((row) => row.id);
+
+    const photoRows = await readPhotoRows(client, activeIds);
+
+    return {
+      rows,
+      photoRows,
+      hasMore,
+    };
+  });
+
+  const last = result.rows[result.rows.length - 1];
+
+  return {
+    moments: await attachPhotos(result.rows, result.photoRows),
+    nextCursor: result.hasMore && last ? last.id : null,
+  };
+}
+
 module.exports = {
   listMoments,
   getMoment,
@@ -964,4 +1028,5 @@ module.exports = {
   updateMoment,
   deleteMoment,
   publishMoment,
+  syncMoments,
 };

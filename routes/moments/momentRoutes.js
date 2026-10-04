@@ -4,6 +4,8 @@ const momentController = require("../../controllers/moments/momentController");
 
 const router = express.Router();
 
+router.get("/:childId/moments/sync", momentController.syncMoments);
+
 router.get("/:childId/moments", momentController.listMoments);
 
 router.get("/:childId/moments/:momentId", momentController.getMoment);
