@@ -69,8 +69,6 @@ app.get("/health", (req, res) => {
   });
 });
 
-/*test*/
-
 app.get("/health/database", async (req, res, next) => {
   try {
     const result = await pool.query("SELECT NOW() AS database_time");

@@ -1,5 +1,4 @@
 const customMilestoneService = require("../../services/moments/customMilestoneService");
-
 async function listCustomMilestones(req, res, next) {
   try {
     const result = await customMilestoneService.listCustomMilestones({
