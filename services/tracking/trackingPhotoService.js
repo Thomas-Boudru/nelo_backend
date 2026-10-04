@@ -17,11 +17,12 @@ const {
 const { processTrackingImage } = require("../storage/trackingImageProcessor");
 
 const MAX_PHOTOS = 10;
+const MAX_NOTE_PHOTOS = 5;
 
 async function requireEntry(client, { childId, entryId }) {
   const result = await client.query(
     `
-      SELECT id
+      SELECT id, entry_type
       FROM tracking_entries
       WHERE id = $1
         AND child_id = $2
@@ -38,6 +39,8 @@ async function requireEntry(client, { childId, entryId }) {
       404,
     );
   }
+
+  return result.rows[0];
 }
 
 async function readPhotos(database, entryId) {
@@ -101,6 +104,7 @@ async function listTrackingPhotos({ childId, userId, entryId }) {
   validateUuid(entryId, "tracking entry ID");
 
   const client = await pool.connect();
+
   let rows;
 
   try {
@@ -158,7 +162,10 @@ async function uploadTrackingPhoto({
     });
 
     // Sérialise les ajouts et suppressions de photos de cette entrée.
-    await requireEntry(client, { childId, entryId });
+    const entry = await requireEntry(client, { childId, entryId });
+
+    const maxPhotos =
+      entry.entry_type === "note" ? MAX_NOTE_PHOTOS : MAX_PHOTOS;
 
     const existing = await client.query(
       `
@@ -189,6 +196,8 @@ async function uploadTrackingPhoto({
         );
       }
 
+      // Une nouvelle tentative pour une photo déjà enregistrée
+      // ne crée pas de doublon et n'augmente pas la version.
       row = current;
     } else {
       const count = await client.query(
@@ -205,10 +214,12 @@ async function uploadTrackingPhoto({
         [entryId],
       );
 
-      if (count.rows[0].total >= MAX_PHOTOS) {
+      if (count.rows[0].total >= maxPhotos) {
         throw createTrackingError(
           "TRACKING_PHOTO_LIMIT_REACHED",
-          "A tracking entry must not contain more than 10 photos.",
+          entry.entry_type === "note"
+            ? "A note must not contain more than 5 photos."
+            : "A tracking entry must not contain more than 10 photos.",
           400,
         );
       }

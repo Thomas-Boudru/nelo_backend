@@ -21,6 +21,7 @@ const temperatureRoutes = require("./temperature/temperatureRoutes");
 const symptomsRoutes = require("./symptoms/symptomsRoutes");
 const teethingRoutes = require("./teething/teethingRoutes");
 const growthRoutes = require("./growth/growthRoutes");
+const noteRoutes = require("./note/noteRoutes");
 
 const router = express.Router();
 
@@ -45,5 +46,6 @@ router.use(temperatureRoutes);
 router.use(symptomsRoutes);
 router.use(teethingRoutes);
 router.use(growthRoutes);
+router.use(noteRoutes);
 
 module.exports = router;
