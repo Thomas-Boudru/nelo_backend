@@ -284,6 +284,24 @@ async function updateBottleEntry({ childId, userId, entryId, data }) {
     }
 
     if (locked.rows[0].version !== data.version) {
+      const existing = await readBottle(client, childId, entryId);
+
+      const alreadyApplied =
+        existing &&
+        !existing.deleted_at &&
+        existing.version === data.version + 1 &&
+        existing.updated_by_user_id === userId.toLowerCase() &&
+        new Date(existing.started_at).toISOString() === values.feedingDate &&
+        (existing.note_text ?? null) === values.note &&
+        Number(existing.amount_ml) === values.amountMl &&
+        Number(existing.bottle_capacity_ml) === values.bottleCapacityMl &&
+        existing.content_type === values.milkType;
+
+      if (alreadyApplied) {
+        await client.query("COMMIT");
+        return mapBottle(existing);
+      }
+
       throw createTrackingError(
         "TRACKING_VERSION_CONFLICT",
         "This entry was modified. Reload it before saving.",

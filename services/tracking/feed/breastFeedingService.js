@@ -297,6 +297,25 @@ async function updateBreastfeedingEntry({ childId, userId, entryId, data }) {
     }
 
     if (locked.rows[0].version !== data.version) {
+      const existing = await readEntry(client, childId, entryId);
+
+      const alreadyApplied =
+        existing &&
+        !existing.deleted_at &&
+        existing.version === data.version + 1 &&
+        existing.updated_by_user_id === userId.toLowerCase() &&
+        new Date(existing.started_at).toISOString() === values.feedingDate &&
+        (existing.note_text ?? null) === values.note &&
+        existing.left_duration_seconds === values.leftDurationSeconds &&
+        existing.right_duration_seconds === values.rightDurationSeconds &&
+        existing.first_side === values.firstSide &&
+        existing.last_side === values.lastSide;
+
+      if (alreadyApplied) {
+        await client.query("COMMIT");
+        return mapBreastfeeding(existing);
+      }
+
       throw createTrackingError(
         "TRACKING_VERSION_CONFLICT",
         "This entry was modified. Reload it before saving.",
