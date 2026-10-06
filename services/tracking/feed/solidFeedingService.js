@@ -475,6 +475,19 @@ async function updateSolidFeedingEntry({ childId, userId, entryId, data }) {
     }
 
     if (locked.rows[0].version !== data.version) {
+      const existing = await readEntry(client, childId, entryId);
+
+      const alreadyApplied =
+        existing &&
+        !existing.deletedAt &&
+        existing.version === data.version + 1 &&
+        existing.updatedByUserId === userId.toLowerCase() &&
+        sameData(existing, values);
+
+      if (alreadyApplied) {
+        return existing;
+      }
+
       throw createTrackingError(
         "TRACKING_VERSION_CONFLICT",
         "This entry was modified. Reload it before saving.",
