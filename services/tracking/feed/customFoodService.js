@@ -305,6 +305,18 @@ async function updateCustomFood({ childId, userId, foodId, data }) {
     }
 
     if (current.version !== data.version) {
+      const alreadyApplied =
+        current.version === data.version + 1 &&
+        current.updated_by_user_id === userId.toLowerCase() &&
+        current.name === values.name &&
+        current.normalized_name === values.normalizedName &&
+        current.emoji === values.emoji &&
+        current.suggested_unit === values.suggestedUnit;
+
+      if (alreadyApplied) {
+        return mapCustomFood(current);
+      }
+
       throw createTrackingError(
         "CUSTOM_FOOD_VERSION_CONFLICT",
         "This food was modified. Reload it before saving.",
