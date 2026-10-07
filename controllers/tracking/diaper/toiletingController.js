@@ -34,9 +34,29 @@ function getController(type) {
   };
 }
 
+function updateController(type) {
+  return async function updateEntry(req, res, next) {
+    try {
+      const entry = await toiletingService.updateToiletingEntry({
+        childId: req.params.childId,
+        userId: req.auth.userId,
+        entryId: req.params.entryId,
+        type,
+        data: req.body,
+      });
+
+      return res.status(200).json({ entry });
+    } catch (error) {
+      return next(error);
+    }
+  };
+}
+
 module.exports = {
   createDiaperEntry: createController("diaper"),
   getDiaperEntry: getController("diaper"),
+  updateDiaperEntry: updateController("diaper"),
   createPottyEntry: createController("potty"),
   getPottyEntry: getController("potty"),
+  updatePottyEntry: updateController("potty"),
 };

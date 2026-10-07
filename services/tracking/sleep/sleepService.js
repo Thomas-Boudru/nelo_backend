@@ -298,6 +298,24 @@ async function updateSleepEntry({ childId, userId, entryId, data }) {
     const existing = locked.rows[0];
 
     if (existing.version !== data.version) {
+      const current = await readSleep(client, childId, entryId);
+
+      const alreadyApplied =
+        current &&
+        !current.deleted_at &&
+        current.ended_at != null &&
+        current.version === data.version + 1 &&
+        current.updated_by_user_id === userId.toLowerCase() &&
+        current.sleep_type === values.sleepType &&
+        new Date(current.started_at).toISOString() === values.startedAt &&
+        new Date(current.ended_at).toISOString() === values.endedAt &&
+        (current.note_text ?? null) === values.note;
+
+      if (alreadyApplied) {
+        await client.query("COMMIT");
+        return mapSleep(current);
+      }
+
       throw createTrackingError(
         "TRACKING_VERSION_CONFLICT",
         "This entry was modified. Reload it before saving.",
