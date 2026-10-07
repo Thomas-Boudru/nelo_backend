@@ -339,7 +339,181 @@ async function createMedicationEntry({ childId, userId, data }) {
   }
 }
 
+async function updateMedicationEntry({ childId, userId, entryId, data }) {
+  validateUuid(entryId, "tracking entry ID");
+
+  const values = validateMedicationData(data);
+
+  if (!Number.isSafeInteger(data.version) || data.version < 1) {
+    throw createTrackingError(
+      "INVALID_TRACKING_VERSION",
+      "A valid tracking version is required.",
+      400,
+    );
+  }
+
+  const catalogCode = values.isCustomMedication ? null : values.medicationId;
+
+  const customId = values.isCustomMedication ? values.medicationId : null;
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    await requireChildTrackingAccess({
+      childId,
+      userId,
+      write: true,
+      database: client,
+    });
+
+    const locked = await client.query(
+      `
+        SELECT id
+        FROM tracking_entries
+        WHERE id = $1
+          AND child_id = $2
+          AND entry_type = 'medication'
+          AND deleted_at IS NULL
+        FOR UPDATE
+      `,
+      [entryId, childId],
+    );
+
+    if (locked.rowCount === 0) {
+      throw createTrackingError(
+        "TRACKING_ENTRY_NOT_FOUND",
+        "Tracking entry not found.",
+        404,
+      );
+    }
+
+    const current = await readMedication(client, childId, entryId);
+
+    if (!current) {
+      throw createTrackingError(
+        "MEDICATION_DETAILS_MISSING",
+        "Medication details are missing.",
+        500,
+      );
+    }
+
+    const sameData =
+      new Date(current.started_at).toISOString() === values.medicationDate &&
+      (current.note_text ?? null) === values.note &&
+      current.catalog_medication_code === catalogCode &&
+      current.custom_medication_id === customId &&
+      current.medication_name_snapshot === values.medicationName &&
+      Number(current.amount_value) === values.amount &&
+      current.amount_unit === values.unit;
+
+    const isRepeatedUpdate =
+      current.version === data.version + 1 &&
+      current.updated_by_user_id === userId.toLowerCase() &&
+      sameData;
+
+    if (isRepeatedUpdate) {
+      await client.query("COMMIT");
+      return mapMedication(current);
+    }
+
+    if (current.version !== data.version) {
+      throw createTrackingError(
+        "TRACKING_VERSION_CONFLICT",
+        "This entry was modified. Reload it before saving.",
+        409,
+      );
+    }
+
+    if (values.isCustomMedication) {
+      const product = await client.query(
+        `
+          SELECT id
+          FROM child_custom_medications
+          WHERE id = $1
+            AND child_id = $2
+            AND archived_at IS NULL
+          FOR SHARE
+        `,
+        [values.medicationId, childId],
+      );
+
+      if (product.rowCount === 0) {
+        throw createTrackingError(
+          "CUSTOM_MEDICATION_UNAVAILABLE",
+          "This custom medication is unavailable for this child.",
+          409,
+        );
+      }
+    }
+
+    await client.query(
+      `
+        UPDATE tracking_entries
+        SET started_at = $3,
+            note_text = $4,
+            updated_by_user_id = $5,
+            updated_at = clock_timestamp(),
+            version = version + 1
+        WHERE id = $1
+          AND child_id = $2
+          AND entry_type = 'medication'
+      `,
+      [entryId, childId, values.medicationDate, values.note, userId],
+    );
+
+    const details = await client.query(
+      `
+        UPDATE medication_details
+        SET catalog_medication_code = $2,
+            custom_medication_id = $3,
+            medication_name_snapshot = $4,
+            amount_value = $5,
+            amount_unit = $6
+        WHERE tracking_entry_id = $1
+        RETURNING tracking_entry_id
+      `,
+      [
+        entryId,
+        catalogCode,
+        customId,
+        values.medicationName,
+        values.amount,
+        values.unit,
+      ],
+    );
+
+    if (details.rowCount !== 1) {
+      throw createTrackingError(
+        "MEDICATION_DETAILS_MISSING",
+        "Medication details are missing.",
+        500,
+      );
+    }
+
+    const row = await readMedication(client, childId, entryId);
+
+    await client.query("COMMIT");
+
+    return mapMedication(row);
+  } catch (error) {
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      console.error("Unable to roll back medication update:", {
+        message: rollbackError.message,
+      });
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   getMedicationEntry,
   createMedicationEntry,
+  updateMedicationEntry,
 };

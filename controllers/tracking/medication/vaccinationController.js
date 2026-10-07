@@ -41,8 +41,24 @@ async function getVaccinationReminders(req, res, next) {
   }
 }
 
+async function updateVaccinationEntry(req, res, next) {
+  try {
+    const entry = await vaccinationService.updateVaccinationEntry({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+      entryId: req.params.entryId,
+      data: req.body,
+    });
+
+    return res.status(200).json({ entry });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   getVaccinationEntry,
   createVaccinationEntry,
+  updateVaccinationEntry,
   getVaccinationReminders,
 };
