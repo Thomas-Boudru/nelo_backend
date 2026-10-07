@@ -218,7 +218,141 @@ async function createMoodEntry({ childId, userId, data }) {
   }
 }
 
+async function updateMoodEntry({ childId, userId, entryId, data }) {
+  validateUuid(entryId, "tracking entry ID");
+
+  const values = validateMoodData(data);
+
+  if (!Number.isSafeInteger(data.version) || data.version < 1) {
+    throw createTrackingError(
+      "INVALID_TRACKING_VERSION",
+      "A valid tracking version is required.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    await requireChildTrackingAccess({
+      childId,
+      userId,
+      write: true,
+      database: client,
+    });
+
+    const locked = await client.query(
+      `
+        SELECT id
+        FROM tracking_entries
+        WHERE id = $1
+          AND child_id = $2
+          AND entry_type = 'mood'
+          AND deleted_at IS NULL
+        FOR UPDATE
+      `,
+      [entryId, childId],
+    );
+
+    if (locked.rowCount === 0) {
+      throw createTrackingError(
+        "TRACKING_ENTRY_NOT_FOUND",
+        "Tracking entry not found.",
+        404,
+      );
+    }
+
+    const current = await readMood(client, childId, entryId);
+
+    if (!current) {
+      throw createTrackingError(
+        "MOOD_DETAILS_MISSING",
+        "Mood details are missing.",
+        500,
+      );
+    }
+
+    const sameData =
+      new Date(current.started_at).toISOString() === values.moodDate &&
+      current.mood_type === values.mood &&
+      (current.note_text ?? null) === values.note;
+
+    // Accepter un réessai immédiat si la réponse précédente a été perdue.
+    const isRepeatedUpdate =
+      current.version === data.version + 1 &&
+      current.updated_by_user_id === userId.toLowerCase() &&
+      sameData;
+
+    if (isRepeatedUpdate) {
+      await client.query("COMMIT");
+      return mapMood(current);
+    }
+
+    if (current.version !== data.version) {
+      throw createTrackingError(
+        "TRACKING_VERSION_CONFLICT",
+        "This entry was modified. Reload it before saving.",
+        409,
+      );
+    }
+
+    await client.query(
+      `
+        UPDATE tracking_entries
+        SET started_at = $3,
+            note_text = $4,
+            updated_by_user_id = $5,
+            updated_at = clock_timestamp(),
+            version = version + 1
+        WHERE id = $1
+          AND child_id = $2
+          AND entry_type = 'mood'
+      `,
+      [entryId, childId, values.moodDate, values.note, userId],
+    );
+
+    const details = await client.query(
+      `
+        UPDATE mood_details
+        SET mood_type = $2
+        WHERE tracking_entry_id = $1
+        RETURNING tracking_entry_id
+      `,
+      [entryId, values.mood],
+    );
+
+    if (details.rowCount !== 1) {
+      throw createTrackingError(
+        "MOOD_DETAILS_MISSING",
+        "Mood details are missing.",
+        500,
+      );
+    }
+
+    const row = await readMood(client, childId, entryId);
+
+    await client.query("COMMIT");
+
+    return mapMood(row);
+  } catch (error) {
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      console.error("Unable to roll back mood update:", {
+        message: rollbackError.message,
+      });
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   getMoodEntry,
   createMoodEntry,
+  updateMoodEntry,
 };
