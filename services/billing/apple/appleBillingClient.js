@@ -9,7 +9,7 @@ const {
 } = require("@apple/app-store-server-library");
 
 // Ce fichier se trouve dans services/billing/.
-const backendRoot = path.resolve(__dirname, "../..");
+const backendRoot = path.resolve(__dirname, "../../..");
 
 let cachedConnection = null;
 
