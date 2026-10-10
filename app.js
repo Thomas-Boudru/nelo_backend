@@ -19,6 +19,7 @@ const momentRoutes = require("./routes/moments");
 const familyBillingRoutes = require("./routes/billing/familyBillingRoutes");
 const billingRoutes = require("./routes/billing/billingRoutes");
 const appleWebhookRoutes = require("./routes/billing/apple/appleWebhookRoutes");
+const revenuecatWebhookRoutes = require("./routes/billing/revenuecat/revenuecatWebhookRoutes");
 const app = express();
 
 app.set("trust proxy", 1);
@@ -88,6 +89,7 @@ app.get("/health/database", async (req, res, next) => {
 
 // Protection générale des routes API
 app.use("/api/webhooks/apple", appleWebhookRoutes);
+app.use("/api/webhooks/revenuecat", revenuecatWebhookRoutes);
 app.use("/api", limiter);
 
 // Routes API

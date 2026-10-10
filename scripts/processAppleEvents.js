@@ -4,7 +4,7 @@ const pool = require("../db/pool");
 
 const {
   processAppleEvents,
-} = require("../services/billing/appleEventProcessor");
+} = require("../services/billing/apple/appleEventProcessor");
 
 async function main() {
   try {

@@ -1,6 +1,6 @@
 const { randomUUID } = require("node:crypto");
 
-const pool = require("../../db/pool");
+const pool = require("../../../db/pool");
 
 const { getAppleBillingConnection } = require("./appleBillingClient");
 
