@@ -18,7 +18,7 @@ const trackingRoutes = require("./routes/tracking");
 const momentRoutes = require("./routes/moments");
 const familyBillingRoutes = require("./routes/billing/familyBillingRoutes");
 const billingRoutes = require("./routes/billing/billingRoutes");
-const appleWebhookRoutes = require("./routes/billing/appleWebhookRoutes");
+const appleWebhookRoutes = require("./routes/billing/apple/appleWebhookRoutes");
 const app = express();
 
 app.set("trust proxy", 1);
