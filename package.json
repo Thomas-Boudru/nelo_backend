@@ -15,6 +15,7 @@
     "check:r2-storage": "node scripts/checkR2Storage.js"
   },
   "dependencies": {
+    "@apple/app-store-server-library": "^3.1.0",
     "@aws-sdk/client-s3": "^3.1122.0",
     "@aws-sdk/s3-request-presigner": "^3.1122.0",
     "cors": "^2.8.6",
