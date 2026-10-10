@@ -12,7 +12,8 @@
     "migrate:down": "node-pg-migrate down",
     "migrate:create": "node-pg-migrate create",
     "check:r2": "node scripts/checkR2Connection.js",
-    "check:r2-storage": "node scripts/checkR2Storage.js"
+    "check:r2-storage": "node scripts/checkR2Storage.js",
+    "billing:apple:process": "node scripts/processAppleEvents.js"
   },
   "dependencies": {
     "@apple/app-store-server-library": "^3.1.0",

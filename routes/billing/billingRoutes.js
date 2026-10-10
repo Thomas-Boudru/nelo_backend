@@ -9,7 +9,7 @@ const {
 
 const {
   verifyApplePurchase,
-} = require("../../controllers/billing/applePurchaseController");
+} = require("../../controllers/billing/apple/applePurchaseController");
 
 const router = express.Router();
 

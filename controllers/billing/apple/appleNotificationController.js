@@ -2,7 +2,7 @@ const { z } = require("zod");
 
 const {
   receiveAppleNotification,
-} = require("../../services/billing/appleNotificationService");
+} = require("../../../services/billing/apple/appleNotificationService");
 
 const notificationSchema = z.object({
   signedPayload: z.string().trim().min(1).max(500000),

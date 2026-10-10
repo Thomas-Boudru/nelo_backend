@@ -1,4 +1,4 @@
-const pool = require("../../db/pool");
+const pool = require("../../../db/pool");
 
 const { getAppleBillingConnection } = require("./appleBillingClient");
 
@@ -58,9 +58,6 @@ async function receiveAppleNotification({ signedPayload }) {
     );
   }
 
-  // Une notification TEST ne nécessite aucune modification d'abonnement.
-  const isTest = notification.notificationType === "TEST";
-
   const result = await pool.query(
     `
       INSERT INTO subscription_events (
@@ -81,10 +78,7 @@ async function receiveAppleNotification({ signedPayload }) {
         $4::jsonb,
         $5::varchar,
         $6,
-        CASE
-          WHEN $5::varchar = 'processed' THEN NOW()
-          ELSE NULL
-        END
+        NULL
       )
       ON CONFLICT (payment_provider, provider_event_id)
       DO NOTHING
@@ -100,7 +94,7 @@ async function receiveAppleNotification({ signedPayload }) {
         transaction: verified.transaction ?? null,
         renewal: verified.renewal ?? null,
       }),
-      isTest ? "processed" : "pending",
+      "pending",
       occurredAt,
     ],
   );

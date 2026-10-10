@@ -1,6 +1,6 @@
 const {
   verifyAndSaveApplePurchase,
-} = require("../../services/billing/applePurchaseService");
+} = require("../../../services/billing/apple/applePurchaseService");
 
 async function verifyApplePurchase(req, res, next) {
   try {

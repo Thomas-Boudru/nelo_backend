@@ -2,7 +2,7 @@ const express = require("express");
 
 const {
   receiveNotification,
-} = require("../../controllers/billing/appleNotificationController");
+} = require("../../controllers/billing/apple/appleNotificationController");
 
 const router = express.Router();
 

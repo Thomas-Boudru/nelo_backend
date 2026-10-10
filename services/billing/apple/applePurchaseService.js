@@ -1,4 +1,4 @@
-const pool = require("../../db/pool");
+const pool = require("../../../db/pool");
 
 const { getAppleBillingConnection } = require("./appleBillingClient");
 
@@ -252,10 +252,11 @@ async function saveTransaction(
   }
 }
 
-async function verifyAndSaveApplePurchase({
+async function synchronizeApplePurchase({
   userId,
   purchaseIntentId,
   transactionId,
+  fromNotification = false,
 }) {
   validateUuid(userId, "user ID");
   validateUuid(purchaseIntentId, "purchase intent ID");
@@ -292,19 +293,26 @@ async function verifyAndSaveApplePurchase({
         AND pi.payment_provider = 'app_store'
         AND p.store = 'app_store'
         AND pi.environment = $3
-        AND f.deleted_at IS NULL
-        AND u.deleted_at IS NULL
-        AND u.status = 'active'
 
-        AND EXISTS (
-          SELECT 1 FROM family_members fm
-          WHERE fm.family_id = f.id
-            AND fm.user_id = $2
-            AND fm.family_role = 'owner'
-            AND fm.removed_at IS NULL
+        AND (
+          $4::boolean
+          OR (
+            f.deleted_at IS NULL
+            AND u.deleted_at IS NULL
+            AND u.status = 'active'
+
+            AND EXISTS (
+              SELECT 1
+              FROM family_members fm
+              WHERE fm.family_id = f.id
+                AND fm.user_id = $2
+                AND fm.family_role = 'owner'
+                AND fm.removed_at IS NULL
+            )
+          )
         )
     `,
-    [purchaseIntentId, userId, billingEnvironment],
+    [purchaseIntentId, userId, billingEnvironment, fromNotification],
   );
 
   if (initialIntent.rowCount === 0) {
@@ -323,7 +331,10 @@ async function verifyAndSaveApplePurchase({
 
   checkTransaction(purchasedTransaction, intent, bundleId);
 
-  if (purchasedTransaction.productId !== intent.store_product_id) {
+  if (
+    !fromNotification &&
+    purchasedTransaction.productId !== intent.store_product_id
+  ) {
     throw serviceError(
       "APPLE_PRODUCT_MISMATCH",
       "The purchased product does not match the prepared purchase.",
@@ -371,46 +382,64 @@ async function verifyAndSaveApplePurchase({
 
     const state = getSubscriptionState(current);
 
-    // Même ordre que la préparation d'achat : utilisateur,
-    // famille, puis appartenance et intention.
+    // Conserve le même ordre de verrouillage que les achats.
     const user = await client.query(
       `
-        SELECT id FROM users
+        SELECT id
+        FROM users
         WHERE id = $1
-          AND deleted_at IS NULL
-          AND status = 'active'
+          AND (
+            $2::boolean
+            OR (
+              deleted_at IS NULL
+              AND status = 'active'
+            )
+          )
         FOR UPDATE
       `,
-      [userId],
+      [userId, fromNotification],
     );
 
     const family = await client.query(
       `
-        SELECT id FROM families
-        WHERE id = $1 AND deleted_at IS NULL
+        SELECT id
+        FROM families
+        WHERE id = $1
+          AND ($2::boolean OR deleted_at IS NULL)
         FOR UPDATE
       `,
-      [intent.family_id],
+      [intent.family_id, fromNotification],
     );
 
-    const member = await client.query(
-      `
-        SELECT id FROM family_members
-        WHERE family_id = $1
-          AND user_id = $2
-          AND family_role = 'owner'
-          AND removed_at IS NULL
-        FOR UPDATE
-      `,
-      [intent.family_id, userId],
-    );
-
-    if (user.rowCount === 0 || family.rowCount === 0 || member.rowCount === 0) {
+    if (user.rowCount === 0 || family.rowCount === 0) {
       throw serviceError(
         "FAMILY_ACCESS_CHANGED",
-        "Your access to this family has changed.",
+        "The account or family is no longer available.",
         403,
       );
+    }
+
+    if (!fromNotification) {
+      const member = await client.query(
+        `
+          SELECT id
+          FROM family_members
+          WHERE family_id = $1
+            AND user_id = $2
+            AND family_role = 'owner'
+            AND removed_at IS NULL
+          FOR UPDATE
+        `,
+        [intent.family_id, userId],
+      );
+
+      if (member.rowCount === 0) {
+        throw serviceError(
+          "FAMILY_ACCESS_CHANGED",
+          "Your access to this family has changed.",
+          403,
+        );
+      }
     }
 
     const lockedIntent = await client.query(
@@ -430,6 +459,7 @@ async function verifyAndSaveApplePurchase({
       savedIntent.purchased_by_user_id !== userId ||
       savedIntent.product_id !== intent.product_id ||
       savedIntent.environment !== billingEnvironment ||
+      savedIntent.purchase_kind !== "subscription" ||
       savedIntent.payment_provider !== "app_store"
     ) {
       throw serviceError(
@@ -587,6 +617,88 @@ async function verifyAndSaveApplePurchase({
   }
 }
 
+// Point d'entrée utilisé par le contrôleur d'achat.
+// Aucun paramètre externe ne peut activer le mode notification.
+async function verifyAndSaveApplePurchase({
+  userId,
+  purchaseIntentId,
+  transactionId,
+}) {
+  return synchronizeApplePurchase({
+    userId,
+    purchaseIntentId,
+    transactionId,
+    fromNotification: false,
+  });
+}
+
+// Point d'entrée interne pour le futur traitement des notifications.
+// Ne pas exposer cette fonction dans une route accessible aux utilisateurs.
+async function synchronizeAppleSubscriptionFromNotification({ transactionId }) {
+  if (
+    typeof transactionId !== "string" ||
+    !/^[0-9]{1,64}$/.test(transactionId)
+  ) {
+    throw serviceError(
+      "INVALID_APPLE_TRANSACTION_ID",
+      "A valid Apple transaction ID is required.",
+      400,
+    );
+  }
+
+  const { billingEnvironment, bundleId } = getAppleBillingConnection();
+
+  // Récupère et vérifie la transaction auprès d'Apple.
+  // Le rattachement ne repose pas sur des identifiants fournis par l'app.
+  const transaction = await verifyAppleCall(() =>
+    getVerifiedAppleTransaction({ transactionId }),
+  );
+
+  const accountToken = transaction.appAccountToken;
+
+  if (typeof accountToken !== "string" || !UUID_PATTERN.test(accountToken)) {
+    throw serviceError(
+      "APPLE_PURCHASE_INTENT_UNRESOLVED",
+      "The Apple transaction cannot be linked to a prepared purchase.",
+      409,
+    );
+  }
+
+  const purchaseIntentId = accountToken.toLowerCase();
+
+  const result = await pool.query(
+    `
+      SELECT *
+      FROM subscription_purchase_intents
+      WHERE id = $1
+        AND purchase_kind = 'subscription'
+        AND payment_provider = 'app_store'
+        AND environment = $2
+    `,
+    [purchaseIntentId, billingEnvironment],
+  );
+
+  if (result.rowCount === 0) {
+    throw serviceError(
+      "APPLE_PURCHASE_INTENT_UNRESOLVED",
+      "The prepared purchase for this Apple transaction was not found.",
+      409,
+    );
+  }
+
+  const intent = result.rows[0];
+
+  checkTransaction(transaction, intent, bundleId);
+
+  return synchronizeApplePurchase({
+    userId: intent.purchased_by_user_id,
+    purchaseIntentId: intent.id,
+    transactionId,
+    fromNotification: true,
+  });
+}
+
 module.exports = {
   verifyAndSaveApplePurchase,
+  synchronizeAppleSubscriptionFromNotification,
 };
