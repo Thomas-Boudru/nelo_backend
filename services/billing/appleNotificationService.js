@@ -73,15 +73,18 @@ async function receiveAppleNotification({ signedPayload }) {
         occurred_at,
         processed_at
       )
-      VALUES (
+            VALUES (
         'app_store',
         $1,
         $2,
         $3,
         $4::jsonb,
-        $5,
+        $5::varchar,
         $6,
-        CASE WHEN $5 = 'processed' THEN NOW() ELSE NULL END
+        CASE
+          WHEN $5::varchar = 'processed' THEN NOW()
+          ELSE NULL
+        END
       )
       ON CONFLICT (payment_provider, provider_event_id)
       DO NOTHING
