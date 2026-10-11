@@ -47,7 +47,7 @@ function decideRevenueCatAccess(subscription, entitlementKey) {
   };
 }
 
-function diagnosticsEnabled() {
+function revenueCatDiagnosticsEnabled() {
   return process.env.REVENUECAT_DIAGNOSTIC_LOGS?.trim() === "true";
 }
 
@@ -62,7 +62,7 @@ function diagnosticString(value) {
 }
 
 function logDiagnostic(event, details) {
-  if (diagnosticsEnabled()) {
+  if (revenueCatDiagnosticsEnabled()) {
     console.info(`[RevenueCat diagnostic] ${event}`, details);
   }
 }
@@ -486,5 +486,6 @@ async function syncRevenueCatSubscriptions({
 
 module.exports = {
   decideRevenueCatAccess,
+  revenueCatDiagnosticsEnabled,
   syncRevenueCatSubscriptions,
 };

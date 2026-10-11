@@ -12,6 +12,7 @@ const {
 
 const {
   decideRevenueCatAccess,
+  revenueCatDiagnosticsEnabled,
 } = require("../services/billing/revenuecat/revenuecatSyncService");
 
 const {
@@ -111,6 +112,27 @@ test("rejects an incomplete entitlement list instead of removing access", () => 
     () => decideRevenueCatAccess(partial, "Nelo Premium"),
     { code: "REVENUECAT_ENTITLEMENTS_INCOMPLETE" },
   );
+});
+
+test("enables RevenueCat diagnostics only for the exact trimmed value true", () => {
+  const previousValue = process.env.REVENUECAT_DIAGNOSTIC_LOGS;
+
+  try {
+    process.env.REVENUECAT_DIAGNOSTIC_LOGS = " true ";
+    assert.equal(revenueCatDiagnosticsEnabled(), true);
+
+    process.env.REVENUECAT_DIAGNOSTIC_LOGS = "TRUE";
+    assert.equal(revenueCatDiagnosticsEnabled(), false);
+
+    delete process.env.REVENUECAT_DIAGNOSTIC_LOGS;
+    assert.equal(revenueCatDiagnosticsEnabled(), false);
+  } finally {
+    if (previousValue === undefined) {
+      delete process.env.REVENUECAT_DIAGNOSTIC_LOGS;
+    } else {
+      process.env.REVENUECAT_DIAGNOSTIC_LOGS = previousValue;
+    }
+  }
 });
 
 test("periodic reconciliation prioritizes active states and bounds expired checks", () => {

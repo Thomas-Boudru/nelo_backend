@@ -5,6 +5,13 @@ const pool = require("../db/pool");
 const {
   runRevenueCatWorkerCycle,
 } = require("../services/billing/revenuecat/revenuecatWorker");
+const {
+  revenueCatDiagnosticsEnabled,
+} = require("../services/billing/revenuecat/revenuecatSyncService");
+
+console.info(
+  `RevenueCat diagnostics enabled: ${revenueCatDiagnosticsEnabled()}`,
+);
 
 let stopping = false;
 let timer = null;
