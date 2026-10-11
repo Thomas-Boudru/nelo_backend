@@ -265,8 +265,8 @@ async function syncRevenueCatSubscriptions({
             revenuecat_access_valid_until
           )
           VALUES (
-            $1, $2, $3, $4, $5,
-            'revenuecat', $2, $6, NULL,
+            $1::uuid, $2::uuid, $3::uuid, $4, $5,
+            'revenuecat', ($2::uuid)::text, $6, NULL,
             $7, $8, $9, $10, $11, NULL,
             $12, $13, $14, $15
           )
