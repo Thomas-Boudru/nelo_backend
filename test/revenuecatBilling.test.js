@@ -11,6 +11,10 @@ const {
 } = require("../services/billing/revenuecat/revenuecatSubscriptionMapper");
 
 const {
+  decideRevenueCatAccess,
+} = require("../services/billing/revenuecat/revenuecatSyncService");
+
+const {
   ACTIVE_REFRESHABLE_SUBSCRIPTION_STATUSES,
   EXPIRED_RECONCILIATION_HOURS,
   runRevenueCatWorkerCycle,
@@ -66,6 +70,47 @@ test("does not extend access from dates when RevenueCat denies access", () => {
 
   assert.equal(mapped.givesAccess, false);
   assert.equal(mapped.status, "expired");
+});
+
+test("distinguishes a RevenueCat denial from a missing Premium entitlement", () => {
+  const denied = mapRevenueCatSubscription(
+    subscription({ gives_access: false, status: "expired", ends_at: null }),
+    { environment: "sandbox" },
+  );
+  const deniedDecision = decideRevenueCatAccess(denied, "Nelo Premium");
+
+  assert.equal(deniedDecision.decision, "revenuecat_denied_access");
+  assert.equal(deniedDecision.givesAccess, false);
+
+  const missing = mapRevenueCatSubscription(
+    subscription({
+      entitlements: { object: "list", items: [], next_page: null },
+    }),
+    { environment: "sandbox" },
+  );
+  const missingDecision = decideRevenueCatAccess(missing, "Nelo Premium");
+
+  assert.equal(missingDecision.decision, "premium_entitlement_missing");
+  assert.equal(missingDecision.givesAccess, false);
+  assert.equal(missingDecision.status, "expired");
+});
+
+test("rejects an incomplete entitlement list instead of removing access", () => {
+  const partial = mapRevenueCatSubscription(
+    subscription({
+      entitlements: {
+        object: "list",
+        items: [{ lookup_key: "another-entitlement" }],
+        next_page: "/next-page",
+      },
+    }),
+    { environment: "sandbox" },
+  );
+
+  assert.throws(
+    () => decideRevenueCatAccess(partial, "Nelo Premium"),
+    { code: "REVENUECAT_ENTITLEMENTS_INCOMPLETE" },
+  );
 });
 
 test("periodic reconciliation prioritizes active states and bounds expired checks", () => {

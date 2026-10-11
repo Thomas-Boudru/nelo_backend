@@ -156,6 +156,8 @@ function mapRevenueCatSubscription(subscription, { environment }) {
     storeSubscriptionId: null,
 
     status: mapStatus(subscription),
+    revenuecatStatus: subscription.status,
+    autoRenewalStatus: subscription.auto_renewal_status,
 
     currentPeriodStart,
     currentPeriodEnd,

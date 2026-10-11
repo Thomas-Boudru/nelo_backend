@@ -1,4 +1,5 @@
 const pool = require("../../../db/pool");
+const { createHash } = require("node:crypto");
 
 const { getRevenueCatSubscriptions } = require("./revenuecatClient");
 
@@ -14,6 +15,56 @@ function serviceError(code, message, status = 503) {
   error.code = code;
   error.status = status;
   return error;
+}
+
+function decideRevenueCatAccess(subscription, entitlementKey) {
+  const hasPremiumEntitlement =
+    subscription.entitlementKeys.includes(entitlementKey);
+
+  if (!hasPremiumEntitlement && !subscription.entitlementsComplete) {
+    throw serviceError(
+      "REVENUECAT_ENTITLEMENTS_INCOMPLETE",
+      "The complete subscription entitlement list is required.",
+      502,
+    );
+  }
+
+  const givesAccess = subscription.givesAccess && hasPremiumEntitlement;
+  const status =
+    subscription.givesAccess && !hasPremiumEntitlement
+      ? "expired"
+      : subscription.status;
+
+  return {
+    decision: !subscription.givesAccess
+      ? "revenuecat_denied_access"
+      : !hasPremiumEntitlement
+        ? "premium_entitlement_missing"
+        : "premium_access_confirmed",
+    givesAccess,
+    hasPremiumEntitlement,
+    status,
+  };
+}
+
+function diagnosticsEnabled() {
+  return process.env.REVENUECAT_DIAGNOSTIC_LOGS?.trim() === "true";
+}
+
+function diagnosticReference(value) {
+  return createHash("sha256").update(String(value)).digest("hex").slice(0, 12);
+}
+
+function diagnosticString(value) {
+  return typeof value === "string"
+    ? value.replace(/[\u0000-\u001f\u007f]/g, "?").slice(0, 120)
+    : null;
+}
+
+function logDiagnostic(event, details) {
+  if (diagnosticsEnabled()) {
+    console.info(`[RevenueCat diagnostic] ${event}`, details);
+  }
 }
 
 async function syncRevenueCatSubscriptions({
@@ -158,13 +209,42 @@ async function syncRevenueCatSubscriptions({
       );
     }
 
+    logDiagnostic("snapshot_received", {
+      environment,
+      subscriptionCount: snapshot.subscriptions.length,
+      requireSubscription,
+      verifiedAt: verifiedAt.toISOString(),
+    });
+
     const savedSubscriptions = [];
     const seenIds = [];
 
     for (const rawSubscription of snapshot.subscriptions) {
-      const subscription = mapRevenueCatSubscription(rawSubscription, {
-        environment,
-      });
+      let subscription;
+
+      try {
+        subscription = mapRevenueCatSubscription(rawSubscription, {
+          environment,
+        });
+      } catch (error) {
+        const rawEntitlements = rawSubscription?.entitlements;
+        logDiagnostic("subscription_mapping_rejected", {
+          subscriptionRef: diagnosticReference(rawSubscription?.id),
+          productId: diagnosticString(rawSubscription?.product_id),
+          revenuecatStatus: diagnosticString(rawSubscription?.status),
+          autoRenewalStatus: diagnosticString(
+            rawSubscription?.auto_renewal_status,
+          ),
+          givesAccessReceived: rawSubscription?.gives_access,
+          entitlementListObject: diagnosticString(rawEntitlements?.object),
+          entitlementCount: Array.isArray(rawEntitlements?.items)
+            ? rawEntitlements.items.length
+            : null,
+          entitlementsComplete: rawEntitlements?.next_page == null,
+          errorCode: error?.code,
+        });
+        throw error;
+      }
 
       // Un transfert de compte doit être traité explicitement.
       // Ne pas réattribuer silencieusement l'achat à une autre famille.
@@ -199,19 +279,24 @@ async function syncRevenueCatSubscriptions({
         );
       }
 
-      const hasPremiumEntitlement =
-        subscription.entitlementKeys.includes(entitlementKey);
+      let accessDecision;
 
-      if (!hasPremiumEntitlement && !subscription.entitlementsComplete) {
-        // Une liste partielle ne prouve pas l'absence du Premium.
-        throw serviceError(
-          "REVENUECAT_ENTITLEMENTS_INCOMPLETE",
-          "The complete subscription entitlement list is required.",
-          502,
-        );
+      try {
+        accessDecision = decideRevenueCatAccess(subscription, entitlementKey);
+      } catch (error) {
+        logDiagnostic("subscription_decision_rejected", {
+          subscriptionRef: diagnosticReference(
+            subscription.revenuecatSubscriptionId,
+          ),
+          productId: diagnosticString(subscription.revenuecatProductId),
+          entitlementKeys: subscription.entitlementKeys.map(diagnosticString),
+          entitlementsComplete: subscription.entitlementsComplete,
+          errorCode: error?.code,
+        });
+        throw error;
       }
 
-      const givesAccess = subscription.givesAccess && hasPremiumEntitlement;
+      const { givesAccess, hasPremiumEntitlement, status } = accessDecision;
 
       const isGracePeriod = subscription.status === "grace_period";
 
@@ -222,6 +307,27 @@ async function syncRevenueCatSubscriptions({
           ? null
           : subscription.endsAt
         : null;
+
+      logDiagnostic("subscription_decision", {
+        subscriptionRef: diagnosticReference(
+          subscription.revenuecatSubscriptionId,
+        ),
+        productId: diagnosticString(subscription.revenuecatProductId),
+        environment: subscription.environment,
+        store: subscription.store,
+        revenuecatStatus: subscription.revenuecatStatus,
+        mappedStatus: subscription.status,
+        finalStatus: status,
+        autoRenewalStatus: subscription.autoRenewalStatus,
+        givesAccessReceived: subscription.givesAccess,
+        hasPremiumEntitlement,
+        entitlementKeys: subscription.entitlementKeys.map(diagnosticString),
+        entitlementsComplete: subscription.entitlementsComplete,
+        decision: accessDecision.decision,
+        currentPeriodEnd: subscription.currentPeriodEnd?.toISOString() ?? null,
+        endsAt: subscription.endsAt?.toISOString() ?? null,
+        accessExpiresAt: accessExpiresAt?.toISOString() ?? null,
+      });
 
       if (
         givesAccess &&
@@ -234,12 +340,6 @@ async function syncRevenueCatSubscriptions({
           502,
         );
       }
-
-      // Évite de marquer active une ligne sans entitlement Premium.
-      const status =
-        subscription.givesAccess && !hasPremiumEntitlement
-          ? "expired"
-          : subscription.status;
 
       const saved = await client.query(
         `
@@ -339,7 +439,7 @@ async function syncRevenueCatSubscriptions({
 
     // Seulement après récupération ET validation de toute la liste.
     // Une erreur réseau n'atteint jamais cette requête.
-    await client.query(
+    const invalidated = await client.query(
       `
         UPDATE subscriptions
         SET
@@ -357,9 +457,17 @@ async function syncRevenueCatSubscriptions({
           AND NOT (
             revenuecat_subscription_id = ANY($5::text[])
           )
+        RETURNING revenuecat_subscription_id
       `,
       [userId, environment, familyId, verifiedAt, seenIds],
     );
+
+    logDiagnostic("snapshot_absent_subscriptions_invalidated", {
+      count: invalidated.rowCount,
+      subscriptionRefs: invalidated.rows.map((row) =>
+        diagnosticReference(row.revenuecat_subscription_id),
+      ),
+    });
 
     await client.query("COMMIT");
 
@@ -377,5 +485,6 @@ async function syncRevenueCatSubscriptions({
 }
 
 module.exports = {
+  decideRevenueCatAccess,
   syncRevenueCatSubscriptions,
 };
