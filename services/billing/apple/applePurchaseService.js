@@ -291,6 +291,7 @@ async function synchronizeApplePurchase({
         AND pi.purchased_by_user_id = $2
         AND pi.purchase_kind = 'subscription'
         AND pi.payment_provider = 'app_store'
+        AND pi.management_provider = 'direct'
         AND p.store = 'app_store'
         AND pi.environment = $3
 
@@ -460,7 +461,8 @@ async function synchronizeApplePurchase({
       savedIntent.product_id !== intent.product_id ||
       savedIntent.environment !== billingEnvironment ||
       savedIntent.purchase_kind !== "subscription" ||
-      savedIntent.payment_provider !== "app_store"
+      savedIntent.payment_provider !== "app_store" ||
+      savedIntent.management_provider !== "direct"
     ) {
       throw serviceError(
         "PURCHASE_INTENT_CHANGED",
@@ -673,6 +675,7 @@ async function synchronizeAppleSubscriptionFromNotification({ transactionId }) {
       WHERE id = $1
         AND purchase_kind = 'subscription'
         AND payment_provider = 'app_store'
+        AND management_provider = 'direct'
         AND environment = $2
     `,
     [purchaseIntentId, billingEnvironment],

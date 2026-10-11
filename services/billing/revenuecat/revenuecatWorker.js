@@ -20,6 +20,20 @@ const SUBSCRIPTION_EVENTS = new Set([
   "REFUND_REVERSED",
 ]);
 
+// Une ligne récemment expirée doit encore être interrogée. En particulier,
+// les renouvellements Sandbox peuvent être visibles dans l'API RevenueCat
+// avant ou sans qu'un nouveau webhook exploitable arrive sur cette instance.
+const ACTIVE_REFRESHABLE_SUBSCRIPTION_STATUSES = [
+  "pending",
+  "active",
+  "grace_period",
+  "cancelled",
+  "on_hold",
+  "paused",
+];
+
+const EXPIRED_RECONCILIATION_HOURS = 24;
+
 function workerError(code) {
   const error = new Error(code);
   error.code = code;
@@ -213,29 +227,57 @@ async function runRevenueCatWorkerCycle() {
       `
         SELECT
           revenuecat_app_user_id AS user_id,
-          MIN(last_verified_at) AS last_verified_at
+          MIN(last_verified_at) AS last_verified_at,
+          MIN(
+            GREATEST(
+              COALESCE(last_verified_at, '-infinity'::timestamptz),
+              updated_at
+            )
+          ) AS last_attempt_at,
+          BOOL_OR(
+            revenuecat_gives_access = TRUE
+            OR status = ANY($2::varchar[])
+          ) AS active_priority
         FROM subscriptions
         WHERE management_provider = 'revenuecat'
           AND environment = $1
           AND (
             revenuecat_gives_access = TRUE
-            OR status IN (
-              'pending',
-              'active',
-              'grace_period',
-              'cancelled',
-              'on_hold',
-              'paused'
+            OR status = ANY($2::varchar[])
+            OR (
+              status = 'expired'
+              AND current_period_end BETWEEN
+                clock_timestamp() - ($3::integer * INTERVAL '1 hour')
+                AND
+                clock_timestamp() + ($3::integer * INTERVAL '1 hour')
             )
           )
         GROUP BY revenuecat_app_user_id
-        HAVING MIN(last_verified_at) IS NULL
-          OR MIN(last_verified_at) <
+        HAVING MIN(
+          GREATEST(
+            COALESCE(last_verified_at, '-infinity'::timestamptz),
+            updated_at
+          )
+        ) <
             clock_timestamp() - INTERVAL '5 minutes'
-        ORDER BY MIN(last_verified_at) NULLS FIRST
+        ORDER BY
+          BOOL_OR(
+            revenuecat_gives_access = TRUE
+            OR status = ANY($2::varchar[])
+          ) DESC,
+          MIN(
+            GREATEST(
+              COALESCE(last_verified_at, '-infinity'::timestamptz),
+              updated_at
+            )
+          ) ASC
         LIMIT 20
       `,
-      [environment],
+      [
+        environment,
+        ACTIVE_REFRESHABLE_SUBSCRIPTION_STATUSES,
+        EXPIRED_RECONCILIATION_HOURS,
+      ],
     );
 
     for (const customer of customers.rows) {
@@ -244,6 +286,20 @@ async function runRevenueCatWorkerCycle() {
           userId: customer.user_id,
         });
       } catch (error) {
+        // Un client en erreur ne doit pas reprendre immédiatement une des
+        // vingt places à chaque cycle. `last_verified_at` reste inchangé :
+        // aucune vérification d'accès n'est inventée.
+        await pool.query(
+          `
+            UPDATE subscriptions
+            SET updated_at = clock_timestamp()
+            WHERE management_provider = 'revenuecat'
+              AND environment = $1
+              AND revenuecat_app_user_id = $2
+          `,
+          [environment, customer.user_id],
+        );
+
         console.error("[RevenueCat refresh]", safeErrorCode(error));
       }
     }
@@ -271,5 +327,7 @@ async function runRevenueCatWorkerCycle() {
 }
 
 module.exports = {
+  ACTIVE_REFRESHABLE_SUBSCRIPTION_STATUSES,
+  EXPIRED_RECONCILIATION_HOURS,
   runRevenueCatWorkerCycle,
 };
