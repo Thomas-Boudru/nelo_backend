@@ -48,6 +48,8 @@ function mapProduct(row) {
 }
 
 function mapIntent(row, product, replayed) {
+  const usesRevenueCat = row.management_provider === "revenuecat";
+
   return {
     id: row.id,
     familyId: row.family_id,
@@ -55,9 +57,13 @@ function mapIntent(row, product, replayed) {
     environment: row.environment,
     expiresAt: row.expires_at,
     replayed,
+    managementProvider: row.management_provider,
     product: mapProduct(product),
 
-    appleAppAccountToken: row.payment_provider === "app_store" ? row.id : null,
+    revenuecatAppUserId: usesRevenueCat ? row.purchased_by_user_id : null,
+
+    appleAppAccountToken:
+      !usesRevenueCat && row.payment_provider === "app_store" ? row.id : null,
   };
 }
 
@@ -118,6 +124,7 @@ async function createSubscriptionPurchaseIntent({
     .update(
       JSON.stringify({
         purchaseKind: "subscription",
+        managementProvider: "revenuecat",
         familyId,
         userId,
         productId,
@@ -268,6 +275,14 @@ async function createSubscriptionPurchaseIntent({
 
     const product = productResult.rows[0];
 
+    if (!product.revenuecat_product_id) {
+      throw serviceError(
+        "REVENUECAT_PRODUCT_NOT_CONFIGURED",
+        "This product is not configured in RevenueCat.",
+        409,
+      );
+    }
+
     const entitlements = await getFamilyEntitlements({
       familyId,
       userId,
@@ -296,8 +311,21 @@ async function createSubscriptionPurchaseIntent({
           AND revoked_at IS NULL
           AND (
             (
-              status IN ('active', 'grace_period', 'cancelled')
-              AND access_expires_at > NOW()
+                 status IN ('active', 'grace_period', 'cancelled')
+              AND (
+                (
+                  management_provider = 'direct'
+                  AND access_expires_at > NOW()
+                )
+                OR
+                (
+                  management_provider = 'revenuecat'
+                  AND (
+                    revenuecat_gives_access = TRUE
+                    OR access_expires_at > NOW()
+                  )
+                )
+              )
             )
             OR status IN ('pending', 'on_hold', 'paused')
           )
@@ -356,6 +384,44 @@ async function createSubscriptionPurchaseIntent({
       );
     }
 
+    // Le verrou utilisateur acquis plus haut sérialise
+    // les préparations d'achat de cet utilisateur.
+    //
+    // Ne jamais remplacer family_id lors d'un conflit :
+    // une ancienne notification peut encore arriver.
+    await client.query(
+      `
+        INSERT INTO revenuecat_family_bindings (
+          user_id,
+          environment,
+          family_id
+        )
+        VALUES ($1, $2, $3)
+        ON CONFLICT (user_id, environment)
+        DO NOTHING
+      `,
+      [userId, environment, familyId],
+    );
+
+    const binding = await client.query(
+      `
+        SELECT family_id
+        FROM revenuecat_family_bindings
+        WHERE user_id = $1
+          AND environment = $2
+        FOR UPDATE
+      `,
+      [userId, environment],
+    );
+
+    if (binding.rowCount !== 1 || binding.rows[0].family_id !== familyId) {
+      throw serviceError(
+        "BILLING_FAMILY_CHANGE_REQUIRES_REVIEW",
+        "Your billing account is linked to another family. Contact support before purchasing for a different family.",
+        409,
+      );
+    }
+
     const result = await client.query(
       `
         INSERT INTO subscription_purchase_intents (
@@ -365,6 +431,7 @@ async function createSubscriptionPurchaseIntent({
           product_id,
           purchase_kind,
           payment_provider,
+          management_provider,
           environment,
           idempotency_key,
           request_hash,
@@ -373,7 +440,9 @@ async function createSubscriptionPurchaseIntent({
         VALUES (
           $1, $2, $3, $4,
           'subscription',
-          $5, $6, $7, $8,
+          $5,
+          'revenuecat',
+          $6, $7, $8,
           NOW() + INTERVAL '30 minutes'
         )
         RETURNING *

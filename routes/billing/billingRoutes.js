@@ -11,6 +11,10 @@ const {
   verifyApplePurchase,
 } = require("../../controllers/billing/apple/applePurchaseController");
 
+const {
+  syncRevenueCatPurchase,
+} = require("../../controllers/billing/revenuecat/revenuecatSyncController");
+
 const router = express.Router();
 
 const purchaseVerificationLimiter = rateLimit({
@@ -37,6 +41,13 @@ router.post(
   authenticate,
   purchaseVerificationLimiter,
   verifyApplePurchase,
+);
+
+router.post(
+  "/revenuecat/sync",
+  authenticate,
+  purchaseVerificationLimiter,
+  syncRevenueCatPurchase,
 );
 
 module.exports = router;

@@ -13,7 +13,8 @@
     "migrate:create": "node-pg-migrate create",
     "check:r2": "node scripts/checkR2Connection.js",
     "check:r2-storage": "node scripts/checkR2Storage.js",
-    "billing:apple:process": "node scripts/processAppleEvents.js"
+    "billing:apple:process": "node scripts/processAppleEvents.js",
+    "billing:revenuecat:worker": "node scripts/runRevenueCatWorker.js"
   },
   "dependencies": {
     "@apple/app-store-server-library": "^3.1.0",

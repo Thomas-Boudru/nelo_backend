@@ -13,7 +13,7 @@ function createServiceError(code, message, status) {
 }
 
 function getBillingEnvironment() {
-  const environment = process.env.BILLING_ENVIRONMENT;
+  const environment = process.env.BILLING_ENVIRONMENT?.trim();
 
   if (!["sandbox", "production"].includes(environment)) {
     throw createServiceError(
@@ -27,7 +27,7 @@ function getBillingEnvironment() {
 }
 
 async function getFamilyEntitlements({ familyId, userId, database = pool }) {
-  if (!userId || !UUID_PATTERN.test(userId)) {
+  if (typeof userId !== "string" || !UUID_PATTERN.test(userId)) {
     throw createServiceError(
       "AUTHENTICATION_REQUIRED",
       "Authentication is required.",
@@ -35,13 +35,16 @@ async function getFamilyEntitlements({ familyId, userId, database = pool }) {
     );
   }
 
-  if (!familyId || !UUID_PATTERN.test(familyId)) {
+  if (typeof familyId !== "string" || !UUID_PATTERN.test(familyId)) {
     throw createServiceError(
       "INVALID_FAMILY_ID",
       "A valid family ID is required.",
       400,
     );
   }
+
+  familyId = familyId.toLowerCase();
+  userId = userId.toLowerCase();
 
   const environment = getBillingEnvironment();
 
@@ -88,14 +91,31 @@ async function getFamilyEntitlements({ familyId, userId, database = pool }) {
         WHERE s.family_id = $1
           AND s.environment = $3
           AND p.plan_code = 'premium'
-          AND s.status IN (
-            'active',
-            'grace_period',
-            'cancelled'
-          )
           AND s.revoked_at IS NULL
           AND s.last_verified_at IS NOT NULL
-          AND s.access_expires_at > NOW()
+
+          AND (
+            (
+              s.management_provider = 'direct'
+              AND s.status IN (
+                'active',
+                'grace_period',
+                'cancelled'
+              )
+              AND s.access_expires_at > NOW()
+            )
+            OR
+            (
+              s.management_provider = 'revenuecat'
+              AND s.revenuecat_gives_access = TRUE
+              AND s.revenuecat_access_valid_until > NOW()
+              AND (
+                s.access_expires_at IS NULL
+                OR s.access_expires_at > NOW()
+              )
+            )
+          )
+
           AND EXISTS (SELECT 1 FROM membership)
 
         UNION ALL
@@ -129,7 +149,11 @@ async function getFamilyEntitlements({ familyId, userId, database = pool }) {
       access_summary AS (
         SELECT
           COUNT(*) > 0 AS is_premium,
-          MAX(ends_at) AS access_expires_at,
+
+          CASE
+            WHEN BOOL_OR(ends_at IS NULL) THEN NULL
+            ELSE MAX(ends_at)
+          END AS access_expires_at,
 
           COALESCE(
             array_agg(DISTINCT source),
@@ -294,6 +318,10 @@ async function getFamilyEntitlements({ familyId, userId, database = pool }) {
     premiumAccess: row.is_premium
       ? {
           sources: row.sources,
+
+          // null signifie que la date de fin n'est pas connue.
+          // La validité de la confirmation RevenueCat est
+          // contrôlée séparément dans la requête.
           expiresAt: row.access_expires_at,
         }
       : null,
