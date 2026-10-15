@@ -75,7 +75,30 @@ function makeRequestHash({ requestData, units }) {
     .digest("hex");
 }
 
-async function withTransaction(callback) {
+async function withTransaction(callback, transactionClient = null) {
+  /*
+   * Lorsqu'un client est fourni, la transaction appartient à l'appelant.
+   * Ce service ne doit donc ni la valider, ni l'annuler, ni libérer le client.
+   *
+   * L'appelant doit avoir exécuté BEGIN et doit faire ROLLBACK
+   * si une erreur remonte.
+   */
+  if (transactionClient !== null) {
+    if (
+      typeof transactionClient.query !== "function" ||
+      typeof transactionClient.release !== "function"
+    ) {
+      throw serviceError(
+        "INVALID_TRANSACTION_CLIENT",
+        "A dedicated database transaction client is required.",
+        500,
+      );
+    }
+
+    return callback(transactionClient);
+  }
+
+  // Comportement actuel conservé pour les appels autonomes.
   const client = await pool.connect();
 
   try {
@@ -84,12 +107,13 @@ async function withTransaction(callback) {
     const result = await callback(client);
 
     await client.query("COMMIT");
+
     return result;
   } catch (error) {
     try {
       await client.query("ROLLBACK");
-    } catch (rollbackError) {
-      console.error("Unable to rollback feature usage:", rollbackError);
+    } catch {
+      console.error("[Feature usage] Transaction rollback failed.");
     }
 
     throw error;
@@ -117,10 +141,15 @@ async function reserveFeatureUsage({
   idempotencyKey,
   requestData,
   units = 1,
+  transactionClient = null,
 }) {
   validateUuid(familyId, "family ID");
   validateUuid(userId, "user ID");
   validateUuid(idempotencyKey, "idempotency key");
+
+  familyId = familyId.toLowerCase();
+  userId = userId.toLowerCase();
+  idempotencyKey = idempotencyKey.toLowerCase();
 
   if (
     typeof featureCode !== "string" ||
@@ -342,7 +371,7 @@ async function reserveFeatureUsage({
     );
 
     return mapOperation(operation.rows[0], false);
-  });
+  }, transactionClient);
 }
 
 // Fonctions internes au backend.
@@ -352,11 +381,21 @@ async function settleFeatureUsage({
   targetStatus,
   resultReference = null,
   reason = null,
+  transactionClient = null,
 }) {
   validateUuid(operationId, "operation ID");
 
-  const environment = getEnvironment();
+  operationId = operationId.toLowerCase();
 
+  if (!["completed", "released"].includes(targetStatus)) {
+    throw serviceError(
+      "INVALID_USAGE_STATUS",
+      "The usage operation status is invalid.",
+      500,
+    );
+  }
+
+  const environment = getEnvironment();
   if (
     targetStatus === "released" &&
     (typeof reason !== "string" || !reason.trim())
@@ -484,22 +523,32 @@ async function settleFeatureUsage({
     );
 
     return mapOperation(updated.rows[0], false);
-  });
+  }, transactionClient);
 }
 
-async function completeFeatureUsage({ operationId, resultReference = null }) {
+async function completeFeatureUsage({
+  operationId,
+  resultReference = null,
+  transactionClient = null,
+}) {
   return settleFeatureUsage({
     operationId,
     targetStatus: "completed",
     resultReference,
+    transactionClient,
   });
 }
 
-async function releaseFeatureUsage({ operationId, reason }) {
+async function releaseFeatureUsage({
+  operationId,
+  reason,
+  transactionClient = null,
+}) {
   return settleFeatureUsage({
     operationId,
     targetStatus: "released",
     reason,
+    transactionClient,
   });
 }
 

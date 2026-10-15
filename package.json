@@ -14,7 +14,8 @@
     "check:r2": "node scripts/checkR2Connection.js",
     "check:r2-storage": "node scripts/checkR2Storage.js",
     "billing:apple:process": "node scripts/processAppleEvents.js",
-    "billing:revenuecat:worker": "node scripts/runRevenueCatWorker.js"
+    "billing:revenuecat:worker": "node scripts/runRevenueCatWorker.js",
+    "workers:start": "node scripts/runBackgroundWorkers.js"
   },
   "dependencies": {
     "@apple/app-store-server-library": "^3.1.0",
@@ -30,6 +31,7 @@
     "jwks-rsa": "^4.1.0",
     "morgan": "^1.9.1",
     "multer": "^2.4.0",
+    "openai": "^7.34.0",
     "pg": "^8.0.0",
     "resend": "^6.25.0",
     "sharp": "^0.35.5",

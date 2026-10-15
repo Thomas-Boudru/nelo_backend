@@ -20,6 +20,7 @@ const familyBillingRoutes = require("./routes/billing/familyBillingRoutes");
 const billingRoutes = require("./routes/billing/billingRoutes");
 const appleWebhookRoutes = require("./routes/billing/apple/appleWebhookRoutes");
 const revenuecatWebhookRoutes = require("./routes/billing/revenuecat/revenuecatWebhookRoutes");
+const neloRoutes = require("./routes/nelo/neloRoutes");
 const app = express();
 
 app.set("trust proxy", 1);
@@ -105,6 +106,7 @@ app.use("/api/children", trackingRoutes);
 app.use("/api/children", momentRoutes);
 app.use("/api/families", familyBillingRoutes);
 app.use("/api/billing", billingRoutes);
+app.use("/api/children", neloRoutes);
 
 // Route inconnue
 app.use((req, res) => {
