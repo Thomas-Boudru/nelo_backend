@@ -503,17 +503,23 @@ async function settleFeatureUsage({
 
     const updated = await client.query(
       `
-        UPDATE feature_usage_operations
-        SET status = $2,
-            completed_at = CASE WHEN $2 = 'completed' THEN NOW() END,
-            released_at = CASE WHEN $2 = 'released' THEN NOW() END,
-            release_reason = $3,
-            result_reference = $4,
-            updated_at = NOW()
-
-        WHERE id = $1
-        RETURNING *
-      `,
+    UPDATE feature_usage_operations
+    SET
+      status = $2::varchar,
+      completed_at = CASE
+        WHEN $2::varchar = 'completed' THEN NOW()
+        ELSE NULL
+      END,
+      released_at = CASE
+        WHEN $2::varchar = 'released' THEN NOW()
+        ELSE NULL
+      END,
+      release_reason = $3::text,
+      result_reference = $4::text,
+      updated_at = NOW()
+    WHERE id = $1::uuid
+    RETURNING *
+  `,
       [
         operationId,
         targetStatus,
