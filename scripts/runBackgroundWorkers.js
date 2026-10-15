@@ -34,7 +34,18 @@ function startLoop(name, cycle, delayMs) {
     try {
       await task;
     } catch (error) {
-      console.error(`[${name}]`, safeCode(error));
+      console.error(`[${name}]`, {
+        code: safeCode(error),
+
+        ...(error?.code === "42P08"
+          ? {
+              message: error.message,
+              detail: error.detail,
+              position: error.position,
+              stack: error.stack,
+            }
+          : {}),
+      });
     } finally {
       activeTasks.delete(task);
 

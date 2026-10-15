@@ -589,7 +589,19 @@ async function runNeloAIWorkerCycle() {
     await failRun(run, code);
 
     // Aucun message utilisateur ni contexte personnel journalisé.
-    console.error("[Nelo AI]", run.id, code);
+    console.error("[Nelo AI]", {
+      runId: run.id,
+      code,
+
+      ...(error?.code === "42P08"
+        ? {
+            message: error.message,
+            detail: error.detail,
+            position: error.position,
+            stack: error.stack,
+          }
+        : {}),
+    });
   }
 }
 
