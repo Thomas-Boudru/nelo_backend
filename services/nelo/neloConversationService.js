@@ -104,6 +104,7 @@ function mapConversation(row) {
     childId: row.child_id,
     familyId: row.family_id,
     title: row.title,
+    preview: row.preview ?? null,
     status: row.status,
     lastMessageAt: row.last_message_at,
     createdAt: row.created_at,
@@ -205,11 +206,30 @@ async function listConversations({ childId, userId, limit, offset }) {
                 nc.id,
                 nc.child_id,
                 nc.family_id,
+                COALESCE(
                 nc.title,
-                nc.status,
-                nc.last_message_at,
-                nc.created_at,
-                nc.updated_at
+                (
+                  SELECT LEFT(m.content, 100)
+                  FROM nelo_messages m
+                  WHERE m.conversation_id = nc.id
+                    AND m.role = 'user'
+                  ORDER BY m.sequence_number ASC
+                  LIMIT 1
+                )
+              ) AS title,
+
+              (
+                SELECT LEFT(m.content, 180)
+                FROM nelo_messages m
+                WHERE m.conversation_id = nc.id
+                ORDER BY m.sequence_number DESC
+                LIMIT 1
+              ) AS preview,
+
+              nc.status,
+              nc.last_message_at,
+              nc.created_at,
+              nc.updated_at
               FROM nelo_conversations nc
 
               JOIN accessible_child ac
@@ -364,8 +384,97 @@ async function listMessages({
   };
 }
 
+async function deleteConversation({ childId, userId, conversationId }) {
+  childId = validateUuid(childId, "child ID");
+  userId = validateUuid(userId, "user ID");
+  conversationId = validateUuid(conversationId, "conversation ID");
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    const result = await client.query(
+      `
+        ${ACCESS_CTE}
+
+        SELECT nc.id, nc.deleted_at
+        FROM nelo_conversations nc
+
+        JOIN accessible_child ac
+          ON ac.id = nc.child_id
+          AND ac.family_id = nc.family_id
+
+        WHERE nc.id = $3::uuid
+          AND nc.user_id = $2::uuid
+
+        FOR UPDATE OF nc
+      `,
+      [childId, userId, conversationId],
+    );
+
+    if (result.rowCount === 0) {
+      throw serviceError(
+        "CONVERSATION_NOT_FOUND",
+        "The conversation could not be found.",
+        404,
+      );
+    }
+
+    // Une nouvelle tentative de suppression reste sans effet secondaire.
+    if (result.rows[0].deleted_at) {
+      await client.query("COMMIT");
+      return { removed: true };
+    }
+
+    /*
+     * Le verrou de conversation empêche un nouvel envoi
+     * de s'insérer pendant cette suppression.
+     */
+    const pendingRun = await client.query(
+      `
+        SELECT id
+        FROM nelo_ai_runs
+        WHERE conversation_id = $1::uuid
+          AND status IN ('queued', 'running')
+        LIMIT 1
+      `,
+      [conversationId],
+    );
+
+    if (pendingRun.rowCount > 0) {
+      throw serviceError(
+        "CONVERSATION_BUSY",
+        "Wait for the current answer before deleting this conversation.",
+        409,
+      );
+    }
+
+    await client.query(
+      `
+        UPDATE nelo_conversations
+        SET
+          deleted_at = clock_timestamp(),
+          updated_at = clock_timestamp()
+        WHERE id = $1::uuid
+      `,
+      [conversationId],
+    );
+
+    await client.query("COMMIT");
+
+    return { removed: true };
+  } catch (error) {
+    await client.query("ROLLBACK").catch(() => {});
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   createConversation,
   listConversations,
   listMessages,
+  deleteConversation,
 };

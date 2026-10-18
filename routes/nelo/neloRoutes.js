@@ -54,6 +54,10 @@ router.post(
   createConversation,
 );
 
+const {
+  deleteConversation,
+} = require("../../controllers/nelo/neloDeleteConversationController");
+
 router.get("/:childId/nelo/conversations", authenticate, listConversations);
 
 router.get(
@@ -67,6 +71,12 @@ router.post(
   authenticate,
   sendMessageLimiter,
   sendMessage,
+);
+
+router.delete(
+  "/:childId/nelo/conversations/:conversationId",
+  authenticate,
+  deleteConversation,
 );
 
 router.get("/:childId/nelo/runs/:runId", authenticate, getRun);
