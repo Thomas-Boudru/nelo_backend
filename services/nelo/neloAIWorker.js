@@ -586,22 +586,33 @@ async function runNeloAIWorkerCycle() {
   } catch (error) {
     const code = safeCode(error);
 
-    await failRun(run, code);
-
-    // Aucun message utilisateur ni contexte personnel journalisé.
-    console.error("[Nelo AI]", {
+    // Journaliser avant failRun : une erreur de nettoyage
+    // ne doit pas masquer l'erreur initiale.
+    console.error("[Nelo AI] processing failed", {
       runId: run.id,
       code,
+      errorName: error?.name,
 
-      ...(error?.code === "42P08"
-        ? {
-            message: error.message,
-            detail: error.detail,
-            position: error.position,
-            stack: error.stack,
-          }
-        : {}),
+      // Les messages des erreurs JavaScript permettent de repérer
+      // une variable absente ou une fonction mal importée.
+      message:
+        error instanceof ReferenceError || error instanceof TypeError
+          ? error.message
+          : undefined,
+
+      // Uniquement les emplacements du code, pas le payload.
+      frames:
+        typeof error?.stack === "string"
+          ? error.stack
+              .split("\n")
+              .filter((line) => /^\s+at\s/.test(line))
+              .slice(0, 8)
+          : [],
+
+      providerStatus: error?.$metadata?.httpStatusCode,
     });
+
+    await failRun(run, code);
   }
 }
 
