@@ -3,7 +3,16 @@ const rateLimit = require("express-rate-limit");
 
 const authenticate = require("../../middleware/authenticate");
 
-const { sendMessage } = require("../../controllers/nelo/neloMessageController");
+const {
+  sendMessage,
+  sendMessageWithPhoto,
+} = require("../../controllers/nelo/neloMessageController");
+
+const {
+  requireNeloPhotoAccess,
+} = require("../../middleware/requireNeloPhotoAccess");
+
+const { uploadNeloPhoto } = require("../../middleware/uploadNeloPhoto");
 
 const { getRun } = require("../../controllers/nelo/neloRunController");
 
@@ -80,5 +89,14 @@ router.delete(
 );
 
 router.get("/:childId/nelo/runs/:runId", authenticate, getRun);
+
+router.post(
+  "/:childId/nelo/conversations/:conversationId/messages/with-photo",
+  authenticate,
+  sendMessageLimiter,
+  requireNeloPhotoAccess,
+  uploadNeloPhoto,
+  sendMessageWithPhoto,
+);
 
 module.exports = router;

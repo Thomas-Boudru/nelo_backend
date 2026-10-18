@@ -2,6 +2,18 @@ const pool = require("../../db/pool");
 
 const { reserveFeatureUsage } = require("../billing/featureUsageService");
 
+const { requireNeloPhotoAccess } = require("./neloPhotoAccessService");
+
+const {
+  prepareMessagePhoto,
+  uploadMessagePhoto,
+  cleanupMessagePhoto,
+  insertMessagePhoto,
+  readMessagePhotoRows,
+  matchesMessagePhoto,
+  mapMessagePhotos,
+} = require("./neloMessagePhotoService");
+
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -162,7 +174,13 @@ function mapRun(row) {
   };
 }
 
-async function sendMessage({ childId, userId, conversationId, data }) {
+async function sendMessage({
+  childId,
+  userId,
+  conversationId,
+  data,
+  photoFile = null,
+}) {
   childId = normalizeUuid(childId, "child ID");
   userId = normalizeUuid(userId, "user ID");
   conversationId = normalizeUuid(conversationId, "conversation ID");
@@ -179,10 +197,44 @@ async function sendMessage({ childId, userId, conversationId, data }) {
     );
   }
 
-  const client = await pool.connect();
+  let photo = null;
+
+  if (photoFile) {
+    // Contrôle également effectué ici pour protéger les appels
+    // directs au service, indépendamment de la route Express.
+    await requireNeloPhotoAccess({
+      childId,
+      conversationId,
+      userId,
+    });
+
+    photo = await prepareMessagePhoto({
+      childId,
+      conversationId,
+      fileBuffer: photoFile.buffer,
+    });
+  }
+
+  let client = null;
+  let transactionStarted = false;
+
+  let uploadAttempted = false;
+
+  // Vrai dès qu'un COMMIT susceptible de référencer notre fichier
+  // a été envoyé. Une erreur réseau à ce moment est ambiguë.
+  let photoCommitAttempted = false;
+  let photoCommitted = false;
 
   try {
+    if (photo) {
+      uploadAttempted = true;
+      await uploadMessagePhoto(photo);
+    }
+
+    client = await pool.connect();
+
     await client.query("BEGIN");
+    transactionStarted = true;
 
     /*
      * Première lecture pour déterminer la famille et vérifier l'accès.
@@ -356,13 +408,21 @@ async function sendMessage({ childId, userId, conversationId, data }) {
 
       const savedRun = existingRun.rows[0];
 
+      const savedPhotoRows = await readMessagePhotoRows({
+        database: client,
+        messageId: savedMessage.id,
+      });
+
+      const samePhoto = matchesMessagePhoto(savedPhotoRows, photo);
+
       if (
         savedMessage.role !== "user" ||
         savedMessage.content !== messageData.content ||
         savedMessage.input_mode !== messageData.inputMode ||
         savedRun.locale !== messageData.locale ||
         savedRun.timezone !== messageData.timezone ||
-        savedRun.environment !== environment
+        savedRun.environment !== environment ||
+        !samePhoto
       ) {
         throw serviceError(
           "IDEMPOTENCY_KEY_CONFLICT",
@@ -371,11 +431,19 @@ async function sendMessage({ childId, userId, conversationId, data }) {
         );
       }
 
+      const attachments = await mapMessagePhotos(savedPhotoRows);
+
       await client.query("COMMIT");
+      transactionStarted = false;
 
       return {
         replayed: true,
-        message: mapMessage(savedMessage),
+
+        message: {
+          ...mapMessage(savedMessage),
+          attachments,
+        },
+
         run: mapRun(savedRun),
       };
     }
@@ -407,6 +475,17 @@ async function sendMessage({ childId, userId, conversationId, data }) {
       );
     }
 
+    if (photo) {
+      // Les droits peuvent avoir changé pendant l'upload.
+      // Vérification sur la même connexion que la réservation.
+      await requireNeloPhotoAccess({
+        childId,
+        conversationId,
+        userId,
+        database: client,
+      });
+    }
+
     const usage = await reserveFeatureUsage({
       familyId,
       userId,
@@ -423,6 +502,11 @@ async function sendMessage({ childId, userId, conversationId, data }) {
         locale: messageData.locale,
         timezone: messageData.timezone,
         attachmentIds: [],
+        ...(photo
+          ? {
+              photoFingerprint: photo.fingerprint,
+            }
+          : {}),
       },
 
       transactionClient: client,
@@ -468,6 +552,15 @@ async function sendMessage({ childId, userId, conversationId, data }) {
         messageData.inputMode,
       ],
     );
+
+    if (photo) {
+      await insertMessagePhoto({
+        database: client,
+        messageId: savedMessage.rows[0].id,
+        userId,
+        photo,
+      });
+    }
 
     await client.query(
       `
@@ -523,18 +616,50 @@ async function sendMessage({ childId, userId, conversationId, data }) {
       ],
     );
 
+    const photoRows = await readMessagePhotoRows({
+      database: client,
+      messageId: savedMessage.rows[0].id,
+    });
+
+    const attachments = await mapMessagePhotos(photoRows);
+
+    photoCommitAttempted = Boolean(photo);
+
     await client.query("COMMIT");
+
+    transactionStarted = false;
+    photoCommitted = Boolean(photo);
 
     return {
       replayed: false,
-      message: mapMessage(savedMessage.rows[0]),
+
+      message: {
+        ...mapMessage(savedMessage.rows[0]),
+        attachments,
+      },
+
       run: mapRun(savedRun.rows[0]),
     };
   } catch (error) {
-    await client.query("ROLLBACK").catch(() => {});
+    if (client && transactionStarted) {
+      await client.query("ROLLBACK").catch(() => {});
+    }
+
+    if (photoCommitAttempted && !photoCommitted) {
+      // Ne pas supprimer un fichier potentiellement référencé
+      // par une transaction dont le COMMIT a réellement réussi.
+      console.error("[Nelo photo] Commit outcome requires verification", {
+        attachmentId: photo?.attachmentId,
+      });
+    }
+
     throw error;
   } finally {
-    client.release();
+    client?.release();
+
+    if (uploadAttempted && !photoCommitted && !photoCommitAttempted) {
+      await cleanupMessagePhoto(photo);
+    }
   }
 }
 

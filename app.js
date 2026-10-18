@@ -21,6 +21,7 @@ const billingRoutes = require("./routes/billing/billingRoutes");
 const appleWebhookRoutes = require("./routes/billing/apple/appleWebhookRoutes");
 const revenuecatWebhookRoutes = require("./routes/billing/revenuecat/revenuecatWebhookRoutes");
 const neloRoutes = require("./routes/nelo/neloRoutes");
+const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
 app.set("trust proxy", 1);
@@ -117,6 +118,8 @@ app.use((req, res) => {
     },
   });
 });
+
+app.use(errorHandler);
 
 // Gestionnaire centralisé des erreurs
 app.use((error, req, res, next) => {

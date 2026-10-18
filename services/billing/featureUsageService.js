@@ -7,10 +7,16 @@ const { getFamilyEntitlements } = require("./familyEntitlementsService");
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-function serviceError(code, message, status) {
+function serviceError(code, message, status, details = undefined) {
   const error = new Error(message);
+
   error.code = code;
   error.status = status;
+
+  if (details !== undefined) {
+    error.details = details;
+  }
+
   return error;
 }
 
@@ -251,6 +257,10 @@ async function reserveFeatureUsage({
         "FEATURE_NOT_AVAILABLE",
         "This feature is not available for your family.",
         403,
+        {
+          featureCode,
+          planCode: entitlements.planCode ?? null,
+        },
       );
     }
 
@@ -327,10 +337,49 @@ async function reserveFeatureUsage({
     );
 
     if (reserved.rowCount === 0) {
+      const counterResult = await client.query(
+        `
+      SELECT used_units, reserved_units
+      FROM feature_usage
+      WHERE family_id = $1::uuid
+        AND feature_code = $2
+        AND environment = $3
+        AND quota_period = $4
+        AND period_starts_at = $5::timestamptz
+    `,
+        [familyId, featureCode, environment, quota.period, quota.startsAt],
+      );
+
+      const counter = counterResult.rows[0];
+
+      if (!counter) {
+        throw serviceError(
+          "USAGE_COUNTER_INCONSISTENT",
+          "The usage counter could not be found.",
+          500,
+        );
+      }
+
+      const used = Number(counter.used_units);
+      const reservedUnits = Number(counter.reserved_units);
+      const limit = Number(quota.limit);
+
       throw serviceError(
         "FEATURE_QUOTA_EXCEEDED",
         "Your family has reached the usage limit for this feature.",
         429,
+        {
+          featureCode,
+          planCode: entitlements.planCode ?? null,
+          quota: {
+            limit,
+            used,
+            reserved: reservedUnits,
+            remaining: Math.max(0, limit - used - reservedUnits),
+            period: quota.period,
+            resetsAt: quota.resetsAt,
+          },
+        },
       );
     }
 
