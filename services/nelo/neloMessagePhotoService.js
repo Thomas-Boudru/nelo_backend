@@ -164,6 +164,80 @@ async function mapMessagePhotos(rows) {
   );
 }
 
+// Fonction interne.
+// L'appelant doit avoir autorisé l'accès à la conversation.
+async function loadPhotosForMessages({
+  database,
+  conversationId,
+  userId,
+  messageIds,
+}) {
+  if (messageIds.length === 0) {
+    return new Map();
+  }
+
+  const result = await database.query(
+    `
+      SELECT
+        ma.message_id,
+        ma.display_order,
+
+        a.id,
+        a.storage_key,
+        a.mime_type,
+        a.size_bytes,
+        a.width,
+        a.height,
+        a.deleted_at
+
+      FROM nelo_message_attachments ma
+
+      JOIN nelo_messages m
+        ON m.id = ma.message_id
+
+      JOIN nelo_conversations nc
+        ON nc.id = m.conversation_id
+
+      JOIN attachments a
+        ON a.id = ma.attachment_id
+
+      WHERE nc.id = $1::uuid
+        AND nc.user_id = $2::uuid
+        AND nc.deleted_at IS NULL
+
+        AND m.id = ANY($3::uuid[])
+        AND m.role = 'user'
+
+        AND a.uploaded_by_user_id = $2::uuid
+        AND a.deleted_at IS NULL
+
+      ORDER BY
+        ma.message_id,
+        ma.display_order,
+        a.id
+    `,
+    [conversationId, userId, messageIds],
+  );
+
+  const rowsByMessage = new Map();
+
+  for (const row of result.rows) {
+    const rows = rowsByMessage.get(row.message_id) ?? [];
+
+    rows.push(row);
+    rowsByMessage.set(row.message_id, rows);
+  }
+
+  const entries = await Promise.all(
+    [...rowsByMessage.entries()].map(async ([messageId, rows]) => [
+      messageId,
+      await mapMessagePhotos(rows),
+    ]),
+  );
+
+  return new Map(entries);
+}
+
 module.exports = {
   prepareMessagePhoto,
   uploadMessagePhoto,
@@ -172,4 +246,5 @@ module.exports = {
   readMessagePhotoRows,
   matchesMessagePhoto,
   mapMessagePhotos,
+  loadPhotosForMessages,
 };

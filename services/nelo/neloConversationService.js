@@ -10,6 +10,8 @@ function serviceError(code, message, status) {
   return error;
 }
 
+const { loadPhotosForMessages } = require("./neloMessagePhotoService");
+
 function validateUuid(value, field) {
   if (typeof value !== "string" || !UUID_PATTERN.test(value)) {
     throw serviceError("INVALID_REQUEST", `A valid ${field} is required.`, 400);
@@ -370,11 +372,29 @@ async function listMessages({
   const oldestSequence =
     page.length > 0 ? String(page[page.length - 1].sequence_number) : null;
 
+  // La requête précédente a déjà vérifié :
+  // - l'accès actuel à l'enfant ;
+  // - la propriété de la conversation ;
+  // - l'absence de suppression.
+  const photosByMessage = await loadPhotosForMessages({
+    database: pool,
+    conversationId,
+    userId,
+    messageIds: page.map((message) => message.id),
+  });
+
+  const messages = page
+    .slice()
+    .reverse()
+    .map((message) => ({
+      ...mapMessage(message),
+      attachments: photosByMessage.get(message.id) ?? [],
+    }));
+
   return {
     conversation: mapConversation(row.conversation),
 
-    // Chaque page est renvoyée dans l'ordre chronologique.
-    messages: page.reverse().map(mapMessage),
+    messages,
 
     pagination: {
       limit: pageSize,
