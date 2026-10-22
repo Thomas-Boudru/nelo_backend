@@ -21,6 +21,7 @@ const billingRoutes = require("./routes/billing/billingRoutes");
 const appleWebhookRoutes = require("./routes/billing/apple/appleWebhookRoutes");
 const revenuecatWebhookRoutes = require("./routes/billing/revenuecat/revenuecatWebhookRoutes");
 const neloRoutes = require("./routes/nelo/neloRoutes");
+const dailyReportRoutes = require("./routes/dailyReports/dailyReportRoutes");
 const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
@@ -107,6 +108,7 @@ app.use("/api/children", trackingRoutes);
 app.use("/api/children", momentRoutes);
 app.use("/api/families", familyBillingRoutes);
 app.use("/api/billing", billingRoutes);
+app.use("/api/families", dailyReportRoutes);
 app.use("/api/children", neloRoutes);
 
 // Route inconnue

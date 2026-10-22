@@ -2,107 +2,45 @@ require("dotenv").config();
 
 const pool = require("../db/pool");
 
-const {
-  runRevenueCatWorkerCycle,
-} = require("../services/billing/revenuecat/revenuecatWorker");
+const { startBackgroundWorkers } = require("../services/backgroundWorkers");
 
-const { runNeloAIWorkerCycle } = require("../services/nelo/neloAIWorker");
+const workers = startBackgroundWorkers();
 
-let stopping = false;
-let shutdownStarted = false;
+let shutdownPromise = null;
 
-const timers = new Map();
-const activeTasks = new Set();
+function shutdown(signal) {
+  if (shutdownPromise) return shutdownPromise;
 
-function safeCode(error) {
-  return typeof error?.code === "string" &&
-    /^[A-Z0-9_]{1,100}$/.test(error.code)
-    ? error.code
-    : "BACKGROUND_WORKER_FAILED";
-}
+  console.info("[Worker process] stopping", { signal });
 
-function startLoop(name, cycle, delayMs) {
-  async function tick() {
-    timers.delete(name);
+  const deadline = setTimeout(() => {
+    console.error("[Worker process] shutdown deadline exceeded");
+    process.exit(1);
+  }, 25_000);
 
-    if (stopping) return;
+  deadline.unref();
 
-    const task = Promise.resolve().then(cycle);
-
-    activeTasks.add(task);
-
+  shutdownPromise = (async () => {
     try {
-      await task;
-    } catch (error) {
-      console.error(`[${name}]`, {
-        code: safeCode(error),
+      await workers.stop();
+      await pool.end();
 
-        ...(error?.code === "42P08"
-          ? {
-              message: error.message,
-              detail: error.detail,
-              position: error.position,
-              stack: error.stack,
-            }
-          : {}),
-      });
+      console.info("[Worker process] stopped");
+    } catch {
+      process.exitCode = 1;
+      console.error("[Worker process] shutdown failed");
     } finally {
-      activeTasks.delete(task);
-
-      if (!stopping) {
-        timers.set(name, setTimeout(tick, delayMs));
-      }
+      clearTimeout(deadline);
     }
-  }
+  })();
 
-  void tick();
+  return shutdownPromise;
 }
 
-async function shutdown(signal) {
-  if (shutdownStarted) return;
-
-  shutdownStarted = true;
-  stopping = true;
-
-  console.info("[Background workers] stopping", signal);
-
-  for (const timer of timers.values()) {
-    clearTimeout(timer);
-  }
-
-  timers.clear();
-
-  // Les traitements déjà commencés peuvent terminer.
-  // Si l'hébergeur coupe avant, la récupération des tâches prendra
-  // le relais au prochain démarrage.
-  await Promise.allSettled([...activeTasks]);
-
-  await pool.end();
-
-  console.info("[Background workers] stopped");
-}
-
-process.on("SIGTERM", () => {
-  shutdown("SIGTERM").catch(() => {
-    process.exitCode = 1;
-  });
+process.once("SIGTERM", () => {
+  void shutdown("SIGTERM");
 });
 
-process.on("SIGINT", () => {
-  shutdown("SIGINT").catch(() => {
-    process.exitCode = 1;
-  });
+process.once("SIGINT", () => {
+  void shutdown("SIGINT");
 });
-
-console.info("[Background workers] starting");
-
-console.info(
-  "RevenueCat diagnostics enabled:",
-  process.env.REVENUECAT_DIAGNOSTIC_LOGS?.trim() === "true",
-);
-
-startLoop("RevenueCat worker", runRevenueCatWorkerCycle, 30_000);
-
-// Une seule tâche IA à la fois dans ce processus.
-// Nouvelle recherche deux secondes après la fin du cycle.
-startLoop("Nelo AI worker", runNeloAIWorkerCycle, 2_000);
