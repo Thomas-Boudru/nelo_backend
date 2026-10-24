@@ -1,4 +1,5 @@
 const pool = require("../../db/pool");
+const { normalizeIanaTimezone } = require("../../utils/ianaTimezone");
 
 function createServiceError(code, message, status) {
   const error = new Error(message);
@@ -31,6 +32,7 @@ function mapExistingOnboarding(row) {
           id: row.child_id,
           displayName: row.child_display_name,
           status: row.birth_status,
+          sleepTimezone: row.sleep_timezone ?? null,
           role: row.child_role,
           relationship: row.relationship_type,
           themeMode: row.theme_mode,
@@ -53,6 +55,7 @@ async function findExistingOnboarding(client, userId) {
         c.id AS child_id,
         c.display_name AS child_display_name,
         c.birth_status,
+        c.sleep_timezone,
 
         cm.child_role,
         cm.relationship_type,
@@ -258,38 +261,55 @@ async function completeOnboarding({ userId, data }) {
      * isPremature n’est pas enregistré directement :
      * la présence de gestational_age_weeks permet de le déduire.
      */
+
+    const sleepTimezone =
+      data.child.sleepTimezone == null
+        ? null
+        : normalizeIanaTimezone(data.child.sleepTimezone);
+
+    if (data.child.sleepTimezone != null && !sleepTimezone) {
+      throw createServiceError(
+        "INVALID_SLEEP_TIMEZONE",
+        "Invalid sleep timezone.",
+        400,
+      );
+    }
+
     const childResult = await client.query(
       `
-        INSERT INTO children (
-          family_id,
-          display_name,
-          birth_status,
-          birth_date,
-          birth_time,
-          expected_due_date,
-          sex_at_birth,
-          gestational_age_weeks,
-          gestational_age_days,
-          created_by_user_id
-        )
-        VALUES (
-          $1,
-          $2,
-          $3,
-          $4,
-          $5,
-          $6,
-          $7,
-          $8,
-          $9,
-          $10
-        )
+    INSERT INTO children (
+      family_id,
+      display_name,
+      birth_status,
+      birth_date,
+      birth_time,
+      expected_due_date,
+      sex_at_birth,
+      gestational_age_weeks,
+      gestational_age_days,
+      sleep_timezone,
+      created_by_user_id
+    )
+    VALUES (
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11
+    )
 
-        RETURNING
-          id,
-          display_name,
-          birth_status
-      `,
+    RETURNING
+      id,
+      display_name,
+      birth_status,
+      sleep_timezone
+  `,
       [
         familyId,
         data.child.displayName || null,
@@ -300,6 +320,7 @@ async function completeOnboarding({ userId, data }) {
         data.child.gender,
         data.child.isPremature ? data.child.gestationalAgeWeeks : null,
         data.child.isPremature ? data.child.gestationalAgeDays : null,
+        sleepTimezone,
         userId,
       ],
     );
@@ -390,6 +411,7 @@ async function completeOnboarding({ userId, data }) {
         id: child.id,
         displayName: child.display_name,
         status: child.birth_status,
+        sleepTimezone: child.sleep_timezone ?? null,
         role: childMember.child_role,
         relationship: childMember.relationship_type,
         themeMode: preferences.theme_mode,

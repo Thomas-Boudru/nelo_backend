@@ -1,5 +1,11 @@
 const pool = require("../../db/pool");
 
+const { normalizeIanaTimezone } = require("../../utils/ianaTimezone");
+
+const {
+  recalculateChildSleepPrediction,
+} = require("../sleepPrediction/sleepPredictionService");
+
 const { createSignedDownloadUrl } = require("../storage/r2StorageService");
 
 const ALLOWED_RELATIONSHIP_TYPES = new Set([
@@ -184,6 +190,7 @@ async function mapChild(row) {
     gender: row.sex_at_birth,
     birthDate: row.birth_date,
     expectedDueDate: row.expected_due_date,
+    sleepTimezone: row.sleep_timezone ?? null,
 
     isPremature:
       row.birth_status === "born"
@@ -318,6 +325,20 @@ function validateChildData(data) {
     }
   }
 
+  let sleepTimezone = null;
+
+  if (data.sleepTimezone != null) {
+    sleepTimezone = normalizeIanaTimezone(data.sleepTimezone);
+
+    if (!sleepTimezone) {
+      throw createServiceError(
+        "INVALID_SLEEP_TIMEZONE",
+        "Invalid sleep timezone.",
+        400,
+      );
+    }
+  }
+
   return {
     status,
     displayName: displayName || null,
@@ -329,6 +350,7 @@ function validateChildData(data) {
 
     gestationalAgeWeeks,
     gestationalAgeDays: null,
+    sleepTimezone,
   };
 }
 
@@ -453,8 +475,9 @@ async function getAccessibleChildren(userId) {
         c.id,
         c.display_name,
         c.birth_status,
-        c.birth_date,
-        c.expected_due_date,
+        c.birth_date::text AS birth_date,
+        c.expected_due_date::text AS expected_due_date,
+        c.sleep_timezone,
         c.sex_at_birth,
         c.gestational_age_weeks,
         c.gestational_age_days,
@@ -656,6 +679,7 @@ async function createChild({ userId, data }) {
           sex_at_birth,
           gestational_age_weeks,
           gestational_age_days,
+          sleep_timezone,
           default_theme_mode,
           created_by_user_id
         )
@@ -668,8 +692,9 @@ async function createChild({ userId, data }) {
           $6,
           $7,
           $8,
+          $9,
           'blue',
-          $9
+          $10
         )
 
         RETURNING id
@@ -683,6 +708,7 @@ async function createChild({ userId, data }) {
         childData.gender,
         childData.gestationalAgeWeeks,
         childData.gestationalAgeDays,
+        childData.sleepTimezone,
         userId,
       ],
     );
@@ -724,8 +750,9 @@ async function createChild({ userId, data }) {
           c.id,
           c.display_name,
           c.birth_status,
-          c.birth_date,
-          c.expected_due_date,
+          c.birth_date::text AS birth_date,
+          c.expected_due_date::text AS expected_due_date,
+          c.sleep_timezone,
           c.sex_at_birth,
           c.gestational_age_weeks,
           c.gestational_age_days,
@@ -920,8 +947,9 @@ async function updateChild({ childId, userId, data }) {
           c.id,
           c.display_name,
           c.birth_status,
-          c.birth_date,
-          c.expected_due_date,
+          c.birth_date::text AS birth_date,
+          c.expected_due_date::text AS expected_due_date,
+          c.sleep_timezone,
           c.sex_at_birth,
           c.gestational_age_weeks,
           c.gestational_age_days,
@@ -977,6 +1005,20 @@ cm.relationship_label,
 
     await client.query("COMMIT");
     transactionOpen = false;
+
+    try {
+      await recalculateChildSleepPrediction({
+        childId,
+      });
+    } catch (error) {
+      console.error(
+        "[SleepPrediction] Recalculation after profile update failed:",
+        {
+          childId,
+          message: error.message,
+        },
+      );
+    }
 
     return mapChild(savedChildResult.rows[0]);
   } catch (error) {
@@ -1246,11 +1288,158 @@ async function deleteChild({ childId, userId }) {
   }
 }
 
+async function initializeChildSleepTimezone({
+  childId,
+  userId,
+  sleepTimezone,
+}) {
+  if (!childId || !userId) {
+    throw createServiceError(
+      "MISSING_CHILD_OR_USER_ID",
+      "Missing child ID or user ID.",
+      400,
+    );
+  }
+
+  const timezone = normalizeIanaTimezone(sleepTimezone);
+
+  if (!timezone) {
+    throw createServiceError(
+      "INVALID_SLEEP_TIMEZONE",
+      "Invalid sleep timezone.",
+      400,
+    );
+  }
+
+  const client = await pool.connect();
+  let transactionOpen = false;
+  let initialized = false;
+  let savedTimezone = null;
+
+  try {
+    await client.query("BEGIN");
+    transactionOpen = true;
+
+    const accessResult = await client.query(
+      `
+        SELECT
+          c.id,
+          c.sleep_timezone,
+          cm.child_role
+        FROM children c
+
+        INNER JOIN children_members cm
+          ON cm.child_id = c.id
+          AND cm.revoked_at IS NULL
+
+        INNER JOIN family_members fm
+          ON fm.id = cm.family_member_id
+          AND fm.removed_at IS NULL
+          AND fm.user_id = $2
+
+        INNER JOIN families f
+          ON f.id = c.family_id
+          AND f.id = fm.family_id
+          AND f.deleted_at IS NULL
+
+        WHERE c.id = $1
+          AND c.deleted_at IS NULL
+
+        FOR UPDATE OF c
+      `,
+      [childId, userId],
+    );
+
+    if (accessResult.rowCount === 0) {
+      throw createServiceError(
+        "CHILD_NOT_FOUND",
+        "The child could not be found.",
+        404,
+      );
+    }
+
+    const existing = accessResult.rows[0];
+
+    if (existing.child_role !== "owner") {
+      throw createServiceError(
+        "CHILD_OWNER_REQUIRED",
+        "Only an owner can initialize the child's sleep timezone.",
+        403,
+      );
+    }
+
+    if (existing.sleep_timezone) {
+      savedTimezone = existing.sleep_timezone;
+    } else {
+      const result = await client.query(
+        `
+          UPDATE children
+          SET
+            sleep_timezone = $3,
+            updated_by_user_id = $2,
+            updated_at = clock_timestamp()
+          WHERE id = $1
+            AND deleted_at IS NULL
+            AND sleep_timezone IS NULL
+          RETURNING sleep_timezone
+        `,
+        [childId, userId, timezone],
+      );
+
+      initialized = result.rowCount > 0;
+
+      savedTimezone = initialized
+        ? result.rows[0].sleep_timezone
+        : existing.sleep_timezone;
+    }
+
+    await client.query("COMMIT");
+    transactionOpen = false;
+  } catch (error) {
+    if (transactionOpen) {
+      try {
+        await client.query("ROLLBACK");
+      } catch (rollbackError) {
+        console.error(
+          "[SleepPrediction] Timezone rollback failed:",
+          rollbackError,
+        );
+      }
+    }
+
+    throw error;
+  } finally {
+    client.release();
+  }
+
+  // Le recalcul est indépendant de la transaction
+  // qui initialise le fuseau.
+  if (initialized) {
+    try {
+      await recalculateChildSleepPrediction({
+        childId,
+      });
+    } catch (error) {
+      console.error("[SleepPrediction] Initial calculation failed:", {
+        childId,
+        message: error.message,
+      });
+    }
+  }
+
+  return {
+    childId,
+    sleepTimezone: savedTimezone,
+    initialized,
+  };
+}
+
 module.exports = {
   createChild,
   getAccessibleChildren,
   updateChild,
   updateChildPreferences,
   updateCurrentUserRelationship,
+  initializeChildSleepTimezone,
   deleteChild,
 };

@@ -1,9 +1,20 @@
 const { z } = require("zod");
 
 const onboardingService = require("../../services/onboarding/onboardingService");
+const { normalizeIanaTimezone } = require("../../utils/ianaTimezone");
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$/;
+const sleepTimezoneSchema = z
+  .string()
+  .min(1, "The sleep timezone is required.")
+  .max(100, "The sleep timezone is too long.")
+  .refine(
+    (value) => normalizeIanaTimezone(value) !== null,
+    "Invalid sleep timezone.",
+  )
+  .nullable()
+  .optional();
 
 const nullableDateSchema = z
   .string()
@@ -12,7 +23,7 @@ const nullableDateSchema = z
 
 const childSchema = z.object({
   status: z.enum(["born", "expected"]),
-
+  sleepTimezone: sleepTimezoneSchema,
   displayName: z
     .string()
     .trim()

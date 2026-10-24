@@ -142,6 +142,20 @@ async function deleteChild(req, res, next) {
   }
 }
 
+async function initializeChildSleepTimezone(req, res, next) {
+  try {
+    const result = await childrenService.initializeChildSleepTimezone({
+      childId: req.params.childId,
+      userId: req.auth.userId,
+      sleepTimezone: req.body?.sleepTimezone,
+    });
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   createChild,
   getAccessibleChildren,
@@ -150,5 +164,6 @@ module.exports = {
   updateChild,
   updateChildPreferences,
   updateCurrentUserRelationship,
+  initializeChildSleepTimezone,
   deleteChild,
 };

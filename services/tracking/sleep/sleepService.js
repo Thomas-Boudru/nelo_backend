@@ -1,5 +1,8 @@
 const { randomUUID } = require("node:crypto");
 const pool = require("../../../db/pool");
+const {
+  recalculateChildSleepPrediction,
+} = require("../../sleepPrediction/sleepPredictionService");
 
 const {
   createTrackingError,
@@ -8,6 +11,17 @@ const {
 } = require("../trackingAccess");
 
 const SLEEP_TYPES = ["nap", "night"];
+
+async function refreshSleepPrediction(childId) {
+  try {
+    await recalculateChildSleepPrediction({ childId });
+  } catch (error) {
+    console.error("[SleepPrediction] Unable to recalculate prediction:", {
+      childId,
+      message: error.message,
+    });
+  }
+}
 
 const SELECT_SLEEP = `
   SELECT
@@ -237,6 +251,8 @@ async function createSleepEntry({ childId, userId, data }) {
 
     await client.query("COMMIT");
 
+    await refreshSleepPrediction(childId);
+
     return {
       created: true,
       entry: mapSleep(row),
@@ -369,6 +385,8 @@ async function updateSleepEntry({ childId, userId, entryId, data }) {
 
     await client.query("COMMIT");
 
+    await refreshSleepPrediction(childId);
+
     return mapSleep(row);
   } catch (error) {
     await client.query("ROLLBACK");
@@ -494,6 +512,8 @@ async function startSleepEntry({ childId, userId, data }) {
     const row = await readSleep(client, childId, entryId);
 
     await client.query("COMMIT");
+
+    await refreshSleepPrediction(childId);
 
     return {
       created: true,
@@ -677,6 +697,8 @@ async function stopSleepEntry({ childId, userId, entryId, data }) {
     const completed = await readSleep(client, childId, entryId);
 
     await client.query("COMMIT");
+
+    await refreshSleepPrediction(childId);
 
     return mapSleep(completed);
   } catch (error) {

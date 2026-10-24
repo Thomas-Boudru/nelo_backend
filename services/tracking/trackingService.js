@@ -5,10 +5,25 @@ const {
 } = require("./trackingReadService");
 
 const {
+  recalculateChildSleepPrediction,
+} = require("../sleepPrediction/sleepPredictionService");
+
+const {
   createTrackingError,
   validateUuid,
   requireChildTrackingAccess,
 } = require("./trackingAccess");
+
+async function refreshSleepPredictionAfterDeletion(childId) {
+  try {
+    await recalculateChildSleepPrediction({ childId });
+  } catch (error) {
+    console.error("[SleepPrediction] Recalculation after deletion failed:", {
+      childId,
+      message: error.message,
+    });
+  }
+}
 
 function mapEntry(row) {
   const entry = {
@@ -343,6 +358,10 @@ async function deleteTrackingEntry({ childId, userId, entryId, version }) {
     );
 
     await client.query("COMMIT");
+
+    if (existing.entry_type === "sleep") {
+      await refreshSleepPredictionAfterDeletion(childId);
+    }
 
     return {
       deleted: true,
