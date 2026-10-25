@@ -366,7 +366,15 @@ function predictNextSleep({
 
   // Ne pas afficher une prédiction trop ancienne.
   if (nowMs > end + 60 * MINUTE) {
-    return base("learning", "prediction_expired");
+    return {
+      status: "overdue",
+      reason: "prediction_expired",
+      type,
+      predictedAt: new Date(predictedAt).toISOString(),
+      windowStart: new Date(start).toISOString(),
+      windowEnd: new Date(end).toISOString(),
+      algorithmVersion: SLEEP_PREDICTION_VERSION,
+    };
   }
 
   const confidence = !personalized

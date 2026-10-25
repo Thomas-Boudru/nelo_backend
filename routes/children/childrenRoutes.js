@@ -6,6 +6,8 @@ const { uploadChildAvatar } = require("../../middleware/uploadChildAvatar");
 
 const sleepPredictionRoutes = require("../sleepPrediction/sleepPredictionRoutes");
 
+const dailyMessagesRoutes = require("../dailyMessages/dailyMessagesRoutes");
+
 const {
   createChild,
   getAccessibleChildren,
@@ -50,6 +52,8 @@ router.patch(
 );
 
 router.use("/:childId/sleep-prediction", sleepPredictionRoutes);
+
+router.use("/:childId/daily-messages", dailyMessagesRoutes);
 
 router.delete("/:childId/avatar", authenticate, removeChildAvatar);
 router.delete("/:childId", authenticate, deleteChild);
