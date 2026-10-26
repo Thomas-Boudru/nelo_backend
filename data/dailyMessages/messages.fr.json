@@ -1,0 +1,2267 @@
+[
+  {
+    "id": "night-sleep-001",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["sleep", "reassurance"],
+    "title": "Chaque bébé a son propre rythme de sommeil",
+    "summary": "Les réveils nocturnes sont fréquents durant les premiers mois. Votre bébé développe encore son propre rythme de sommeil.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi les bébés se réveillent la nuit",
+        "content": "Durant les premiers mois, les bébés se réveillent souvent pour manger, être rassurés ou parce que leurs cycles de sommeil sont encore en développement. Le nombre de réveils varie beaucoup d’un bébé à l’autre et peut changer d’une semaine à l’autre."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Quelques habitudes tout en douceur",
+        "items": [
+          "La nuit, privilégiez des interactions calmes, une lumière douce et un minimum de stimulations.",
+          "Soyez attentif aux signes de fatigue de votre bébé plutôt que de vouloir suivre un horaire rigide.",
+          "Couchez toujours votre bébé sur le dos, sur une surface de sommeil ferme et plane, sans literie ni objet non fixé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Des réveils fréquents ne signifient pas que vous faites quelque chose de mal. Le sommeil évolue avec le temps et votre bébé n’a pas à suivre le rythme de qui que ce soit d’autre."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Safe Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "Quelles habitudes de sommeil conviennent à l’âge de mon bébé ?"
+  },
+  {
+    "id": "parent-support-001",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["wellbeing", "reassurance"],
+    "title": "Vous n’avez pas besoin d’être un parent parfait",
+    "summary": "Les petits moments d’attention et de complicité comptent davantage que des routines suivies à la perfection.",
+    "sections": [
+      {
+        "id": "pressure",
+        "type": "paragraph",
+        "title": "Oubliez la liste de la journée parfaite",
+        "content": "Certains jours se passent sans encombre ; d’autres sont remplis d’interruptions, de désordre et de besoins imprévus. Une journée difficile n’efface pas toute l’attention aimante que vous portez à votre enfant. Être parent se construit à travers une multitude de moments ordinaires, pas grâce à un programme parfait."
+      },
+      {
+        "id": "reset",
+        "type": "bulletList",
+        "title": "Essayez de repartir simplement",
+        "items": [
+          "Choisissez une seule chose importante aujourd’hui et restez souple pour le reste.",
+          "Acceptez l’aide concrète que l’on vous propose, même pour une petite tâche.",
+          "Si vous vous sentez dépassé, installez votre bébé dans un endroit sûr et accordez-vous un court moment pour reprendre vos esprits."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Répondre aux besoins de votre bébé ne signifie pas être disponible à chaque seconde. Vos besoins comptent aussi, et demander de l’aide est une force."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment rendre une journée difficile de parent plus facile à gérer ?"
+  },
+  {
+    "id": "breastfeeding-001",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["feeding", "reassurance"],
+    "title": "Des tétées fréquentes peuvent être normales",
+    "summary": "Certains bébés veulent téter souvent, surtout pendant les périodes de croissance et les étapes de leur développement.",
+    "sections": [
+      {
+        "id": "pattern",
+        "type": "paragraph",
+        "title": "Pourquoi le rythme des tétées change",
+        "content": "Les bébés allaités ne tètent pas toujours à intervalles prévisibles. Ils peuvent enchaîner plusieurs tétées rapprochées, notamment le soir. La fréquence à elle seule ne permet pas de savoir si un bébé reçoit suffisamment de lait."
+      },
+      {
+        "id": "observe",
+        "type": "bulletList",
+        "title": "Observez la situation dans son ensemble",
+        "items": [
+          "Soyez attentif à la déglutition pendant les tétées et au comportement de votre bébé ensuite.",
+          "Surveillez les couches mouillées et la croissance, selon les conseils de votre professionnel de santé.",
+          "Demandez l’aide d’une sage-femme, d’une consultante en lactation ou d’un professionnel de santé si les tétées sont douloureuses ou si vous craignez que votre bébé ne boive pas efficacement."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Votre bébé et vous apprenez ensemble. Si l’allaitement vous semble difficile, demander de l’aide rapidement peut vraiment faire la différence."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Breastfeeding",
+        "url": "https://www.cdc.gov/breastfeeding/"
+      }
+    ],
+    "askNeloPrompt": "Quels signes peuvent m’indiquer que l’allaitement se passe bien ?"
+  },
+  {
+    "id": "motor-development-001",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 60,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["movement", "play"],
+    "title": "Chaque petit moment sur le ventre compte",
+    "summary": "De courtes périodes de jeu surveillées sur le ventre aident les bébés à s’exercer à lever et à tourner la tête.",
+    "sections": [
+      {
+        "id": "why",
+        "type": "paragraph",
+        "title": "Se muscler en jouant",
+        "content": "Lorsque votre bébé est éveillé et attentif, les moments passés sur le ventre lui donnent l’occasion de solliciter les muscles du cou, des épaules et du haut du corps. Cela ne doit pas ressembler à une séance d’exercice : quelques moments agréables peuvent suffire pour commencer."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Rendez ce moment attrayant",
+        "items": [
+          "Essayez de courtes séances sur une surface ferme et sûre, en restant près de votre bébé pour le surveiller.",
+          "Placez-vous à hauteur de ses yeux et parlez-lui ou souriez-lui.",
+          "Si votre bébé s’agace, faites une pause et réessayez plus tard."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Chaque bébé prend confiance à son propre rythme. Les moments sur le ventre sont réservés au jeu, lorsque le bébé est éveillé et sous surveillance ; couchez toujours votre bébé sur le dos pour dormir."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Tummy Time",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/Back-to-Sleep-Tummy-to-Play.aspx"
+      }
+    ],
+    "askNeloPrompt": "Quelles activités douces puis-je proposer à mon bébé lorsqu’il est sur le ventre ?"
+  },
+  {
+    "id": "communication-001",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["language", "bonding"],
+    "title": "Votre voix apprend déjà beaucoup à votre bébé",
+    "summary": "Parler, chanter et répondre aux petits sons de votre bébé contribuent au développement précoce de la communication.",
+    "sections": [
+      {
+        "id": "connection",
+        "type": "paragraph",
+        "title": "Une conversation avant les mots",
+        "content": "Bien avant de savoir parler, les bébés remarquent les voix, les expressions, le rythme et les silences. Lorsque vous répondez à un gazouillis ou à un regard, vous montrez à votre bébé que la communication va dans les deux sens."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Des façons simples de créer du lien",
+        "items": [
+          "Décrivez ce que vous faites pendant que vous changez sa couche ou lors d’une promenade.",
+          "Après avoir parlé, marquez une pause pour laisser à votre bébé le temps de répondre par un son ou une expression.",
+          "Chantez une chanson familière ou répétez un son amusant que votre bébé apprécie."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez besoin ni de leçons ni de jouets particuliers. Votre voix familière et votre attention comptent déjà beaucoup."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Learn the Signs. Act Early.",
+        "url": "https://www.cdc.gov/act-early/"
+      }
+    ],
+    "askNeloPrompt": "Comment puis-je encourager la communication avec mon bébé au fil des activités quotidiennes ?"
+  },
+  {
+    "id": "solid-food-001",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 270,
+    "priority": 5,
+    "tags": ["feeding", "textures", "safety"],
+    "title": "Découvrir de nouvelles textures est un apprentissage",
+    "summary": "Lorsque votre bébé est prêt pour les aliments solides, il peut lui falloir du temps et de la pratique pour explorer différentes textures.",
+    "sections": [
+      {
+        "id": "exploring",
+        "type": "paragraph",
+        "title": "Bien plus qu’un repas",
+        "content": "Commencer l’alimentation complémentaire, c’est apprendre autant que manger. Un bébé peut toucher, étaler, recracher ou refuser un aliment avant de l’accepter. Vers six mois, une bonne tenue de la tête et la capacité à rester assis avec un soutien font partie des signes qu’il est prêt."
+      },
+      {
+        "id": "safe-start",
+        "type": "bulletList",
+        "title": "Des premiers repas détendus et sûrs",
+        "items": [
+          "Proposez des textures tendres adaptées à son âge, pendant que votre bébé est assis bien droit et sous surveillance.",
+          "Introduisez des aliments riches en fer dans le cadre d’une alimentation variée, tout en poursuivant le lait maternel ou infantile.",
+          "Évitez les aliments présentant un risque d’étouffement et ne laissez jamais votre bébé manger seul."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Une première dégustation hésitante n’est pas un échec. Si vous avez des doutes sur le fait que votre bébé soit prêt, sur les allergies ou sur sa déglutition, demandez conseil au professionnel de santé qui le suit."
+      }
+    ],
+    "sources": [
+      {
+        "title": "WHO — Complementary Feeding",
+        "url": "https://www.who.int/health-topics/complementary-feeding"
+      }
+    ],
+    "askNeloPrompt": "Quelles textures et quels aliments conviennent lorsque mon bébé commence l’alimentation solide ?"
+  },
+  {
+    "id": "daytime-nap-001",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "routine"],
+    "title": "Les siestes ne suivent pas toujours l’horloge",
+    "summary": "À mesure que les bébés grandissent et que leurs besoins évoluent, leur sommeil en journée peut varier d’un jour à l’autre.",
+    "sections": [
+      {
+        "id": "variation",
+        "type": "paragraph",
+        "title": "Pourquoi les siestes peuvent être imprévisibles",
+        "content": "Votre bébé peut faire une longue sieste un jour, puis plusieurs siestes plus courtes le lendemain. Les changements d’activité et de développement ainsi que le sommeil nocturne peuvent influencer son repos en journée. Observer les tendances sur plusieurs jours est souvent plus utile que de juger une seule sieste."
+      },
+      {
+        "id": "support",
+        "type": "bulletList",
+        "title": "Créez un rythme de sieste tout en douceur",
+        "items": [
+          "Repérez les signes de fatigue, comme le fait de se frotter les yeux ou de se détourner des stimulations.",
+          "Essayez un rituel calme et familier pour l’aider à ralentir.",
+          "Utilisez un espace de sommeil sûr : sur le dos, sur une surface ferme et plane, sans objet non fixé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Une sieste irrégulière ne gâche pas toute la journée. La régularité peut aider, mais la souplesse fait partie du quotidien avec un bébé qui grandit."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Baby Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "Comment reconnaître les signes indiquant que mon bébé a besoin d’une sieste ?"
+  },
+  {
+    "id": "playtime-001",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["play", "learning"],
+    "title": "C’est en jouant que votre bébé explore",
+    "summary": "Des jeux simples avec des personnes familières peuvent être tout aussi captivants que des jouets coûteux.",
+    "sections": [
+      {
+        "id": "discovery",
+        "type": "paragraph",
+        "title": "Les petites découvertes comptent",
+        "content": "Passer un objet d’une main à l’autre, chercher un jouet ou vous regarder faire une grimace aide votre bébé à exercer son attention, ses mouvements et ses interactions sociales. Inutile de prévoir un programme d’activités chargé."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Essayez ces jeux faciles",
+        "items": [
+          "Proposez-lui un objet sûr à saisir, à secouer ou à explorer.",
+          "Jouez à coucou et laissez à votre bébé le temps de réagir.",
+          "Nommez les objets que vous voyez et suivez les centres d’intérêt de votre bébé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Quelques minutes d’attention partagée peuvent être précieuses. Laissez la curiosité de votre bébé guider le rythme et arrêtez lorsqu’il semble fatigué."
+      }
+    ],
+    "sources": [
+      {
+        "title": "UNICEF — Early Childhood Development",
+        "url": "https://www.unicef.org/early-childhood-development"
+      }
+    ],
+    "askNeloPrompt": "Quels jeux simples conviennent au stade de développement actuel de mon bébé ?"
+  },
+  {
+    "id": "teething-001",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["comfort", "teething"],
+    "title": "La poussée dentaire peut être inconfortable",
+    "summary": "Les nouvelles dents apparaissent à des rythmes différents et certains bébés ont besoin d’être un peu plus réconfortés.",
+    "sections": [
+      {
+        "id": "what-to-expect",
+        "type": "paragraph",
+        "title": "Chaque sourire évolue différemment",
+        "content": "Lorsque les dents commencent à sortir, certains bébés salivent davantage ou cherchent à mordiller des objets. D’autres montrent peu de signes. Le calendrier varie : une première dent plus précoce ou plus tardive n’est donc pas automatiquement préoccupante."
+      },
+      {
+        "id": "comfort",
+        "type": "bulletList",
+        "title": "Des moyens doux de le soulager",
+        "items": [
+          "Proposez un anneau de dentition propre et réfrigéré, mais non congelé, conçu pour les bébés.",
+          "Massez doucement les gencives avec un doigt propre si votre bébé apprécie ce geste.",
+          "Évitez les colliers de dentition et les gels anesthésiants, sauf recommandation expresse d’un professionnel de santé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Une forte fièvre, une diarrhée importante ou un bébé qui semble très malade ne doivent pas être automatiquement attribués à la poussée dentaire. Demandez un avis médical si ces symptômes apparaissent."
+      }
+    ],
+    "sources": [
+      {
+        "title": "NHS — Teething",
+        "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/"
+      }
+    ],
+    "askNeloPrompt": "Comment soulager mon bébé en toute sécurité pendant les poussées dentaires ?"
+  },
+  {
+    "id": "learning-001",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 365,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation"],
+    "title": "Votre tout-petit apprend en vous regardant",
+    "summary": "Les gestes du quotidien, qu’il s’agisse de faire au revoir ou de ranger, peuvent devenir des occasions d’apprendre ensemble.",
+    "sections": [
+      {
+        "id": "imitation",
+        "type": "paragraph",
+        "title": "Une formidable façon d’apprendre",
+        "content": "En grandissant, les tout-petits imitent souvent les gestes, les sons et les habitudes qu’ils connaissent. Faire semblant de mélanger dans une casserole ou essuyer une table peut être une manière ludique d’explorer le fonctionnement du monde."
+      },
+      {
+        "id": "everyday",
+        "type": "bulletList",
+        "title": "Rendez les moments ordinaires amusants",
+        "items": [
+          "Invitez votre tout-petit à reproduire un geste simple, comme applaudir ou faire au revoir.",
+          "Donnez-lui des objets sûrs et adaptés à son âge pour jouer à faire semblant.",
+          "Nommez ce que vous faites, puis marquez une pause pour observer sa réaction."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Tous les enfants n’imitent pas les mêmes choses au même âge. Suivez les centres d’intérêt de votre tout-petit et faites part de toute inquiétude concernant son développement à votre professionnel de santé."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Developmental Milestones",
+        "url": "https://www.cdc.gov/act-early/milestones/index.html"
+      }
+    ],
+    "askNeloPrompt": "Quelles activités quotidiennes peuvent aider mon tout-petit à apprendre par imitation ?"
+  },
+  {
+    "id": "communication-002",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "gestures", "language"],
+    "title": "Les petits gestes en disent long",
+    "summary": "Avant même les premiers mots, votre bébé vous dit peut-être déjà beaucoup par ses gestes, ses sons et ses expressions.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "La communication commence avant les mots",
+        "content": "Montrer du doigt, tendre les bras, faire au revoir et regarder vers des objets familiers sont autant de façons dont les bébés apprennent à communiquer. Ces gestes se développent souvent en même temps que le langage précoce et aident votre enfant à partager ses centres d’intérêt, ses besoins et ses découvertes."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encouragez les petites conversations",
+        "items": [
+          "Répondez lorsque votre bébé montre quelque chose du doigt ou tend la main vers un objet.",
+          "Nommez les objets et les actions pendant les activités quotidiennes.",
+          "Après avoir parlé, marquez une pause pour laisser à votre bébé le temps de répondre.",
+          "Valorisez ses tentatives de communication sans attendre des mots parfaits."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Communiquer, c’est bien plus que parler. Chaque regard, geste et son partagé est une occasion de créer du lien."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment puis-je encourager mon bébé à communiquer avant ses premiers mots ?"
+  },
+  {
+    "id": "solid-food-002",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["feeding", "food-exploration", "reassurance"],
+    "title": "Une seule dégustation ne dit pas tout",
+    "summary": "Votre bébé refuse un nouvel aliment ? Il lui faut peut-être simplement davantage d’occasions d’explorer des saveurs et des textures inconnues.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Apprendre à apprécier de nouveaux aliments",
+        "content": "Les bébés découvrent un univers entièrement nouveau de saveurs, d’odeurs et de textures. Certains aliments sont acceptés immédiatement, tandis que d’autres doivent être proposés plusieurs fois, sans pression. Refuser un aliment aujourd’hui ne signifie pas nécessairement que votre enfant ne l’aimera jamais."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Facilitez l’exploration",
+        "items": [
+          "Proposez de petites quantités d’aliments inconnus à côté d’options familières.",
+          "Laissez votre bébé explorer la nourriture en la touchant et en la sentant.",
+          "Évitez de le forcer à manger ou de transformer les repas en lutte.",
+          "Essayez de lui reproposer un autre jour les aliments qu’il a refusés."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Les progrès ne se mesurent pas à la quantité que votre bébé mange à chaque repas. Explorer les aliments fait partie de l’apprentissage."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Que faire si mon bébé refuse plusieurs fois de nouveaux aliments ?"
+  },
+  {
+    "id": "motor-development-002",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["motor-development", "movement", "milestones"],
+    "title": "Chaque petit mouvement compte",
+    "summary": "Se retourner, tendre la main, ramper et se redresser sont différentes façons pour votre bébé d’explorer le mouvement.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Le mouvement se développe par l’exploration",
+        "content": "À mesure qu’ils gagnent en force et en coordination, les bébés essaient de bouger leur corps de nouvelles façons. Certains marchent à quatre pattes, d’autres se déplacent autrement et certains ne passent pas par le quatre pattes traditionnel. Le développement suit une progression générale, mais les parcours individuels peuvent varier."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Créez un espace à explorer",
+        "items": [
+          "Proposez des moments de jeu surveillés au sol, dans un espace sûr et dégagé.",
+          "Placez des jouets intéressants légèrement hors de portée.",
+          "Laissez votre bébé expérimenter les mouvements par lui-même.",
+          "Évitez les trotteurs à roulettes, qui peuvent provoquer des blessures."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Tous les enfants ne se déplacent pas exactement de la même manière. Si une étape du développement vous inquiète ou si votre enfant perd une compétence qu’il avait acquise, parlez-en à votre pédiatre."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quelles étapes du développement moteur dois-je observer à l’âge de mon bébé ?"
+  },
+  {
+    "id": "parent-support-002",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "reassurance", "confidence"],
+    "title": "Votre bébé ne participe pas à une course",
+    "summary": "Il est facile de comparer les étapes du développement avec celles d’autres enfants, mais le développement n’est pas une compétition.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi les comparaisons peuvent être trompeuses",
+        "content": "Un bébé peut commencer à se déplacer plus tôt, tandis qu’un autre développe d’abord de nouveaux sons ou de nouvelles aptitudes sociales. Chaque enfant a ses propres forces et son propre parcours de développement. Comparer des acquis isolés donne rarement une vision complète de la manière dont un enfant progresse."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Concentrez-vous sur les progrès de votre enfant",
+        "items": [
+          "Remarquez les petits changements que votre bébé accomplit au fil du temps.",
+          "Utilisez les étapes du développement adaptées à son âge comme des repères utiles.",
+          "Célébrez ses découvertes sans précipiter l’acquisition suivante.",
+          "Faites part de vos inquiétudes à un professionnel de santé plutôt que de vous fier aux comparaisons."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Le parcours de votre enfant lui appartient. Vous pouvez apprécier son rythme personnel tout en restant attentif aux grandes étapes de son développement."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment savoir si le développement de mon bébé suit son cours ?"
+  },
+  {
+    "id": "night-sleep-002",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 240,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "development", "reassurance"],
+    "title": "Pourquoi le sommeil peut soudainement changer",
+    "summary": "Un bébé qui dormait bien peut commencer à se réveiller plus souvent. Le sommeil peut changer pendant les périodes de développement rapide.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Le sommeil n’évolue pas toujours en ligne droite",
+        "content": "Entre huit et douze mois environ, les bébés développent de nouvelles capacités physiques, sociales et émotionnelles. Le sommeil de certains change, avec notamment des réveils plus fréquents ou des difficultés à s’apaiser. Une maladie, un inconfort ou un changement de routine peuvent aussi perturber le sommeil."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Favorisez des nuits reposantes",
+        "items": [
+          "Conservez un rituel du coucher familier et apaisant.",
+          "Répondez patiemment aux besoins de votre bébé.",
+          "Donnez-lui des occasions de bouger et d’explorer pendant la journée.",
+          "Maintenez un environnement sûr pour chaque période de sommeil."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Quelques nuits difficiles n’effacent pas vos progrès. Le rythme de sommeil peut fluctuer à mesure que votre bébé grandit."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Pourquoi mon bébé a-t-il commencé à se réveiller plus souvent la nuit ?"
+  },
+  {
+    "id": "playtime-002",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["play", "social-development", "learning"],
+    "title": "Coucou-caché, c’est bien plus qu’un jeu",
+    "summary": "Une simple partie de coucou-caché peut aider votre bébé à découvrir l’anticipation, l’attention et le lien avec l’autre.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Apprendre grâce à la surprise",
+        "content": "Lorsque vous cachez votre visage puis réapparaissez, votre bébé découvre une alternance amusante de disparition et de retour. À mesure que sa mémoire et sa compréhension se développent, des jeux comme coucou-caché peuvent favoriser l’anticipation, les interactions sociales et la prise de conscience progressive que les personnes et les objets continuent d’exister lorsqu’ils sont hors de vue."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendez le jeu amusant",
+        "items": [
+          "Cachez brièvement votre visage derrière vos mains.",
+          "Faites une pause avant de réapparaître pour créer de l’attente.",
+          "Suivez les réactions de votre bébé et arrêtez s’il semble mal à l’aise.",
+          "Essayez de cacher son jouet préféré sous un tissu léger, tout en le surveillant attentivement."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin de jouets coûteux pour soutenir ses apprentissages. Votre attention et quelques moments de jeu peuvent compter énormément."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quels jeux simples peuvent soutenir le développement de mon bébé ?"
+  },
+  {
+    "id": "learning-002",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "repetition", "curiosity"],
+    "title": "Encore, encore… et encore !",
+    "summary": "Votre bébé répète sans cesse la même action ? La répétition est l’une des façons dont les jeunes enfants apprennent.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi la répétition est importante",
+        "content": "Laisser tomber une cuillère, ouvrir une boîte ou appuyer plusieurs fois sur le même bouton peut sembler monotone aux adultes. Pour les bébés, la répétition permet d’explorer les liens de cause à effet, d’exercer leur coordination et de mieux connaître leur environnement."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encouragez sa curiosité",
+        "items": [
+          "Laissez votre bébé répéter des activités sans danger.",
+          "Décrivez ce qui se passe avec des mots simples.",
+          "Proposez-lui des objets du quotidien adaptés à son âge.",
+          "Introduisez de petites variantes lorsque votre enfant semble prêt."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Ce qui vous semble être le même jeu pour la dixième fois peut encore représenter une découverte passionnante pour votre bébé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Pourquoi mon bébé aime-t-il tant répéter les mêmes activités ?"
+  },
+  {
+    "id": "baby-care-001",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 300,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "independence", "daily-routines"],
+    "title": "Les petits choix renforcent la confiance",
+    "summary": "À mesure que votre bébé grandit, lui offrir de simples occasions de participer aux activités quotidiennes peut favoriser son autonomie.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "L’autonomie commence par de petits pas",
+        "content": "Vers la fin de la première année et au début de la petite enfance, les enfants veulent de plus en plus participer aux activités quotidiennes. Attraper une cuillère, aider à s’habiller ou choisir entre deux objets adaptés leur donne l’occasion d’exercer leur coordination et de prendre des décisions simples."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Invitez votre enfant à participer",
+        "items": [
+          "Proposez-lui de choisir entre deux jouets sûrs et adaptés.",
+          "Laissez votre enfant vous aider à tenir un gant de toilette pendant les soins.",
+          "Donnez-lui le temps d’essayer des gestes simples avant d’intervenir.",
+          "Félicitez ses efforts plutôt que d’attendre un résultat parfait."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Apprendre à faire les choses seul prend du temps. Un peu de patience peut transformer les activités quotidiennes en précieux moments d’apprentissage."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment encourager l’autonomie de mon bébé ou de mon tout-petit ?"
+  },
+  {
+    "id": "health-and-comfort-001",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "comfort", "health"],
+    "title": "Soulager votre bébé pendant la poussée dentaire",
+    "summary": "La sensibilité des gencives peut rendre la poussée dentaire inconfortable. Quelques gestes simples peuvent aider à apaiser votre bébé.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Ce que votre bébé peut ressentir",
+        "content": "Lorsque les dents commencent à sortir, certains bébés ont les gencives sensibles, salivent davantage ou éprouvent le besoin de mordiller. La poussée dentaire peut provoquer un léger inconfort, mais une véritable fièvre, une diarrhée importante ou un bébé qui semble gravement malade ne doivent pas lui être automatiquement attribués."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Des gestes doux pour l’aider",
+        "items": [
+          "Massez doucement les gencives de votre bébé avec un doigt propre.",
+          "Proposez-lui un anneau de dentition propre et réfrigéré, mais non congelé.",
+          "Essuyez l’excès de salive pour aider à protéger sa peau.",
+          "Évitez les colliers de dentition et les gels anesthésiants contenant de la lidocaïne ou de la benzocaïne."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Chaque bébé vit la poussée dentaire différemment. Si votre bébé a de la fièvre, présente des symptômes persistants ou semble inhabituellement malade, contactez un professionnel de santé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment soulager les douleurs liées à la poussée dentaire en toute sécurité ?"
+  },
+  {
+    "id": "daytime-nap-002",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "naps", "development"],
+    "title": "Quand le rythme des siestes commence à changer",
+    "summary": "À mesure que les bébés grandissent, leurs besoins de sommeil en journée évoluent. Les changements de rythme des siestes peuvent faire partie du développement normal.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi les siestes évoluent",
+        "content": "Les jeunes bébés ont souvent besoin de plusieurs siestes au cours de la journée. En grandissant, beaucoup passent progressivement à des siestes moins nombreuses mais plus longues. Le moment où cela se produit varie, et des perturbations temporaires peuvent survenir lors d’une maladie, d’un voyage ou d’une étape du développement."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Suivez les besoins de votre bébé",
+        "items": [
+          "Observez ses signes de fatigue en tenant compte de son rythme habituel.",
+          "Gardez une certaine souplesse lorsque l’heure des siestes change.",
+          "Veillez à ce que l’environnement de sommeil reste sûr et confortable.",
+          "Évitez de lui imposer un changement de rythme de sieste en vous fondant uniquement sur son âge."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Il n’existe pas un seul rythme de sieste qui convienne à tous les bébés. La régularité peut aider, mais la souplesse fait partie de l’adaptation aux besoins de votre enfant."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment savoir si mon bébé est prêt à changer son rythme de sieste ?"
+  },
+  {
+    "id": "bottle-feeding-001",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hunger-cues", "responsive-feeding"],
+    "title": "Quand votre bébé vous dit : « Je n’ai plus faim »",
+    "summary": "Finir chaque biberon n’est pas le but. Apprendre à reconnaître les signes de faim et de satiété de votre bébé peut rendre les repas plus confortables.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Votre bébé peut vous guider",
+        "content": "Les bébés expriment leur appétit par leurs mouvements, leurs expressions et leur comportement. Se détourner du biberon, ralentir ou relâcher les mains peut indiquer qu’ils ont assez bu. La quantité consommée peut varier d’un repas à l’autre, sans que cela soit nécessairement problématique."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Essayez de donner le biberon à l’écoute de votre bébé",
+        "items": [
+          "Gardez votre bébé tout contre vous et observez ses réactions tout au long du repas.",
+          "Tenez le biberon presque à l’horizontale et laissez votre bébé faire des pauses naturellement.",
+          "Arrêtez lorsqu’il montre de façon répétée des signes de satiété.",
+          "Évitez de l’encourager à finir son biberon simplement parce qu’il reste du lait."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un repas réussi ne se mesure pas à un biberon vide. Si la quantité bue, l’hydratation ou la prise de poids vous inquiètent, demandez conseil à votre professionnel de santé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment reconnaître les signes de faim et de satiété de mon bébé pendant le biberon ?"
+  },
+  {
+    "id": "growth-001",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "growth-charts", "reassurance"],
+    "title": "La croissance est une évolution, pas un chiffre",
+    "summary": "Une mesure isolée ne raconte qu’une partie de l’histoire. C’est l’évolution de la croissance de votre bébé dans le temps qui compte le plus.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Comprendre les courbes de croissance",
+        "content": "Les courbes de croissance aident les professionnels de santé à suivre l’évolution du poids, de la taille et du périmètre crânien. Les bébés grandissent naturellement à des rythmes différents. Un percentile n’est ni une note ni un classement de santé. Ce qui compte, c’est la tendance générale, la situation de l’enfant et le caractère adapté de sa croissance au fil du temps."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Regardez la situation dans son ensemble",
+        "items": [
+          "Notez les mesures avec précision et de manière cohérente.",
+          "Observez les tendances de croissance plutôt que les chiffres isolés.",
+          "Discutez de tout changement inattendu avec votre pédiatre.",
+          "N’oubliez pas que la croissance des bébés nés prématurément peut devoir être évaluée en fonction de leur âge corrigé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Se situer dans un percentile plus bas ou plus élevé n’indique pas automatiquement un problème. La croissance s’interprète au mieux dans la durée, avec un professionnel de santé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment interpréter la courbe de croissance et les percentiles de mon bébé ?"
+  },
+  {
+    "id": "communication-003",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 60,
+    "maxAgeDays": 300,
+    "priority": 5,
+    "tags": ["communication", "babbling", "language-development"],
+    "title": "Les premières conversations de votre bébé",
+    "summary": "Ces petits gazouillis et babillages sont plus que des sons adorables. Ce sont les premiers pas vers la communication.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Apprendre le rythme de la conversation",
+        "content": "Bien avant leurs premiers mots, les bébés commencent à expérimenter avec les sons. Lorsque vous répondez à un gazouillis ou à un babillage, vous leur faites découvrir le rythme de la conversation : une personne s’exprime, puis l’autre répond. Ces échanges favorisent le développement social et langagier précoce."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Engagez une petite conversation",
+        "items": [
+          "Répétez certains sons de votre bébé et attendez sa réponse.",
+          "Souriez-lui et regardez-le dans les yeux lorsqu’il semble intéressé.",
+          "Décrivez les activités quotidiennes avec des mots simples.",
+          "Laissez des silences pour donner à votre bébé l’occasion de participer."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin de leçons particulières pour encourager la communication. Les moments ordinaires d’attention et d’échange offrent de précieuses occasions d’apprendre."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quelles activités peuvent encourager les premiers sons et babillages de mon bébé ?"
+  },
+  {
+    "id": "baby-care-002",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "bath-time", "bonding"],
+    "title": "Le bain ne sert pas seulement à se laver",
+    "summary": "Un bain chaud peut devenir une belle occasion de créer du lien, de jouer et de découvrir de nouvelles sensations.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Un moment de découverte",
+        "content": "Le bain fait découvrir à votre bébé différentes sensations, comme l’eau chaude, le toucher délicat et le mouvement. En grandissant, il peut prendre plaisir à éclabousser et à explorer l’eau. Certains bébés aiment immédiatement le bain, tandis que d’autres ont besoin de temps pour s’y sentir à l’aise."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Un bain confortable et sûr",
+        "items": [
+          "Préparez les serviettes et tout le nécessaire avant de mettre votre bébé dans l’eau.",
+          "Vérifiez soigneusement la température de l’eau avant le bain.",
+          "Restez à portée de main et surveillez votre bébé sans interruption.",
+          "Ne laissez jamais votre bébé seul dans le bain, même un instant ou s’il est installé dans un siège de bain."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Le bain n’a pas besoin d’être élaboré ni d’avoir lieu tous les jours. Un rituel court et calme peut être tout aussi précieux."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment rendre le bain sûr et agréable pour mon bébé ?"
+  },
+  {
+    "id": "solid-food-003",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "self-feeding", "independence"],
+    "title": "Un peu de désordre peut cacher de grands apprentissages",
+    "summary": "De la nourriture sur la tablette, les mains et le sol ? Explorer les repas avec ses sens fait partie de l’apprentissage de l’alimentation.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Explorer les aliments développe des compétences",
+        "content": "Lorsque les bébés commencent à manger des aliments solides, les toucher, les écraser et les saisir les aide à explorer les textures et à exercer leur coordination. Les occasions de manger seuls peuvent favoriser leur motricité fine et leur autonomie, même si très peu de nourriture atteint leur bouche au début."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encouragez une exploration en toute sécurité",
+        "items": [
+          "Proposez des aliments tendres, préparés dans des formes et des textures adaptées aux capacités de votre bébé.",
+          "Laissez votre bébé toucher et explorer les aliments sans pression.",
+          "Gardez votre bébé assis bien droit et surveillez chaque bouchée.",
+          "Évitez les aliments présentant un risque d’étouffement, comme les fruits à coque entiers, les raisins entiers et les morceaux durs de légumes crus."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un repas salissant n’est pas un repas raté. L’exploration, la coordination et la curiosité jouent un rôle important dans l’apprentissage de l’alimentation."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment encourager mon bébé à manger seul en toute sécurité ?"
+  },
+  {
+    "id": "parent-support-003",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "wellbeing", "self-care"],
+    "title": "Prendre soin de vous compte aussi",
+    "summary": "S’occuper d’un bébé demande de l’énergie. Votre repos, votre bien-être et le soutien que vous recevez méritent eux aussi de l’attention.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Les parents ont aussi des besoins",
+        "content": "Les premiers mois avec un bébé peuvent être exigeants sur le plan physique et émotionnel. Le sommeil perturbé, les changements de routine et les nouvelles responsabilités peuvent vous laisser peu de temps. Prendre quelques instants pour vous reposer, manger, échanger avec d’autres ou demander de l’aide contribue à préserver votre bien-être."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Accordez-vous une place",
+        "items": [
+          "Acceptez l’aide concrète lorsqu’une personne de confiance vous la propose.",
+          "Lorsque c’est possible, partagez les responsabilités avec votre partenaire ou une personne qui vous soutient.",
+          "Faites de courtes pauses pendant la journée, même si elles ne durent que quelques minutes.",
+          "Parlez à un professionnel de santé si la tristesse, l’anxiété ou le sentiment d’être dépassé persistent."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Prendre soin de vous n’est pas égoïste. Votre bien-être compte indépendamment de tout ce que vous faites pour votre enfant."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment puis-je prendre soin de moi de façon réaliste tout en m’occupant de mon bébé ?"
+  },
+  {
+    "id": "motor-development-003",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "walking", "milestones"],
+    "title": "Le chemin vers les premiers pas",
+    "summary": "Se tenir debout, longer les meubles et faire ses premiers pas sont des étapes passionnantes, que chaque enfant atteint à son propre rythme.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Marcher demande de l’entraînement",
+        "content": "Avant de marcher seuls, de nombreux bébés s’exercent à se tenir debout en s’appuyant sur les meubles, à déplacer leur poids et à avancer de côté le long de surfaces stables. Ces activités contribuent au développement de l’équilibre et de la coordination. L’âge de la marche autonome varie, et son apprentissage passe généralement par de nombreux essais et erreurs."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Favorisez des mouvements sûrs",
+        "items": [
+          "Prévoyez des meubles stables et un espace d’exploration sûr.",
+          "Laissez votre enfant jouer pieds nus sur des surfaces intérieures sans danger.",
+          "Encouragez-le à bouger sans le tirer dans des positions qu’il ne maîtrise pas.",
+          "Évitez les trotteurs à roulettes en raison du risque de blessure."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "L’âge des premiers pas varie normalement d’un enfant à l’autre. Si votre enfant ne marche pas seul à 18 mois ou perd une compétence qu’il avait acquise, demandez une évaluation de son développement."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment accompagner mon bébé lorsqu’il apprend à se tenir debout et à marcher ?"
+  },
+  {
+    "id": "health-and-comfort-002",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "common-cold", "comfort"],
+    "title": "Quand votre bébé est enrhumé",
+    "summary": "Le nez qui coule et la congestion sont fréquents chez les jeunes enfants. Des soins tout en douceur peuvent aider votre bébé à se sentir mieux.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Comprendre le rhume",
+        "content": "Les bébés et les tout-petits rencontrent de nombreux virus respiratoires à mesure que leur système immunitaire se développe. Un rhume peut provoquer une congestion nasale, des éternuements et de la toux. La plupart des rhumes sans complication s’améliorent avec le temps, mais les très jeunes bébés et les enfants qui ont du mal à respirer ou à s’alimenter nécessitent une attention particulière."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Des gestes simples pour le soulager",
+        "items": [
+          "Utilisez des gouttes ou un spray de sérum physiologique stérile pour aider à fluidifier les sécrétions nasales.",
+          "Proposez fréquemment les biberons ou tétées habituels et surveillez les signes de déshydratation.",
+          "Gardez la surface de sommeil de votre bébé plane et suivez les recommandations pour un sommeil sûr.",
+          "Évitez les médicaments contre la toux et le rhume en vente libre, sauf recommandation expresse d’un professionnel de santé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Demandez un avis médical urgent en cas de fièvre de 38°C ou plus chez un bébé de moins de 3 mois, de difficultés respiratoires, de mauvaise alimentation, de déshydratation ou de somnolence inhabituelle."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment aider mon bébé à se sentir mieux lorsqu’il est enrhumé ?"
+  },
+  {
+    "id": "learning-003",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "cause-and-effect", "exploration"],
+    "title": "De petites expériences, de grandes découvertes",
+    "summary": "Laisser tomber des jouets, appuyer sur des boutons et ouvrir des récipients sont les premières expériences de votre bébé avec les liens de cause à effet.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Découvrir comment fonctionne le monde",
+        "content": "En grandissant, les bébés commencent à remarquer les liens entre leurs actions et ce qui se produit ensuite. Secouer un hochet produit un son, lâcher un jouet le fait tomber et pousser un objet peut le faire bouger. Ces expériences simples contribuent au développement de la curiosité, de l’attention et de la capacité à résoudre des problèmes."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encouragez les découvertes du quotidien",
+        "items": [
+          "Proposez des objets sûrs qui produisent différents sons lorsqu’on les bouge.",
+          "Laissez votre bébé explorer des gobelets empilables ou des récipients adaptés à son âge.",
+          "Décrivez ce qui se passe lorsque votre enfant réalise une action.",
+          "Laissez votre bébé expérimenter avant de lui montrer comment fonctionne un objet."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Apprendre ne nécessite pas de jouets compliqués. Les objets du quotidien et les interactions simples peuvent offrir de nombreuses occasions de faire des découvertes."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quelles activités simples peuvent aider mon bébé à comprendre les liens de cause à effet ?"
+  },
+  {
+    "id": "night-sleep-003",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 90,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "bedtime-routine", "reassurance"],
+    "title": "Le réconfort d’un coucher familier",
+    "summary": "Quelques étapes prévisibles avant de dormir peuvent aider votre bébé à comprendre que l’heure du coucher approche.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi les rituels peuvent aider",
+        "content": "Les bébés apprennent progressivement à reconnaître des habitudes familières. Répéter une séquence calme avant le coucher, comme mettre le pyjama, tamiser les lumières et partager un câlin paisible, peut créer des repères prévisibles annonçant le sommeil. Un rituel ne garantit pas une nuit sans réveil, mais il peut faciliter l’endormissement."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Créez un rituel simple",
+        "items": [
+          "Choisissez deux ou trois activités apaisantes qui conviennent à votre famille.",
+          "Gardez un ordre assez régulier sans suivre l’horloge de manière rigide.",
+          "Réduisez les lumières vives et les jeux stimulants avant le coucher.",
+          "Couchez toujours votre bébé dans un environnement de sommeil sûr et adapté à son âge."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Le rituel du coucher n’a pas besoin d’être parfait ni élaboré. Les repères familiers et une ambiance calme comptent davantage que le respect d’un horaire exact."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment créer un rituel du coucher apaisant et adapté à l’âge de mon bébé ?"
+  },
+  {
+    "id": "breastfeeding-002",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["breastfeeding", "cluster-feeding", "reassurance"],
+    "title": "Pourquoi votre bébé veut-il encore téter ?",
+    "summary": "Certains bébés veulent téter plusieurs fois à intervalles rapprochés, surtout pendant les premières semaines. On parle souvent de tétées groupées.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Comprendre les tétées groupées",
+        "content": "À certaines périodes, en particulier durant les premiers mois, les bébés allaités peuvent vouloir téter à plusieurs reprises en l’espace de quelques heures. Ce rythme est appelé tétées groupées. Il peut survenir le soir ou lorsque les besoins alimentaires évoluent. Des tétées fréquentes ne signifient pas nécessairement que votre production de lait est insuffisante."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Facilitez les tétées fréquentes",
+        "items": [
+          "Répondez aux signes de faim de votre bébé plutôt que de vous fier uniquement à l’horloge.",
+          "Gardez de l’eau, des collations et un endroit confortable à portée de main pour vous.",
+          "Demandez à une personne de confiance de vous aider dans d’autres tâches pendant les périodes de tétées intenses.",
+          "Surveillez les couches mouillées et la prise de poids, et demandez de l’aide pour l’allaitement si quelque chose vous inquiète."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Les tétées groupées peuvent être fatigantes, mais elles sont souvent temporaires. Si les tétées sont douloureuses, si votre bébé semble déshydraté ou si sa prise de poids est insuffisante, contactez un professionnel de santé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment savoir si les tétées fréquentes de mon bébé sont normales ?"
+  },
+  {
+    "id": "bottle-feeding-002",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "paced-feeding", "comfort"],
+    "title": "Donner le biberon n’est pas une course",
+    "summary": "Ralentir le rythme du biberon peut aider votre bébé à boire confortablement et à vous indiquer quand il a besoin d’une pause.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Laissez votre bébé donner le rythme",
+        "content": "Donner le biberon ne consiste pas simplement à faire boire une certaine quantité de lait. Les bébés doivent pouvoir téter, avaler, respirer et faire des pauses confortablement. Un débit rapide peut compliquer le repas de certains bébés. Donner le biberon lentement et à l’écoute de votre bébé vous permet de repérer les signes indiquant qu’il veut faire une pause ou qu’il a assez bu."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Essayez un rythme plus doux",
+        "items": [
+          "Tenez votre bébé dans une position semi-assise et bien soutenue.",
+          "Gardez le biberon presque à l’horizontale pour modérer le débit du lait.",
+          "Laissez-le faire des pauses naturellement et observez les signes d’inconfort.",
+          "Ne calez jamais un biberon et ne laissez jamais votre bébé boire sans surveillance."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Chaque bébé développe son propre rythme pour boire. Si les repas provoquent régulièrement de la toux, un étouffement, de la détresse ou une mauvaise prise de poids, demandez conseil à un professionnel."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment donner le biberon lentement et au rythme de mon bébé ?"
+  },
+  {
+    "id": "growth-002",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["growth", "feeding", "development"],
+    "title": "La croissance n’avance pas toujours à la même vitesse",
+    "summary": "L’appétit, le sommeil et le comportement de votre bébé peuvent changer à mesure qu’il grandit. Le développement suit rarement un calendrier parfaitement prévisible.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "La croissance se construit dans le temps",
+        "content": "Les bébés grandissent rapidement pendant leur première année, mais pas exactement au même rythme chaque jour. Vous remarquerez peut-être des périodes où votre bébé semble avoir davantage faim ou besoin d’être plus rassuré. On décrit parfois ces changements comme des poussées de croissance, même s’il n’existe aucun calendrier universel qui s’applique à tous les bébés."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Répondez à l’évolution de ses besoins",
+        "items": [
+          "Soyez attentif aux signes de faim et de satiété.",
+          "Continuez à respecter le suivi de croissance recommandé.",
+          "Attendez-vous à certaines variations du sommeil et de l’alimentation.",
+          "Contactez votre professionnel de santé si vos inquiétudes concernant l’alimentation, l’hydratation ou la croissance persistent."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin d’identifier chaque poussée de croissance. Suivre les signaux de votre bébé et surveiller son développement général est habituellement plus utile."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quel effet les poussées de croissance ont-elles sur l’alimentation et le sommeil de mon bébé ?"
+  },
+  {
+    "id": "daytime-nap-003",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 240,
+    "priority": 5,
+    "tags": ["sleep", "short-naps", "reassurance"],
+    "title": "Pourquoi certaines siestes sont-elles si courtes ?",
+    "summary": "Une courte sieste ne signifie pas automatiquement qu’il y a un problème. Le rythme de sommeil des jeunes bébés est souvent changeant et imprévisible.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Comprendre les siestes courtes",
+        "content": "Pendant les premiers mois, le sommeil en journée peut être irrégulier. Certaines siestes ne durent que peu de temps, tandis que d’autres sont beaucoup plus longues. Les bébés développent encore leur rythme de sommeil et leurs besoins individuels varient. Une courte sieste isolée n’est pas nécessairement le signe d’un mauvais sommeil."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Favorisez le repos en journée",
+        "items": [
+          "Repérez les signes de fatigue, comme une moindre envie d’interagir ou de l’irritabilité.",
+          "Proposez un environnement calme lorsque votre bébé semble prêt à dormir.",
+          "Suivez les recommandations pour un sommeil sûr à chaque sieste, notamment en couchant votre bébé sur le dos.",
+          "Tenez compte de l’ensemble de son sommeil et de son bien-être général plutôt que de vous concentrer sur une seule sieste."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Toutes les siestes n’ont pas besoin d’être longues. Si votre bébé semble constamment épuisé ou si son sommeil vous inquiète, parlez-en à un professionnel de santé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Les siestes courtes sont-elles normales à l’âge de mon bébé ?"
+  },
+  {
+    "id": "playtime-003",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["playtime", "sensory-development", "exploration"],
+    "title": "Le monde est un terrain de jeu pour les sens",
+    "summary": "Différentes textures, différents sons et mouvements peuvent transformer des moments ordinaires en découvertes fascinantes pour votre bébé.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Apprendre grâce aux sens",
+        "content": "Les bébés explorent ce qui les entoure par la vue, l’ouïe, le toucher et le mouvement. Toucher un tissu doux, entendre un hochet discret ou regarder bouger un objet peut les aider à découvrir des différences et à se familiariser avec leur environnement. Les jeux sensoriels n’ont pas besoin d’être compliqués ni coûteux."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Essayez des activités sensorielles simples",
+        "items": [
+          "Proposez des jouets adaptés à son âge, avec différentes textures sans danger.",
+          "Laissez votre bébé explorer un tissu doux sous votre surveillance.",
+          "Faites-lui découvrir des sons délicats à l’aide d’un hochet ou de votre voix.",
+          "Suivez les réactions de votre bébé et faites une pause s’il semble trop stimulé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Votre bébé n’a pas besoin d’être constamment diverti. Quelques instants d’exploration curieuse peuvent suffire."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quelles activités sensorielles sans danger puis-je proposer à mon bébé ?"
+  },
+  {
+    "id": "teething-002",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "oral-health", "baby-care"],
+    "title": "La première dent mérite un peu d’attention",
+    "summary": "Les soins dentaires commencent plus tôt que beaucoup de parents ne l’imaginent. L’apparition de la première dent est le moment idéal pour adopter un rituel tout en douceur.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "De bonnes habitudes dès le début",
+        "content": "Les dents de lait jouent un rôle important dans l’alimentation, le développement de la parole et le maintien de la place nécessaire aux dents définitives. Les soins dentaires doivent commencer dès l’apparition de la première dent. Un brossage précoce et doux aide à instaurer de bonnes habitudes et à protéger les dents contre les caries."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Adoptez un rituel dentaire simple",
+        "items": [
+          "Brossez les dents deux fois par jour avec une petite brosse à dents souple.",
+          "Utilisez une trace de dentifrice fluoré adaptée à l’âge de votre enfant et aux recommandations dentaires locales.",
+          "Évitez de coucher votre bébé avec un biberon contenant du lait ou des boissons sucrées.",
+          "Prévoyez une première visite chez le dentiste avant son premier anniversaire ou dans les six mois suivant l’apparition de la première dent."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un rituel doux compte davantage qu’une technique de brossage parfaite. Votre professionnel des soins dentaires peut vous aider à choisir le dentifrice et la quantité de fluor appropriés."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment nettoyer les premières dents de mon bébé ?"
+  },
+  {
+    "id": "parent-support-004",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "shared-responsibilities", "wellbeing"],
+    "title": "Être parent n’a jamais été une mission en solitaire",
+    "summary": "Partager les responsabilités et demander du soutien peut rendre le quotidien de parent plus facile à gérer.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Le soutien fait la différence",
+        "content": "S’occuper d’un bébé implique de nombreuses tâches visibles et invisibles, qu’il s’agisse de le nourrir, de changer ses couches, de planifier les rendez-vous ou d’anticiper ses besoins. Lorsque les responsabilités reposent surtout sur une seule personne, l’épuisement peut s’installer. Partager les tâches concrètes et communiquer ouvertement peut aider les familles à trouver un équilibre plus durable."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Facilitez le travail d’équipe",
+        "items": [
+          "Parlez ouvertement des tâches qui vous semblent les plus exigeantes.",
+          "Répartissez les responsabilités d’une manière adaptée à la situation de votre famille.",
+          "Tenez compte de la planification et de la charge mentale, pas seulement des tâches concrètes.",
+          "Acceptez l’aide de proches ou d’amis de confiance lorsqu’elle est disponible."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Avoir besoin de soutien n’est pas un signe de faiblesse. Être parent est exigeant et chacun mérite de pouvoir se reposer et reprendre des forces."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment pouvons-nous partager plus équitablement les responsabilités parentales ?"
+  },
+  {
+    "id": "communication-004",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "reading", "language-development"],
+    "title": "Il n’est jamais trop tôt pour une histoire",
+    "summary": "Lire ensemble peut favoriser le développement du langage et votre complicité, même avant que votre bébé comprenne les mots.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi la lecture est importante",
+        "content": "Lorsque vous lisez à voix haute, votre bébé entend le rythme et les sons du langage tout en profitant de votre attention. Au fil du temps, les livres partagés peuvent lui faire découvrir de nouveaux mots, encourager les échanges et devenir une habitude familière. Les jeunes bébés peuvent s’intéresser davantage à votre voix et à vos expressions qu’à l’histoire elle-même."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Faites une place aux livres dans votre journée",
+        "items": [
+          "Choisissez des livres solides avec des images claires et des mots simples.",
+          "Montrez les objets du doigt et décrivez ce que vous voyez.",
+          "Laissez votre bébé toucher ou tourner les pages lorsqu’il en est capable.",
+          "Suivez l’intérêt de votre enfant plutôt que d’insister pour terminer chaque livre."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin de lire longtemps. Même quelques minutes d’attention partagée peuvent compter."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quels livres et quelles activités de lecture conviennent à l’âge de mon bébé ?"
+  },
+  {
+    "id": "solid-food-004",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "iron", "nutrition"],
+    "title": "Un nutriment discret au rôle essentiel",
+    "summary": "Le fer devient particulièrement important lorsque les bébés commencent à manger des aliments solides. Proposer des aliments riches en fer peut contribuer à leur bon développement.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi le fer est important",
+        "content": "Le fer contribue à la santé des cellules sanguines et au développement du cerveau. Les bébés naissent avec des réserves de fer, mais celles-ci diminuent progressivement au cours de la petite enfance. Au moment de l’introduction des aliments complémentaires, il devient important de proposer des aliments adaptés riches en fer, en plus du lait maternel ou infantile."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Découvrez les aliments riches en fer",
+        "items": [
+          "Proposez des préparations de viande, de volaille, de poisson, de haricots ou de lentilles adaptées à son âge.",
+          "Envisagez des céréales infantiles enrichies en fer lorsqu’elles sont adaptées.",
+          "Associez les sources végétales de fer à des aliments riches en vitamine C pour favoriser son absorption.",
+          "Demandez à un professionnel de santé si votre bébé a besoin d’un complément de fer, surtout s’il est né prématurément."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin de calculer chaque milligramme à chaque repas. Proposer au fil du temps une variété d’aliments adaptés contribue à une alimentation équilibrée."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quels aliments riches en fer conviennent à l’âge de mon bébé ?"
+  },
+  {
+    "id": "motor-development-004",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "fine-motor-skills", "coordination"],
+    "title": "De petits doigts, des compétences qui grandissent",
+    "summary": "Saisir des jouets, passer des objets d’une main à l’autre et explorer de petits gestes aident votre bébé à développer sa coordination.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Découvrir la motricité fine",
+        "content": "Le développement de la motricité fine repose sur des mouvements de plus en plus précis des mains et des doigts. Les bébés apprennent progressivement à tendre la main vers les objets, à les saisir, à les passer d’une main à l’autre puis à ramasser de petits objets avec le pouce et les doigts. Ces capacités favorisent le jeu, l’autonomie pendant les repas et l’indépendance au quotidien."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encouragez ses petites mains",
+        "items": [
+          "Proposez des jouets légers, faciles à saisir et adaptés à l’âge de votre bébé.",
+          "Laissez votre bébé passer des objets sûrs d’une main à l’autre.",
+          "Introduisez des gobelets empilables et de gros blocs à mesure que sa coordination s’améliore.",
+          "Gardez les petits objets et les pièces détachables des jouets hors de portée en raison du risque d’étouffement."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "La coordination des mains se développe progressivement grâce aux explorations quotidiennes. Chaque enfant progresse à son rythme, mais si vous remarquez la perte d’une compétence acquise ou si son développement vous inquiète, parlez-en à votre pédiatre."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quelles activités peuvent aider mon bébé à développer sa motricité fine ?"
+  },
+  {
+    "id": "parent-support-005",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["separation", "attachment", "reassurance"],
+    "title": "Quand les au revoir font couler des larmes",
+    "summary": "Votre bébé peut soudainement s’agiter lorsque vous quittez la pièce. L’angoisse de séparation est une étape fréquente du développement précoce.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi la séparation peut être difficile",
+        "content": "À mesure que les bébés prennent davantage conscience des personnes familières et de leur environnement, ils peuvent réagir vivement au départ d’un parent ou d’une personne qui s’occupe d’eux. L’angoisse de séparation apparaît souvent pendant la seconde moitié de la première année, même si le moment et l’intensité varient. Votre bébé découvre les relations, la distance et l’expérience rassurante des retrouvailles."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Adoucissez les au revoir",
+        "items": [
+          "Créez un rituel d’au revoir court et prévisible.",
+          "Expliquez calmement que vous partez et que vous reviendrez.",
+          "Exercez-vous à de brèves séparations avec une personne familière en qui vous avez confiance.",
+          "Évitez de disparaître sans dire au revoir, car cela peut rendre les départs moins prévisibles."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Les larmes au moment de se séparer ne signifient pas que vous abîmez votre lien. Des soins attentifs et réguliers aident votre enfant à développer sa confiance au fil du temps."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment aider mon bébé à mieux vivre l’angoisse de séparation ?"
+  },
+  {
+    "id": "bottle-feeding-003",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["formula", "bottle-feeding", "food-safety"],
+    "title": "Un biberon sûr commence par une bonne préparation",
+    "summary": "Quelques précautions lors de la préparation du lait infantile contribuent à protéger votre bébé contre les bactéries dangereuses.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi la préparation est importante",
+        "content": "Le lait infantile en poudre n’est pas stérile. Des bactéries dangereuses peuvent parfois être présentes dans la poudre ou y être introduites pendant la préparation. Une manipulation sûre, des mesures précises et une conservation adaptée contribuent à réduire le risque d’infection. Les bébés de moins de deux mois, ceux nés prématurément et ceux dont le système immunitaire est affaibli nécessitent une attention particulière."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Adoptez de bonnes habitudes de préparation",
+        "items": [
+          "Lavez-vous les mains et nettoyez le matériel avant de préparer un biberon.",
+          "Suivez les instructions du fabricant du lait infantile et les recommandations sanitaires locales concernant la température de l’eau et la préparation.",
+          "Mesurez précisément l’eau et la poudre à l’aide de la dosette fournie.",
+          "Jetez le lait restant dans le biberon après le repas et respectez les durées de conservation recommandées pour le lait préparé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "La préparation en toute sécurité devient vite une habitude familière. Si votre bébé présente un risque d’infection plus élevé, demandez à un professionnel de santé quelles sont les options de lait infantile et la méthode de préparation les plus sûres."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment préparer et conserver le lait infantile en toute sécurité ?"
+  },
+  {
+    "id": "learning-004",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["emotions", "learning", "social-development"],
+    "title": "De grandes émotions chez une petite personne",
+    "summary": "La frustration, l’enthousiasme et les larmes font partie de l’apprentissage des émotions. Votre présence calme peut aider.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Les compétences émotionnelles prennent du temps",
+        "content": "À mesure que les bébés deviennent de jeunes enfants, leurs préférences s’affirment et leur envie d’explorer seuls grandit. Leur capacité à gérer la frustration est toutefois encore en développement. Pleurer ou protester lorsque les choses ne se passent pas comme prévu est souvent une façon d’exprimer des émotions qu’ils ne savent pas encore expliquer avec des mots."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Aidez votre enfant à traverser ses émotions",
+        "items": [
+          "Restez calme et réconfortez votre enfant lorsqu’il est submergé.",
+          "Utilisez des mots simples pour décrire ses émotions, par exemple : « Tu as l’air frustré. »",
+          "Maintenez des limites douces et cohérentes.",
+          "Lorsque c’est approprié, proposez des choix simples pour donner à votre enfant une certaine maîtrise."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "On n’attend pas de votre enfant qu’il gère seul toutes ses émotions. La régulation émotionnelle s’apprend progressivement au sein de relations bienveillantes."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment réagir lorsque mon tout-petit est frustré ou contrarié ?"
+  },
+  {
+    "id": "baby-care-003",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["skin-care", "baby-care", "comfort"],
+    "title": "Des soins doux pour une peau délicate",
+    "summary": "La peau de votre bébé est encore en développement. Des soins simples et doux suffisent souvent à répondre à ses besoins.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Comprendre la peau sensible des bébés",
+        "content": "La peau des bébés peut être plus sensible aux irritations causées par l’humidité, les frottements, les parfums et les produits nettoyants agressifs. Une sécheresse passagère ou une légère irritation sont fréquentes. Garder la peau propre, éviter les produits superflus et protéger les zones exposées à l’humidité peut contribuer à son confort."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Gardez des soins simples",
+        "items": [
+          "Utilisez de l’eau tiède et, si nécessaire, des produits nettoyants doux et sans parfum.",
+          "Séchez la peau en la tamponnant délicatement, surtout dans les plis.",
+          "Changez rapidement les couches mouillées ou sales et utilisez une crème barrière adaptée lorsque c’est nécessaire.",
+          "Demandez conseil à un professionnel de santé en cas d’éruption persistante, de peau lésée ou de signes d’infection."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Davantage de produits ne signifie pas nécessairement de meilleurs soins. Un rituel simple est souvent l’option la plus douce pour garder la peau de bébé en bonne santé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quel rituel de soins simple et sûr convient à la peau de mon bébé ?"
+  },
+  {
+    "id": "communication-005",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["language", "first-words", "communication"],
+    "title": "La magie d’un premier mot",
+    "summary": "Les premiers mots porteurs de sens de votre bébé peuvent apparaître progressivement, après des mois d’écoute, de gestes et d’interactions.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Les mots naissent des échanges quotidiens",
+        "content": "Avant de prononcer des mots reconnaissables, les bébés passent des mois à écouter le langage, à expérimenter avec les sons et à communiquer par des gestes. Les premiers mots apparaissent souvent vers la fin de la première année, même si le développement varie. Comprendre des mots et réagir à un langage familier sont également des aspects importants de la communication."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encouragez naturellement le langage",
+        "items": [
+          "Nommez les objets familiers pendant les activités quotidiennes.",
+          "Répondez chaleureusement aux sons, aux gestes et aux tentatives de mots.",
+          "Lisez des livres simples et parlez des images.",
+          "Évitez de faire pression sur votre enfant pour qu’il répète des mots sur commande."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Les enfants développent le langage à des rythmes différents. Si votre enfant ne franchit pas les étapes de communication attendues, entend difficilement ou perd des compétences, parlez de vos inquiétudes à un professionnel de santé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment encourager les premiers mots et le développement du langage de mon bébé ?"
+  },
+  {
+    "id": "breastfeeding-003",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["breastfeeding", "milk-intake", "reassurance"],
+    "title": "Votre bébé reçoit-il assez de lait ?",
+    "summary": "L’allaitement ne s’accompagne pas d’une échelle graduée. Heureusement, la croissance, les couches et le comportement de votre bébé peuvent fournir des indices utiles.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Ne regardez pas seulement l’horloge",
+        "content": "Tous les bébés allaités ne tètent pas pendant la même durée ni aux mêmes intervalles. La durée d’une tétée ne permet pas à elle seule de savoir quelle quantité de lait votre bébé reçoit. La prise de poids, les couches mouillées et les signes d’un transfert de lait efficace sont des indicateurs plus utiles. Le rythme des tétées change aussi à mesure que les bébés grandissent."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Des signes à observer",
+        "items": [
+          "Suivez la croissance de votre bébé lors des rendez-vous médicaux recommandés.",
+          "Vérifiez que le nombre de couches mouillées est adapté à son âge.",
+          "Observez une succion et une déglutition rythmées pendant les tétées.",
+          "Demandez l’aide d’un spécialiste de l’allaitement ou un avis médical si les tétées sont douloureuses, si votre bébé semble déshydraté ou si sa prise de poids vous inquiète."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin de mesurer chaque tétée pour réussir votre allaitement. Si vous ne savez pas si votre bébé reçoit suffisamment de lait, un professionnel de santé peut évaluer les tétées et sa croissance."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment savoir si mon bébé allaité reçoit suffisamment de lait ?"
+  },
+  {
+    "id": "playtime-004",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "free-play", "exploration"],
+    "title": "Parfois, les meilleurs jeux n’ont pas de mode d’emploi",
+    "summary": "Laisser votre bébé explorer des objets sûrs à son propre rythme peut encourager sa curiosité, sa créativité et son autonomie.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "La valeur du jeu libre",
+        "content": "Les bébés et les tout-petits apprennent en explorant, en expérimentant et en faisant des découvertes. Pendant le jeu libre, votre enfant choisit ce qui l’intéresse et la façon d’interagir avec cet élément. Cela peut favoriser son attention, sa capacité à résoudre des problèmes et son autonomie naissante. Votre présence et vos encouragements restent précieux, même lorsque vous ne dirigez pas chaque activité."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Faites de la place aux découvertes",
+        "items": [
+          "Proposez quelques jouets sûrs et adaptés à son âge plutôt qu’un trop grand nombre à la fois.",
+          "Laissez votre enfant choisir l’objet qu’il souhaite explorer.",
+          "Observez-le avant d’intervenir pour lui montrer comment fonctionne un objet.",
+          "Restez à proximité et surveillez-le tout en lui laissant de l’espace pour expérimenter."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin d’organiser chaque minute de jeu. Parfois, offrir simplement un environnement sûr et être présent suffit."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment encourager le jeu autonome tout en assurant la sécurité de mon bébé ?"
+  },
+  {
+    "id": "health-and-comfort-003",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["safety", "baby-proofing", "motor-development"],
+    "title": "Votre petit explorateur a besoin d’un monde sûr",
+    "summary": "À mesure que votre bébé se déplace davantage, les objets ordinaires de la maison peuvent soudain devenir fascinants — et parfois dangereux.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Un nouveau regard sur votre maison",
+        "content": "Se retourner, ramper, se redresser et marcher permettent aux bébés d’atteindre des endroits auparavant inaccessibles. Les câbles électriques, les meubles, les escaliers, les produits d’entretien et les petits objets peuvent présenter des dangers. Préparer votre maison avant chaque nouvelle étape de mobilité peut contribuer à réduire les blessures évitables."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Regardez le monde à hauteur de votre bébé",
+        "items": [
+          "Fixez les meubles lourds et les téléviseurs pour éviter qu’ils ne basculent.",
+          "Gardez les médicaments, les produits d’entretien et les petits objets présentant un risque d’étouffement sous clé ou hors d’accès.",
+          "Installez des barrières de sécurité adaptées près des escaliers.",
+          "Gardez les boissons chaudes, les objets tranchants et les câbles électriques hors de portée.",
+          "N’oubliez pas qu’une surveillance reste indispensable, même dans une pièce sécurisée pour les bébés."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin de rendre chaque pièce parfaite du jour au lendemain. Commencez par les dangers les plus importants et réévaluez votre maison à mesure que les capacités de votre enfant évoluent."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Que dois-je sécuriser à la maison pour l’âge actuel de mon enfant ?"
+  },
+  {
+    "id": "learning-005",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation", "social-development"],
+    "title": "Votre bébé vous regarde et apprend",
+    "summary": "Qu’il fasse au revoir ou semblant de parler au téléphone, l’imitation aide votre jeune enfant à découvrir le fonctionnement du monde.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Apprendre en observant les autres",
+        "content": "Les bébés et les tout-petits observent et reproduisent de plus en plus les actions qu’ils voient autour d’eux. L’imitation les aide à exercer de nouveaux mouvements, à participer aux habitudes sociales et à découvrir comment utiliser les objets du quotidien. Des activités familières, comme se brosser les cheveux, faire au revoir ou mélanger avec une cuillère, peuvent devenir des occasions d’apprendre."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Transformez les habitudes en moments d’apprentissage",
+        "items": [
+          "Faites bonjour et au revoir de la main, puis laissez à votre enfant le temps de répondre.",
+          "Montrez des gestes simples avec des jouets ou des objets domestiques sûrs.",
+          "Invitez votre enfant à imiter des gestes pendant les chansons.",
+          "Valorisez ses tentatives sans attendre une copie exacte."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Votre enfant apprend chaque jour grâce aux interactions ordinaires. Vous n’avez pas besoin de leçons particulières pour créer de belles occasions d’apprendre."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quelles activités quotidiennes peuvent aider mon bébé à apprendre par imitation ?"
+  },
+  {
+    "id": "parent-support-006",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "emotional-wellbeing", "reassurance"],
+    "title": "Certains jours sont simplement plus difficiles que d’autres",
+    "summary": "Être parent peut être à la fois merveilleux et épuisant. Une journée difficile ne définit pas le parent que vous êtes.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Faire une place aux émotions difficiles",
+        "content": "S’occuper d’un jeune enfant peut apporter des moments de bonheur, mais aussi de la frustration, de la fatigue et de l’incertitude. Le manque de sommeil et les changements de routine peuvent rendre les difficultés ordinaires accablantes. Ces émotions ne signifient pas automatiquement que quelque chose ne va pas, mais une détresse persistante mérite attention et soutien."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Soyez indulgent envers vous-même",
+        "items": [
+          "Concentrez-vous sur les besoins essentiels lorsque vous manquez d’énergie.",
+          "Demandez un soutien concret ou émotionnel à une personne de confiance.",
+          "Accordez-vous une courte pause lorsque votre enfant est pris en charge en toute sécurité.",
+          "Parlez à un professionnel de santé si la tristesse, l’anxiété ou le sentiment d’être dépassé persistent."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas à apprécier chaque instant pour être un parent attentionné. Votre bien-être compte et demander de l’aide est un choix sain."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment traverser les journées difficiles de parent sans culpabiliser ?"
+  },
+  {
+    "id": "bottle-feeding-004",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hygiene", "food-safety"],
+    "title": "Un biberon propre fait la différence",
+    "summary": "Les résidus de lait peuvent favoriser la multiplication des bactéries. Un rituel de nettoyage simple contribue à la sécurité du matériel utilisé pour nourrir votre bébé.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi l’hygiène des biberons est importante",
+        "content": "Le lait peut laisser des résidus à l’intérieur des biberons, des tétines et des autres accessoires. Sans nettoyage adéquat, des bactéries peuvent se multiplier sur ces surfaces. Les bébés sont particulièrement vulnérables aux infections pendant leurs premiers mois : un nettoyage soigneux et une désinfection adaptée jouent donc un rôle important dans la sécurité des repas."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Adoptez un rituel de nettoyage sûr",
+        "items": [
+          "Lavez-vous les mains avant de manipuler le matériel propre.",
+          "Démontez les biberons et nettoyez toutes les pièces après chaque repas.",
+          "Utilisez de l’eau chaude savonneuse et un goupillon réservé aux biberons, ou un lave-vaisselle si le fabricant l’autorise.",
+          "Laissez toutes les pièces sécher complètement à l’air libre sur une surface propre.",
+          "Suivez les recommandations locales de désinfection, en particulier pour les bébés de moins de deux mois, les bébés prématurés ou ceux dont le système immunitaire est affaibli."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "L’hygiène des biberons n’a pas besoin d’être compliquée. Un rituel de nettoyage régulier aide à protéger votre bébé et devient vite une habitude quotidienne."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment nettoyer et désinfecter les biberons de mon bébé en toute sécurité ?"
+  },
+  {
+    "id": "growth-003",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "weight", "growth-monitoring"],
+    "title": "Une seule pesée ne raconte pas toute l’histoire",
+    "summary": "De petites différences entre les mesures de poids peuvent survenir. Pour bien comprendre la croissance, il faut surtout observer son évolution au fil du temps.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi les mesures peuvent varier",
+        "content": "Le poids enregistré d’un bébé peut être influencé par la balance utilisée, ses vêtements, un repas récent et les conditions de mesure. De petites différences entre des pesées isolées ne reflètent pas toujours une évolution significative de la croissance. Les professionnels de santé interprètent le poids en tenant compte de la taille, de l’âge, des antécédents médicaux et des mesures précédentes."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendez les mesures plus utiles",
+        "items": [
+          "Utilisez une balance adaptée aux bébés si vous le pesez à la maison.",
+          "Essayez de le peser dans des conditions similaires à chaque fois.",
+          "Notez précisément la date et la mesure.",
+          "Évitez de le peser trop souvent, sauf recommandation d’un professionnel de santé.",
+          "Demandez un avis médical si la prise de poids est insuffisante, si le poids baisse de manière inattendue ou si votre bébé a du mal à s’alimenter."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Le bien-être de votre bébé ne se résume pas à un chiffre. Les courbes de croissance et l’évaluation clinique offrent une vision plus complète."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "À quelle fréquence dois-je peser mon bébé et comment interpréter les changements ?"
+  },
+  {
+    "id": "teething-003",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "development", "reassurance"],
+    "title": "Mais où sont donc ses premières dents ?",
+    "summary": "Certains bébés ont leur première dent tôt, tandis que d’autres attendent plus longtemps. Le calendrier des poussées dentaires varie considérablement.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Chaque sourire évolue différemment",
+        "content": "Les premières dents de lait apparaissent souvent vers six mois, mais leur calendrier normal est très variable. Certains bébés ont des dents plus tôt, tandis que d’autres n’en ont aucune de visible avant l’approche de leur premier anniversaire. L’ordre d’apparition peut également varier, même si les incisives inférieures sortent souvent en premier."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Ce que les parents peuvent faire",
+        "items": [
+          "Évitez de comparer le calendrier des poussées dentaires de votre bébé à celui d’autres enfants.",
+          "Nettoyez délicatement ses gencives et commencez le brossage dès l’apparition de la première dent.",
+          "Prévoyez un examen dentaire avant son premier anniversaire, conformément aux recommandations locales.",
+          "Demandez conseil à un professionnel des soins dentaires si la sortie tardive des dents ou des changements inhabituels des gencives vous inquiètent."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Une première dent plus tardive ne signifie pas automatiquement qu’il y a un problème. Votre professionnel des soins dentaires peut évaluer le développement si vous avez des inquiétudes."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quand les premières dents de mon bébé devraient-elles apparaître et quand dois-je m’inquiéter ?"
+  },
+  {
+    "id": "daytime-nap-004",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "tiredness", "sleep-cues"],
+    "title": "Votre bébé vous montre peut-être qu’il est fatigué",
+    "summary": "Bâiller n’est pas le seul signe de fatigue. De petits changements de comportement peuvent vous aider à reconnaître que votre bébé a besoin de repos.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Reconnaître les signes de fatigue",
+        "content": "Les bébés expriment leur fatigue de différentes façons. Certains deviennent plus calmes, se détournent des stimulations ou se désintéressent du jeu. D’autres se frottent les yeux, bâillent ou deviennent grognons. Apprendre à reconnaître les signes propres à votre bébé peut vous aider à lui proposer du repos avant qu’il ne soit très contrarié, même si ces signes peuvent évoluer avec l’âge."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Repérez les petits signaux",
+        "items": [
+          "Observez s’il interagit moins ou se détourne des activités.",
+          "Repérez les bâillements, le frottement des yeux ou une irritabilité croissante.",
+          "Proposez une transition calme vers le sommeil lorsque votre bébé semble fatigué.",
+          "Associez vos observations au rythme de sommeil habituel de votre bébé plutôt que de vous fier à un horaire strict.",
+          "Utilisez toujours un environnement de sommeil sûr pour les siestes."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous ne reconnaîtrez pas parfaitement chaque signe de fatigue. Avec le temps, l’observation des habitudes de votre bébé peut rendre ses besoins plus faciles à comprendre."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment reconnaître les premiers signes de fatigue de mon bébé ?"
+  },
+  {
+    "id": "health-and-comfort-004",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "hydration", "warning-signs"],
+    "title": "Les petits signes qui révèlent l’importance de l’hydratation",
+    "summary": "Les bébés peuvent se déshydrater plus rapidement que les adultes. Connaître les signes d’alerte aide à reconnaître quand un avis médical est nécessaire.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi l’hydratation mérite votre attention",
+        "content": "Les besoins en liquides des bébés sont relativement élevés et ils peuvent en perdre en cas de fièvre, de vomissements, de diarrhée ou de mauvaise alimentation. Une déshydratation peut apparaître lorsque les pertes de liquides dépassent les apports. Il est important de repérer les changements dans les couches mouillées, l’état d’éveil et le comportement alimentaire, surtout chez les jeunes nourrissons."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Les signes à surveiller",
+        "items": [
+          "Repérez une diminution importante du nombre de couches mouillées par rapport aux habitudes de votre bébé.",
+          "Soyez attentif à une bouche sèche, à une diminution des larmes lorsqu’il pleure ou à une somnolence inhabituelle.",
+          "Continuez à proposer du lait maternel ou infantile selon les besoins.",
+          "Demandez rapidement un avis médical si votre bébé s’alimente mal, présente des vomissements ou une diarrhée persistants, ou montre des signes possibles de déshydratation.",
+          "Demandez des soins d’urgence en cas de léthargie sévère, de difficulté à réveiller votre bébé ou d’autres signes de maladie grave."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin de mesurer chaque goutte bue par votre bébé. Être attentif à son alimentation, à ses couches mouillées et à son comportement général peut vous aider à repérer un changement."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quels sont les signes d’alerte de déshydratation chez les bébés ?"
+  },
+  {
+    "id": "night-sleep-004",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["sleep", "circadian-rhythm", "newborn"],
+    "title": "Le jour et la nuit sont encore des notions nouvelles",
+    "summary": "Les nouveau-nés ne viennent pas au monde en distinguant le jour de la nuit. Leur rythme interne de sommeil se développe progressivement.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Apprendre le rythme du jour et de la nuit",
+        "content": "Pendant les premiers mois, les bébés développent progressivement leur rythme circadien, le système interne qui contribue à réguler le sommeil et l’éveil. Le sommeil des nouveau-nés est souvent réparti sur l’ensemble du jour et de la nuit, car leurs besoins alimentaires et la régulation encore immature de leur sommeil influencent leurs réveils. Avec le temps, l’exposition à la lumière naturelle en journée et des habitudes nocturnes plus calmes peuvent aider à renforcer la différence."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Introduisez doucement le jour et la nuit",
+        "items": [
+          "Exposez votre bébé à la lumière naturelle pendant ses périodes d’éveil.",
+          "La nuit, gardez les tétées ou biberons et les changements de couche calmes, avec une lumière tamisée.",
+          "Laissez les bruits habituels de la maison se faire entendre en journée plutôt que de maintenir un silence complet.",
+          "Continuez à répondre aux signes de faim pendant la nuit.",
+          "Suivez toujours les recommandations pour un sommeil sûr, de jour comme de nuit."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Les réveils nocturnes fréquents sont normaux chez de nombreux nouveau-nés. Votre bébé apprend progressivement un rythme qui demande du temps pour se développer."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment aider progressivement mon nouveau-né à distinguer le jour de la nuit ?"
+  },
+  {
+    "id": "breastfeeding-004",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["breastfeeding", "distraction", "feeding-behavior"],
+    "title": "Quand tout semble plus intéressant que le lait",
+    "summary": "À mesure que les bébés s’intéressent davantage au monde, ils peuvent commencer à regarder autour d’eux ou à interrompre plus souvent les tétées.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "La curiosité peut changer les tétées",
+        "content": "En prenant davantage conscience des sons, des mouvements et des personnes qui les entourent, certains bébés commencent à interrompre les tétées pour regarder autour d’eux. Cela peut se produire au milieu de la première année, même si le moment varie. Un bébé distrait pendant les tétées ne se désintéresse pas nécessairement de l’allaitement et cela ne signifie pas que votre production de lait a diminué."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendez les tétées plus confortables",
+        "items": [
+          "Essayez d’allaiter dans un environnement plus calme lorsque votre bébé semble facilement distrait.",
+          "Proposez le sein lorsque votre bébé montre des signes de faim plutôt que d’attendre qu’il soit très contrarié.",
+          "Laissez-le faire de courtes pauses lorsqu’il souhaite regarder autour de lui.",
+          "Surveillez les couches mouillées et la croissance si les tétées deviennent systématiquement plus courtes ou moins fréquentes.",
+          "Demandez de l’aide pour l’allaitement si votre bébé refuse constamment de téter ou montre des signes d’apports insuffisants."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un bébé curieux n’est pas nécessairement un bébé mal nourri. Le rythme des tétées évolue souvent en même temps que l’intérêt grandissant de votre enfant pour le monde."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Pourquoi mon bébé se laisse-t-il distraire pendant l’allaitement ?"
+  },
+  {
+    "id": "growth-004",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "prematurity", "corrected-age"],
+    "title": "Pour les bébés prématurés, l’âge a deux significations",
+    "summary": "Les bébés nés avant terme peuvent avoir un âge chronologique et un âge corrigé. Comprendre la différence aide à mieux interpréter leur développement.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Qu’est-ce que l’âge corrigé ?",
+        "content": "L’âge chronologique correspond au temps écoulé depuis la naissance de votre bébé. L’âge corrigé tient compte du nombre de semaines d’avance avec lequel il est né. Par exemple, un bébé né huit semaines avant terme qui a maintenant six mois a un âge corrigé d’environ quatre mois. Les professionnels de santé utilisent souvent l’âge corrigé pour évaluer la croissance et les étapes du développement des bébés prématurés, généralement pendant les deux premières années."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Suivez son développement avec le bon recul",
+        "items": [
+          "Notez l’âge gestationnel de votre bébé à la naissance.",
+          "Demandez à votre professionnel de santé quand utiliser l’âge corrigé.",
+          "Utilisez des courbes de croissance adaptées aux bébés prématurés lorsque cela est recommandé.",
+          "Évitez de comparer les étapes du développement en vous fondant uniquement sur l’âge chronologique.",
+          "Suivez le programme personnalisé de suivi médical et du développement de votre bébé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Une naissance prématurée peut modifier la manière d’évaluer les progrès du développement. L’âge corrigé permet de mieux rendre compte du parcours de votre bébé."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quel est l’âge corrigé de mon bébé prématuré et comment dois-je l’utiliser ?"
+  },
+  {
+    "id": "solid-food-005",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["solid-food", "allergens", "nutrition"],
+    "title": "Introduire de nouveaux aliments, y compris les allergènes",
+    "summary": "Des aliments comme l’œuf et l’arachide peuvent être introduits pendant l’alimentation complémentaire lorsque votre bébé est prêt sur le plan du développement, sous des formes sûres.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Comprendre l’introduction des allergènes",
+        "content": "Les recommandations actuelles préconisent généralement d’introduire les aliments couramment allergènes pendant la première année, dès que le bébé est prêt pour l’alimentation complémentaire, plutôt que de les retarder inutilement. Il peut s’agir d’œuf bien cuit, d’arachide sous une forme sûre, d’ingrédients laitiers et de blé. Les bébés présentant un eczéma sévère, une allergie alimentaire connue ou une réaction antérieure peuvent avoir besoin de conseils personnalisés avant l’introduction de certains aliments."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Introduisez les aliments avec attention",
+        "items": [
+          "Proposez les nouveaux aliments dans des textures adaptées aux capacités de développement de votre bébé.",
+          "Utilisez du beurre de cacahuète lisse dilué dans une purée ou un autre aliment adapté ; ne proposez jamais de cacahuètes entières.",
+          "Introduisez les allergènes courants un à un et en petites quantités afin de reconnaître plus facilement une réaction.",
+          "Une fois qu’ils sont tolérés, continuez à proposer régulièrement les aliments allergènes dans le cadre d’une alimentation variée.",
+          "Demandez un avis médical avant l’introduction si votre bébé présente un eczéma sévère, une allergie alimentaire connue ou une réaction antérieure."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "L’introduction des allergènes peut sembler intimidante. Si votre bébé présente des difficultés respiratoires, un gonflement de la langue ou de la gorge, ou d’autres signes de réaction allergique sévère, demandez immédiatement une aide médicale d’urgence."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Comment introduire en toute sécurité les allergènes alimentaires courants chez mon bébé ?"
+  },
+  {
+    "id": "playtime-005",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "music", "language", "bonding"],
+    "title": "Votre voix est la bande-son préférée de votre bébé",
+    "summary": "Les chansons, les comptines et les sons amusants peuvent transformer les moments quotidiens en occasions de créer du lien et d’apprendre.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Pourquoi la musique et le rythme comptent",
+        "content": "Les bébés s’intéressent naturellement aux voix, aux rythmes et aux sons répétés. Les chansons et les comptines peuvent favoriser l’attention partagée, l’exposition précoce au langage et les interactions sociales. En grandissant, les enfants peuvent commencer à anticiper des mots familiers, à reproduire des gestes ou à bouger au rythme de la musique."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Faites entrer la musique dans votre quotidien",
+        "items": [
+          "Chantez des chansons simples pendant les changements de couche, l’habillage ou les moments de jeu.",
+          "Répétez des comptines familières en ajoutant de doux mouvements des mains.",
+          "Faites une pause pendant ses chansons préférées pour voir si votre enfant réagit.",
+          "Gardez un volume sonore confortable et évitez la musique forte près des oreilles de votre bébé.",
+          "Suivez les réactions de votre bébé et faites des pauses lorsqu’il semble fatigué ou trop stimulé."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vous n’avez pas besoin d’avoir une belle voix. C’est votre voix familière et l’attention que vous partagez qui rendent ces moments uniques."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quelles chansons et quels jeux musicaux puis-je partager avec mon bébé à son âge ?"
+  }
+]

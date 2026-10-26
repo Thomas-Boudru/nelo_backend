@@ -1,0 +1,2267 @@
+[
+  {
+    "id": "night-sleep-001",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["sleep", "reassurance"],
+    "title": "Elke baby heeft een eigen slaapritme",
+    "summary": "’s Nachts wakker worden komt vaak voor in de eerste levensmaanden. Je baby is nog bezig een eigen slaappatroon te ontwikkelen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom baby’s ’s nachts wakker worden",
+        "content": "In de eerste maanden worden baby’s vaak wakker om te drinken, om getroost te worden of omdat hun slaapcycli nog in ontwikkeling zijn. Het aantal keren dat een baby wakker wordt, verschilt sterk en kan van week tot week veranderen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Een paar rustige gewoontes",
+        "items": [
+          "Houd contactmomenten ’s nachts rustig, met gedempt licht en zo weinig mogelijk prikkels.",
+          "Let op de signalen dat je baby moe is in plaats van een strak schema te verwachten.",
+          "Leg je baby altijd op de rug op een stevig, vlak slaapoppervlak zonder los beddengoed."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vaak wakker worden betekent niet dat je iets verkeerd doet. Slaap ontwikkelt zich met de tijd en je baby hoeft het ritme van niemand anders te volgen."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Safe Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "Welke slaapgewoontes passen bij de leeftijd van mijn baby?"
+  },
+  {
+    "id": "parent-support-001",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["wellbeing", "reassurance"],
+    "title": "Je hoeft geen perfecte ouder te zijn",
+    "summary": "Kleine momenten van zorg en verbondenheid zijn belangrijker dan elke routine precies goed uitvoeren.",
+    "sections": [
+      {
+        "id": "pressure",
+        "type": "paragraph",
+        "title": "Laat het lijstje voor de perfecte dag los",
+        "content": "Sommige dagen verlopen vlot; andere zitten vol onderbrekingen, rommel en onverwachte behoeften. Een moeilijke dag doet niets af aan alle liefdevolle aandacht die je je kind geeft. Ouderschap bestaat uit vele gewone momenten, niet uit een vlekkeloos schema."
+      },
+      {
+        "id": "reset",
+        "type": "bulletList",
+        "title": "Probeer even opnieuw te beginnen",
+        "items": [
+          "Kies één ding dat vandaag belangrijk is en wees flexibel met de rest.",
+          "Neem praktische hulp aan wanneer die wordt aangeboden, ook voor een kleine taak.",
+          "Voel je je overweldigd, leg je baby dan op een veilige plek en neem even de tijd om tot rust te komen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Inspelen op je baby betekent niet dat je elke seconde beschikbaar moet zijn. Jouw behoeften tellen ook en om steun vragen is juist een kracht."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik een moeilijke dag als ouder beter hanteerbaar maken?"
+  },
+  {
+    "id": "breastfeeding-001",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["feeding", "reassurance"],
+    "title": "Vaak voeden kan normaal zijn",
+    "summary": "Sommige baby’s willen vaak aan de borst drinken, vooral tijdens periodes van groei en ontwikkeling.",
+    "sections": [
+      {
+        "id": "pattern",
+        "type": "paragraph",
+        "title": "Waarom het voedingspatroon verandert",
+        "content": "Baby’s die borstvoeding krijgen, drinken niet altijd op voorspelbare tijdstippen. Soms willen ze meerdere voedingen kort na elkaar, vooral ’s avonds. Alleen de frequentie vertelt niet of een baby voldoende melk binnenkrijgt."
+      },
+      {
+        "id": "observe",
+        "type": "bulletList",
+        "title": "Kijk naar het geheel",
+        "items": [
+          "Let tijdens het voeden op het slikken en kijk hoe je baby zich daarna gedraagt.",
+          "Houd natte luiers en de groei in de gaten volgens het advies van je zorgverlener.",
+          "Vraag hulp aan een verloskundige, lactatiekundige of arts als voeden pijnlijk is of als je je zorgen maakt over de melkinname."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Jij en je baby leren samen. Als voeden moeilijk voelt, kan vroegtijdige ondersteuning echt een verschil maken."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Breastfeeding",
+        "url": "https://www.cdc.gov/breastfeeding/"
+      }
+    ],
+    "askNeloPrompt": "Aan welke signalen kan ik zien dat de borstvoeding goed verloopt?"
+  },
+  {
+    "id": "motor-development-001",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 60,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["movement", "play"],
+    "title": "Elk kort moment op de buik telt mee",
+    "summary": "Korte speelmomenten op de buik onder toezicht helpen baby’s oefenen met het optillen en draaien van hun hoofd.",
+    "sections": [
+      {
+        "id": "why",
+        "type": "paragraph",
+        "title": "Spelenderwijs sterker worden",
+        "content": "Wanneer je baby wakker en alert is, krijgt die op de buik de kans om de spieren in de nek, schouders en het bovenlichaam te gebruiken. Het hoeft niet op een training te lijken. Een paar fijne momenten kunnen al een goed begin zijn."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Maak het aantrekkelijk",
+        "items": [
+          "Probeer korte momenten op een stevige, veilige ondergrond terwijl je dichtbij blijft en toezicht houdt.",
+          "Ga op ooghoogte van je baby liggen en praat of glimlach.",
+          "Raakt je baby overstuur, stop dan even en probeer het later opnieuw."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Elke baby krijgt vertrouwen in een eigen tempo. Op de buik liggen is alleen bedoeld om wakker en onder toezicht te spelen; leg je baby om te slapen altijd op de rug."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Tummy Time",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/Back-to-Sleep-Tummy-to-Play.aspx"
+      }
+    ],
+    "askNeloPrompt": "Welke rustige activiteiten op de buik kan ik met mijn baby proberen?"
+  },
+  {
+    "id": "communication-001",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["language", "bonding"],
+    "title": "Je stem leert je baby nu al veel",
+    "summary": "Praten, zingen en reageren op kleine geluidjes dragen allemaal bij aan de vroege communicatie.",
+    "sections": [
+      {
+        "id": "connection",
+        "type": "paragraph",
+        "title": "Een gesprek nog vóór de eerste woorden",
+        "content": "Lang voordat baby’s kunnen praten, merken ze stemmen, gezichtsuitdrukkingen, ritme en stiltes op. Wanneer je reageert op een kirrend geluidje of een blik, laat je je baby zien dat communicatie van twee kanten komt."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Eenvoudige manieren om contact te maken",
+        "items": [
+          "Vertel wat je doet tijdens het verschonen of een wandeling.",
+          "Pauzeer na het praten, zodat je baby ruimte krijgt om met een geluid of gezichtsuitdrukking te reageren.",
+          "Zing een vertrouwd liedje of herhaal een speels geluid dat je baby leuk vindt."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hebt geen speciale lessen of speeltjes nodig. Je vertrouwde stem en aandacht zijn nu al betekenisvol."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Learn the Signs. Act Early.",
+        "url": "https://www.cdc.gov/act-early/"
+      }
+    ],
+    "askNeloPrompt": "Hoe kan ik tijdens dagelijkse bezigheden de communicatie met mijn baby stimuleren?"
+  },
+  {
+    "id": "solid-food-001",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 270,
+    "priority": 5,
+    "tags": ["feeding", "textures", "safety"],
+    "title": "Nieuwe texturen ontdekken is een leerervaring",
+    "summary": "Wanneer je baby klaar is voor vaste voeding, kan het tijd en oefening kosten om verschillende texturen te leren kennen.",
+    "sections": [
+      {
+        "id": "exploring",
+        "type": "paragraph",
+        "title": "Meer dan alleen een maaltijd",
+        "content": "Beginnen met bijvoeding draait zowel om leren als om eten. Baby’s kunnen voeding aanraken, uitsmeren, uitspugen of weigeren voordat ze die accepteren. Rond zes maanden zijn een goede hoofdcontrole en met steun kunnen zitten tekenen dat een baby eraan toe is."
+      },
+      {
+        "id": "safe-start",
+        "type": "bulletList",
+        "title": "Houd de eerste maaltijden ontspannen en veilig",
+        "items": [
+          "Bied zachte texturen aan die passen bij de leeftijd, terwijl je baby rechtop zit en onder toezicht staat.",
+          "Bied als onderdeel van een gevarieerd voedingspatroon ijzerrijke voeding aan en blijf borst- of flesvoeding geven.",
+          "Vermijd verstikkingsgevaar en laat je baby nooit alleen tijdens het eten."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een aarzelend eerste hapje is geen mislukking. Twijfel je of je baby eraan toe is, of maak je je zorgen over allergieën of slikken, vraag dan advies aan de zorgverlener van je kind."
+      }
+    ],
+    "sources": [
+      {
+        "title": "WHO — Complementary Feeding",
+        "url": "https://www.who.int/health-topics/complementary-feeding"
+      }
+    ],
+    "askNeloPrompt": "Welke texturen en voedingsmiddelen zijn geschikt wanneer mijn baby met vaste voeding begint?"
+  },
+  {
+    "id": "daytime-nap-001",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "routine"],
+    "title": "Dutjes volgen niet altijd de klok",
+    "summary": "De slaap overdag kan van dag tot dag verschillen terwijl baby’s groeien en hun behoeften veranderen.",
+    "sections": [
+      {
+        "id": "variation",
+        "type": "paragraph",
+        "title": "Waarom dutjes onvoorspelbaar kunnen zijn",
+        "content": "Je baby kan de ene dag één lang dutje doen en de volgende dag meerdere korte. Veranderingen in activiteit en ontwikkeling en de nachtrust kunnen invloed hebben op de slaap overdag. Patronen over meerdere dagen bekijken is vaak nuttiger dan één dutje beoordelen."
+      },
+      {
+        "id": "support",
+        "type": "bulletList",
+        "title": "Creëer een rustig dutjesritme",
+        "items": [
+          "Let op vermoeidheidssignalen, zoals in de ogen wrijven of zich van prikkels afwenden.",
+          "Probeer een rustig, vertrouwd afbouwritueel.",
+          "Gebruik een veilige slaapplek: op de rug, op een stevige, vlakke ondergrond zonder losse voorwerpen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een onregelmatig dutje betekent niet dat de hele dag verloren is. Regelmaat kan helpen, maar flexibiliteit hoort bij de zorg voor een baby die groeit."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Baby Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "Hoe herken ik dat mijn baby toe is aan een dutje?"
+  },
+  {
+    "id": "playtime-001",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["play", "learning"],
+    "title": "Spelen is hoe je baby de wereld verkent",
+    "summary": "Eenvoudige spelletjes met vertrouwde mensen kunnen net zo boeiend zijn als duur speelgoed.",
+    "sections": [
+      {
+        "id": "discovery",
+        "type": "paragraph",
+        "title": "Kleine ontdekkingen doen ertoe",
+        "content": "Een voorwerp van de ene naar de andere hand doorgeven, naar een speeltje zoeken of naar jouw gekke gezicht kijken helpt je baby aandacht, beweging en sociaal contact te oefenen. Je hoeft geen overvol activiteitenprogramma te plannen."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Probeer deze eenvoudige spelletjes",
+        "items": [
+          "Bied een veilig voorwerp aan om vast te pakken, te schudden of te verkennen.",
+          "Speel kiekeboe en geef je baby de tijd om te reageren.",
+          "Benoem de voorwerpen die je ziet en volg de interesses van je baby."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een paar minuten gedeelde aandacht kunnen waardevol zijn. Laat de nieuwsgierigheid van je baby het tempo bepalen en stop wanneer je baby moe lijkt."
+      }
+    ],
+    "sources": [
+      {
+        "title": "UNICEF — Early Childhood Development",
+        "url": "https://www.unicef.org/early-childhood-development"
+      }
+    ],
+    "askNeloPrompt": "Welke eenvoudige spelletjes passen bij de huidige ontwikkeling van mijn baby?"
+  },
+  {
+    "id": "teething-001",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["comfort", "teething"],
+    "title": "Tandjes krijgen kan ongemakkelijk zijn",
+    "summary": "Nieuwe tandjes komen bij elke baby op een ander moment door en sommige baby’s hebben wat extra troost nodig.",
+    "sections": [
+      {
+        "id": "what-to-expect",
+        "type": "paragraph",
+        "title": "Elke glimlach ontwikkelt zich anders",
+        "content": "Sommige baby’s kwijlen meer of willen op dingen bijten wanneer de tandjes beginnen door te komen. Andere vertonen weinig tekenen. Het tijdstip verschilt, dus een eerste tandje dat vroeger of later verschijnt is niet automatisch reden tot bezorgdheid."
+      },
+      {
+        "id": "comfort",
+        "type": "bulletList",
+        "title": "Zachte manieren om verlichting te geven",
+        "items": [
+          "Bied een schone, gekoelde maar niet bevroren bijtring aan die voor baby’s is ontworpen.",
+          "Wrijf zachtjes met een schone vinger over het tandvlees als je baby dat prettig vindt.",
+          "Vermijd barnsteenkettingen en verdovende gels, tenzij een arts die uitdrukkelijk adviseert."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Hoge koorts, ernstige diarree of een baby die erg ziek lijkt, mogen niet zomaar aan doorkomende tandjes worden toegeschreven. Vraag medisch advies als deze symptomen optreden."
+      }
+    ],
+    "sources": [
+      {
+        "title": "NHS — Teething",
+        "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/"
+      }
+    ],
+    "askNeloPrompt": "Hoe kan ik mijn baby tijdens het doorkomen van tandjes veilig troosten?"
+  },
+  {
+    "id": "learning-001",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 365,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation"],
+    "title": "Je peuter leert door naar je te kijken",
+    "summary": "Dagelijkse handelingen, van zwaaien tot opruimen, kunnen kansen worden om samen te leren.",
+    "sections": [
+      {
+        "id": "imitation",
+        "type": "paragraph",
+        "title": "Een krachtige manier om te leren",
+        "content": "Naarmate peuters groeien, doen ze vaak gebaren, geluiden en vertrouwde routines na. Doen alsof ze in een pan roeren of een tafel afvegen kan een speelse manier zijn om te ontdekken hoe de wereld werkt."
+      },
+      {
+        "id": "everyday",
+        "type": "bulletList",
+        "title": "Maak gewone momenten speels",
+        "items": [
+          "Nodig je peuter uit om een eenvoudig gebaar na te doen, zoals klappen of zwaaien.",
+          "Geef veilige, bij de leeftijd passende voorwerpen om fantasiespel mee te spelen.",
+          "Benoem wat je doet en pauzeer daarna om de reactie te bekijken."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Niet alle kinderen doen op dezelfde leeftijd dezelfde dingen na. Volg de interesses van je peuter en bespreek zorgen over de ontwikkeling met je zorgverlener."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Developmental Milestones",
+        "url": "https://www.cdc.gov/act-early/milestones/index.html"
+      }
+    ],
+    "askNeloPrompt": "Welke dagelijkse activiteiten helpen mijn peuter leren door na te doen?"
+  },
+  {
+    "id": "communication-002",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "gestures", "language"],
+    "title": "Kleine gebaren zeggen heel veel",
+    "summary": "Nog vóór de eerste woorden kan je baby je met gebaren, geluiden en gezichtsuitdrukkingen al veel vertellen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Communicatie begint vóór woorden",
+        "content": "Wijzen, ergens naar reiken, zwaaien en naar vertrouwde voorwerpen kijken zijn allemaal manieren waarop baby’s leren communiceren. Deze gebaren ontwikkelen zich vaak tegelijk met de eerste taal en helpen je kind interesses, behoeften en ontdekkingen te delen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Stimuleer kleine gesprekjes",
+        "items": [
+          "Reageer wanneer je baby wijst of ergens naar reikt.",
+          "Benoem voorwerpen en handelingen tijdens dagelijkse bezigheden.",
+          "Pauzeer na het praten om je baby tijd te geven om te reageren.",
+          "Moedig pogingen tot communiceren aan zonder perfecte woorden te verwachten."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Communicatie is veel meer dan praten. Elke gedeelde blik, elk gebaar en elk geluid is een kans om contact te maken."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik de communicatie van mijn baby stimuleren vóór de eerste woorden?"
+  },
+  {
+    "id": "solid-food-002",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["feeding", "food-exploration", "reassurance"],
+    "title": "Eén keer proeven zegt nog niet alles",
+    "summary": "Weigert je baby nieuwe voeding? Misschien zijn er gewoon meer kansen nodig om onbekende smaken en texturen te ontdekken.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Nieuwe voeding leren waarderen",
+        "content": "Baby’s ontdekken een volledig nieuwe wereld van smaken, geuren en texturen. Sommige voedingsmiddelen worden meteen aanvaard, terwijl andere meerdere keren zonder druk moeten worden aangeboden. Dat je kind vandaag iets weigert, betekent niet dat het dit altijd onaangenaam zal vinden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak ontdekken gemakkelijker",
+        "items": [
+          "Bied kleine hoeveelheden onbekende voeding aan naast vertrouwde opties.",
+          "Laat je baby voeding ontdekken door eraan te voelen en te ruiken.",
+          "Dwing geen hapjes af en maak van maaltijden geen strijd.",
+          "Bied geweigerde voeding op een andere dag opnieuw aan."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vooruitgang wordt niet afgemeten aan hoeveel je baby bij elke maaltijd eet. Voeding ontdekken hoort bij het leerproces."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wat kan ik doen als mijn baby nieuwe voeding herhaaldelijk weigert?"
+  },
+  {
+    "id": "motor-development-002",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["motor-development", "movement", "milestones"],
+    "title": "Elke kleine beweging telt",
+    "summary": "Omrollen, reiken, kruipen en zich optrekken zijn verschillende manieren waarop je baby beweging verkent.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Bewegen ontwikkelt zich door te ontdekken",
+        "content": "Naarmate baby’s sterker worden en hun coördinatie verbetert, proberen ze hun lichaam op nieuwe manieren te bewegen. Sommigen kruipen op handen en knieën, anderen bewegen anders en sommige baby’s kruipen niet op de traditionele manier. De ontwikkeling volgt in grote lijnen een bepaalde volgorde, maar het individuele patroon kan verschillen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak ruimte om te ontdekken",
+        "items": [
+          "Laat je baby onder toezicht op de vloer spelen in een veilige, open ruimte.",
+          "Leg interessant speelgoed net buiten handbereik.",
+          "Laat je baby zelfstandig met beweging experimenteren.",
+          "Vermijd loopstoeltjes met wielen, want die kunnen verwondingen veroorzaken."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Niet alle kinderen bewegen op precies dezelfde manier. Maak je je zorgen over een mijlpaal die uitblijft of het verlies van een verworven vaardigheid, bespreek dit dan met je kinderarts."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Op welke motorische mijlpalen kan ik letten bij de leeftijd van mijn baby?"
+  },
+  {
+    "id": "parent-support-002",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "reassurance", "confidence"],
+    "title": "Je baby doet niet mee aan een wedstrijd",
+    "summary": "Het is makkelijk om mijlpalen met andere kinderen te vergelijken, maar ontwikkeling is geen competitie.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom vergelijken misleidend kan zijn",
+        "content": "De ene baby begint eerder te bewegen, terwijl een andere eerst nieuwe geluiden of sociale vaardigheden ontwikkelt. Kinderen hebben hun eigen sterke kanten en ontwikkelingspatronen. Losse prestaties vergelijken geeft zelden een volledig beeld van hoe een kind vooruitgaat."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Richt je op de vooruitgang van je kind",
+        "items": [
+          "Merk de kleine veranderingen op die je baby in de loop van de tijd maakt.",
+          "Gebruik ontwikkelingsmijlpalen voor de juiste leeftijd als nuttige leidraad.",
+          "Vier ontdekkingen zonder de volgende prestatie te willen versnellen.",
+          "Bespreek zorgen met een zorgverlener in plaats van op vergelijkingen te vertrouwen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je kind volgt een eigen weg. Je kunt het individuele tempo waarderen en tegelijk op belangrijke ontwikkelingsmijlpalen blijven letten."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe weet ik of de ontwikkeling van mijn baby goed verloopt?"
+  },
+  {
+    "id": "night-sleep-002",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 240,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "development", "reassurance"],
+    "title": "Waarom slaap plotseling kan veranderen",
+    "summary": "Een baby die goed sliep, kan vaker wakker gaan worden. Tijdens periodes van snelle ontwikkeling kan het slaappatroon veranderen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Slaap ontwikkelt zich niet altijd in een rechte lijn",
+        "content": "Tussen ongeveer acht en twaalf maanden ontwikkelen baby’s nieuwe lichamelijke, sociale en emotionele vaardigheden. Bij sommigen verandert de slaap, bijvoorbeeld door vaker wakker te worden of moeilijker tot rust te komen. Ook ziekte, ongemak en veranderingen in de routine kunnen de slaap beïnvloeden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Ondersteun rustige nachten",
+        "items": [
+          "Houd vast aan een vertrouwde en kalmerende bedtijdroutine.",
+          "Reageer geduldig op de behoeften van je baby.",
+          "Geef overdag voldoende kansen om te bewegen en te ontdekken.",
+          "Zorg bij elk slaapmoment voor een veilige slaapomgeving."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een paar moeilijke nachten maken je vooruitgang niet ongedaan. Slaappatronen kunnen schommelen terwijl je baby groeit."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Waarom wordt mijn baby ineens vaker wakker tijdens de nacht?"
+  },
+  {
+    "id": "playtime-002",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["play", "social-development", "learning"],
+    "title": "Kiekeboe is meer dan een spelletje",
+    "summary": "Een eenvoudig spelletje kiekeboe kan je baby helpen verwachting, aandacht en verbondenheid te ontdekken.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Leren door verrassing",
+        "content": "Wanneer je je gezicht verbergt en weer tevoorschijn komt, ervaart je baby een speels patroon van verdwijnen en terugkomen. Terwijl het geheugen en begrip zich ontwikkelen, kunnen spelletjes als kiekeboe verwachting en sociaal contact ondersteunen, evenals het groeiende besef dat mensen en voorwerpen blijven bestaan wanneer ze uit het zicht zijn."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak er een leuk spel van",
+        "items": [
+          "Verberg je gezicht kort achter je handen.",
+          "Wacht even voordat je weer verschijnt om de verwachting op te bouwen.",
+          "Volg de reacties van je baby en stop als je baby zich ongemakkelijk lijkt te voelen.",
+          "Verstop een favoriet speeltje onder een lichte doek en houd goed toezicht."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hebt geen duur speelgoed nodig om het leren te ondersteunen. Jouw aandacht en een paar speelse momenten kunnen heel veel betekenen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke eenvoudige spelletjes kunnen de ontwikkeling van mijn baby ondersteunen?"
+  },
+  {
+    "id": "learning-002",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "repetition", "curiosity"],
+    "title": "Nog een keer, nog een keer… en nog een keer!",
+    "summary": "Herhaalt je baby eindeloos dezelfde handeling? Herhaling is een van de manieren waarop jonge kinderen leren.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom herhaling belangrijk is",
+        "content": "Een lepel laten vallen, een doos openen of steeds opnieuw op dezelfde knop drukken kan volwassenen eentonig lijken. Voor baby’s helpt herhaling om oorzaak en gevolg te ontdekken, de coördinatie te oefenen en vertrouwd te raken met hun omgeving."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Stimuleer nieuwsgierigheid",
+        "items": [
+          "Laat je baby veilige activiteiten herhalen.",
+          "Beschrijf met eenvoudige woorden wat er gebeurt.",
+          "Bied alledaagse voorwerpen aan die geschikt zijn voor de leeftijd.",
+          "Breng kleine variaties aan wanneer je kind daar klaar voor lijkt."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Wat voor jou de tiende keer hetzelfde spel lijkt, kan voor je baby nog steeds een interessante ontdekking zijn."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Waarom herhaalt mijn baby zo graag dezelfde activiteiten?"
+  },
+  {
+    "id": "baby-care-001",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 300,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "independence", "daily-routines"],
+    "title": "Kleine keuzes bouwen zelfvertrouwen op",
+    "summary": "Naarmate je baby groeit, kunnen eenvoudige kansen om mee te doen aan dagelijkse routines de zelfstandigheid stimuleren.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Zelfstandigheid begint met kleine stapjes",
+        "content": "Tegen het einde van het eerste jaar en tijdens de peutertijd willen kinderen steeds vaker meedoen met dagelijkse bezigheden. Naar een lepel reiken, helpen bij het aankleden of kiezen tussen twee geschikte voorwerpen geeft hen kansen om hun coördinatie te oefenen en eenvoudige beslissingen te nemen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Nodig je kind uit om mee te doen",
+        "items": [
+          "Laat je kind kiezen tussen twee veilige, geschikte speeltjes.",
+          "Laat je kind tijdens de verzorging helpen een washandje vast te houden.",
+          "Geef je kind tijd om eenvoudige handelingen te proberen voordat je ingrijpt.",
+          "Prijs de inspanning in plaats van een perfect resultaat te verwachten."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Zelf dingen leren doen kost tijd. Met wat geduld worden dagelijkse routines waardevolle leermomenten."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik de zelfstandigheid van mijn baby of peuter stimuleren?"
+  },
+  {
+    "id": "health-and-comfort-001",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "comfort", "health"],
+    "title": "Troost bij doorkomende tandjes",
+    "summary": "Gevoelig tandvlees kan het doorkomen van tandjes ongemakkelijk maken. Een paar eenvoudige dingen kunnen je baby helpen kalmeren.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Hoe doorkomende tandjes kunnen aanvoelen",
+        "content": "Wanneer tandjes beginnen door te komen, hebben sommige baby’s gevoelig tandvlees, kwijlen ze meer of willen ze graag bijten. Doorkomende tandjes kunnen licht ongemak veroorzaken, maar echte koorts, ernstige diarree of een baby die erg ziek lijkt mogen niet automatisch hieraan worden toegeschreven."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Zachte manieren om te helpen",
+        "items": [
+          "Masseer het tandvlees van je baby voorzichtig met een schone vinger.",
+          "Bied een schone, gekoelde maar niet bevroren bijtring aan.",
+          "Veeg overtollig speeksel weg om de huid te helpen beschermen.",
+          "Vermijd barnsteenkettingen en verdovende gels met lidocaïne of benzocaïne."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Elke baby ervaart doorkomende tandjes anders. Neem contact op met een zorgverlener als je baby koorts heeft, de klachten aanhouden of je baby ongewoon ziek lijkt."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik ongemak door doorkomende tandjes veilig verlichten?"
+  },
+  {
+    "id": "daytime-nap-002",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "naps", "development"],
+    "title": "Wanneer het dutjesritme begint te veranderen",
+    "summary": "Naarmate baby’s groeien, verandert hun slaapbehoefte overdag. Veranderingen in het dutjespatroon kunnen een normaal onderdeel van de ontwikkeling zijn.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom dutjes veranderen",
+        "content": "Jonge baby’s hebben overdag vaak meerdere dutjes nodig. Naarmate ze ouder worden, gaan velen geleidelijk over naar minder, maar langere dutjes. Het moment verschilt en tijdens ziekte, reizen of ontwikkelingsveranderingen kunnen tijdelijke verstoringen optreden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Volg de behoeften van je baby",
+        "items": [
+          "Bekijk vermoeidheidssignalen samen met de gebruikelijke routine van je kind.",
+          "Wees flexibel wanneer het tijdstip van de dutjes verandert.",
+          "Houd de slaapomgeving veilig en comfortabel.",
+          "Forceer geen overgang naar een ander dutjesritme alleen op basis van leeftijd."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Er bestaat geen enkel dutjesschema dat bij elke baby past. Regelmaat kan helpen, maar flexibiliteit hoort bij het inspelen op de behoeften van je kind."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe weet ik wanneer mijn baby klaar is voor een ander dutjesschema?"
+  },
+  {
+    "id": "bottle-feeding-001",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hunger-cues", "responsive-feeding"],
+    "title": "Wanneer je baby zegt: ik zit vol",
+    "summary": "Elke fles leegdrinken is niet het doel. Door de signalen van honger en verzadiging te leren herkennen, kan voeden prettiger worden.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Je baby kan je de weg wijzen",
+        "content": "Baby’s laten hun eetlust zien met bewegingen, gezichtsuitdrukkingen en gedrag. Zich van de fles afwenden, langzamer drinken of de handjes ontspannen kan betekenen dat je baby genoeg heeft. De gedronken hoeveelheid kan per voeding verschillen en dat is niet per se een probleem."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Probeer responsief de fles te geven",
+        "items": [
+          "Houd je baby dicht bij je en let tijdens de hele voeding op de reacties.",
+          "Houd de fles vrij horizontaal en laat natuurlijke pauzes toe.",
+          "Stop wanneer je baby consequent tekenen van verzadiging laat zien.",
+          "Moedig je baby niet aan de fles leeg te drinken alleen omdat er nog melk over is."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een geslaagde voeding wordt niet gemeten aan een lege fles. Maak je je zorgen over de inname, hydratatie of gewichtstoename, vraag dan advies aan je zorgverlener."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe herken ik de signalen van honger en verzadiging tijdens het geven van de fles?"
+  },
+  {
+    "id": "growth-001",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "growth-charts", "reassurance"],
+    "title": "Groei is een ontwikkeling, geen getal",
+    "summary": "Eén meting vertelt maar een deel van het verhaal. Het groeipatroon van je baby in de loop van de tijd is veel belangrijker.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Groeicurven begrijpen",
+        "content": "Groeicurven helpen zorgverleners veranderingen in gewicht, lengte en hoofdomtrek in de loop van de tijd te volgen. Baby’s groeien van nature in een verschillend tempo. Een percentiel is geen score of rangorde van gezondheid. Het gaat om het algemene patroon, de omstandigheden van het kind en of de groei op langere termijn passend blijft."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Kijk naar het grotere geheel",
+        "items": [
+          "Noteer metingen nauwkeurig en op een consistente manier.",
+          "Kijk naar groeitrends in plaats van naar losse getallen.",
+          "Bespreek onverwachte veranderingen met je kinderarts.",
+          "Denk eraan dat bij te vroeg geboren baby’s de groei mogelijk op basis van de gecorrigeerde leeftijd moet worden beoordeeld."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een lager of hoger percentiel wijst niet automatisch op een probleem. Groei kan het best over een langere periode samen met een zorgverlener worden beoordeeld."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe moet ik de groeicurve en percentielen van mijn baby begrijpen?"
+  },
+  {
+    "id": "communication-003",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 60,
+    "maxAgeDays": 300,
+    "priority": 5,
+    "tags": ["communication", "babbling", "language-development"],
+    "title": "De eerste gesprekjes van je baby",
+    "summary": "Die kleine kir- en brabbelgeluidjes zijn meer dan schattig. Het zijn vroege stappen op weg naar communicatie.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Het ritme van een gesprek leren",
+        "content": "Lang voor hun eerste woorden experimenteren baby’s al met geluiden. Wanneer je op kirren of brabbelen reageert, laat je het ritme van een gesprek horen: de één communiceert en de ander antwoordt. Deze wisselwerking ondersteunt de vroege sociale en taalontwikkeling."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Begin een klein gesprekje",
+        "items": [
+          "Herhaal enkele geluiden van je baby en wacht op een reactie.",
+          "Glimlach en maak oogcontact wanneer je baby geïnteresseerd lijkt.",
+          "Beschrijf dagelijkse bezigheden met eenvoudige woorden.",
+          "Laat stiltes vallen zodat je baby de kans krijgt om mee te doen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hebt geen speciale lessen nodig om communicatie te stimuleren. Gewone momenten van aandacht en contact bieden waardevolle leerkansen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke activiteiten kunnen de eerste geluidjes en het brabbelen van mijn baby stimuleren?"
+  },
+  {
+    "id": "baby-care-002",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "bath-time", "bonding"],
+    "title": "In bad gaan is meer dan schoon worden",
+    "summary": "Een warm bad kan een fijn moment worden voor contact, spel en het ontdekken van nieuwe sensaties.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Een moment van ontdekking",
+        "content": "Tijdens het bad maakt je baby kennis met verschillende sensaties, zoals warm water, zachte aanraking en beweging. Naarmate je kind groeit, kunnen spetteren en het water verkennen een speels deel van de routine worden. Sommige baby’s vinden een bad meteen heerlijk, terwijl andere tijd nodig hebben om zich prettig te voelen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Houd het bad comfortabel en veilig",
+        "items": [
+          "Leg handdoeken en benodigdheden klaar voordat je je baby in het water zet.",
+          "Controleer de watertemperatuur zorgvuldig vóór het bad.",
+          "Blijf binnen handbereik en houd voortdurend toezicht.",
+          "Laat je baby nooit alleen in bad, ook niet voor een ogenblik of in een badzitje."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een bad hoeft niet uitgebreid te zijn of elke dag plaats te vinden. Een korte, rustige routine kan net zo waardevol zijn."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe maak ik het bad veilig en prettig voor mijn baby?"
+  },
+  {
+    "id": "solid-food-003",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "self-feeding", "independence"],
+    "title": "Een beetje rommel kan veel leren betekenen",
+    "summary": "Eten op het blad, de handen en de vloer? Maaltijden met alle zintuigen verkennen hoort bij leren eten.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Voeding ontdekken bouwt vaardigheden op",
+        "content": "Wanneer baby’s vaste voeding beginnen te eten, helpt aanraken, pletten en oppakken hen texturen te ontdekken en hun coördinatie te oefenen. Zelf leren eten kan de fijne motoriek en zelfstandigheid ondersteunen, ook als er in het begin maar weinig in de mond terechtkomt."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Stimuleer veilig ontdekken",
+        "items": [
+          "Bied zachte voeding aan in vormen en texturen die passen bij wat je baby kan.",
+          "Laat je baby zonder druk aan voeding voelen en die ontdekken.",
+          "Laat je baby rechtop zitten en houd bij elke hap toezicht.",
+          "Vermijd verstikkingsgevaar, zoals hele noten, hele druiven en harde stukken rauwe groente."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een rommelige maaltijd is geen mislukte maaltijd. Ontdekken, coördinatie en nieuwsgierigheid zijn belangrijke onderdelen van leren eten."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik mijn baby veilig stimuleren om zelf te leren eten?"
+  },
+  {
+    "id": "parent-support-003",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "wellbeing", "self-care"],
+    "title": "Ook voor jezelf zorgen is belangrijk",
+    "summary": "Voor een baby zorgen kost energie. Ook je eigen rust, welzijn en ondersteuning verdienen aandacht.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Ook ouders hebben behoeften",
+        "content": "De eerste maanden van het ouderschap kunnen lichamelijk en emotioneel veeleisend zijn. Onderbroken slaap, veranderende routines en nieuwe verantwoordelijkheden laten soms weinig tijd voor jezelf. Momenten nemen om te rusten, te eten, contact met anderen te hebben of hulp te vragen hoort bij het verzorgen van je welzijn."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak ruimte voor jezelf",
+        "items": [
+          "Neem praktische hulp aan wanneer iemand die je vertrouwt die aanbiedt.",
+          "Deel verantwoordelijkheden waar mogelijk met een partner of iemand uit je omgeving.",
+          "Neem overdag korte pauzes, ook al duren ze maar een paar minuten.",
+          "Praat met een zorgverlener als somberheid, angst of het gevoel overweldigd te zijn aanhouden."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Voor jezelf zorgen is niet egoïstisch. Jouw welzijn is belangrijk, los van alles wat je voor je kind doet."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik op een haalbare manier voor mezelf zorgen terwijl ik voor mijn baby zorg?"
+  },
+  {
+    "id": "motor-development-003",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "walking", "milestones"],
+    "title": "Op weg naar de eerste stapjes",
+    "summary": "Staan, langs meubels lopen en de eerste stapjes zetten zijn spannende mijlpalen, maar kinderen bereiken ze op verschillende momenten.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Leren lopen vraagt oefening",
+        "content": "Voordat ze zelfstandig lopen, oefenen veel baby’s met staan terwijl ze zich aan meubels vasthouden, hun gewicht verplaatsen en zijwaarts langs stabiele oppervlakken bewegen. Dit helpt bij de ontwikkeling van evenwicht en coördinatie. Het moment waarop een kind zelfstandig loopt verschilt, en leren gaat meestal met veel proberen en opnieuw beginnen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Ondersteun veilig bewegen",
+        "items": [
+          "Zorg voor stabiele meubels en een veilige ruimte om te ontdekken.",
+          "Laat je kind op veilige ondergronden binnenshuis op blote voeten spelen.",
+          "Stimuleer beweging zonder je kind in houdingen te trekken die het zelf niet aankan.",
+          "Vermijd loopstoeltjes met wielen vanwege het risico op verwondingen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Er is een brede normale leeftijdsperiode voor de eerste stapjes. Loopt je kind met 18 maanden nog niet zelfstandig of verliest het een vaardigheid die het al had, vraag dan om een beoordeling van de ontwikkeling."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik mijn baby ondersteunen bij het leren staan en lopen?"
+  },
+  {
+    "id": "health-and-comfort-002",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "common-cold", "comfort"],
+    "title": "Wanneer je baby verkouden is",
+    "summary": "Een loopneus en verstopping komen vaak voor bij jonge kinderen. Zachte verzorging kan helpen je baby comfortabel te houden.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Een gewone verkoudheid begrijpen",
+        "content": "Baby’s en peuters komen tijdens de ontwikkeling van hun afweersysteem met veel luchtwegvirussen in aanraking. Een verkoudheid kan een verstopte neus, niezen en hoesten veroorzaken. De meeste verkoudheden zonder complicaties verbeteren vanzelf, maar zeer jonge baby’s en kinderen die moeite hebben met ademen of drinken verdienen extra aandacht."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Eenvoudige manieren om comfort te bieden",
+        "items": [
+          "Gebruik steriele zoutoplossing in druppels of spray om neusslijm losser te maken.",
+          "Bied regelmatig de gebruikelijke melkvoedingen aan en let op tekenen van uitdroging.",
+          "Houd het slaapoppervlak van je baby vlak en volg de aanbevelingen voor veilig slapen.",
+          "Geef geen vrij verkrijgbare middelen tegen hoest en verkoudheid, tenzij een zorgverlener die uitdrukkelijk adviseert."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vraag dringend medisch advies bij koorts van 38°C of hoger bij een baby jonger dan 3 maanden, moeite met ademen, slecht drinken, uitdroging of ongewone sufheid."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik mijn baby helpen zich prettiger te voelen bij een verkoudheid?"
+  },
+  {
+    "id": "learning-003",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "cause-and-effect", "exploration"],
+    "title": "Kleine proefjes, grote ontdekkingen",
+    "summary": "Speeltjes laten vallen, op knoppen drukken en bakjes openen zijn de eerste proefjes van je baby met oorzaak en gevolg.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Ontdekken hoe de wereld werkt",
+        "content": "Naarmate baby’s groeien, gaan ze verbanden zien tussen hun handelingen en wat daarna gebeurt. Een rammelaar schudden maakt geluid, een speeltje loslaten laat het vallen en tegen een voorwerp duwen kan het in beweging brengen. Deze eenvoudige ervaringen ondersteunen nieuwsgierigheid, aandacht en het oplossen van problemen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Stimuleer dagelijkse ontdekkingen",
+        "items": [
+          "Bied veilige voorwerpen aan die verschillende geluiden maken als ze bewegen.",
+          "Laat je baby stapelbekers of bij de leeftijd passende bakjes ontdekken.",
+          "Beschrijf wat er gebeurt wanneer je kind iets doet.",
+          "Geef je baby tijd om te experimenteren voordat je laat zien hoe iets werkt."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Leren vereist geen ingewikkeld speelgoed. Alledaagse voorwerpen en eenvoudige interacties bieden volop kansen om te ontdekken."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke eenvoudige activiteiten helpen mijn baby oorzaak en gevolg te begrijpen?"
+  },
+  {
+    "id": "night-sleep-003",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 90,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "bedtime-routine", "reassurance"],
+    "title": "De geborgenheid van een vertrouwde bedtijd",
+    "summary": "Een paar voorspelbare stappen voor het slapen kunnen je baby helpen herkennen dat bedtijd eraan komt.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom routines kunnen helpen",
+        "content": "Baby’s leren geleidelijk vertrouwde patronen herkennen. Een rustige volgorde voor bedtijd herhalen, zoals een pyjama aantrekken, het licht dimmen en rustig knuffelen, kan voorspelbare signalen geven dat het bijna tijd is om te slapen. Een routine garandeert geen ononderbroken slaap, maar kan het inslapen vergemakkelijken."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Bouw een eenvoudige routine op",
+        "items": [
+          "Kies twee of drie kalmerende activiteiten die bij je gezin passen.",
+          "Houd de volgorde redelijk gelijk zonder de klok strak te volgen.",
+          "Verminder fel licht en druk spel vóór bedtijd.",
+          "Leg je baby altijd in een veilige slaapomgeving die past bij de leeftijd."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een bedtijdroutine hoeft niet perfect of uitgebreid te zijn. Vertrouwdheid en een rustige sfeer zijn belangrijker dan een exact schema volgen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe maak ik een kalmerende bedtijdroutine die past bij de leeftijd van mijn baby?"
+  },
+  {
+    "id": "breastfeeding-002",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["breastfeeding", "cluster-feeding", "reassurance"],
+    "title": "Waarom wil je baby alweer drinken?",
+    "summary": "Sommige baby’s willen meerdere keren kort na elkaar aan de borst drinken, vooral in de eerste weken. Dit wordt vaak clustervoeden genoemd.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Clustervoeden begrijpen",
+        "content": "In bepaalde periodes, vooral tijdens de eerste maanden, willen baby’s die borstvoeding krijgen soms gedurende enkele uren herhaaldelijk drinken. Dit patroon heet clustervoeden. Het kan ’s avonds voorkomen of tijdens periodes waarin de voedingsbehoeften veranderen. Vaak voeden alleen betekent niet noodzakelijk dat je melkproductie onvoldoende is."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak frequente voedingen gemakkelijker",
+        "items": [
+          "Reageer op de voedingssignalen van je baby in plaats van alleen op de klok te letten.",
+          "Zorg dat je water, snacks en een comfortabele plek bij de hand hebt.",
+          "Vraag iemand die je vertrouwt om bij andere taken te helpen tijdens drukke voedingsperiodes.",
+          "Houd natte luiers en de gewichtstoename in de gaten en vraag hulp bij het voeden als je bezorgd bent."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Clustervoeden kan vermoeiend zijn, maar is vaak tijdelijk. Neem contact op met een zorgverlener als voeden pijnlijk is, je baby uitgedroogd lijkt of onvoldoende aankomt."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe weet ik of het normaal is dat mijn baby zo vaak aan de borst wil drinken?"
+  },
+  {
+    "id": "bottle-feeding-002",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "paced-feeding", "comfort"],
+    "title": "Een fles hoeft geen race te zijn",
+    "summary": "De fles rustiger geven kan je baby helpen comfortabel te drinken en aan te geven wanneer een pauze nodig is.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Laat je baby het tempo bepalen",
+        "content": "Een fles geven draait niet alleen om een bepaalde hoeveelheid melk. Baby’s moeten rustig kunnen zuigen, slikken, ademen en pauzeren. Een snelle melkstroom kan het drinken voor sommige baby’s moeilijk maken. Responsief en in een rustig tempo voeden helpt je te zien wanneer je baby een pauze wil of genoeg heeft."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Probeer een rustiger ritme",
+        "items": [
+          "Houd je baby goed ondersteund en half rechtop.",
+          "Houd de fles vrij horizontaal om de melkstroom te vertragen.",
+          "Laat natuurlijke pauzes toe en let op tekenen van ongemak.",
+          "Zet een fles nooit vast en laat je baby nooit zonder toezicht drinken."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Elke baby ontwikkelt een eigen voedingsritme. Als drinken regelmatig hoesten, verslikken, onrust of onvoldoende gewichtstoename veroorzaakt, vraag dan professioneel advies."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik mijn baby in een rustig tempo de fles geven?"
+  },
+  {
+    "id": "growth-002",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["growth", "feeding", "development"],
+    "title": "Groeien gaat niet altijd even snel",
+    "summary": "De eetlust, slaap en het gedrag van je baby kunnen tijdens de groei veranderen. Ontwikkeling volgt zelden een volledig voorspelbaar schema.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Groei vindt plaats over langere tijd",
+        "content": "Baby’s groeien snel in hun eerste jaar, maar niet elke dag precies even hard. Er kunnen periodes zijn waarin je baby meer honger lijkt te hebben of meer troost nodig heeft. Zulke veranderingen worden soms groeispurten genoemd, al bestaat er geen universeel tijdschema dat voor elke baby geldt."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Speel in op veranderende behoeften",
+        "items": [
+          "Let op signalen van honger en verzadiging.",
+          "Blijf de aanbevolen groeicontroles volgen.",
+          "Houd rekening met enige variatie in slaap- en voedingspatronen.",
+          "Neem contact op met je zorgverlener als zorgen over voeding, hydratatie of groei aanhouden."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft niet elke groeispurt te herkennen. De signalen van je baby volgen en de algemene ontwikkeling in de gaten houden is meestal nuttiger."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke invloed hebben groeispurten op de voeding en slaap van mijn baby?"
+  },
+  {
+    "id": "daytime-nap-003",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 240,
+    "priority": 5,
+    "tags": ["sleep", "short-naps", "reassurance"],
+    "title": "Waarom sommige dutjes zo kort zijn",
+    "summary": "Een kort dutje betekent niet automatisch dat er iets mis is. Jonge baby’s hebben vaak wisselende en onvoorspelbare slaappatronen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Korte dutjes begrijpen",
+        "content": "Tijdens de eerste levensmaanden kan de slaap overdag onregelmatig zijn. Sommige dutjes duren maar kort, terwijl andere veel langer zijn. Baby’s ontwikkelen hun slaapritme nog en hun individuele slaapbehoeften verschillen. Eén kort dutje is niet noodzakelijk een teken van slechte slaap."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Ondersteun rust overdag",
+        "items": [
+          "Let op tekenen van vermoeidheid, zoals minder interesse of prikkelbaarheid.",
+          "Bied een rustige omgeving aan wanneer je baby klaar lijkt om te slapen.",
+          "Volg bij elk dutje de richtlijnen voor veilig slapen en leg je baby op de rug.",
+          "Kijk naar de totale slaap en het algemene welzijn in plaats van je op één dutje te richten."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Niet elk dutje hoeft lang te zijn. Lijkt je baby voortdurend uitgeput of maak je je zorgen over de slaap, bespreek dit dan met een zorgverlener."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Zijn korte dutjes normaal voor de leeftijd van mijn baby?"
+  },
+  {
+    "id": "playtime-003",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["playtime", "sensory-development", "exploration"],
+    "title": "De wereld is een speelplek voor de zintuigen",
+    "summary": "Verschillende texturen, geluiden en bewegingen kunnen gewone momenten voor je baby in boeiende ontdekkingen veranderen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Leren met de zintuigen",
+        "content": "Baby’s verkennen hun omgeving door te kijken, luisteren, voelen en bewegen. Een zachte stof voelen, een rustige rammelaar horen of een voorwerp zien bewegen helpt hen verschillen te ontdekken en vertrouwd te raken met hun omgeving. Zintuiglijk spel hoeft niet ingewikkeld of duur te zijn."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Probeer eenvoudige zintuiglijke activiteiten",
+        "items": [
+          "Bied voor de leeftijd geschikt speelgoed aan met verschillende veilige texturen.",
+          "Laat je baby onder toezicht een zachte doek ontdekken.",
+          "Laat rustige geluiden horen met een rammelaar of je stem.",
+          "Volg de reacties van je baby en pauzeer als de prikkels te veel lijken."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je baby hoeft niet voortdurend vermaakt te worden. Een paar momenten van nieuwsgierig ontdekken kunnen genoeg zijn."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke veilige zintuiglijke activiteiten kan ik met mijn baby proberen?"
+  },
+  {
+    "id": "teething-002",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "oral-health", "baby-care"],
+    "title": "Het eerste tandje verdient wat zorg",
+    "summary": "Mondverzorging begint eerder dan veel ouders denken. Het eerste tandje is het ideale moment om een zachte routine te starten.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Gezonde gewoontes vanaf het begin",
+        "content": "Melktanden zijn belangrijk voor eten, de spraakontwikkeling en het vrijhouden van ruimte voor de blijvende tanden. De mondverzorging begint zodra het eerste tandje doorkomt. Vroeg en voorzichtig poetsen helpt gezonde gewoontes op te bouwen en beschermt tanden tegen gaatjes."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Begin met een eenvoudige poetsroutine",
+        "items": [
+          "Poets tweemaal per dag met een kleine, zachte tandenborstel.",
+          "Gebruik een veegje fluoridetandpasta dat past bij de leeftijd van je kind en de plaatselijke tandheelkundige richtlijnen.",
+          "Leg je baby niet in bed met een fles melk of gezoete drank.",
+          "Plan het eerste tandartsbezoek vóór de eerste verjaardag of binnen zes maanden na het doorkomen van het eerste tandje."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een rustige routine is belangrijker dan een perfecte poetstechniek. Je tandarts kan helpen de juiste tandpasta en hoeveelheid fluoride te kiezen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe verzorg ik de eerste tandjes van mijn baby?"
+  },
+  {
+    "id": "parent-support-004",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "shared-responsibilities", "wellbeing"],
+    "title": "Ouderschap was nooit bedoeld als een taak voor één persoon",
+    "summary": "Verantwoordelijkheden delen en om steun vragen kan het dagelijkse ouderschap beter hanteerbaar maken.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Ondersteuning maakt een verschil",
+        "content": "Voor een baby zorgen omvat veel zichtbare en onzichtbare taken, van voeden en verschonen tot afspraken plannen en behoeften voorzien. Wanneer de verantwoordelijkheid vooral op één persoon rust, kan uitputting zich opstapelen. Praktische taken delen en open communiceren helpt gezinnen een duurzamer evenwicht te vinden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak samenwerken gemakkelijker",
+        "items": [
+          "Praat openlijk over welke taken het zwaarst voelen.",
+          "Verdeel verantwoordelijkheden op een manier die bij de situatie van je gezin past.",
+          "Neem ook planning en mentale belasting mee, niet alleen praktische taken.",
+          "Aanvaard hulp van vertrouwde familieleden of vrienden wanneer die beschikbaar is."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Steun nodig hebben is geen teken van zwakte. Ouderschap is veeleisend en iedereen verdient kansen om uit te rusten en nieuwe energie op te doen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kunnen we de verantwoordelijkheden als ouders eerlijker verdelen?"
+  },
+  {
+    "id": "communication-004",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "reading", "language-development"],
+    "title": "Het is nooit te vroeg voor een verhaaltje",
+    "summary": "Samen lezen kan taalontwikkeling en verbondenheid ondersteunen, zelfs voordat je baby de woorden begrijpt.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom voorlezen belangrijk is",
+        "content": "Wanneer je hardop leest, hoort je baby het ritme en de klanken van taal en geniet die tegelijk van jouw aandacht. Samen boeken bekijken kan na verloop van tijd nieuwe woorden introduceren, interactie stimuleren en een vertrouwd onderdeel van dagelijkse routines worden. Jonge baby’s letten soms meer op je stem en gezichtsuitdrukkingen dan op het verhaal zelf."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Geef boeken een plek in je dag",
+        "items": [
+          "Kies stevige boekjes met duidelijke afbeeldingen en eenvoudige woorden.",
+          "Wijs voorwerpen aan en beschrijf wat je ziet.",
+          "Laat je baby de bladzijden aanraken of omslaan wanneer die daar klaar voor is.",
+          "Volg de interesse van je kind in plaats van elk boek per se uit te lezen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft niet lang voor te lezen. Zelfs enkele minuten gedeelde aandacht kunnen betekenisvol zijn."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke boeken en leesactiviteiten passen bij de leeftijd van mijn baby?"
+  },
+  {
+    "id": "solid-food-004",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "iron", "nutrition"],
+    "title": "Een kleine voedingsstof met een grote rol",
+    "summary": "IJzer wordt extra belangrijk wanneer baby’s vaste voeding beginnen te eten. IJzerrijke voeding aanbieden kan een gezonde ontwikkeling ondersteunen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom ijzer belangrijk is",
+        "content": "IJzer ondersteunt gezonde bloedcellen en de ontwikkeling van de hersenen. Baby’s worden met een ijzervoorraad geboren, maar die neemt geleidelijk af. Rond de introductie van bijvoeding wordt het belangrijk om naast borst- of flesvoeding geschikte ijzerrijke voedingsmiddelen aan te bieden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Ontdek ijzerrijke voeding",
+        "items": [
+          "Bied vlees, gevogelte, vis, bonen of linzen aan in een bereiding die past bij de leeftijd.",
+          "Overweeg met ijzer verrijkte babygranen wanneer die geschikt zijn.",
+          "Combineer plantaardige ijzerbronnen met vitamine C-rijke voeding om de opname te ondersteunen.",
+          "Vraag een zorgverlener of je baby een ijzersupplement nodig heeft, vooral na een vroeggeboorte."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft bij elke maaltijd niet elke milligram te berekenen. Door in de loop van de tijd verschillende geschikte voedingsmiddelen aan te bieden, bouw je aan een evenwichtig voedingspatroon."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke ijzerrijke voedingsmiddelen passen bij de leeftijd van mijn baby?"
+  },
+  {
+    "id": "motor-development-004",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "fine-motor-skills", "coordination"],
+    "title": "Kleine vingers, groeiende vaardigheden",
+    "summary": "Speeltjes oppakken, voorwerpen van hand wisselen en kleine bewegingen ontdekken helpt je baby de coördinatie te ontwikkelen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "De fijne motoriek ontdekken",
+        "content": "De ontwikkeling van de fijne motoriek omvat steeds nauwkeurigere bewegingen van handen en vingers. Baby’s leren geleidelijk naar voorwerpen te reiken, ze vast te pakken, van hand te wisselen en uiteindelijk kleine dingen met duim en vingers op te pakken. Deze vaardigheden ondersteunen spelen, zelf leren eten en dagelijkse zelfstandigheid."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Stimuleer kleine handjes",
+        "items": [
+          "Bied licht speelgoed aan dat gemakkelijk vast te pakken is en bij de leeftijd past.",
+          "Laat je baby veilige voorwerpen van de ene naar de andere hand doorgeven.",
+          "Introduceer stapelbekers en grote blokken wanneer de coördinatie verbetert.",
+          "Houd kleine voorwerpen en losse speelgoedonderdelen buiten bereik vanwege verstikkingsgevaar."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "De handcoördinatie ontwikkelt zich geleidelijk door dagelijkse ontdekking. Elk kind gaat in een eigen tempo vooruit, maar bespreek het met je kinderarts als je verlies van verworven vaardigheden opmerkt of zorgen over de ontwikkeling hebt."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke activiteiten helpen mijn baby de fijne motoriek te ontwikkelen?"
+  },
+  {
+    "id": "parent-support-005",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["separation", "attachment", "reassurance"],
+    "title": "Wanneer afscheid tranen brengt",
+    "summary": "Je baby kan plotseling overstuur raken wanneer je de kamer verlaat. Verlatingsangst is een normaal onderdeel van de vroege ontwikkeling.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom afscheid moeilijk kan voelen",
+        "content": "Naarmate baby’s zich bewuster worden van vertrouwde mensen en hun omgeving, kunnen ze sterk reageren wanneer een ouder of verzorger weggaat. Verlatingsangst ontstaat vaak in de tweede helft van het eerste jaar, al verschillen het moment en de intensiteit. Je baby leert over relaties, afstand en de geruststellende ervaring van weer samenkomen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak afscheid nemen zachter",
+        "items": [
+          "Maak een kort, voorspelbaar afscheidsritueel.",
+          "Leg rustig uit dat je weggaat en weer terugkomt.",
+          "Oefen korte momenten van afscheid met een vertrouwde verzorger.",
+          "Verdwijn niet zonder afscheid te nemen, want dat maakt een vertrek minder voorspelbaar."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Tranen bij het afscheid betekenen niet dat je jullie band beschadigt. Consequente, responsieve zorg helpt je kind met de tijd vertrouwen op te bouwen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe help ik mijn baby omgaan met verlatingsangst?"
+  },
+  {
+    "id": "bottle-feeding-003",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["formula", "bottle-feeding", "food-safety"],
+    "title": "Een veilige fles begint bij de bereiding",
+    "summary": "Een paar zorgvuldige stappen bij het bereiden van zuigelingenvoeding helpen je baby tegen schadelijke bacteriën te beschermen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom de bereiding belangrijk is",
+        "content": "Poedervormige zuigelingenvoeding is niet steriel. Soms kunnen schadelijke bacteriën in het poeder aanwezig zijn of tijdens de bereiding worden ingebracht. Veilige hygiëne, nauwkeurig afmeten en correct bewaren helpen het infectierisico te verkleinen. Baby’s jonger dan twee maanden, te vroeg geboren baby’s en baby’s met een verzwakt afweersysteem hebben extra zorg nodig."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak van veilig bereiden een gewoonte",
+        "items": [
+          "Was je handen en maak het voedingsmateriaal schoon voordat je een fles bereidt.",
+          "Volg de instructies van de fabrikant en de plaatselijke gezondheidsrichtlijnen voor watertemperatuur en bereiding.",
+          "Meet water en poeder nauwkeurig af met het meegeleverde maatschepje.",
+          "Gooi voeding die na het drinken in de fles achterblijft weg en respecteer de aanbevolen bewaartijden voor bereide voeding."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Veilig bereiden wordt al snel een vertrouwde routine. Heeft je baby een hoger infectierisico, vraag dan een zorgverlener naar de veiligste soort voeding en bereidingswijze."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe bereid en bewaar ik zuigelingenvoeding veilig?"
+  },
+  {
+    "id": "learning-004",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["emotions", "learning", "social-development"],
+    "title": "Grote gevoelens in een klein mensje",
+    "summary": "Frustratie, enthousiasme en tranen horen bij het leren begrijpen van emoties. Jouw rustige aanwezigheid kan helpen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Emotionele vaardigheden vragen tijd",
+        "content": "Wanneer baby’s peuters worden, krijgen ze duidelijkere voorkeuren en willen ze steeds meer zelf ontdekken. Hun vermogen om met frustratie om te gaan is echter nog volop in ontwikkeling. Huilen of protesteren wanneer iets anders loopt dan verwacht, is vaak een manier om gevoelens te uiten die ze nog niet in woorden kunnen uitleggen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Help je kind door emoties heen",
+        "items": [
+          "Blijf rustig en bied troost wanneer je kind overweldigd is.",
+          "Gebruik eenvoudige woorden voor gevoelens, zoals: ‘Je lijkt gefrustreerd.’",
+          "Houd grenzen vriendelijk en consequent.",
+          "Geef waar passend eenvoudige keuzes, zodat je kind enige controle ervaart."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Er wordt niet verwacht dat je kind elke emotie zelfstandig beheerst. Emoties leren reguleren gebeurt geleidelijk binnen ondersteunende relaties."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik reageren wanneer mijn peuter gefrustreerd of overstuur raakt?"
+  },
+  {
+    "id": "baby-care-003",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["skin-care", "baby-care", "comfort"],
+    "title": "Zachte verzorging voor een tere huid",
+    "summary": "De huid van je baby is nog in ontwikkeling. Eenvoudige, milde verzorging is vaak alles wat nodig is.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "De gevoelige babyhuid begrijpen",
+        "content": "Een babyhuid kan gevoeliger zijn voor irritatie door vocht, wrijving, geurstoffen en agressieve reinigingsproducten. Tijdelijke droogheid of lichte irritatie komt vaak voor. Houd de huid schoon, vermijd onnodige producten en bescherm zones die aan vocht worden blootgesteld om het comfort te helpen behouden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Houd huidverzorging eenvoudig",
+        "items": [
+          "Gebruik lauw water en zo nodig milde, ongeparfumeerde reinigingsproducten.",
+          "Dep de huid voorzichtig droog, vooral in huidplooien.",
+          "Vervang natte of vuile luiers snel en gebruik zo nodig een geschikte barrièrecrème.",
+          "Vraag een zorgverlener om advies bij aanhoudende uitslag, beschadigde huid of tekenen van infectie."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Meer producten betekenen niet noodzakelijk betere verzorging. Een eenvoudige routine is vaak de zachtste keuze voor een gezonde babyhuid."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wat is een eenvoudige en veilige huidverzorgingsroutine voor mijn baby?"
+  },
+  {
+    "id": "communication-005",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["language", "first-words", "communication"],
+    "title": "De magie van een eerste woordje",
+    "summary": "De eerste betekenisvolle woorden van je baby kunnen geleidelijk ontstaan, na maanden van luisteren, gebaren en interactie.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Woorden groeien uit dagelijkse interacties",
+        "content": "Voordat baby’s herkenbare woorden spreken, luisteren ze maandenlang naar taal, experimenteren ze met klanken en communiceren ze met gebaren. Eerste woorden ontstaan vaak rond het einde van het eerste jaar, al verschilt de ontwikkeling. Woorden begrijpen en reageren op vertrouwde taal zijn eveneens belangrijke onderdelen van communicatie."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Stimuleer taal op een natuurlijke manier",
+        "items": [
+          "Benoem vertrouwde voorwerpen tijdens dagelijkse bezigheden.",
+          "Reageer warm op geluiden, gebaren en pogingen tot woorden.",
+          "Lees eenvoudige boekjes en praat over de afbeeldingen.",
+          "Zet je kind niet onder druk om woorden op commando te herhalen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Kinderen ontwikkelen taal in een verschillend tempo. Bereikt je kind de verwachte communicatiemijlpalen niet, hoort het moeilijk of verliest het vaardigheden, bespreek je zorgen dan met een zorgverlener."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kan ik de eerste woordjes en taalontwikkeling van mijn baby stimuleren?"
+  },
+  {
+    "id": "breastfeeding-003",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["breastfeeding", "milk-intake", "reassurance"],
+    "title": "Krijgt je baby genoeg melk?",
+    "summary": "Bij borstvoeding kun je de hoeveelheid niet aflezen. Gelukkig geven de groei, luiers en het gedrag van je baby nuttige aanwijzingen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Kijk verder dan de klok",
+        "content": "Niet alle baby’s die borstvoeding krijgen, drinken even lang of met dezelfde tussenpozen. Alleen de duur van een voeding vertelt niet hoeveel melk je baby binnenkrijgt. Gewichtstoename, natte luiers en tekenen van doeltreffende melkinname zijn nuttiger. Voedingspatronen veranderen bovendien terwijl baby’s groeien."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Signalen om op te letten",
+        "items": [
+          "Volg de groei van je baby tijdens de aanbevolen medische controles.",
+          "Let erop of je baby een bij de leeftijd passend aantal natte luiers heeft.",
+          "Let tijdens het voeden op ritmisch zuigen en slikken.",
+          "Vraag ondersteuning bij lactatie of medische hulp als voeden pijnlijk is, je baby uitgedroogd lijkt of de gewichtstoename zorgen baart."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft niet elke voeding te meten om succesvol borstvoeding te geven. Twijfel je of je baby genoeg melk krijgt, dan kan een zorgverlener het voeden en de groei beoordelen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe weet ik of mijn baby bij borstvoeding genoeg melk krijgt?"
+  },
+  {
+    "id": "playtime-004",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "free-play", "exploration"],
+    "title": "Soms heeft het beste spel geen instructies",
+    "summary": "Je baby in een eigen tempo veilige voorwerpen laten ontdekken kan nieuwsgierigheid, creativiteit en zelfstandigheid stimuleren.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "De waarde van vrij spel",
+        "content": "Baby’s en peuters leren door te verkennen, te experimenteren en ontdekkingen te doen. Tijdens vrij spel kiest je kind wat interessant is en hoe het ermee omgaat. Dit ondersteunt aandacht, probleemoplossing en groeiende zelfstandigheid. Jouw aanwezigheid en aanmoediging blijven waardevol, ook wanneer je niet elke activiteit stuurt."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak ruimte voor ontdekking",
+        "items": [
+          "Bied enkele veilige speeltjes aan die passen bij de leeftijd, in plaats van te veel tegelijk.",
+          "Laat je kind kiezen welk voorwerp het wil verkennen.",
+          "Kijk eerst wat je kind doet voordat je voordoet hoe iets werkt.",
+          "Blijf dichtbij en houd toezicht, maar geef ruimte om te experimenteren."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft niet elke minuut speeltijd te organiseren. Soms is een veilige omgeving bieden en aanwezig zijn al genoeg."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe stimuleer ik zelfstandig spelen en houd ik mijn baby tegelijk veilig?"
+  },
+  {
+    "id": "health-and-comfort-003",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["safety", "baby-proofing", "motor-development"],
+    "title": "Je kleine ontdekker heeft een veilige wereld nodig",
+    "summary": "Naarmate je baby mobieler wordt, kunnen gewone voorwerpen in huis plotseling fascinerend — en soms gevaarlijk — worden.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Een nieuwe blik op je huis",
+        "content": "Omrollen, kruipen, zich optrekken en lopen geven baby’s toegang tot plekken die eerder onbereikbaar waren. Elektriciteitssnoeren, meubels, trappen, schoonmaakmiddelen en kleine voorwerpen kunnen gevaren worden. Je huis voorbereiden vóór elke nieuwe fase van mobiliteit helpt vermijdbare verwondingen te voorkomen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Bekijk de wereld op ooghoogte van je baby",
+        "items": [
+          "Zet zware meubels en televisies vast om omvallen te voorkomen.",
+          "Bewaar geneesmiddelen, schoonmaakmiddelen en kleine voorwerpen met verstikkingsgevaar achter slot of buiten bereik.",
+          "Gebruik geschikte veiligheidshekjes bij trappen.",
+          "Houd hete dranken, scherpe voorwerpen en elektriciteitssnoeren buiten bereik.",
+          "Denk eraan dat toezicht essentieel blijft, ook in een kindveilig gemaakte kamer."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft niet elke kamer van de ene dag op de andere perfect te maken. Begin met de belangrijkste gevaren en bekijk je huis opnieuw wanneer de vaardigheden van je kind veranderen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wat moet ik thuis kindveilig maken voor de huidige leeftijd van mijn kind?"
+  },
+  {
+    "id": "learning-005",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation", "social-development"],
+    "title": "Je baby kijkt en leert",
+    "summary": "Van zwaaien bij het afscheid tot doen alsof je aan de telefoon praat: nadoen helpt jonge kinderen ontdekken hoe de wereld werkt.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Leren door naar anderen te kijken",
+        "content": "Baby’s en peuters observeren en kopiëren steeds vaker handelingen die ze om zich heen zien. Nadoen helpt hen nieuwe bewegingen te oefenen, mee te doen aan sociale routines en te ontdekken hoe alledaagse voorwerpen worden gebruikt. Vertrouwde activiteiten zoals haren borstelen, zwaaien of met een lepel roeren kunnen leermomenten worden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak van routines leermomenten",
+        "items": [
+          "Zwaai bij het begroeten en afscheid nemen en geef je kind tijd om te reageren.",
+          "Doe eenvoudige handelingen voor met veilig speelgoed of huishoudelijke voorwerpen.",
+          "Nodig je kind uit gebaren na te doen tijdens liedjes.",
+          "Moedig pogingen aan zonder een exacte kopie te verwachten."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je kind leert elke dag van gewone interacties. Je hebt geen speciale lessen nodig om betekenisvolle leerkansen te creëren."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke dagelijkse activiteiten helpen mijn baby leren door na te doen?"
+  },
+  {
+    "id": "parent-support-006",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "emotional-wellbeing", "reassurance"],
+    "title": "Sommige dagen zijn gewoon moeilijker dan andere",
+    "summary": "Ouderschap kan tegelijk vreugdevol en uitputtend zijn. Een moeilijke dag bepaalt niet wat voor ouder je bent.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Ruimte maken voor moeilijke gevoelens",
+        "content": "Voor een jong kind zorgen kan naast geluk ook frustratie, vermoeidheid en onzekerheid meebrengen. Slaaptekort en veranderende routines kunnen gewone uitdagingen overweldigend laten voelen. Deze gevoelens betekenen niet automatisch dat er iets mis is, maar aanhoudende klachten verdienen aandacht en ondersteuning."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Wees mild voor jezelf",
+        "items": [
+          "Richt je op de essentiële behoeften wanneer je weinig energie hebt.",
+          "Vraag een vertrouwd persoon om praktische of emotionele steun.",
+          "Neem een korte pauze wanneer veilig voor je kind wordt gezorgd.",
+          "Praat met een zorgverlener als somberheid, angst of het gevoel overweldigd te zijn aanhouden."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft niet van elk moment te genieten om een zorgzame ouder te zijn. Jouw welzijn telt en om hulp vragen is een gezonde keuze."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe kom ik zonder schuldgevoel door moeilijke dagen als ouder?"
+  },
+  {
+    "id": "bottle-feeding-004",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hygiene", "food-safety"],
+    "title": "Een schone fles maakt een verschil",
+    "summary": "Melkresten kunnen bacteriën laten groeien. Een eenvoudige schoonmaakroutine helpt het voedingsmateriaal veilig te houden.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom hygiëne van flessen belangrijk is",
+        "content": "Melk kan resten achterlaten in flessen, spenen en ander voedingsmateriaal. Zonder goede reiniging kunnen bacteriën zich op deze oppervlakken vermenigvuldigen. Baby’s zijn in hun eerste maanden bijzonder vatbaar voor infecties. Zorgvuldig schoonmaken en passend steriliseren zijn daarom belangrijke onderdelen van veilig voeden."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Bouw een veilige schoonmaakroutine op",
+        "items": [
+          "Was je handen voordat je schoon voedingsmateriaal aanraakt.",
+          "Haal flessen uit elkaar en reinig alle onderdelen na elke voeding.",
+          "Gebruik heet water met afwasmiddel en een aparte flessenborstel, of een vaatwasser als de fabrikant dit toestaat.",
+          "Laat alle onderdelen volledig aan de lucht drogen op een schoon oppervlak.",
+          "Volg de plaatselijke aanbevelingen voor steriliseren, vooral voor baby’s jonger dan twee maanden, te vroeg geboren baby’s en baby’s met een verzwakt afweersysteem."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "De hygiëne van flessen hoeft niet ingewikkeld te zijn. Een vaste schoonmaakroutine helpt je baby beschermen en wordt snel een onderdeel van het dagelijks leven."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe reinig en steriliseer ik de flessen van mijn baby veilig?"
+  },
+  {
+    "id": "growth-003",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "weight", "growth-monitoring"],
+    "title": "Eén weegmoment vertelt niet het hele verhaal",
+    "summary": "Kleine verschillen tussen gewichtsmetingen kunnen voorkomen. Groei wordt het best begrepen door de trend over een langere periode te bekijken.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom metingen kunnen verschillen",
+        "content": "Het geregistreerde gewicht van een baby kan worden beïnvloed door de gebruikte weegschaal, kleding, een recente voeding en de meetomstandigheden. Kleine verschillen tussen afzonderlijke weegmomenten wijzen niet altijd op een betekenisvolle verandering in de groei. Zorgverleners beoordelen het gewicht samen met de lengte, leeftijd, medische voorgeschiedenis en eerdere metingen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak metingen nuttiger",
+        "items": [
+          "Gebruik thuis een geschikte babyweegschaal.",
+          "Probeer telkens onder vergelijkbare omstandigheden te meten.",
+          "Noteer de datum en meting nauwkeurig.",
+          "Weeg niet te vaak, tenzij een zorgverlener dit aanbeveelt.",
+          "Vraag medisch advies als je baby onvoldoende aankomt, onverwacht gewicht verliest of moeilijk gaat drinken."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Het welzijn van je baby kan niet in één getal worden samengevat. Groeipatronen en een klinische beoordeling geven een vollediger beeld."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe vaak moet ik mijn baby wegen en hoe moet ik veranderingen begrijpen?"
+  },
+  {
+    "id": "teething-003",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "development", "reassurance"],
+    "title": "Waar blijven die eerste tandjes?",
+    "summary": "Bij sommige baby’s komt het eerste tandje vroeg, bij andere duurt het langer. Het moment waarop tandjes doorkomen verschilt sterk.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Elke glimlach ontwikkelt zich anders",
+        "content": "De eerste melktanden verschijnen vaak rond zes maanden, maar er is een ruime normale variatie. Sommige baby’s krijgen eerder tandjes, terwijl bij andere pas tegen de eerste verjaardag een tandje zichtbaar wordt. Ook de volgorde kan verschillen, al komen de onderste voortanden vaak als eerste door."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Wat ouders kunnen doen",
+        "items": [
+          "Vergelijk het tijdschema van de tandjes van je baby niet met dat van andere kinderen.",
+          "Maak het tandvlees voorzichtig schoon en begin te poetsen wanneer het eerste tandje verschijnt.",
+          "Plan volgens de plaatselijke richtlijnen vóór de eerste verjaardag een tandheelkundige controle.",
+          "Vraag een tandarts om advies als je je zorgen maakt over laat doorkomende tanden of ongewone veranderingen aan het tandvlees."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een later eerste tandje betekent niet automatisch dat er iets mis is. Een tandarts kan de ontwikkeling beoordelen als je bezorgd bent."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wanneer komen de eerste tandjes van mijn baby door en wanneer moet ik me zorgen maken?"
+  },
+  {
+    "id": "daytime-nap-004",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "tiredness", "sleep-cues"],
+    "title": "Je baby vertelt je misschien dat die moe is",
+    "summary": "Geeuwen is niet het enige teken van vermoeidheid. Kleine gedragsveranderingen helpen je herkennen wanneer je baby rust nodig heeft.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Slaapsignalen herkennen",
+        "content": "Baby’s laten op verschillende manieren zien dat ze moe zijn. Sommigen worden stiller, wenden zich van prikkels af of verliezen interesse in spelen. Andere wrijven in hun ogen, geeuwen of worden hangerig. Door de eigen signalen van je baby te leren kennen, kun je rust aanbieden voordat je baby erg overstuur raakt. De signalen kunnen wel veranderen met de leeftijd."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Let op de kleine signalen",
+        "items": [
+          "Let op minder betrokkenheid of zich afwenden van activiteiten.",
+          "Merk geeuwen, in de ogen wrijven of toenemende prikkelbaarheid op.",
+          "Bied een rustige overgang naar slaap aan wanneer je baby moe lijkt.",
+          "Combineer je observaties met het gebruikelijke slaappatroon in plaats van op een strak schema te vertrouwen.",
+          "Gebruik voor dutjes altijd een veilige slaapomgeving."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je zult niet elk slaapsignaal perfect herkennen. Door de patronen van je baby te observeren worden de behoeften met de tijd makkelijker te begrijpen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe herken ik de vroege tekenen dat mijn baby moe is?"
+  },
+  {
+    "id": "health-and-comfort-004",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "hydration", "warning-signs"],
+    "title": "Kleine signalen die laten zien hoe belangrijk vocht is",
+    "summary": "Baby’s kunnen sneller uitdrogen dan volwassenen. Als je de waarschuwingssignalen kent, weet je beter wanneer medisch advies nodig is.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom hydratatie aandacht verdient",
+        "content": "Baby’s hebben relatief veel vocht nodig en kunnen vocht verliezen door koorts, braken, diarree of slecht drinken. Uitdroging kan ontstaan wanneer meer vocht verloren gaat dan wordt opgenomen. Het is belangrijk veranderingen in natte luiers, alertheid en drinkgedrag te herkennen, vooral bij jonge baby’s."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Signalen om op te letten",
+        "items": [
+          "Let op een duidelijke afname van het aantal natte luiers ten opzichte van het gebruikelijke patroon.",
+          "Let op een droge mond, minder tranen bij het huilen of ongewone slaperigheid.",
+          "Blijf naar behoefte borst- of flesvoeding aanbieden.",
+          "Vraag snel medisch advies als je baby slecht drinkt, aanhoudend braakt of diarree heeft, of mogelijke tekenen van uitdroging vertoont.",
+          "Zoek spoedeisende hulp bij ernstige lusteloosheid, moeite met wakker worden of andere tekenen van een ernstige ziekte."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft niet elke druppel die je baby drinkt bij te houden. Door op voeding, natte luiers en algemeen gedrag te letten, kun je veranderingen herkennen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wat zijn de waarschuwingssignalen van uitdroging bij baby’s?"
+  },
+  {
+    "id": "night-sleep-004",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["sleep", "circadian-rhythm", "newborn"],
+    "title": "Dag en nacht zijn nog nieuwe begrippen",
+    "summary": "Pasgeborenen kennen het verschil tussen dag en nacht nog niet. Hun interne slaapritme ontwikkelt zich geleidelijk.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Het ritme van dag en nacht leren",
+        "content": "Tijdens de eerste maanden ontwikkelen baby’s geleidelijk hun circadiane ritme, het interne systeem dat slaap en wakker zijn helpt regelen. De slaap van pasgeborenen is vaak over de hele dag en nacht verspreid, omdat voedingsbehoeften en een nog onrijpe slaapregulatie bepalen wanneer ze wakker worden. Na verloop van tijd helpen normaal daglicht en rustigere nachtroutines het verschil te versterken."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Introduceer dag en nacht op een rustige manier",
+        "items": [
+          "Laat je baby tijdens wakkere momenten natuurlijk daglicht ervaren.",
+          "Houd voedingen en luierwissels ’s nachts rustig en gebruik gedimd licht.",
+          "Laat overdag normale huishoudelijke geluiden horen in plaats van alles stil te houden.",
+          "Blijf ’s nachts reageren op hongersignalen.",
+          "Volg dag en nacht altijd de aanbevelingen voor veilig slapen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Vaak wakker worden tijdens de nacht is normaal voor veel pasgeborenen. Je baby leert geleidelijk een ritme dat tijd nodig heeft om zich te ontwikkelen."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe help ik mijn pasgeboren baby geleidelijk het verschil tussen dag en nacht te herkennen?"
+  },
+  {
+    "id": "breastfeeding-004",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["breastfeeding", "distraction", "feeding-behavior"],
+    "title": "Wanneer alles interessanter lijkt dan melk",
+    "summary": "Naarmate baby’s nieuwsgieriger worden naar de wereld, kijken ze tijdens het drinken vaker rond of onderbreken ze voedingen.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Nieuwsgierigheid kan het voeden veranderen",
+        "content": "Wanneer baby’s zich bewuster worden van geluiden, bewegingen en mensen om hen heen, onderbreken sommigen de borstvoeding om rond te kijken. Dit kan halverwege het eerste jaar gebeuren, al verschilt het moment. Afgeleid drinken betekent niet noodzakelijk dat je baby de interesse in borstvoeding verliest of dat je melkproductie is afgenomen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Maak het voeden comfortabeler",
+        "items": [
+          "Probeer in een rustigere omgeving borstvoeding te geven als je baby snel afgeleid is.",
+          "Bied de borst aan zodra je baby hongersignalen toont, in plaats van te wachten tot je baby erg overstuur is.",
+          "Laat korte pauzes toe wanneer je baby wil rondkijken.",
+          "Houd natte luiers en de groei in de gaten als voedingen voortdurend korter of minder frequent worden.",
+          "Vraag hulp bij het voeden als je baby voedingen blijft weigeren of tekenen van onvoldoende inname vertoont."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een nieuwsgierige baby krijgt niet noodzakelijk te weinig voeding. Voedingspatronen veranderen vaak mee met de groeiende belangstelling van je kind voor de wereld."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Waarom is mijn baby tijdens de borstvoeding zo snel afgeleid?"
+  },
+  {
+    "id": "growth-004",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "prematurity", "corrected-age"],
+    "title": "Voor te vroeg geboren baby’s heeft leeftijd twee betekenissen",
+    "summary": "Te vroeg geboren baby’s kunnen zowel een kalenderleeftijd als een gecorrigeerde leeftijd hebben. Het verschil begrijpen helpt hun ontwikkeling beter te duiden.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Wat is de gecorrigeerde leeftijd?",
+        "content": "De kalenderleeftijd is de tijd sinds je baby werd geboren. De gecorrigeerde leeftijd houdt rekening met hoeveel weken te vroeg je baby kwam. Een baby die bijvoorbeeld acht weken te vroeg is geboren en nu zes maanden oud is, heeft een gecorrigeerde leeftijd van ongeveer vier maanden. Zorgverleners gebruiken de gecorrigeerde leeftijd vaak bij het beoordelen van groei en ontwikkelingsmijlpalen van premature baby’s, doorgaans tijdens de eerste twee jaar."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Volg de ontwikkeling met het juiste perspectief",
+        "items": [
+          "Noteer de zwangerschapsduur bij de geboorte van je baby.",
+          "Vraag je zorgverlener wanneer je de gecorrigeerde leeftijd moet gebruiken.",
+          "Gebruik op advies groeicurven die geschikt zijn voor premature baby’s.",
+          "Vergelijk mijlpalen niet alleen op basis van de kalenderleeftijd.",
+          "Volg het persoonlijke medische en ontwikkelingsgerichte opvolgplan van je baby."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Een vroege geboorte kan veranderen hoe de ontwikkelingsvooruitgang wordt beoordeeld. De gecorrigeerde leeftijd geeft een eerlijker beeld van het traject van je baby."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wat is de gecorrigeerde leeftijd van mijn premature baby en hoe gebruik ik die?"
+  },
+  {
+    "id": "solid-food-005",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["solid-food", "allergens", "nutrition"],
+    "title": "Nieuwe voeding introduceren, ook allergenen",
+    "summary": "Voedingsmiddelen zoals ei en pinda kunnen tijdens de bijvoeding in een veilige vorm worden geïntroduceerd zodra je baby er in de ontwikkeling klaar voor is.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "De introductie van allergenen begrijpen",
+        "content": "De huidige richtlijnen ondersteunen doorgaans de introductie van veelvoorkomende allergene voedingsmiddelen tijdens de babytijd, zodra een baby klaar is voor bijvoeding, in plaats van die onnodig uit te stellen. Voorbeelden zijn goed gaar ei, pinda in een veilige vorm, zuivelingrediënten en tarwe. Baby’s met ernstig eczeem, een bekende voedselallergie of eerdere reacties hebben mogelijk persoonlijk advies nodig voordat bepaalde voeding wordt geïntroduceerd."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Introduceer voeding zorgvuldig",
+        "items": [
+          "Bied nieuwe voeding aan in texturen die passen bij de ontwikkelingsvaardigheden van je baby.",
+          "Meng gladde pindakaas verdund door puree of andere geschikte voeding; geef nooit hele pinda’s.",
+          "Introduceer veelvoorkomende allergenen één voor één en in kleine hoeveelheden, zodat reacties beter herkenbaar zijn.",
+          "Blijf allergene voedingsmiddelen na goede verdraagzaamheid regelmatig aanbieden als onderdeel van gevarieerde voeding.",
+          "Vraag vóór de introductie medisch advies als je baby ernstig eczeem, een bekende voedselallergie of een eerdere reactie heeft."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Allergenen introduceren kan spannend voelen. Krijgt je baby moeite met ademen, zwelling van tong of keel of andere tekenen van een ernstige allergische reactie, roep dan onmiddellijk medische spoedhulp in."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Hoe introduceer ik veelvoorkomende voedselallergenen veilig bij mijn baby?"
+  },
+  {
+    "id": "playtime-005",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "music", "language", "bonding"],
+    "title": "Jouw stem is de favoriete soundtrack van je baby",
+    "summary": "Liedjes, rijmpjes en speelse geluiden maken van dagelijkse momenten kansen voor verbondenheid en leren.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Waarom muziek en ritme belangrijk zijn",
+        "content": "Baby’s zijn van nature geïnteresseerd in stemmen, ritmes en herhaalde geluiden. Zingen en kinderrijmpjes ondersteunen gedeelde aandacht, vroege kennismaking met taal en sociaal contact. Naarmate kinderen groeien, gaan ze vertrouwde woorden soms verwachten, gebaren nadoen of op muziek bewegen."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Breng muziek in het dagelijks leven",
+        "items": [
+          "Zing eenvoudige liedjes tijdens het verschonen, aankleden of spelen.",
+          "Herhaal vertrouwde rijmpjes en voeg rustige handbewegingen toe.",
+          "Pauzeer tijdens favoriete liedjes om te zien of je kind reageert.",
+          "Houd het geluidsniveau aangenaam en vermijd harde muziek dicht bij de oren van je baby.",
+          "Volg de reacties van je baby en neem pauzes bij vermoeidheid of overprikkeling."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Je hoeft geen prachtige zangstem te hebben. Je vertrouwde stem en jullie gedeelde aandacht maken deze momenten bijzonder."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welke liedjes en muzikale spelletjes kan ik op deze leeftijd met mijn baby doen?"
+  }
+]

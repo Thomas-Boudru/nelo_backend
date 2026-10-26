@@ -1,0 +1,2267 @@
+[
+  {
+    "id": "night-sleep-001",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["sleep", "reassurance"],
+    "title": "Ogni bambino ha il proprio ritmo del sonno",
+    "summary": "I risvegli notturni sono comuni nei primi mesi. Il tuo bambino sta ancora sviluppando i propri ritmi del sonno.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché i bambini si svegliano di notte",
+        "content": "Nei primi mesi, i bambini si svegliano spesso per mangiare, per essere rassicurati o perché i loro cicli del sonno sono ancora in fase di sviluppo. Il numero di risvegli varia molto da un bambino all’altro e può cambiare di settimana in settimana."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Alcune abitudini delicate",
+        "items": [
+          "Mantieni calme le interazioni notturne, con luci soffuse e pochi stimoli.",
+          "Osserva i segnali di stanchezza del tuo bambino senza aspettarti orari rigidi.",
+          "Metti sempre il bambino a dormire sulla schiena, su una superficie piana e rigida, senza biancheria da letto libera."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Svegliarsi spesso non significa che tu stia sbagliando qualcosa. Il sonno matura nel tempo e il tuo bambino non deve seguire i ritmi di nessun altro."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Safe Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "Quali abitudini del sonno sono adatte all’età del mio bambino?"
+  },
+  {
+    "id": "parent-support-001",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["wellbeing", "reassurance"],
+    "title": "Non devi essere un genitore perfetto",
+    "summary": "I piccoli momenti di cura e vicinanza contano più che seguire ogni routine alla perfezione.",
+    "sections": [
+      {
+        "id": "pressure",
+        "type": "paragraph",
+        "title": "Lascia da parte la lista della giornata perfetta",
+        "content": "Alcune giornate scorrono senza intoppi, altre sono piene di interruzioni, disordine e necessità impreviste. Una giornata difficile non annulla tutte le attenzioni amorevoli che dedichi a tuo figlio. Essere genitori significa vivere tanti momenti ordinari, non seguire un programma impeccabile."
+      },
+      {
+        "id": "reset",
+        "type": "bulletList",
+        "title": "Prova a ripartire da una piccola cosa",
+        "items": [
+          "Scegli una cosa importante per oggi e lascia che il resto sia flessibile.",
+          "Accetta l’aiuto pratico quando ti viene offerto, anche per un piccolo compito.",
+          "Se ti senti sopraffatto, metti il bambino in un luogo sicuro e prenditi un breve momento per ritrovare la calma."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Essere attenti ai suoi bisogni non significa essere disponibili ogni secondo. Anche le tue esigenze contano e chiedere aiuto è un segno di forza."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso rendere più gestibile una giornata difficile da genitore?"
+  },
+  {
+    "id": "breastfeeding-001",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["feeding", "reassurance"],
+    "title": "Poppate frequenti possono essere normali",
+    "summary": "Alcuni bambini vogliono essere allattati spesso, soprattutto durante i cambiamenti legati alla crescita e allo sviluppo.",
+    "sections": [
+      {
+        "id": "pattern",
+        "type": "paragraph",
+        "title": "Perché i ritmi delle poppate cambiano",
+        "content": "I bambini allattati al seno non mangiano sempre a intervalli prevedibili. Possono concentrare diverse poppate in poco tempo, soprattutto la sera. La frequenza, da sola, non indica se un bambino riceve abbastanza latte."
+      },
+      {
+        "id": "observe",
+        "type": "bulletList",
+        "title": "Osserva il quadro generale",
+        "items": [
+          "Fai attenzione alla deglutizione durante la poppata e al comportamento del bambino dopo.",
+          "Controlla i pannolini bagnati e la crescita, secondo le indicazioni del professionista sanitario.",
+          "Chiedi aiuto a un’ostetrica, a una consulente per l’allattamento o a un medico se le poppate sono dolorose o temi che il bambino non assuma abbastanza latte."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Tu e il tuo bambino state imparando insieme. Se allattare è difficile, ricevere presto un sostegno può fare davvero la differenza."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Breastfeeding",
+        "url": "https://www.cdc.gov/breastfeeding/"
+      }
+    ],
+    "askNeloPrompt": "Quali segnali possono aiutarmi a capire se l’allattamento sta andando bene?"
+  },
+  {
+    "id": "motor-development-001",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 60,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["movement", "play"],
+    "title": "Anche brevi momenti a pancia in giù fanno la differenza",
+    "summary": "Brevi momenti di gioco sorvegliato a pancia in giù aiutano il bambino a esercitarsi a sollevare e girare la testa.",
+    "sections": [
+      {
+        "id": "why",
+        "type": "paragraph",
+        "title": "Rafforzarsi attraverso il gioco",
+        "content": "Quando il bambino è sveglio e vigile, stare a pancia in giù gli permette di usare i muscoli del collo, delle spalle e della parte superiore del corpo. Non deve sembrare un allenamento: per iniziare possono bastare pochi momenti piacevoli."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Rendi l’esperienza invitante",
+        "items": [
+          "Prova brevi sessioni su una superficie sicura e rigida, restando vicino a lui e sorvegliandolo.",
+          "Mettiti alla sua altezza e parlagli o sorridigli.",
+          "Se si agita, fermati e riprova più tardi."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Ogni bambino acquista sicurezza con tempi diversi. La posizione a pancia in giù è riservata al gioco da svegli e sotto sorveglianza; per dormire, metti sempre il bambino sulla schiena."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Tummy Time",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/Back-to-Sleep-Tummy-to-Play.aspx"
+      }
+    ],
+    "askNeloPrompt": "Quali attività delicate a pancia in giù posso proporre al mio bambino?"
+  },
+  {
+    "id": "communication-001",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["language", "bonding"],
+    "title": "La tua voce sta già insegnando al tuo bambino",
+    "summary": "Parlare, cantare e rispondere ai suoi piccoli suoni contribuisce allo sviluppo della comunicazione precoce.",
+    "sections": [
+      {
+        "id": "connection",
+        "type": "paragraph",
+        "title": "Una conversazione prima delle parole",
+        "content": "Molto prima di saper parlare, i bambini notano le voci, le espressioni, il ritmo e le pause. Quando rispondi a un versetto o a uno sguardo, mostri al tuo bambino che la comunicazione va in entrambe le direzioni."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Modi semplici per entrare in sintonia",
+        "items": [
+          "Descrivi ciò che fai mentre gli cambi il pannolino o durante una passeggiata.",
+          "Dopo aver parlato, fai una pausa per dargli il tempo di rispondere con un suono o un’espressione.",
+          "Canta una canzone conosciuta o ripeti un suono giocoso che gli piace."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non servono lezioni o giocattoli speciali. La tua voce familiare e la tua attenzione hanno già un grande valore."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Learn the Signs. Act Early.",
+        "url": "https://www.cdc.gov/act-early/"
+      }
+    ],
+    "askNeloPrompt": "Come posso incoraggiare la comunicazione con il mio bambino nelle routine quotidiane?"
+  },
+  {
+    "id": "solid-food-001",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 270,
+    "priority": 5,
+    "tags": ["feeding", "textures", "safety"],
+    "title": "Le nuove consistenze sono un’esperienza di apprendimento",
+    "summary": "Quando il bambino è pronto per i cibi solidi, esplorare consistenze diverse può richiedere tempo e pratica.",
+    "sections": [
+      {
+        "id": "exploring",
+        "type": "paragraph",
+        "title": "Molto più di un pasto",
+        "content": "Iniziare l’alimentazione complementare significa imparare oltre che mangiare. Prima di accettare un alimento, il bambino può toccarlo, spalmarlo, sputarlo o rifiutarlo. Intorno ai sei mesi, tra i segnali che indicano che è pronto ci sono un buon controllo della testa e la capacità di stare seduto con sostegno."
+      },
+      {
+        "id": "safe-start",
+        "type": "bulletList",
+        "title": "Mantieni i primi pasti sereni e sicuri",
+        "items": [
+          "Offri consistenze morbide e adatte all’età, con il bambino seduto diritto e sempre sorvegliato.",
+          "Introduci alimenti ricchi di ferro in una dieta varia, continuando a offrire latte materno o formula.",
+          "Evita gli alimenti a rischio di soffocamento e non lasciare mai il bambino solo mentre mangia."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un primo assaggio esitante non è un fallimento. Se hai dubbi su quando iniziare, sulle allergie o sulla deglutizione, chiedi al professionista sanitario che segue tuo figlio."
+      }
+    ],
+    "sources": [
+      {
+        "title": "WHO — Complementary Feeding",
+        "url": "https://www.who.int/health-topics/complementary-feeding"
+      }
+    ],
+    "askNeloPrompt": "Quali consistenze e alimenti sono adatti quando il mio bambino inizia a mangiare cibi solidi?"
+  },
+  {
+    "id": "daytime-nap-001",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "routine"],
+    "title": "I sonnellini non seguono sempre l’orologio",
+    "summary": "Il sonno diurno può variare da un giorno all’altro mentre il bambino cresce e le sue esigenze cambiano.",
+    "sections": [
+      {
+        "id": "variation",
+        "type": "paragraph",
+        "title": "Perché i sonnellini possono essere imprevedibili",
+        "content": "Un giorno il bambino può fare un sonnellino più lungo e quello successivo diversi sonnellini più brevi. I cambiamenti nell’attività, nello sviluppo e nel sonno notturno possono influire sul riposo diurno. Osservare l’andamento nell’arco di più giorni è spesso più utile che valutare un singolo sonnellino."
+      },
+      {
+        "id": "support",
+        "type": "bulletList",
+        "title": "Crea un ritmo delicato per il sonnellino",
+        "items": [
+          "Osserva i segnali di stanchezza, come strofinarsi gli occhi o distogliere lo sguardo dagli stimoli.",
+          "Prova una routine tranquilla e familiare prima del sonno.",
+          "Usa uno spazio sicuro per dormire: sulla schiena, su una superficie piana e rigida, senza oggetti liberi."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un sonnellino irregolare non rovina l’intera giornata. La costanza può aiutare, ma la flessibilità fa parte del prendersi cura di un bambino che cresce."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Baby Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "Come posso riconoscere i segnali che indicano che il mio bambino ha bisogno di un sonnellino?"
+  },
+  {
+    "id": "playtime-001",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["play", "learning"],
+    "title": "Il gioco è il modo in cui il tuo bambino esplora",
+    "summary": "I giochi semplici con persone familiari possono coinvolgerlo quanto i giocattoli costosi.",
+    "sections": [
+      {
+        "id": "discovery",
+        "type": "paragraph",
+        "title": "Le piccole scoperte contano",
+        "content": "Passare un oggetto da una mano all’altra, cercare un giocattolo o guardarti fare una smorfia aiuta il bambino a esercitare l’attenzione, il movimento e il legame sociale. Non serve programmare una giornata piena di attività."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Prova questi giochi semplici",
+        "items": [
+          "Offrigli un oggetto sicuro da afferrare, scuotere o esplorare.",
+          "Gioca a cucù e dagli il tempo di reagire.",
+          "Nomina gli oggetti che vedete e segui i suoi interessi."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Anche pochi minuti di attenzione condivisa possono essere preziosi. Lascia che sia la curiosità del bambino a dettare il ritmo e fermati quando sembra stanco."
+      }
+    ],
+    "sources": [
+      {
+        "title": "UNICEF — Early Childhood Development",
+        "url": "https://www.unicef.org/early-childhood-development"
+      }
+    ],
+    "askNeloPrompt": "Quali giochi semplici sono adatti all’attuale fase di sviluppo del mio bambino?"
+  },
+  {
+    "id": "teething-001",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["comfort", "teething"],
+    "title": "La dentizione può essere fastidiosa",
+    "summary": "I nuovi denti spuntano con tempi diversi e alcuni bambini hanno bisogno di un po’ più di conforto.",
+    "sections": [
+      {
+        "id": "what-to-expect",
+        "type": "paragraph",
+        "title": "Ogni sorriso si sviluppa in modo diverso",
+        "content": "Quando iniziano a spuntare i denti, alcuni bambini sbavano di più o vogliono mordere gli oggetti. Altri mostrano pochi segnali. I tempi variano, quindi la comparsa più precoce o tardiva del primo dente non è automaticamente motivo di preoccupazione."
+      },
+      {
+        "id": "comfort",
+        "type": "bulletList",
+        "title": "Soluzioni delicate per dare sollievo",
+        "items": [
+          "Offri un anello da dentizione pulito e fresco, ma non congelato, progettato per i bambini.",
+          "Massaggia delicatamente le gengive con un dito pulito, se al bambino piace.",
+          "Evita collane da dentizione e gel anestetici, a meno che non siano stati espressamente consigliati da un medico."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Febbre alta, diarrea importante o un bambino che appare molto malato non devono essere attribuiti automaticamente alla dentizione. Se compaiono questi sintomi, chiedi un parere medico."
+      }
+    ],
+    "sources": [
+      {
+        "title": "NHS — Teething",
+        "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/"
+      }
+    ],
+    "askNeloPrompt": "Quali sono i modi sicuri per dare sollievo al mio bambino durante la dentizione?"
+  },
+  {
+    "id": "learning-001",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 365,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation"],
+    "title": "Il tuo bambino impara osservandoti",
+    "summary": "I gesti quotidiani, dal salutare con la mano al mettere in ordine, possono diventare occasioni per imparare insieme.",
+    "sections": [
+      {
+        "id": "imitation",
+        "type": "paragraph",
+        "title": "Un modo efficace per imparare",
+        "content": "Crescendo, i bambini spesso imitano gesti, suoni e routine familiari. Fare finta di mescolare in una pentola o pulire un tavolo può essere un modo giocoso per scoprire come funziona il mondo."
+      },
+      {
+        "id": "everyday",
+        "type": "bulletList",
+        "title": "Rendi giocosi i momenti quotidiani",
+        "items": [
+          "Invita il bambino a imitare un gesto semplice, come battere le mani o salutare.",
+          "Dagli oggetti sicuri e adatti all’età per il gioco simbolico.",
+          "Descrivi ciò che stai facendo, poi fermati a osservare la sua risposta."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non tutti i bambini imitano le stesse cose alla stessa età. Segui gli interessi di tuo figlio e parla di eventuali dubbi sullo sviluppo con il professionista sanitario."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Developmental Milestones",
+        "url": "https://www.cdc.gov/act-early/milestones/index.html"
+      }
+    ],
+    "askNeloPrompt": "Quali attività quotidiane possono aiutare il mio bambino a imparare attraverso l’imitazione?"
+  },
+  {
+    "id": "communication-002",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "gestures", "language"],
+    "title": "I piccoli gesti dicono moltissimo",
+    "summary": "Prima che arrivino le parole, il tuo bambino può già comunicarti molto attraverso gesti, suoni ed espressioni.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "La comunicazione inizia prima delle parole",
+        "content": "Indicare, allungare le mani, salutare e guardare verso oggetti familiari sono tutti modi in cui i bambini imparano a comunicare. Questi gesti spesso si sviluppano insieme al linguaggio iniziale e aiutano tuo figlio a condividere interessi, bisogni e scoperte."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Incoraggia le piccole conversazioni",
+        "items": [
+          "Rispondi quando il bambino indica qualcosa o cerca di raggiungerlo.",
+          "Nomina oggetti e azioni durante le attività quotidiane.",
+          "Dopo aver parlato, fai una pausa per dargli il tempo di rispondere.",
+          "Valorizza i suoi tentativi di comunicare senza aspettarti parole perfette."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Comunicare significa molto più che parlare. Ogni sguardo, gesto e suono condiviso è un’occasione per entrare in sintonia."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso incoraggiare la comunicazione del mio bambino prima delle sue prime parole?"
+  },
+  {
+    "id": "solid-food-002",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["feeding", "food-exploration", "reassurance"],
+    "title": "Un solo assaggio non racconta tutta la storia",
+    "summary": "Il tuo bambino rifiuta un alimento nuovo? Potrebbe semplicemente aver bisogno di altre occasioni per esplorare sapori e consistenze sconosciuti.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Imparare ad apprezzare nuovi alimenti",
+        "content": "I bambini stanno scoprendo un mondo completamente nuovo di sapori, odori e consistenze. Alcuni alimenti vengono accettati subito, mentre altri richiedono più assaggi senza pressioni. Rifiutare oggi un alimento non significa necessariamente che tuo figlio non lo apprezzerà mai."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendi più semplice l’esplorazione",
+        "items": [
+          "Offri piccole quantità di alimenti nuovi insieme a cibi già familiari.",
+          "Lascia che il bambino esplori il cibo toccandolo e annusandolo.",
+          "Non forzarlo a mangiare e non trasformare i pasti in una lotta.",
+          "Prova a riproporre in un altro giorno gli alimenti rifiutati."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "I progressi non si misurano da quanto mangia a ogni pasto. Esplorare il cibo fa parte dell’apprendimento."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Cosa posso fare se il mio bambino rifiuta ripetutamente i nuovi alimenti?"
+  },
+  {
+    "id": "motor-development-002",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["motor-development", "movement", "milestones"],
+    "title": "Ogni piccolo movimento conta",
+    "summary": "Rotolare, allungarsi, gattonare e tirarsi su sono modi diversi in cui il tuo bambino esplora il movimento.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Il movimento si sviluppa attraverso l’esplorazione",
+        "content": "Man mano che acquistano forza e coordinazione, i bambini sperimentano nuovi modi di muovere il corpo. Alcuni gattonano su mani e ginocchia, altri si spostano diversamente e altri ancora non gattonano nel modo tradizionale. Lo sviluppo segue una progressione generale, ma i percorsi individuali possono variare."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Crea spazio per esplorare",
+        "items": [
+          "Proponi giochi a terra sotto sorveglianza, in uno spazio sicuro e aperto.",
+          "Metti giocattoli interessanti appena oltre la portata immediata.",
+          "Lascia che il bambino sperimenti il movimento in autonomia.",
+          "Evita i girelli con ruote, che possono causare infortuni."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non tutti i bambini si muovono esattamente nello stesso modo. Se temi che non abbia raggiunto una tappa dello sviluppo o che abbia perso un’abilità acquisita, parlane con il pediatra."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali tappe dello sviluppo motorio dovrei osservare all’età del mio bambino?"
+  },
+  {
+    "id": "parent-support-002",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "reassurance", "confidence"],
+    "title": "Il tuo bambino non è in gara",
+    "summary": "È facile confrontare le tappe dello sviluppo con quelle degli altri bambini, ma lo sviluppo non è una competizione.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché i confronti possono trarre in inganno",
+        "content": "Un bambino può iniziare a muoversi prima, mentre un altro sviluppa per primi nuovi suoni o abilità sociali. Ogni bambino ha punti di forza e percorsi di sviluppo individuali. Confrontare singoli traguardi raramente offre un quadro completo dei suoi progressi."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Concentrati sui progressi di tuo figlio",
+        "items": [
+          "Nota i piccoli cambiamenti che compie nel tempo.",
+          "Usa le tappe dello sviluppo adatte all’età come indicazioni utili.",
+          "Festeggia le scoperte senza affrettare il traguardo successivo.",
+          "Parla dei tuoi dubbi con un professionista sanitario invece di affidarti ai confronti."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Il percorso di tuo figlio è unico. Puoi apprezzarne i tempi individuali continuando a prestare attenzione alle tappe importanti dello sviluppo."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso capire se lo sviluppo del mio bambino procede regolarmente?"
+  },
+  {
+    "id": "night-sleep-002",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 240,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "development", "reassurance"],
+    "title": "Perché il sonno può cambiare all’improvviso",
+    "summary": "Un bambino che dormiva bene può iniziare a svegliarsi più spesso. Il sonno può cambiare nei periodi di rapido sviluppo.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Il sonno non segue sempre un percorso lineare",
+        "content": "Tra gli otto e i dodici mesi circa, i bambini sviluppano nuove capacità fisiche, sociali ed emotive. Alcuni attraversano cambiamenti del sonno, come risvegli più frequenti o difficoltà ad addormentarsi. Anche malattie, fastidi e cambiamenti della routine possono influire sul sonno."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Favorisci notti riposanti",
+        "items": [
+          "Mantieni una routine della buonanotte familiare e rilassante.",
+          "Rispondi con pazienza ai bisogni del bambino.",
+          "Offrigli durante il giorno occasioni per muoversi ed esplorare.",
+          "Mantieni un ambiente sicuro ogni volta che dorme."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Qualche notte difficile non annulla i progressi compiuti. I ritmi del sonno possono cambiare mentre il bambino cresce."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Perché il mio bambino ha iniziato a svegliarsi più spesso di notte?"
+  },
+  {
+    "id": "playtime-002",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["play", "social-development", "learning"],
+    "title": "Il cucù è molto più di un gioco",
+    "summary": "Un semplice gioco del cucù può aiutare il bambino a esplorare l’attesa, l’attenzione e la relazione.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Imparare attraverso la sorpresa",
+        "content": "Quando nascondi il viso e riappari, il bambino sperimenta il gioco della scomparsa e del ritorno. Con lo sviluppo della memoria e della comprensione, giochi come il cucù possono favorire l’anticipazione, l’interazione sociale e la crescente consapevolezza che persone e oggetti continuano a esistere anche quando non sono visibili."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendilo divertente",
+        "items": [
+          "Nascondi brevemente il viso dietro le mani.",
+          "Fai una pausa prima di riapparire per creare attesa.",
+          "Segui le reazioni del bambino e fermati se sembra a disagio.",
+          "Prova a nascondere il suo giocattolo preferito sotto un telo leggero, sorvegliandolo attentamente."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non servono giocattoli costosi per favorire l’apprendimento. La tua attenzione e pochi momenti di gioco possono significare moltissimo."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali giochi semplici possono favorire lo sviluppo del mio bambino?"
+  },
+  {
+    "id": "learning-002",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "repetition", "curiosity"],
+    "title": "Ancora, ancora... e ancora!",
+    "summary": "Il tuo bambino ripete la stessa azione all’infinito? La ripetizione è uno dei modi in cui i più piccoli imparano.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché la ripetizione è importante",
+        "content": "Far cadere un cucchiaio, aprire una scatola o premere più volte lo stesso pulsante può sembrare monotono agli adulti. Per i bambini, la ripetizione aiuta a esplorare il rapporto di causa ed effetto, esercitare la coordinazione e familiarizzare con l’ambiente."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Incoraggia la curiosità",
+        "items": [
+          "Lascia che ripeta le attività sicure.",
+          "Descrivi ciò che accade con parole semplici.",
+          "Offrigli oggetti quotidiani adatti alla sua età.",
+          "Introduci piccole variazioni quando sembra pronto."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Quello che a te sembra lo stesso gioco ripetuto per la decima volta può essere ancora una scoperta interessante per il tuo bambino."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Perché il mio bambino ama ripetere sempre le stesse attività?"
+  },
+  {
+    "id": "baby-care-001",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 300,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "independence", "daily-routines"],
+    "title": "Le piccole scelte rafforzano la fiducia in sé",
+    "summary": "Man mano che cresce, semplici occasioni per partecipare alle routine quotidiane possono incoraggiarne l’autonomia.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "L’autonomia comincia da piccoli passi",
+        "content": "Verso la fine del primo anno e con l’ingresso nella prima infanzia, i bambini desiderano sempre più partecipare alle attività quotidiane. Allungare la mano verso un cucchiaio, aiutare mentre li si veste o scegliere tra due oggetti adatti offre loro occasioni per esercitare la coordinazione e prendere decisioni semplici."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Invita tuo figlio a partecipare",
+        "items": [
+          "Proponi la scelta tra due giocattoli sicuri e adatti.",
+          "Lascia che tenga una salvietta durante le routine di cura.",
+          "Dagli il tempo di provare azioni semplici prima di intervenire.",
+          "Loda il suo impegno senza aspettarti risultati perfetti."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Imparare a fare le cose in autonomia richiede tempo. Un po’ di pazienza può trasformare le routine quotidiane in preziose occasioni di apprendimento."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso incoraggiare l’autonomia del mio bambino?"
+  },
+  {
+    "id": "health-and-comfort-001",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "comfort", "health"],
+    "title": "Dare sollievo durante la dentizione",
+    "summary": "Le gengive sensibili possono rendere fastidiosa la dentizione. Alcuni semplici accorgimenti possono aiutare a calmare il bambino.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Come può manifestarsi la dentizione",
+        "content": "Quando iniziano a spuntare i denti, alcuni bambini hanno gengive sensibili, sbavano di più o desiderano mordere. La dentizione può causare un lieve fastidio, ma una vera febbre, una diarrea importante o un bambino che appare gravemente malato non devono essere attribuiti automaticamente alla dentizione."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Modi delicati per aiutarlo",
+        "items": [
+          "Massaggia delicatamente le gengive con un dito pulito.",
+          "Offri un anello da dentizione pulito e fresco, ma non congelato.",
+          "Asciuga la saliva in eccesso per proteggere la pelle.",
+          "Evita collane da dentizione e gel anestetici contenenti lidocaina o benzocaina."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Ogni bambino vive la dentizione in modo diverso. Se ha la febbre, sintomi persistenti o appare insolitamente malato, contatta un professionista sanitario."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali sono i modi sicuri per alleviare il fastidio della dentizione?"
+  },
+  {
+    "id": "daytime-nap-002",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "naps", "development"],
+    "title": "Quando la routine dei sonnellini inizia a cambiare",
+    "summary": "Crescendo, le esigenze di sonno diurno del bambino evolvono. I cambiamenti nei sonnellini possono essere una parte normale dello sviluppo.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché i sonnellini cambiano",
+        "content": "I bambini più piccoli spesso hanno bisogno di diversi sonnellini durante il giorno. Man mano che maturano, molti passano gradualmente a sonnellini meno numerosi e più lunghi. I tempi variano e possono verificarsi interruzioni temporanee durante una malattia, un viaggio o cambiamenti dello sviluppo."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Segui i bisogni del tuo bambino",
+        "items": [
+          "Osserva i segnali di stanchezza insieme alla sua routine abituale.",
+          "Concedi un po’ di flessibilità quando cambiano gli orari dei sonnellini.",
+          "Mantieni l’ambiente del sonno sicuro e confortevole.",
+          "Non forzare un cambiamento dei sonnellini basandoti solo sull’età."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non esiste un unico programma di sonnellini adatto a tutti i bambini. La costanza può aiutare, ma la flessibilità fa parte dell’adattarsi alle esigenze di tuo figlio."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come capisco quando il mio bambino è pronto a cambiare il programma dei sonnellini?"
+  },
+  {
+    "id": "bottle-feeding-001",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hunger-cues", "responsive-feeding"],
+    "title": "Quando il tuo bambino dice: sono sazio",
+    "summary": "Finire ogni biberon non è l’obiettivo. Imparare a riconoscere i segnali di fame e sazietà può rendere la poppata più piacevole.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Lasciati guidare dal tuo bambino",
+        "content": "I bambini comunicano l’appetito attraverso movimenti, espressioni e comportamenti. Girarsi dall’altra parte, rallentare o rilassare le mani può indicare che ne ha avuto abbastanza. La quantità bevuta può variare tra una poppata e l’altra, e non è necessariamente un problema."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Prova l’alimentazione responsiva con il biberon",
+        "items": [
+          "Tieni il bambino vicino e osserva le sue reazioni durante tutta la poppata.",
+          "Mantieni il biberon abbastanza orizzontale e consenti pause naturali.",
+          "Fermati quando mostra con continuità segnali di sazietà.",
+          "Non incoraggiarlo a finire il biberon solo perché è rimasto del latte."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Una poppata riuscita non si misura da un biberon vuoto. Se ti preoccupano l’assunzione di latte, l’idratazione o l’aumento di peso, chiedi consiglio a un professionista sanitario."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso riconoscere i segnali di fame e sazietà durante la poppata con il biberon?"
+  },
+  {
+    "id": "growth-001",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "growth-charts", "reassurance"],
+    "title": "La crescita è un percorso, non un numero",
+    "summary": "Una singola misurazione racconta solo una parte della storia. Conta molto di più l’andamento della crescita nel tempo.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Capire le curve di crescita",
+        "content": "Le curve di crescita aiutano i professionisti sanitari a seguire nel tempo i cambiamenti di peso, lunghezza e circonferenza cranica. Ogni bambino cresce naturalmente a un ritmo diverso. Un percentile non è un voto né una classifica della salute. Contano l’andamento generale, le circostanze del bambino e l’adeguatezza della crescita nel tempo."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Osserva il quadro generale",
+        "items": [
+          "Registra le misurazioni con precisione e regolarità.",
+          "Osserva l’andamento della crescita invece dei singoli valori.",
+          "Parla dei cambiamenti inattesi con il pediatra.",
+          "Ricorda che i bambini prematuri possono aver bisogno di valutazioni della crescita basate sull’età corretta."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Trovarsi su un percentile più basso o più alto non indica automaticamente un problema. La crescita si interpreta meglio nel tempo insieme a un professionista sanitario."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come devo interpretare la curva di crescita e i percentili del mio bambino?"
+  },
+  {
+    "id": "communication-003",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 60,
+    "maxAgeDays": 300,
+    "priority": 5,
+    "tags": ["communication", "babbling", "language-development"],
+    "title": "Le prime conversazioni del tuo bambino",
+    "summary": "Quei piccoli versetti e balbettii sono più che suoni adorabili: sono i primi passi verso la comunicazione.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Imparare il ritmo della conversazione",
+        "content": "Molto prima delle prime parole, i bambini iniziano a sperimentare con i suoni. Quando rispondi a un versetto o a un balbettio, introduci il ritmo della conversazione: una persona comunica e l’altra risponde. Questi scambi favoriscono lo sviluppo sociale e linguistico precoce."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Inizia una piccola conversazione",
+        "items": [
+          "Ripeti alcuni dei suoni del bambino e attendi una risposta.",
+          "Sorridi e guardalo negli occhi quando sembra interessato.",
+          "Descrivi le attività quotidiane con un linguaggio semplice.",
+          "Lascia delle pause per dargli la possibilità di partecipare."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non servono lezioni speciali per incoraggiare la comunicazione. I normali momenti di attenzione e interazione offrono preziose occasioni per imparare."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali attività possono incoraggiare i primi suoni e la lallazione del mio bambino?"
+  },
+  {
+    "id": "baby-care-002",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "bath-time", "bonding"],
+    "title": "Il bagnetto è molto più che lavarsi",
+    "summary": "Un bagno caldo può diventare una piacevole occasione per stare insieme, giocare e scoprire nuove sensazioni.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Un momento di scoperta",
+        "content": "Il bagnetto fa conoscere al bambino sensazioni diverse, tra cui l’acqua calda, il tocco delicato e il movimento. Crescendo, spruzzare ed esplorare l’acqua può diventare una parte giocosa della routine. Alcuni bambini amano subito il bagno, mentre altri hanno bisogno di tempo per sentirsi a proprio agio."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendi il bagnetto piacevole e sicuro",
+        "items": [
+          "Prepara asciugamani e occorrente prima di mettere il bambino nell’acqua.",
+          "Controlla attentamente la temperatura dell’acqua prima del bagno.",
+          "Resta a portata di mano e sorveglialo senza interruzioni.",
+          "Non lasciarlo mai solo nella vasca, neppure per un istante o con un seggiolino da bagno."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Il bagnetto non deve essere elaborato né avvenire ogni giorno. Una routine breve e tranquilla può essere altrettanto significativa."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso rendere il bagnetto sicuro e piacevole per il mio bambino?"
+  },
+  {
+    "id": "solid-food-003",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "self-feeding", "independence"],
+    "title": "Un po’ di disordine può significare un grande apprendimento",
+    "summary": "Cibo sul vassoio, sulle mani e per terra? Esplorare il pasto con i sensi fa parte dell’imparare a mangiare.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Esplorare il cibo sviluppa le abilità",
+        "content": "Quando iniziano a mangiare cibi solidi, toccare, schiacciare e raccogliere il cibo aiuta i bambini a esplorare le consistenze ed esercitare la coordinazione. Le occasioni per mangiare da soli possono favorire la motricità fine e l’autonomia, anche se all’inizio arriva in bocca pochissimo cibo."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Incoraggia un’esplorazione sicura",
+        "items": [
+          "Offri cibi morbidi in forme e consistenze adatte alle capacità del bambino.",
+          "Lascialo toccare ed esplorare il cibo senza pressioni.",
+          "Tienilo seduto diritto e sorveglia ogni boccone.",
+          "Evita alimenti a rischio di soffocamento, come frutta secca intera, acini d’uva interi e pezzi duri di verdure crude."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un pasto disordinato non è un pasto fallito. Esplorazione, coordinazione e curiosità sono parti importanti dell’imparare a mangiare."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso incoraggiare in sicurezza il mio bambino a iniziare a mangiare da solo?"
+  },
+  {
+    "id": "parent-support-003",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "wellbeing", "self-care"],
+    "title": "Anche prenderti cura di te è importante",
+    "summary": "Prendersi cura di un bambino richiede energia. Anche il tuo riposo, il tuo benessere e il sostegno che ricevi meritano attenzione.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Anche i genitori hanno dei bisogni",
+        "content": "I primi mesi da genitore possono essere impegnativi sul piano fisico ed emotivo. Il sonno interrotto, le routine che cambiano e le nuove responsabilità possono lasciare poco tempo per te. Riposare, mangiare, stare con gli altri o chiedere aiuto contribuisce a preservare il tuo benessere."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Trova spazio per te",
+        "items": [
+          "Accetta l’aiuto pratico quando te lo offre una persona di fiducia.",
+          "Quando possibile, condividi le responsabilità con il partner o una persona di sostegno.",
+          "Concediti brevi pause durante il giorno, anche solo di pochi minuti.",
+          "Parla con un professionista sanitario se tristezza, ansia o senso di sopraffazione persistono."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Prenderti cura di te non è egoismo. Il tuo benessere conta indipendentemente da tutto ciò che fai per tuo figlio."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali sono modi realistici per prendermi cura di me mentre accudisco il mio bambino?"
+  },
+  {
+    "id": "motor-development-003",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "walking", "milestones"],
+    "title": "Il percorso verso i primi passi",
+    "summary": "Stare in piedi, spostarsi appoggiandosi e muovere i primi passi sono traguardi emozionanti, ma ogni bambino li raggiunge in tempi diversi.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Camminare richiede esercizio",
+        "content": "Prima di camminare da soli, molti bambini si esercitano a stare in piedi tenendosi ai mobili, spostare il peso e muoversi lateralmente lungo superfici stabili. Queste attività sviluppano equilibrio e coordinazione. I tempi del cammino autonomo variano e imparare comporta in genere molti tentativi ed errori."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Favorisci un movimento sicuro",
+        "items": [
+          "Metti a disposizione mobili stabili e uno spazio sicuro da esplorare.",
+          "Lascialo giocare a piedi nudi su superfici interne sicure.",
+          "Incoraggia il movimento senza tirarlo in posizioni che non riesce a gestire.",
+          "Evita i girelli con ruote per il rischio di infortuni."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Esiste un ampio intervallo di età normale per i primi passi. Se tuo figlio non cammina autonomamente entro i 18 mesi o perde un’abilità che aveva acquisito, chiedi una valutazione dello sviluppo."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso sostenere il mio bambino mentre impara a stare in piedi e camminare?"
+  },
+  {
+    "id": "health-and-comfort-002",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "common-cold", "comfort"],
+    "title": "Quando il tuo bambino prende il raffreddore",
+    "summary": "Naso che cola e congestione sono comuni nei bambini piccoli. Cure delicate possono aiutarlo a stare meglio.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Capire il comune raffreddore",
+        "content": "Bambini e lattanti incontrano molti virus respiratori mentre il loro sistema immunitario si sviluppa. Un comune raffreddore può causare congestione nasale, starnuti e tosse. La maggior parte dei raffreddori non complicati migliora con il tempo, ma i bambini molto piccoli e quelli con difficoltà respiratorie o di alimentazione richiedono particolare attenzione."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Modi semplici per dare sollievo",
+        "items": [
+          "Usa gocce o spray di soluzione fisiologica sterile per sciogliere il muco nasale.",
+          "Offri spesso le consuete poppate e osserva eventuali segni di disidratazione.",
+          "Mantieni piana la superficie su cui dorme e segui le raccomandazioni per il sonno sicuro.",
+          "Evita medicinali da banco contro tosse e raffreddore, salvo specifica indicazione di un professionista sanitario."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Chiedi urgentemente assistenza medica in caso di febbre pari o superiore a 38°C in un bambino sotto i 3 mesi, difficoltà respiratorie, alimentazione insufficiente, disidratazione o sonnolenza insolita."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso aiutare il mio bambino a stare meglio quando ha il raffreddore?"
+  },
+  {
+    "id": "learning-003",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "cause-and-effect", "exploration"],
+    "title": "Piccoli esperimenti, grandi scoperte",
+    "summary": "Lasciare cadere giocattoli, premere pulsanti e aprire contenitori sono i primi esperimenti del bambino con il rapporto di causa ed effetto.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Scoprire come funziona il mondo",
+        "content": "Crescendo, i bambini iniziano a notare i legami tra le proprie azioni e ciò che accade dopo. Scuotere un sonaglio produce un suono, lasciare cadere un giocattolo lo fa cadere e spingere un oggetto può farlo muovere. Queste semplici esperienze sviluppano curiosità, attenzione e capacità di risolvere problemi."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Incoraggia le scoperte quotidiane",
+        "items": [
+          "Offri oggetti sicuri che producano suoni diversi quando vengono mossi.",
+          "Lascia che esplori bicchieri impilabili o contenitori adatti all’età.",
+          "Descrivi ciò che accade quando compie un’azione.",
+          "Dagli il tempo di sperimentare prima di mostrargli come funziona qualcosa."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Per imparare non servono giocattoli complicati. Gli oggetti quotidiani e le interazioni semplici offrono molte occasioni di scoperta."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali attività semplici possono aiutare il mio bambino a capire il rapporto di causa ed effetto?"
+  },
+  {
+    "id": "night-sleep-003",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 90,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "bedtime-routine", "reassurance"],
+    "title": "Il conforto di una buonanotte familiare",
+    "summary": "Alcuni passaggi prevedibili prima di dormire possono aiutare il bambino a capire che si avvicina l’ora della nanna.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché le routine possono aiutare",
+        "content": "I bambini imparano gradualmente a riconoscere schemi familiari. Ripetere una sequenza tranquilla prima di dormire, come mettere il pigiama, abbassare le luci e scambiarsi una coccola, può creare segnali prevedibili dell’arrivo del sonno. Una routine non garantisce un sonno senza interruzioni, ma può facilitare l’addormentamento."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Crea una routine semplice",
+        "items": [
+          "Scegli due o tre attività rilassanti adatte alla tua famiglia.",
+          "Mantieni la sequenza abbastanza costante senza seguire rigidamente l’orologio.",
+          "Riduci le luci intense e i giochi stimolanti prima della nanna.",
+          "Metti sempre il bambino in un ambiente di sonno sicuro e adatto alla sua età."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "La routine della buonanotte non deve essere perfetta o elaborata. La familiarità e un’atmosfera calma contano più di un orario esatto."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso creare una routine della buonanotte rilassante e adatta all’età del mio bambino?"
+  },
+  {
+    "id": "breastfeeding-002",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["breastfeeding", "cluster-feeding", "reassurance"],
+    "title": "Perché il tuo bambino vuole poppare di nuovo",
+    "summary": "Alcuni bambini vogliono fare diverse poppate ravvicinate, soprattutto nelle prime settimane. Questo comportamento viene spesso chiamato poppate a grappolo.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Capire le poppate a grappolo",
+        "content": "In alcuni periodi, soprattutto nei primi mesi, i bambini allattati al seno possono voler poppare ripetutamente nell’arco di poche ore. Questo schema è noto come poppate a grappolo. Può verificarsi la sera o quando cambiano le esigenze alimentari. Poppate frequenti, da sole, non significano necessariamente che la produzione di latte sia insufficiente."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendi più semplici le poppate frequenti",
+        "items": [
+          "Rispondi ai segnali di fame del bambino invece di affidarti solo all’orologio.",
+          "Tieni vicino a te acqua, spuntini e un posto comodo.",
+          "Chiedi a una persona di fiducia di aiutarti con gli altri compiti nei periodi di poppate intense.",
+          "Controlla i pannolini bagnati e l’aumento di peso e, se sei preoccupato, chiedi sostegno per l’allattamento."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Le poppate a grappolo possono essere stancanti, ma spesso sono temporanee. Se sono dolorose, il bambino sembra disidratato o l’aumento di peso è insufficiente, contatta un professionista sanitario."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso capire se le frequenti poppate al seno del mio bambino sono normali?"
+  },
+  {
+    "id": "bottle-feeding-002",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "paced-feeding", "comfort"],
+    "title": "La poppata con il biberon non è una gara",
+    "summary": "Rallentare il ritmo può aiutare il bambino a mangiare comodamente e a comunicare quando ha bisogno di una pausa.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Lascia che sia il bambino a stabilire il ritmo",
+        "content": "Dare il biberon non significa soltanto somministrare una certa quantità di latte. I bambini devono poter succhiare, deglutire, respirare e fare pause comodamente. Un flusso rapido può rendere difficile la poppata. Un’alimentazione responsiva e a ritmo controllato consente di notare quando il bambino vuole una pausa o è sazio."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Prova un ritmo più delicato",
+        "items": [
+          "Tieni il bambino ben sostenuto in posizione semieretta.",
+          "Mantieni il biberon abbastanza orizzontale per moderare il flusso del latte.",
+          "Consenti pause naturali e osserva eventuali segnali di disagio.",
+          "Non sostenere mai il biberon con oggetti e non lasciare il bambino incustodito mentre mangia."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Ogni bambino sviluppa il proprio ritmo. Se durante le poppate tossisce, rischia di soffocare, mostra disagio o aumenta poco di peso con regolarità, chiedi un parere professionale."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso praticare l’alimentazione a ritmo controllato con il biberon?"
+  },
+  {
+    "id": "growth-002",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["growth", "feeding", "development"],
+    "title": "La crescita non avviene sempre alla stessa velocità",
+    "summary": "L’appetito, il sonno e il comportamento del bambino possono cambiare mentre cresce. Lo sviluppo raramente segue un calendario perfettamente prevedibile.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "La crescita avviene nel tempo",
+        "content": "Nel primo anno i bambini crescono rapidamente, ma non esattamente alla stessa velocità ogni giorno. Potresti notare periodi in cui il bambino sembra più affamato o ha bisogno di maggiore conforto. Questi cambiamenti sono talvolta descritti come scatti di crescita, anche se non esiste un calendario universale valido per tutti."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rispondi alle esigenze che cambiano",
+        "items": [
+          "Presta attenzione ai segnali di fame e sazietà.",
+          "Continua a seguire i controlli della crescita raccomandati.",
+          "Aspettati qualche variazione nei ritmi del sonno e delle poppate.",
+          "Contatta un professionista sanitario se persistono dubbi sull’alimentazione, l’idratazione o la crescita."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non devi individuare ogni scatto di crescita. Seguire i segnali del bambino e monitorarne lo sviluppo complessivo è di solito più utile."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "In che modo gli scatti di crescita influenzano l’alimentazione e il sonno del mio bambino?"
+  },
+  {
+    "id": "daytime-nap-003",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 240,
+    "priority": 5,
+    "tags": ["sleep", "short-naps", "reassurance"],
+    "title": "Perché alcuni sonnellini sono così brevi",
+    "summary": "Un sonnellino breve non significa automaticamente che ci sia un problema. Nei primi mesi i ritmi del sonno sono spesso variabili e imprevedibili.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Capire i sonnellini brevi",
+        "content": "Nei primi mesi, il sonno diurno può essere irregolare. Alcuni sonnellini durano poco, mentre altri sono molto più lunghi. I ritmi del sonno sono ancora in fase di sviluppo e le esigenze individuali variano. Un singolo sonnellino breve non è necessariamente segno di sonno insufficiente."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Favorisci il riposo diurno",
+        "items": [
+          "Osserva segnali di stanchezza come minore partecipazione o irritabilità.",
+          "Offri un ambiente tranquillo quando il bambino sembra pronto a dormire.",
+          "Segui le indicazioni per il sonno sicuro a ogni sonnellino, compresa la posizione sulla schiena.",
+          "Considera il sonno totale e il benessere generale invece di concentrarti su un solo sonnellino."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non tutti i sonnellini devono essere lunghi. Se il bambino sembra costantemente esausto o il suo sonno ti preoccupa, parlane con un professionista sanitario."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "I sonnellini brevi sono normali per l’età del mio bambino?"
+  },
+  {
+    "id": "playtime-003",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["playtime", "sensory-development", "exploration"],
+    "title": "Il mondo è un parco giochi per i sensi",
+    "summary": "Consistenze, suoni e movimenti diversi possono trasformare i momenti quotidiani in scoperte affascinanti.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Imparare attraverso i sensi",
+        "content": "I bambini esplorano l’ambiente con la vista, l’udito, il tatto e il movimento. Toccare un tessuto morbido, sentire un sonaglio delicato o guardare un oggetto che si muove li aiuta a scoprire le differenze e a familiarizzare con ciò che li circonda. Il gioco sensoriale non deve essere complicato o costoso."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Prova semplici attività sensoriali",
+        "items": [
+          "Offri giocattoli adatti all’età con consistenze diverse e sicure.",
+          "Lascia che esplori un tessuto morbido sotto la tua sorveglianza.",
+          "Introduci suoni delicati con un sonaglio o con la tua voce.",
+          "Segui le sue reazioni e fermati se sembra sovrastimolato."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Il tuo bambino non ha bisogno di essere intrattenuto continuamente. Possono bastare pochi momenti di esplorazione curiosa."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali attività sensoriali sicure posso provare con il mio bambino?"
+  },
+  {
+    "id": "teething-002",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "oral-health", "baby-care"],
+    "title": "Il primo dentino merita un po’ di cura",
+    "summary": "L’igiene orale inizia prima di quanto molti genitori pensino. Il primo dentino è il momento perfetto per avviare una routine delicata.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Buone abitudini fin dall’inizio",
+        "content": "I denti da latte svolgono ruoli importanti nell’alimentazione, nello sviluppo del linguaggio e nel mantenere lo spazio per i denti permanenti. La cura deve iniziare alla comparsa del primo dente. Una pulizia precoce e delicata aiuta a creare buone abitudini e a proteggere i denti dalla carie."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Inizia una semplice routine dentale",
+        "items": [
+          "Spazzola i denti due volte al giorno con uno spazzolino piccolo e morbido.",
+          "Usa una piccolissima quantità di dentifricio al fluoro adatto all’età e conforme alle indicazioni odontoiatriche locali.",
+          "Non mettere a letto il bambino con un biberon contenente latte o bevande zuccherate.",
+          "Prenota la prima visita dentistica entro il primo compleanno o entro sei mesi dalla comparsa del primo dente."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Una routine delicata conta più di una tecnica perfetta. Il dentista può aiutarti a scegliere il dentifricio e la quantità di fluoro adatti."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come devo pulire i primi dentini del mio bambino?"
+  },
+  {
+    "id": "parent-support-004",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "shared-responsibilities", "wellbeing"],
+    "title": "Crescere un figlio non è mai stato un compito da svolgere da soli",
+    "summary": "Condividere le responsabilità e chiedere sostegno può rendere più gestibile la vita quotidiana da genitori.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Il sostegno fa la differenza",
+        "content": "Prendersi cura di un bambino comporta molti compiti visibili e invisibili, dalle poppate e i cambi di pannolino alla pianificazione delle visite e all’anticipazione dei bisogni. Quando le responsabilità ricadono soprattutto su una persona, la stanchezza può accumularsi. Condividere i compiti pratici e comunicare apertamente aiuta a trovare un equilibrio più sostenibile."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendi più semplice il lavoro di squadra",
+        "items": [
+          "Parlate apertamente dei compiti che risultano più impegnativi.",
+          "Dividete le responsabilità in modo adatto alla situazione familiare.",
+          "Considerate anche la pianificazione e il carico mentale, non solo i compiti fisici.",
+          "Accettate l’aiuto di parenti o amici fidati quando è disponibile."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Avere bisogno di sostegno non è un segno di debolezza. Essere genitori è impegnativo e tutti meritano occasioni per riposarsi e recuperare energie."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come possiamo condividere più equamente le responsabilità genitoriali?"
+  },
+  {
+    "id": "communication-004",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "reading", "language-development"],
+    "title": "Non è mai troppo presto per una storia",
+    "summary": "Leggere insieme può favorire lo sviluppo del linguaggio e il legame, anche prima che il bambino comprenda le parole.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché leggere è importante",
+        "content": "Quando leggi ad alta voce, il bambino ascolta il ritmo e i suoni del linguaggio mentre gode della tua attenzione. Nel tempo, i libri condivisi possono introdurre nuove parole, incoraggiare l’interazione e diventare una parte familiare delle routine quotidiane. I più piccoli possono concentrarsi più sulla tua voce e sulle espressioni del viso che sulla storia."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Fai entrare i libri nella giornata",
+        "items": [
+          "Scegli libri resistenti con immagini chiare e parole semplici.",
+          "Indica gli oggetti e descrivi ciò che vedi.",
+          "Lascia che tocchi o giri le pagine quando il suo sviluppo lo consente.",
+          "Segui il suo interesse senza insistere per finire ogni libro."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non serve leggere a lungo. Anche pochi minuti di attenzione condivisa possono essere significativi."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali libri e attività di lettura sono adatti all’età del mio bambino?"
+  },
+  {
+    "id": "solid-food-004",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "iron", "nutrition"],
+    "title": "Un piccolo nutriente con un ruolo importante",
+    "summary": "Il ferro diventa particolarmente importante quando iniziano i cibi solidi. Offrire alimenti ricchi di ferro favorisce uno sviluppo sano.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché il ferro è importante",
+        "content": "Il ferro contribuisce alla salute delle cellule del sangue e allo sviluppo cerebrale. I bambini nascono con riserve di ferro che diminuiscono gradualmente durante l’infanzia. Quando si introduce l’alimentazione complementare, diventa importante offrire alimenti adatti ricchi di ferro insieme al latte materno o alla formula."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Scopri gli alimenti ricchi di ferro",
+        "items": [
+          "Offri carne, pollame, pesce, fagioli o lenticchie preparati in modo adatto all’età.",
+          "Valuta cereali per l’infanzia arricchiti di ferro quando appropriati.",
+          "Abbina le fonti vegetali di ferro ad alimenti ricchi di vitamina C per favorirne l’assorbimento.",
+          "Chiedi a un professionista sanitario se il bambino necessita di un’integrazione di ferro, soprattutto se nato prematuro."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non devi calcolare ogni milligrammo a ogni pasto. Offrire nel tempo una varietà di alimenti adatti aiuta a costruire una dieta equilibrata."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali alimenti ricchi di ferro sono adatti all’età del mio bambino?"
+  },
+  {
+    "id": "motor-development-004",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "fine-motor-skills", "coordination"],
+    "title": "Piccole dita, abilità che crescono",
+    "summary": "Afferrare giocattoli, passare oggetti da una mano all’altra ed esplorare piccoli movimenti aiuta il bambino a sviluppare la coordinazione.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Scoprire la motricità fine",
+        "content": "Lo sviluppo della motricità fine comprende movimenti sempre più precisi di mani e dita. I bambini imparano gradualmente a raggiungere e afferrare gli oggetti, passarli da una mano all’altra e infine raccogliere piccoli elementi usando pollice e dita. Queste capacità favoriscono il gioco, il mangiare da soli e l’autonomia quotidiana."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Incoraggia le manine",
+        "items": [
+          "Offri giocattoli leggeri, facili da afferrare e adatti all’età.",
+          "Lascia che passi oggetti sicuri da una mano all’altra.",
+          "Introduci bicchieri impilabili e blocchi grandi quando la coordinazione migliora.",
+          "Tieni fuori portata piccoli oggetti e parti staccabili dei giocattoli per il rischio di soffocamento."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "La coordinazione delle mani si sviluppa gradualmente con l’esplorazione quotidiana. Ogni bambino progredisce con i propri tempi, ma se noti la perdita di abilità già acquisite o hai dubbi sullo sviluppo, parlane con il pediatra."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali attività possono aiutare il mio bambino a sviluppare la motricità fine?"
+  },
+  {
+    "id": "parent-support-005",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["separation", "attachment", "reassurance"],
+    "title": "Quando salutarsi fa piangere",
+    "summary": "Il tuo bambino può agitarsi improvvisamente quando esci dalla stanza. L’ansia da separazione è una fase comune dello sviluppo precoce.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché la separazione può essere difficile",
+        "content": "Man mano che diventano più consapevoli delle persone familiari e dell’ambiente, i bambini possono reagire intensamente quando un genitore o chi si prende cura di loro si allontana. L’ansia da separazione compare spesso nella seconda metà del primo anno, anche se tempi e intensità variano. Il bambino sta imparando a conoscere le relazioni, la distanza e il rassicurante momento del ricongiungimento."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendi più dolci i saluti",
+        "items": [
+          "Crea un breve rituale di saluto prevedibile.",
+          "Spiega con calma che stai andando via e che tornerai.",
+          "Fai pratica con brevi separazioni affidandolo a una persona conosciuta e fidata.",
+          "Non sparire senza salutarlo, perché può rendere le partenze meno prevedibili."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Le lacrime al momento del saluto non significano che stai danneggiando il vostro legame. Cure costanti e attente aiutano tuo figlio a costruire fiducia nel tempo."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso aiutare il mio bambino ad affrontare l’ansia da separazione?"
+  },
+  {
+    "id": "bottle-feeding-003",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["formula", "bottle-feeding", "food-safety"],
+    "title": "Un biberon sicuro comincia dalla preparazione",
+    "summary": "Alcuni passaggi accurati nella preparazione della formula per lattanti aiutano a proteggere il bambino dai batteri nocivi.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché la preparazione è importante",
+        "content": "La formula in polvere per lattanti non è sterile. Occasionalmente possono essere presenti batteri nocivi nella polvere o introdotti durante la preparazione. Una manipolazione sicura, misure precise e una conservazione adeguata riducono il rischio di infezione. I bambini sotto i due mesi, quelli prematuri e quelli con difese immunitarie indebolite richiedono particolare attenzione."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Adotta abitudini di preparazione sicure",
+        "items": [
+          "Lavati le mani e pulisci il materiale prima di preparare il biberon.",
+          "Segui le istruzioni del produttore e le indicazioni sanitarie locali applicabili sulla temperatura dell’acqua e sulla preparazione.",
+          "Misura con precisione acqua e polvere usando il misurino fornito.",
+          "Butta la formula rimasta nel biberon dopo la poppata e rispetta i tempi di conservazione raccomandati."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "La preparazione sicura diventa presto una routine familiare. Se il bambino presenta un rischio maggiore di infezione, chiedi a un professionista sanitario quali siano le opzioni e il metodo di preparazione più sicuri."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso preparare e conservare in sicurezza la formula per lattanti?"
+  },
+  {
+    "id": "learning-004",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["emotions", "learning", "social-development"],
+    "title": "Grandi emozioni in una piccola persona",
+    "summary": "Frustrazione, entusiasmo e lacrime fanno parte dell’imparare a comprendere le emozioni. La tua presenza calma può aiutare.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Le competenze emotive richiedono tempo",
+        "content": "Quando diventano più grandi, i bambini sviluppano preferenze più forti e un crescente desiderio di esplorare in autonomia. Tuttavia, la capacità di gestire la frustrazione è ancora in fase di sviluppo. Piangere o protestare quando qualcosa non va come previsto è spesso un modo per esprimere sentimenti che non sanno ancora spiegare a parole."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Aiuta tuo figlio a orientarsi tra le emozioni",
+        "items": [
+          "Mantieni la calma e consolalo quando si sente sopraffatto.",
+          "Usa parole semplici per descrivere le emozioni, per esempio: «Sembri frustrato».",
+          "Mantieni limiti gentili e coerenti.",
+          "Quando è opportuno, proponi scelte semplici per dargli un po’ di controllo."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non ci si aspetta che tuo figlio gestisca ogni emozione da solo. La regolazione emotiva si impara gradualmente attraverso relazioni di sostegno."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso reagire quando il mio bambino si sente frustrato o turbato?"
+  },
+  {
+    "id": "baby-care-003",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["skin-care", "baby-care", "comfort"],
+    "title": "Cure delicate per una pelle delicata",
+    "summary": "La pelle del tuo bambino è ancora in fase di sviluppo. Spesso bastano cure semplici e delicate.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Capire la pelle sensibile del bambino",
+        "content": "La pelle dei bambini può essere più sensibile alle irritazioni causate da umidità, sfregamento, profumi e detergenti aggressivi. Secchezza temporanea o lieve irritazione sono comuni. Mantenerla pulita, evitare prodotti non necessari e proteggere le zone esposte all’umidità contribuisce al suo comfort."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Mantieni semplice la cura della pelle",
+        "items": [
+          "Usa acqua tiepida e, quando serve, detergenti delicati e senza profumo.",
+          "Asciuga la pelle tamponando delicatamente, soprattutto nelle pieghe.",
+          "Cambia subito i pannolini bagnati o sporchi e usa una crema barriera adatta quando necessario.",
+          "Chiedi a un professionista sanitario in caso di eruzioni persistenti, lesioni cutanee o segni di infezione."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Più prodotti non significano necessariamente cure migliori. Una routine semplice è spesso la scelta più delicata per una pelle sana."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Qual è una routine semplice e sicura per la pelle del mio bambino?"
+  },
+  {
+    "id": "communication-005",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["language", "first-words", "communication"],
+    "title": "La magia della prima parola",
+    "summary": "Le prime parole con un significato possono arrivare gradualmente, sostenute da mesi di ascolto, gesti e interazioni.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Le parole nascono dalle interazioni quotidiane",
+        "content": "Prima di pronunciare parole riconoscibili, i bambini trascorrono mesi ad ascoltare il linguaggio, sperimentare suoni e comunicare con i gesti. Le prime parole compaiono spesso verso la fine del primo anno, anche se lo sviluppo varia. Anche comprendere parole e rispondere a un linguaggio familiare sono parti importanti della comunicazione."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Incoraggia il linguaggio in modo naturale",
+        "items": [
+          "Nomina gli oggetti familiari durante le attività quotidiane.",
+          "Rispondi con calore a suoni, gesti e tentativi di pronunciare parole.",
+          "Leggi libri semplici e parla delle immagini.",
+          "Non fare pressione perché ripeta parole a comando."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "I bambini sviluppano il linguaggio a ritmi diversi. Se tuo figlio non raggiunge le tappe comunicative attese, ha difficoltà uditive o perde abilità, parlane con un professionista sanitario."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso incoraggiare le prime parole e lo sviluppo linguistico del mio bambino?"
+  },
+  {
+    "id": "breastfeeding-003",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["breastfeeding", "milk-intake", "reassurance"],
+    "title": "Il tuo bambino riceve abbastanza latte?",
+    "summary": "L’allattamento non ha una scala graduata. Per fortuna, la crescita, i pannolini e il comportamento offrono indizi utili.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Guarda oltre l’orologio",
+        "content": "I bambini allattati al seno non poppano tutti per lo stesso tempo o agli stessi intervalli. La sola durata non indica quanto latte ricevano. L’aumento di peso, i pannolini bagnati e i segnali di un trasferimento efficace del latte sono indicatori più utili. Anche i ritmi cambiano con la crescita."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Segnali da osservare",
+        "items": [
+          "Segui la crescita durante le visite sanitarie raccomandate.",
+          "Osserva se il numero di pannolini bagnati è adeguato all’età.",
+          "Cerca una suzione e una deglutizione ritmiche durante le poppate.",
+          "Chiedi sostegno per l’allattamento o assistenza medica se le poppate sono dolorose, il bambino sembra disidratato o l’aumento di peso preoccupa."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non devi misurare ogni poppata per allattare con successo. Se hai dubbi sulla quantità di latte, un professionista sanitario può valutare l’alimentazione e la crescita."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso capire se il mio bambino allattato al seno riceve abbastanza latte?"
+  },
+  {
+    "id": "playtime-004",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "free-play", "exploration"],
+    "title": "A volte il gioco migliore non ha istruzioni",
+    "summary": "Lasciare che il bambino esplori oggetti sicuri con i propri tempi può incoraggiare curiosità, creatività e autonomia.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Il valore del gioco libero",
+        "content": "Bambini e lattanti imparano esplorando, sperimentando e facendo scoperte. Nel gioco libero, tuo figlio sceglie ciò che lo interessa e come interagire. Questo favorisce attenzione, risoluzione dei problemi e autonomia emergente. La tua presenza e il tuo incoraggiamento restano preziosi anche senza dirigere ogni attività."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Crea spazio per le scoperte",
+        "items": [
+          "Offri pochi giocattoli sicuri e adatti all’età invece di troppi insieme.",
+          "Lascia che scelga quale oggetto esplorare.",
+          "Osserva prima di intervenire per mostrargli come funziona qualcosa.",
+          "Resta vicino e sorveglialo, lasciandogli spazio per sperimentare."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non devi organizzare ogni minuto di gioco. A volte basta offrire un ambiente sicuro ed essere presente."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso incoraggiare il gioco autonomo mantenendo il mio bambino al sicuro?"
+  },
+  {
+    "id": "health-and-comfort-003",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["safety", "baby-proofing", "motor-development"],
+    "title": "Il tuo piccolo esploratore ha bisogno di un mondo sicuro",
+    "summary": "Quando il bambino diventa più mobile, gli oggetti quotidiani possono apparire affascinanti e talvolta pericolosi.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Una nuova prospettiva sulla casa",
+        "content": "Rotolare, gattonare, tirarsi in piedi e camminare permettono ai bambini di raggiungere luoghi prima inaccessibili. Cavi elettrici, mobili, scale, prodotti per la pulizia e piccoli oggetti possono diventare pericoli. Preparare la casa prima di ogni nuova fase di mobilità aiuta a ridurre gli incidenti prevenibili."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Guarda il mondo dalla sua altezza",
+        "items": [
+          "Fissa mobili pesanti e televisori per impedirne il ribaltamento.",
+          "Tieni medicinali, detergenti e piccoli oggetti a rischio di soffocamento sotto chiave o fuori portata.",
+          "Usa cancelletti di sicurezza adatti vicino alle scale.",
+          "Tieni bevande calde, oggetti taglienti e cavi elettrici fuori portata.",
+          "Ricorda che la sorveglianza resta essenziale anche in una stanza resa sicura."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non devi rendere perfetta ogni stanza in un giorno. Inizia dai pericoli principali e rivaluta la casa mentre cambiano le capacità di tuo figlio."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali misure di sicurezza devo adottare in casa per l’età attuale di mio figlio?"
+  },
+  {
+    "id": "learning-005",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation", "social-development"],
+    "title": "Il tuo bambino osserva e impara",
+    "summary": "Dal salutare con la mano al fingere di parlare al telefono, l’imitazione aiuta i più piccoli a scoprire come funziona il mondo.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Imparare osservando gli altri",
+        "content": "Bambini e lattanti osservano e copiano sempre più le azioni che vedono. L’imitazione li aiuta a esercitare nuovi movimenti, partecipare alle routine sociali e scoprire come si usano gli oggetti quotidiani. Pettinarsi, salutare o mescolare con un cucchiaio possono diventare occasioni per imparare."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Trasforma le routine in occasioni di apprendimento",
+        "items": [
+          "Saluta con la mano e dagli il tempo di rispondere.",
+          "Mostra azioni semplici con giocattoli o oggetti domestici sicuri.",
+          "Invitalo a imitare i gesti durante le canzoni.",
+          "Festeggia i tentativi senza aspettarti copie esatte."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Tuo figlio impara ogni giorno dalle normali interazioni. Non servono lezioni speciali per creare occasioni significative."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali attività quotidiane possono aiutare il mio bambino a imparare attraverso l’imitazione?"
+  },
+  {
+    "id": "parent-support-006",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "emotional-wellbeing", "reassurance"],
+    "title": "Alcuni giorni sono semplicemente più difficili",
+    "summary": "Essere genitori può essere gioioso ed estenuante allo stesso tempo. Una giornata difficile non definisce che tipo di genitore sei.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Dare spazio alle emozioni difficili",
+        "content": "Prendersi cura di un bambino piccolo può portare momenti di felicità insieme a frustrazione, stanchezza e incertezza. La mancanza di sonno e i cambiamenti di routine possono far sembrare opprimenti le difficoltà quotidiane. Queste emozioni non significano automaticamente che qualcosa non vada, ma un disagio persistente merita attenzione e sostegno."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Sii gentile con te stesso",
+        "items": [
+          "Concentrati sui bisogni essenziali quando hai poche energie.",
+          "Chiedi sostegno pratico o emotivo a una persona fidata.",
+          "Prenditi una breve pausa quando tuo figlio è accudito in sicurezza.",
+          "Parla con un professionista sanitario se tristezza, ansia o senso di sopraffazione persistono."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non devi goderti ogni momento per essere un genitore premuroso. Il tuo benessere conta e chiedere aiuto è una scelta sana."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso affrontare le giornate difficili da genitore senza sentirmi in colpa?"
+  },
+  {
+    "id": "bottle-feeding-004",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hygiene", "food-safety"],
+    "title": "Un biberon pulito fa la differenza",
+    "summary": "I residui di latte possono favorire la crescita dei batteri. Una semplice routine di pulizia aiuta a mantenere sicuro il materiale per l’alimentazione.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché l’igiene del biberon è importante",
+        "content": "Il latte può lasciare residui all’interno di biberon, tettarelle e altri accessori. Senza una pulizia adeguata, i batteri possono moltiplicarsi su queste superfici. Nei primi mesi i bambini sono particolarmente vulnerabili alle infezioni, quindi una pulizia accurata e una corretta sterilizzazione sono parti importanti di un’alimentazione sicura."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Crea una routine di pulizia sicura",
+        "items": [
+          "Lavati le mani prima di maneggiare il materiale pulito.",
+          "Smonta i biberon e pulisci tutte le parti dopo ogni poppata.",
+          "Usa acqua calda e sapone con uno scovolino dedicato, oppure la lavastoviglie se il produttore lo consente.",
+          "Lascia asciugare completamente all’aria le parti su una superficie pulita.",
+          "Segui le raccomandazioni locali sulla sterilizzazione, soprattutto per bambini sotto i due mesi, prematuri o con difese immunitarie indebolite."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "L’igiene del biberon non deve essere complicata. Una routine costante protegge il bambino e diventa presto parte della vita quotidiana."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come devo pulire e sterilizzare in sicurezza i biberon del mio bambino?"
+  },
+  {
+    "id": "growth-003",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "weight", "growth-monitoring"],
+    "title": "Una sola pesata non racconta tutta la storia",
+    "summary": "Tra una misurazione e l’altra possono esserci piccole differenze. La crescita si comprende meglio osservandone l’andamento nel tempo.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché le misurazioni possono variare",
+        "content": "Il peso registrato può risentire della bilancia usata, degli indumenti, di una poppata recente e delle condizioni di misurazione. Piccole differenze tra singole pesate non riflettono sempre un cambiamento significativo. I professionisti sanitari interpretano il peso insieme a lunghezza, età, anamnesi e misurazioni precedenti."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendi le misurazioni più utili",
+        "items": [
+          "Usa una bilancia adatta ai neonati se lo pesi a casa.",
+          "Cerca di misurarlo ogni volta in condizioni simili.",
+          "Registra con precisione data e misurazione.",
+          "Evita pesate eccessive salvo indicazione di un professionista sanitario.",
+          "Chiedi un parere medico se l’aumento di peso è insufficiente, il peso cala inaspettatamente o alimentarlo diventa difficile."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Il benessere del bambino non può essere riassunto in un numero. L’andamento della crescita e la valutazione clinica offrono un quadro più completo."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quanto spesso devo pesare il mio bambino e come devo interpretare i cambiamenti?"
+  },
+  {
+    "id": "teething-003",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "development", "reassurance"],
+    "title": "Dove sono i primi dentini?",
+    "summary": "Ad alcuni bambini il primo dente spunta presto, ad altri più tardi. I tempi della dentizione variano molto.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Ogni sorriso si sviluppa in modo diverso",
+        "content": "I primi denti da latte compaiono spesso intorno ai sei mesi, ma l’intervallo normale è ampio. Ad alcuni bambini spuntano prima, mentre altri possono non avere denti visibili fino a quasi un anno. Anche l’ordine può variare, sebbene in genere compaiano prima gli incisivi inferiori."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Cosa possono fare i genitori",
+        "items": [
+          "Non confrontare i tempi della dentizione con quelli di altri bambini.",
+          "Pulisci delicatamente le gengive e inizia a spazzolare alla comparsa del primo dente.",
+          "Prenota una valutazione dentistica entro il primo compleanno, seguendo le indicazioni locali.",
+          "Chiedi a un dentista se ti preoccupano un’eruzione tardiva o cambiamenti insoliti delle gengive."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "La comparsa più tardiva del primo dente non indica automaticamente un problema. Un dentista può valutarne lo sviluppo in caso di dubbi."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quando dovrebbero spuntare i primi denti e quando dovrei preoccuparmi?"
+  },
+  {
+    "id": "daytime-nap-004",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "tiredness", "sleep-cues"],
+    "title": "Il tuo bambino potrebbe dirti che è stanco",
+    "summary": "Sbadigliare non è l’unico segnale. Piccoli cambiamenti nel comportamento aiutano a riconoscere quando ha bisogno di riposare.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Riconoscere i segnali del sonno",
+        "content": "I bambini comunicano la stanchezza in modi diversi. Alcuni diventano più tranquilli, distolgono lo sguardo dagli stimoli o perdono interesse per il gioco. Altri si strofinano gli occhi, sbadigliano o diventano irritabili. Conoscere i segnali individuali aiuta a proporre il riposo prima che si agiti molto, anche se possono cambiare con l’età."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Osserva i piccoli segnali",
+        "items": [
+          "Nota una minore partecipazione o se si allontana dalle attività.",
+          "Osserva sbadigli, occhi strofinati o crescente irritabilità.",
+          "Proponi un passaggio tranquillo al sonno quando sembra stanco.",
+          "Unisci le tue osservazioni ai suoi consueti ritmi del sonno invece di affidarti a orari rigidi.",
+          "Usa sempre un ambiente sicuro per i sonnellini."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non riconoscerai perfettamente ogni segnale. Con il tempo, osservare i suoi ritmi renderà più facile comprenderne i bisogni."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso riconoscere i primi segnali di stanchezza del mio bambino?"
+  },
+  {
+    "id": "health-and-comfort-004",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "hydration", "warning-signs"],
+    "title": "Piccoli segnali che mostrano quanto conta l’idratazione",
+    "summary": "I bambini possono disidratarsi più rapidamente degli adulti. Conoscere i segnali d’allarme aiuta a capire quando chiedere assistenza medica.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché l’idratazione merita attenzione",
+        "content": "I bambini hanno un fabbisogno di liquidi relativamente elevato e possono perderli con febbre, vomito, diarrea o scarsa alimentazione. La disidratazione può svilupparsi quando le perdite superano l’assunzione. È importante riconoscere cambiamenti nei pannolini bagnati, nella vigilanza e nel comportamento alimentare, soprattutto nei più piccoli."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Segnali da osservare",
+        "items": [
+          "Nota una riduzione significativa dei pannolini bagnati rispetto al solito.",
+          "Osserva bocca secca, meno lacrime quando piange o sonnolenza insolita.",
+          "Continua a offrire latte materno o formula secondo necessità.",
+          "Chiedi tempestivamente un parere medico se mangia poco, presenta vomito o diarrea persistenti oppure possibili segni di disidratazione.",
+          "Richiedi assistenza d’emergenza in caso di letargia grave, difficoltà a svegliarlo o altri segni di malattia seria."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non devi misurare ogni goccia che beve. Prestare attenzione all’alimentazione, ai pannolini bagnati e al comportamento generale aiuta a riconoscere i cambiamenti."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali sono i segnali d’allarme della disidratazione nei bambini?"
+  },
+  {
+    "id": "night-sleep-004",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["sleep", "circadian-rhythm", "newborn"],
+    "title": "Il giorno e la notte sono ancora concetti nuovi",
+    "summary": "I neonati non nascono sapendo distinguere il giorno dalla notte. Il loro ritmo interno del sonno si sviluppa gradualmente.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Imparare il ritmo del giorno e della notte",
+        "content": "Nei primi mesi, i bambini sviluppano gradualmente il ritmo circadiano, il sistema interno che regola sonno e veglia. Il sonno del neonato è spesso distribuito nell’intero arco del giorno e della notte perché le esigenze alimentari e l’immaturità della regolazione del sonno influenzano i risvegli. Con il tempo, la normale luce diurna e routine notturne più tranquille aiutano a rafforzare la differenza."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Introduci con dolcezza il giorno e la notte",
+        "items": [
+          "Lascia che il bambino riceva luce naturale durante i periodi di veglia.",
+          "Mantieni calme le poppate e i cambi notturni, con luci soffuse.",
+          "Lascia i normali rumori domestici durante il giorno invece di mantenere tutto in silenzio.",
+          "Continua a rispondere ai segnali di fame durante la notte.",
+          "Segui sempre le raccomandazioni per il sonno sicuro, di giorno e di notte."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "I risvegli notturni frequenti sono normali per molti neonati. Il tuo bambino sta imparando gradualmente un ritmo che richiede tempo."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso aiutare il mio neonato a distinguere gradualmente il giorno dalla notte?"
+  },
+  {
+    "id": "breastfeeding-004",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["breastfeeding", "distraction", "feeding-behavior"],
+    "title": "Quando tutto sembra più interessante del latte",
+    "summary": "Man mano che diventano più curiosi del mondo, i bambini possono guardarsi intorno o interrompere più spesso le poppate.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "La curiosità può cambiare le poppate",
+        "content": "Quando diventano più consapevoli dei suoni, dei movimenti e delle persone intorno a loro, alcuni bambini interrompono la poppata al seno per guardarsi intorno. Può accadere nei mesi centrali del primo anno, anche se i tempi variano. Distrarsi non significa necessariamente perdere interesse per l’allattamento né che la produzione di latte sia diminuita."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Rendi più comode le poppate",
+        "items": [
+          "Prova ad allattare in un ambiente più tranquillo quando si distrae facilmente.",
+          "Offri il seno ai primi segnali di fame invece di aspettare che si agiti molto.",
+          "Consenti brevi pause quando vuole guardarsi intorno.",
+          "Controlla i pannolini bagnati e la crescita se le poppate diventano costantemente più brevi o meno frequenti.",
+          "Chiedi sostegno se rifiuta persistentemente le poppate o mostra segni di assunzione insufficiente."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Un bambino curioso non è necessariamente un bambino malnutrito. I ritmi delle poppate spesso evolvono insieme al suo crescente interesse per il mondo."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Perché il mio bambino si distrae durante l’allattamento?"
+  },
+  {
+    "id": "growth-004",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "prematurity", "corrected-age"],
+    "title": "Per i bambini prematuri, l’età ha due significati",
+    "summary": "I bambini nati prima del termine possono avere un’età cronologica e un’età corretta. Capire la differenza aiuta a interpretarne lo sviluppo.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Che cos’è l’età corretta?",
+        "content": "L’età cronologica è il tempo trascorso dalla nascita. L’età corretta tiene conto di quante settimane prima del termine è nato il bambino. Per esempio, un bambino nato con otto settimane di anticipo che ora ha sei mesi ha un’età corretta di circa quattro mesi. I professionisti sanitari la usano spesso per valutare crescita e tappe dello sviluppo nei prematuri, in genere durante i primi due anni."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Segui lo sviluppo nella giusta prospettiva",
+        "items": [
+          "Conserva un’annotazione dell’età gestazionale alla nascita.",
+          "Chiedi al professionista sanitario quando usare l’età corretta.",
+          "Usa curve di crescita adatte ai prematuri quando raccomandato.",
+          "Non confrontare le tappe basandoti soltanto sull’età cronologica.",
+          "Segui il piano individuale di monitoraggio medico e dello sviluppo."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Nascere prima del termine può cambiare il modo in cui vengono valutati i progressi. L’età corretta offre un quadro più equo del percorso del bambino."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Qual è l’età corretta del mio bambino prematuro e come devo usarla?"
+  },
+  {
+    "id": "solid-food-005",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["solid-food", "allergens", "nutrition"],
+    "title": "Introdurre nuovi alimenti, compresi gli allergeni",
+    "summary": "Alimenti come uovo e arachidi possono essere introdotti durante l’alimentazione complementare quando il bambino è pronto, in forme sicure.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Capire l’introduzione degli allergeni",
+        "content": "Le indicazioni attuali generalmente sostengono l’introduzione degli alimenti allergenici comuni durante la prima infanzia, una volta che il bambino è pronto per l’alimentazione complementare, invece di ritardarla inutilmente. Tra questi vi sono uovo ben cotto, arachidi in una forma sicura, ingredienti a base di latte e frumento. I bambini con eczema grave, allergie alimentari note o reazioni precedenti possono aver bisogno di indicazioni personalizzate prima di determinati alimenti."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Introduci gli alimenti con attenzione",
+        "items": [
+          "Offri i nuovi alimenti in consistenze adatte alle capacità del bambino.",
+          "Usa crema liscia di arachidi diluita in una purea o in un altro alimento adatto; non offrire mai arachidi intere.",
+          "Introduci gli allergeni comuni uno alla volta e in piccole quantità, così sarà più facile riconoscere eventuali reazioni.",
+          "Una volta tollerati, continua a includerli regolarmente in una dieta varia.",
+          "Chiedi prima un parere medico se il bambino ha eczema grave, un’allergia alimentare nota o una reazione precedente."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Introdurre gli allergeni può intimorire. Se il bambino presenta difficoltà respiratorie, gonfiore della lingua o della gola oppure altri segni di una reazione grave, richiedi immediatamente assistenza medica d’emergenza."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Come posso introdurre in sicurezza gli allergeni alimentari comuni?"
+  },
+  {
+    "id": "playtime-005",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "music", "language", "bonding"],
+    "title": "La tua voce è la colonna sonora preferita del tuo bambino",
+    "summary": "Canzoni, filastrocche e suoni giocosi trasformano i momenti quotidiani in occasioni di relazione e apprendimento.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Perché la musica e il ritmo sono importanti",
+        "content": "I bambini sono naturalmente attratti dalle voci, dai ritmi e dai suoni ripetuti. Cantare e recitare filastrocche favorisce l’attenzione condivisa, la prima esposizione al linguaggio e l’interazione sociale. Crescendo, possono iniziare ad anticipare parole familiari, imitare gesti o muoversi con la musica."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Porta la musica nella vita quotidiana",
+        "items": [
+          "Canta canzoni semplici durante il cambio del pannolino, mentre lo vesti o durante il gioco.",
+          "Ripeti filastrocche familiari e aggiungi delicati movimenti delle mani.",
+          "Fai una pausa nelle canzoni preferite per vedere se risponde.",
+          "Usa un volume confortevole ed evita musica forte vicino alle sue orecchie.",
+          "Segui le sue reazioni e fai delle pause quando sembra stanco o sovrastimolato."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Non serve avere una bella voce. Sono la tua voce familiare e l’attenzione condivisa a rendere speciali questi momenti."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Quali canzoni e giochi musicali posso condividere con il mio bambino alla sua età?"
+  }
+]

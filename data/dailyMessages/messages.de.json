@@ -1,0 +1,962 @@
+[
+  {
+    "id": "night-sleep-001",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["sleep", "reassurance"],
+    "title": "Jedes Baby hat seinen eigenen Schlafrhythmus",
+    "summary": "Nächtliches Aufwachen ist in den ersten Lebensmonaten häufig. Ihr Baby entwickelt seinen eigenen Schlafrhythmus erst noch.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Warum Babys nachts aufwachen",
+        "content": "In den ersten Monaten wachen Babys oft auf, weil sie trinken möchten, Nähe brauchen oder ihre Schlafzyklen noch nicht vollständig entwickelt sind. Wie oft ein Baby aufwacht, ist sehr unterschiedlich und kann sich von Woche zu Woche ändern."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Einige sanfte Gewohnheiten",
+        "items": [
+          "Gestalten Sie nächtliche Kontakte ruhig, mit gedämpftem Licht und möglichst wenigen Reizen.",
+          "Achten Sie auf die Müdigkeitszeichen Ihres Babys, statt einen starren Zeitplan zu erwarten.",
+          "Legen Sie Ihr Baby zum Schlafen immer auf den Rücken, auf eine feste, ebene Unterlage ohne lose Bettwaren."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Häufiges Aufwachen bedeutet nicht, dass Sie etwas falsch machen. Schlaf entwickelt sich mit der Zeit, und Ihr Baby muss sich nicht nach dem Rhythmus anderer richten."
+      }
+    ],
+    "sources": [{"title": "AAP — Safe Sleep", "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"}],
+    "askNeloPrompt": "Welche Schlafgewohnheiten passen zum Alter meines Babys?"
+  },
+  {
+    "id": "parent-support-001",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["wellbeing", "reassurance"],
+    "title": "Sie müssen keine perfekten Eltern sein",
+    "summary": "Kleine Momente der Fürsorge und Verbundenheit sind wichtiger, als jede Routine vollkommen richtig zu machen.",
+    "sections": [
+      {
+        "id": "pressure",
+        "type": "paragraph",
+        "title": "Verabschieden Sie sich von der Checkliste für den perfekten Tag",
+        "content": "Manche Tage verlaufen reibungslos, andere sind voller Unterbrechungen, Unordnung und unerwarteter Bedürfnisse. Ein schwieriger Tag macht all die liebevolle Zuwendung, die Sie Ihrem Kind schenken, nicht zunichte. Elternsein besteht aus vielen gewöhnlichen Momenten, nicht aus einem makellosen Tagesplan."
+      },
+      {
+        "id": "reset",
+        "type": "bulletList",
+        "title": "Versuchen Sie einen kleinen Neustart",
+        "items": [
+          "Wählen Sie eine Sache, die heute wichtig ist, und bleiben Sie beim Rest flexibel.",
+          "Nehmen Sie praktische Hilfe an, wenn sie angeboten wird, auch bei einer kleinen Aufgabe.",
+          "Wenn Sie sich überfordert fühlen, legen Sie Ihr Baby an einen sicheren Ort und nehmen Sie sich einen kurzen Moment, um sich zu sammeln."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Auf die Bedürfnisse Ihres Babys einzugehen bedeutet nicht, jede Sekunde verfügbar zu sein. Auch Ihre Bedürfnisse zählen, und um Unterstützung zu bitten ist eine Stärke."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wie kann ich einen schwierigen Tag als Elternteil besser bewältigen?"
+  },
+  {
+    "id": "breastfeeding-001",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["feeding", "reassurance"],
+    "title": "Häufiges Stillen kann normal sein",
+    "summary": "Manche Babys möchten häufig gestillt werden, besonders während Wachstums- und Entwicklungsphasen.",
+    "sections": [
+      {
+        "id": "pattern",
+        "type": "paragraph",
+        "title": "Warum sich Stillmuster verändern",
+        "content": "Gestillte Babys trinken nicht immer in vorhersehbaren Abständen. Sie möchten möglicherweise mehrmals kurz hintereinander gestillt werden, besonders am Abend. Die Häufigkeit allein sagt nicht aus, ob ein Baby genug Milch bekommt."
+      },
+      {
+        "id": "observe",
+        "type": "bulletList",
+        "title": "Betrachten Sie das Gesamtbild",
+        "items": [
+          "Achten Sie beim Stillen auf das Schlucken und danach auf das Verhalten Ihres Babys.",
+          "Behalten Sie nasse Windeln und das Wachstum entsprechend der Empfehlung Ihrer medizinischen Fachperson im Blick.",
+          "Bitten Sie eine Hebamme, Stillberaterin oder medizinische Fachperson um Hilfe, wenn das Stillen schmerzhaft ist oder Sie sich Sorgen um die Milchaufnahme machen."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Sie und Ihr Baby lernen gemeinsam. Wenn das Stillen schwierig ist, kann frühe Unterstützung einen echten Unterschied machen."
+      }
+    ],
+    "sources": [{"title": "CDC — Breastfeeding", "url": "https://www.cdc.gov/breastfeeding/"}],
+    "askNeloPrompt": "Woran erkenne ich, ob das Stillen gut funktioniert?"
+  },
+  {
+    "id": "motor-development-001",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 60,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["movement", "play"],
+    "title": "Jeder kurze Moment in Bauchlage zählt",
+    "summary": "Kurze, beaufsichtigte Spielzeiten in Bauchlage helfen Babys, das Anheben und Drehen des Kopfes zu üben.",
+    "sections": [
+      {
+        "id": "why",
+        "type": "paragraph",
+        "title": "Spielerisch Kraft aufbauen",
+        "content": "Wenn Ihr Baby wach und aufmerksam ist, kann es in Bauchlage die Muskeln in Nacken, Schultern und Oberkörper einsetzen. Das muss nicht wie ein Training aussehen. Einige angenehme Momente können für den Anfang genügen."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Machen Sie es einladend",
+        "items": [
+          "Probieren Sie kurze Einheiten auf einer festen, sicheren Unterlage, während Sie in der Nähe bleiben und Ihr Baby beobachten.",
+          "Gehen Sie auf Augenhöhe und sprechen oder lächeln Sie Ihr Baby an.",
+          "Wenn Ihr Baby unruhig wird, machen Sie eine Pause und versuchen Sie es später erneut."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Jedes Baby gewinnt in seinem eigenen Tempo Sicherheit. Die Bauchlage ist nur zum wachen, beaufsichtigten Spielen gedacht; legen Sie Ihr Baby zum Schlafen immer auf den Rücken."
+      }
+    ],
+    "sources": [{"title": "AAP — Tummy Time", "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/Back-to-Sleep-Tummy-to-Play.aspx"}],
+    "askNeloPrompt": "Welche sanften Spielideen in Bauchlage eignen sich für mein Baby?"
+  },
+  {
+    "id": "communication-001",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["language", "bonding"],
+    "title": "Ihre Stimme bringt Ihrem Baby schon jetzt viel bei",
+    "summary": "Sprechen, Singen und das Reagieren auf kleine Laute fördern die frühe Kommunikation.",
+    "sections": [
+      {
+        "id": "connection",
+        "type": "paragraph",
+        "title": "Ein Gespräch noch vor den ersten Worten",
+        "content": "Lange bevor Babys sprechen können, nehmen sie Stimmen, Gesichtsausdrücke, Rhythmus und Pausen wahr. Wenn Sie auf ein Gurren oder einen Blick reagieren, zeigen Sie Ihrem Baby, dass Kommunikation in beide Richtungen geht."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Einfache Wege, Nähe zu schaffen",
+        "items": [
+          "Beschreiben Sie beim Wickeln oder Spazierengehen, was Sie gerade tun.",
+          "Machen Sie nach dem Sprechen eine Pause, damit Ihr Baby mit einem Laut oder Gesichtsausdruck reagieren kann.",
+          "Singen Sie ein vertrautes Lied oder wiederholen Sie einen spielerischen Laut, den Ihr Baby mag."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Sie brauchen keine besonderen Kurse oder Spielsachen. Ihre vertraute Stimme und Aufmerksamkeit sind bereits wertvoll."
+      }
+    ],
+    "sources": [{"title": "CDC — Learn the Signs. Act Early.", "url": "https://www.cdc.gov/act-early/"}],
+    "askNeloPrompt": "Wie kann ich die Kommunikation mit meinem Baby im Alltag fördern?"
+  },
+  {
+    "id": "solid-food-001",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 270,
+    "priority": 5,
+    "tags": ["feeding", "textures", "safety"],
+    "title": "Neue Konsistenzen kennenzulernen ist ein Lernprozess",
+    "summary": "Wenn Ihr Baby bereit für feste Nahrung ist, braucht das Entdecken unterschiedlicher Konsistenzen Zeit und Übung.",
+    "sections": [
+      {
+        "id": "exploring",
+        "type": "paragraph",
+        "title": "Mehr als nur eine Mahlzeit",
+        "content": "Beim Start mit Beikost geht es ebenso ums Lernen wie ums Essen. Babys berühren, verschmieren, spucken oder verweigern Nahrung möglicherweise, bevor sie sie annehmen. Zu den Reifezeichen um den sechsten Monat gehören eine gute Kopfkontrolle und die Fähigkeit, mit Unterstützung zu sitzen."
+      },
+      {
+        "id": "safe-start",
+        "type": "bulletList",
+        "title": "Gestalten Sie die ersten Mahlzeiten entspannt und sicher",
+        "items": [
+          "Bieten Sie weiche, altersgerechte Konsistenzen an, während Ihr Baby aufrecht sitzt und beaufsichtigt wird.",
+          "Bieten Sie im Rahmen einer abwechslungsreichen Ernährung eisenreiche Lebensmittel an und geben Sie weiterhin Mutter- oder Säuglingsmilch.",
+          "Vermeiden Sie Lebensmittel mit Erstickungsgefahr und lassen Sie Ihr Baby beim Essen nie allein."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Ein zögerlicher erster Geschmack ist kein Misserfolg. Wenn Sie unsicher sind, ob Ihr Baby bereit ist, oder Fragen zu Allergien oder dem Schlucken haben, wenden Sie sich an die medizinische Fachperson Ihres Kindes."
+      }
+    ],
+    "sources": [{"title": "WHO — Complementary Feeding", "url": "https://www.who.int/health-topics/complementary-feeding"}],
+    "askNeloPrompt": "Welche Konsistenzen und Lebensmittel eignen sich, wenn mein Baby mit fester Nahrung beginnt?"
+  },
+  {
+    "id": "daytime-nap-001",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "routine"],
+    "title": "Tagschlaf richtet sich nicht immer nach der Uhr",
+    "summary": "Während Babys wachsen und sich ihre Bedürfnisse verändern, kann der Schlaf am Tag unterschiedlich ausfallen.",
+    "sections": [
+      {
+        "id": "variation",
+        "type": "paragraph",
+        "title": "Warum Tagschlaf unvorhersehbar sein kann",
+        "content": "Ihr Baby schläft vielleicht an einem Tag länger und am nächsten mehrmals kürzer. Veränderungen bei Aktivität, Entwicklung und Nachtschlaf können die Ruhe am Tag beeinflussen. Muster über mehrere Tage zu betrachten ist oft hilfreicher, als einen einzelnen Schlaf zu beurteilen."
+      },
+      {
+        "id": "support",
+        "type": "bulletList",
+        "title": "Schaffen Sie einen sanften Rhythmus für den Tagschlaf",
+        "items": [
+          "Achten Sie auf Müdigkeitszeichen wie Augenreiben oder das Abwenden von Reizen.",
+          "Versuchen Sie eine ruhige, vertraute Einschlafroutine.",
+          "Nutzen Sie einen sicheren Schlafplatz: auf dem Rücken, auf einer festen, ebenen Unterlage ohne lose Gegenstände."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Ein unregelmäßiger Tagschlaf bedeutet nicht, dass der ganze Tag verdorben ist. Beständigkeit kann helfen, doch Flexibilität gehört zum Alltag mit einem wachsenden Baby."
+      }
+    ],
+    "sources": [{"title": "AAP — Baby Sleep", "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"}],
+    "askNeloPrompt": "Wie erkenne ich, dass mein Baby ein Nickerchen braucht?"
+  },
+  {
+    "id": "playtime-001",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["play", "learning"],
+    "title": "Beim Spielen erkundet Ihr Baby die Welt",
+    "summary": "Einfache Spiele mit vertrauten Menschen können genauso spannend sein wie teures Spielzeug.",
+    "sections": [
+      {
+        "id": "discovery",
+        "type": "paragraph",
+        "title": "Kleine Entdeckungen sind wichtig",
+        "content": "Einen Gegenstand von einer Hand in die andere zu geben, nach einem Spielzeug zu suchen oder Ihnen bei einer Grimasse zuzusehen hilft Ihrem Baby, Aufmerksamkeit, Bewegung und soziale Verbindung zu üben. Sie müssen kein dichtes Beschäftigungsprogramm planen."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Probieren Sie diese einfachen Spiele",
+        "items": [
+          "Bieten Sie einen sicheren Gegenstand zum Greifen, Schütteln oder Erkunden an.",
+          "Spielen Sie Kuckuck und geben Sie Ihrem Baby Zeit zu reagieren.",
+          "Benennen Sie Gegenstände und folgen Sie den Interessen Ihres Babys."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Schon wenige Minuten gemeinsamer Aufmerksamkeit können wertvoll sein. Lassen Sie die Neugier Ihres Babys das Tempo bestimmen und hören Sie auf, wenn es müde wirkt."
+      }
+    ],
+    "sources": [{"title": "UNICEF — Early Childhood Development", "url": "https://www.unicef.org/early-childhood-development"}],
+    "askNeloPrompt": "Welche einfachen Spiele passen zum aktuellen Entwicklungsstand meines Babys?"
+  },
+  {
+    "id": "teething-001",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["comfort", "teething"],
+    "title": "Zahnen kann unangenehm sein",
+    "summary": "Neue Zähne kommen zu unterschiedlichen Zeiten, und manche Babys brauchen etwas mehr Trost.",
+    "sections": [
+      {
+        "id": "what-to-expect",
+        "type": "paragraph",
+        "title": "Jedes Lächeln entwickelt sich anders",
+        "content": "Manche Babys sabbern mehr oder möchten auf Dingen kauen, wenn die Zähne durchbrechen. Andere zeigen kaum Anzeichen. Der Zeitpunkt ist unterschiedlich, deshalb ist ein früherer oder späterer erster Zahn nicht automatisch bedenklich."
+      },
+      {
+        "id": "comfort",
+        "type": "bulletList",
+        "title": "Sanfte Möglichkeiten zur Linderung",
+        "items": [
+          "Bieten Sie einen sauberen, gekühlten, aber nicht gefrorenen Beißring für Babys an.",
+          "Massieren Sie das Zahnfleisch vorsichtig mit einem sauberen Finger, wenn Ihr Baby das mag.",
+          "Vermeiden Sie Zahnungs- und Bernsteinketten sowie betäubende Gele, sofern eine medizinische Fachperson diese nicht ausdrücklich empfiehlt."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Hohes Fieber, starker Durchfall oder ein sehr krank wirkendes Baby sollten nicht einfach dem Zahnen zugeschrieben werden. Holen Sie bei diesen Symptomen medizinischen Rat ein."
+      }
+    ],
+    "sources": [{"title": "NHS — Teething", "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/"}],
+    "askNeloPrompt": "Wie kann ich mein zahnendes Baby sicher beruhigen?"
+  },
+  {
+    "id": "learning-001",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 365,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation"],
+    "title": "Ihr Kleinkind lernt durch Beobachten",
+    "summary": "Alltägliche Handlungen, vom Winken bis zum Aufräumen, können zu gemeinsamen Lerngelegenheiten werden.",
+    "sections": [
+      {
+        "id": "imitation",
+        "type": "paragraph",
+        "title": "Eine wirkungsvolle Art zu lernen",
+        "content": "Mit zunehmendem Alter ahmen Kleinkinder häufig Gesten, Laute und vertraute Abläufe nach. So zu tun, als würden sie in einem Topf rühren oder einen Tisch abwischen, kann eine spielerische Möglichkeit sein, die Welt zu erkunden."
+      },
+      {
+        "id": "everyday",
+        "type": "bulletList",
+        "title": "Machen Sie alltägliche Momente spielerisch",
+        "items": [
+          "Laden Sie Ihr Kleinkind ein, eine einfache Geste wie Klatschen oder Winken nachzuahmen.",
+          "Geben Sie ihm sichere, altersgerechte Gegenstände für Rollenspiele.",
+          "Benennen Sie, was Sie tun, und warten Sie dann auf seine Reaktion."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Kinder ahmen nicht alle zur selben Zeit dieselben Dinge nach. Folgen Sie den Interessen Ihres Kindes und besprechen Sie Sorgen zur Entwicklung mit einer medizinischen Fachperson."
+      }
+    ],
+    "sources": [{"title": "CDC — Developmental Milestones", "url": "https://www.cdc.gov/act-early/milestones/index.html"}],
+    "askNeloPrompt": "Welche Alltagsaktivitäten helfen meinem Kleinkind, durch Nachahmung zu lernen?"
+  },
+  {
+    "id": "communication-002",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "gestures", "language"],
+    "title": "Kleine Gesten sagen sehr viel",
+    "summary": "Noch bevor die ersten Worte kommen, teilt Ihr Baby Ihnen möglicherweise schon viel durch Gesten, Laute und Gesichtsausdrücke mit.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Kommunikation beginnt vor den ersten Worten", "content": "Zeigen, Greifen, Winken und der Blick zu vertrauten Gegenständen sind Wege, auf denen Babys kommunizieren lernen. Diese Gesten entwickeln sich oft zusammen mit der frühen Sprache und helfen Ihrem Kind, Interessen, Bedürfnisse und Entdeckungen zu teilen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Fördern Sie kleine Gespräche", "items": ["Reagieren Sie, wenn Ihr Baby auf etwas zeigt oder danach greift.", "Benennen Sie Gegenstände und Handlungen im Alltag.", "Machen Sie nach dem Sprechen eine Pause, damit Ihr Baby Zeit zum Antworten hat.", "Freuen Sie sich über Kommunikationsversuche, ohne perfekte Worte zu erwarten."]},
+      {"id": "reassurance", "type": "highlight", "content": "Kommunikation ist viel mehr als Sprechen. Jeder gemeinsame Blick, jede Geste und jeder Laut ist eine Gelegenheit für Verbindung."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wie kann ich die Kommunikation meines Babys vor den ersten Worten fördern?"
+  },
+  {
+    "id": "solid-food-002",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["feeding", "food-exploration", "reassurance"],
+    "title": "Einmal probieren sagt noch nicht alles",
+    "summary": "Ihr Baby lehnt ein neues Lebensmittel ab? Vielleicht braucht es einfach mehr Gelegenheiten, unbekannte Geschmäcker und Konsistenzen kennenzulernen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Neue Lebensmittel mögen lernen", "content": "Babys entdecken eine völlig neue Welt aus Geschmäckern, Gerüchen und Konsistenzen. Manche Lebensmittel werden sofort angenommen, andere müssen mehrmals ohne Druck angeboten werden. Eine heutige Ablehnung bedeutet nicht, dass Ihr Kind das Lebensmittel immer ablehnen wird."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Erleichtern Sie das Erkunden", "items": ["Bieten Sie kleine Mengen unbekannter Lebensmittel neben vertrauten Speisen an.", "Lassen Sie Ihr Baby Lebensmittel durch Berühren und Riechen erkunden.", "Erzwingen Sie keine Bissen und machen Sie Mahlzeiten nicht zum Machtkampf.", "Bieten Sie abgelehnte Lebensmittel an einem anderen Tag erneut an."]},
+      {"id": "reassurance", "type": "highlight", "content": "Fortschritt bemisst sich nicht daran, wie viel Ihr Baby bei jeder Mahlzeit isst. Lebensmittel zu erkunden gehört zum Lernen."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Was kann ich tun, wenn mein Baby neue Lebensmittel wiederholt ablehnt?"
+  },
+  {
+    "id": "motor-development-002",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["motor-development", "movement", "milestones"],
+    "title": "Jede kleine Bewegung zählt",
+    "summary": "Drehen, Greifen, Krabbeln und Hochziehen sind verschiedene Wege, auf denen Ihr Baby Bewegung erkundet.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Bewegung entwickelt sich durch Erkunden", "content": "Mit wachsender Kraft und Koordination probieren Babys neue Bewegungen aus. Manche krabbeln auf Händen und Knien, andere bewegen sich anders, und einige krabbeln nicht auf klassische Weise. Die Entwicklung folgt einem allgemeinen Verlauf, doch individuelle Muster können variieren."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Schaffen Sie Raum zum Erkunden", "items": ["Bieten Sie beaufsichtigtes Spielen auf dem Boden in einem sicheren, freien Bereich an.", "Legen Sie interessante Spielsachen etwas außerhalb der bequemen Reichweite.", "Lassen Sie Ihr Baby selbstständig mit Bewegung experimentieren.", "Vermeiden Sie Lauflernhilfen mit Rollen, da sie Verletzungen verursachen können."]},
+      {"id": "reassurance", "type": "highlight", "content": "Kinder bewegen sich nicht alle auf dieselbe Weise. Wenn Sie wegen eines ausbleibenden Meilensteins oder des Verlusts einer erworbenen Fähigkeit besorgt sind, sprechen Sie mit Ihrer Kinderärztin oder Ihrem Kinderarzt."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Auf welche motorischen Meilensteine sollte ich im Alter meines Babys achten?"
+  },
+  {
+    "id": "parent-support-002",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "reassurance", "confidence"],
+    "title": "Ihr Baby nimmt an keinem Wettrennen teil",
+    "summary": "Es ist leicht, Meilensteine mit anderen Kindern zu vergleichen, doch Entwicklung ist kein Wettbewerb.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Vergleiche irreführend sein können", "content": "Ein Baby beginnt vielleicht früher, sich fortzubewegen, während ein anderes zuerst neue Laute oder soziale Fähigkeiten entwickelt. Kinder haben individuelle Stärken und Entwicklungsverläufe. Einzelne Leistungen zu vergleichen vermittelt selten ein vollständiges Bild der Entwicklung."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Konzentrieren Sie sich auf die Fortschritte Ihres Kindes", "items": ["Achten Sie auf kleine Veränderungen im Laufe der Zeit.", "Nutzen Sie altersgerechte Entwicklungsmeilensteine als hilfreiche Orientierung.", "Feiern Sie Entdeckungen, ohne den nächsten Schritt zu beschleunigen.", "Besprechen Sie Sorgen mit einer medizinischen Fachperson, statt sich auf Vergleiche zu verlassen."]},
+      {"id": "reassurance", "type": "highlight", "content": "Der Weg Ihres Kindes ist einzigartig. Sie können sein individuelles Tempo würdigen und zugleich wichtige Entwicklungsmeilensteine im Blick behalten."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wie erkenne ich, ob sich mein Baby altersgemäß entwickelt?"
+  },
+  {
+    "id": "night-sleep-002",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 240,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "development", "reassurance"],
+    "title": "Warum sich der Schlaf plötzlich verändern kann",
+    "summary": "Ein Baby, das gut geschlafen hat, wacht möglicherweise häufiger auf. In Phasen schneller Entwicklung kann sich der Schlaf verändern.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Schlaf entwickelt sich nicht immer geradlinig", "content": "Zwischen etwa acht und zwölf Monaten entwickeln Babys neue körperliche, soziale und emotionale Fähigkeiten. Bei manchen verändert sich der Schlaf, etwa durch häufigeres Aufwachen oder Schwierigkeiten beim Einschlafen. Auch Krankheit, Unwohlsein und veränderte Abläufe können den Schlaf beeinflussen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Unterstützen Sie erholsame Nächte", "items": ["Behalten Sie eine vertraute, beruhigende Abendroutine bei.", "Reagieren Sie geduldig auf die Bedürfnisse Ihres Babys.", "Bieten Sie tagsüber Gelegenheiten für Bewegung und Erkundung.", "Sorgen Sie bei jedem Schlaf für eine sichere Schlafumgebung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Einige schwierige Nächte machen Ihre Fortschritte nicht zunichte. Schlafmuster können schwanken, während Ihr Baby wächst."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Warum wacht mein Baby nachts plötzlich häufiger auf?"
+  },
+  {
+    "id": "playtime-002",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["play", "social-development", "learning"],
+    "title": "Kuckuck ist mehr als ein Spiel",
+    "summary": "Ein einfaches Kuckuck-Spiel hilft Ihrem Baby, Erwartung, Aufmerksamkeit und Verbindung zu entdecken.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Lernen durch Überraschung", "content": "Wenn Sie Ihr Gesicht verstecken und wieder zeigen, erlebt Ihr Baby ein spielerisches Muster aus Verschwinden und Wiederkehren. Mit zunehmendem Gedächtnis und Verständnis unterstützen solche Spiele Erwartung, soziale Interaktion und die wachsende Erkenntnis, dass Menschen und Dinge auch außerhalb des Blickfelds weiterbestehen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Machen Sie es spielerisch", "items": ["Verbergen Sie Ihr Gesicht kurz hinter den Händen.", "Warten Sie vor dem Wiedererscheinen kurz, um Spannung aufzubauen.", "Achten Sie auf die Reaktion Ihres Babys und hören Sie auf, wenn es sich unwohl fühlt.", "Verstecken Sie unter genauer Aufsicht ein Lieblingsspielzeug unter einem leichten Tuch."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie brauchen kein teures Spielzeug, um Lernen zu fördern. Ihre Aufmerksamkeit und einige spielerische Momente können viel bedeuten."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Welche einfachen Spiele fördern die Entwicklung meines Babys?"
+  },
+  {
+    "id": "learning-002",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "repetition", "curiosity"],
+    "title": "Noch einmal, noch einmal … und noch einmal!",
+    "summary": "Wiederholt Ihr Baby dieselbe Handlung endlos? Wiederholung ist eine wichtige Art, wie kleine Kinder lernen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Wiederholung wichtig ist", "content": "Einen Löffel fallen zu lassen, eine Schachtel zu öffnen oder immer wieder denselben Knopf zu drücken mag Erwachsenen eintönig erscheinen. Babys erkunden dadurch Ursache und Wirkung, üben ihre Koordination und machen sich mit ihrer Umgebung vertraut."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Fördern Sie die Neugier", "items": ["Lassen Sie Ihr Baby sichere Aktivitäten wiederholen.", "Beschreiben Sie mit einfachen Worten, was geschieht.", "Bieten Sie altersgerechte Alltagsgegenstände an.", "Bringen Sie kleine Veränderungen ein, wenn Ihr Kind bereit wirkt."]},
+      {"id": "reassurance", "type": "highlight", "content": "Was für Sie wie dasselbe Spiel zum zehnten Mal aussieht, kann für Ihr Baby noch immer eine spannende Entdeckung sein."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Warum wiederholt mein Baby so gern dieselben Aktivitäten?"
+  },
+  {
+    "id": "baby-care-001",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 300,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "independence", "daily-routines"],
+    "title": "Kleine Entscheidungen stärken das Selbstvertrauen",
+    "summary": "Einfache Gelegenheiten, sich an Alltagsabläufen zu beteiligen, fördern mit zunehmendem Alter die Selbstständigkeit.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Selbstständigkeit beginnt mit kleinen Schritten", "content": "Gegen Ende des ersten Lebensjahres und im Kleinkindalter möchten Kinder zunehmend an Alltagsaktivitäten teilnehmen. Nach einem Löffel greifen, beim Anziehen helfen oder zwischen zwei geeigneten Gegenständen wählen gibt ihnen Gelegenheit, Koordination und einfache Entscheidungen zu üben."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Laden Sie Ihr Kind zum Mitmachen ein", "items": ["Lassen Sie Ihr Kind zwischen zwei sicheren, geeigneten Spielsachen wählen.", "Lassen Sie es bei der Pflege einen Waschlappen halten.", "Geben Sie ihm Zeit, einfache Handlungen selbst zu versuchen.", "Loben Sie die Anstrengung, statt perfekte Ergebnisse zu erwarten."]},
+      {"id": "reassurance", "type": "highlight", "content": "Dinge selbstständig zu lernen braucht Zeit. Mit etwas Geduld werden Alltagsabläufe zu wertvollen Lernmomenten."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wie kann ich die Selbstständigkeit meines Babys oder Kleinkindes fördern?"
+  },
+  {
+    "id": "health-and-comfort-001",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "comfort", "health"],
+    "title": "Linderung beim Zahnen",
+    "summary": "Empfindliches Zahnfleisch kann das Zahnen unangenehm machen. Einige einfache Maßnahmen können Ihr Baby beruhigen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Wie sich Zahnen anfühlen kann", "content": "Wenn Zähne durchbrechen, haben manche Babys empfindliches Zahnfleisch, sabbern mehr oder möchten kauen. Zahnen kann leichte Beschwerden verursachen, doch echtes Fieber, starker Durchfall oder ein ernsthaft krank wirkendes Baby sollten nicht automatisch darauf zurückgeführt werden."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Sanfte Möglichkeiten zu helfen", "items": ["Massieren Sie das Zahnfleisch vorsichtig mit einem sauberen Finger.", "Bieten Sie einen sauberen, gekühlten, aber nicht gefrorenen Beißring an.", "Wischen Sie überschüssigen Speichel ab, um die Haut zu schützen.", "Vermeiden Sie Zahnungs- und Bernsteinketten sowie betäubende Gele mit Lidocain oder Benzocain."]},
+      {"id": "reassurance", "type": "highlight", "content": "Zahnen verläuft bei jedem Baby anders. Wenden Sie sich bei Fieber, anhaltenden Beschwerden oder ungewöhnlichem Krankheitsgefühl an eine medizinische Fachperson."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Wie kann ich Beschwerden beim Zahnen sicher lindern?"
+  },
+  {
+    "id": "daytime-nap-002",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "naps", "development"],
+    "title": "Wenn sich der Tagschlaf verändert",
+    "summary": "Mit zunehmendem Alter verändert sich der Schlafbedarf am Tag. Ein neuer Rhythmus kann Teil der normalen Entwicklung sein.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum sich der Tagschlaf verändert", "content": "Jüngere Babys brauchen tagsüber häufig mehrere Schlafphasen. Mit zunehmender Reife gehen viele allmählich zu weniger, längeren Schlafphasen über. Der Zeitpunkt ist verschieden, und Krankheit, Reisen oder Entwicklungsschritte können vorübergehend stören."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Folgen Sie den Bedürfnissen Ihres Babys", "items": ["Beobachten Sie Müdigkeitszeichen zusammen mit dem gewohnten Tagesablauf.", "Bleiben Sie flexibel, wenn sich Schlafzeiten verändern.", "Halten Sie die Schlafumgebung sicher und angenehm.", "Erzwingen Sie eine Umstellung nicht allein aufgrund des Alters."]},
+      {"id": "reassurance", "type": "highlight", "content": "Es gibt keinen Tagschlafplan, der zu jedem Baby passt. Regelmäßigkeit kann helfen, doch Flexibilität gehört dazu, sich an die Bedürfnisse Ihres Kindes anzupassen."}
+    ],
+    "sources": [],
+    "askNeloPrompt": "Woran erkenne ich, dass mein Baby für einen neuen Tagschlafrhythmus bereit ist?"
+  },
+  {
+    "id": "bottle-feeding-001", "category": "bottleFeeding", "illustration": "bottleFeeding", "minAgeDays": 0, "maxAgeDays": 365, "priority": 5,
+    "tags": ["bottle-feeding", "hunger-cues", "responsive-feeding"],
+    "title": "Wenn Ihr Baby sagt: Ich bin satt",
+    "summary": "Nicht jede Flasche muss leer werden. Hunger- und Sättigungszeichen zu erkennen kann das Füttern angenehmer machen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Ihr Baby kann Sie leiten", "content": "Babys zeigen ihren Appetit durch Bewegungen, Gesichtsausdrücke und Verhalten. Sich von der Flasche abzuwenden, langsamer zu trinken oder die Hände zu entspannen kann bedeuten, dass Ihr Baby genug hat. Die Trinkmenge darf von Mahlzeit zu Mahlzeit variieren."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Füttern Sie bedürfnisorientiert", "items": ["Halten Sie Ihr Baby nah und beobachten Sie seine Reaktionen während der gesamten Mahlzeit.", "Halten Sie die Flasche eher waagerecht und lassen Sie natürliche Pausen zu.", "Beenden Sie die Mahlzeit, wenn Ihr Baby wiederholt Sättigungszeichen zeigt.", "Drängen Sie Ihr Baby nicht zum Austrinken, nur weil noch Milch übrig ist."]},
+      {"id": "reassurance", "type": "highlight", "content": "Eine erfolgreiche Mahlzeit bemisst sich nicht an einer leeren Flasche. Wenn Sie sich um Trinkmenge, Flüssigkeitsversorgung oder Gewichtszunahme sorgen, fragen Sie eine medizinische Fachperson."}
+    ], "sources": [], "askNeloPrompt": "Wie erkenne ich beim Fläschchen Hunger- und Sättigungszeichen meines Babys?"
+  },
+  {
+    "id": "growth-001", "category": "growth", "illustration": "growth", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["growth", "growth-charts", "reassurance"],
+    "title": "Wachstum ist eine Entwicklung, keine Zahl",
+    "summary": "Eine einzelne Messung erzählt nur einen Teil der Geschichte. Entscheidend ist der Wachstumsverlauf Ihres Babys über längere Zeit.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Wachstumskurven verstehen", "content": "Wachstumskurven helfen medizinischen Fachpersonen, Gewicht, Länge und Kopfumfang im Zeitverlauf zu verfolgen. Babys wachsen unterschiedlich schnell. Ein Perzentil ist weder eine Note noch eine Gesundheitsrangliste. Entscheidend sind der Gesamtverlauf, die Umstände des Kindes und eine langfristig angemessene Entwicklung."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Betrachten Sie das Gesamtbild", "items": ["Erfassen Sie Messwerte genau und einheitlich.", "Betrachten Sie Trends statt einzelner Zahlen.", "Besprechen Sie unerwartete Veränderungen mit Ihrer Kinderärztin oder Ihrem Kinderarzt.", "Bei Frühgeborenen kann eine Beurteilung anhand des korrigierten Alters nötig sein."]},
+      {"id": "reassurance", "type": "highlight", "content": "Ein niedrigeres oder höheres Perzentil bedeutet nicht automatisch ein Problem. Wachstum wird am besten über längere Zeit gemeinsam mit einer medizinischen Fachperson beurteilt."}
+    ], "sources": [], "askNeloPrompt": "Wie soll ich die Wachstumskurve und Perzentile meines Babys verstehen?"
+  },
+  {
+    "id": "communication-003", "category": "communication", "illustration": "communication", "minAgeDays": 60, "maxAgeDays": 300, "priority": 5,
+    "tags": ["communication", "babbling", "language-development"],
+    "title": "Die ersten Gespräche Ihres Babys",
+    "summary": "Die kleinen Gurr- und Brabbellaute sind mehr als niedlich. Sie sind frühe Schritte zur Kommunikation.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Den Rhythmus eines Gesprächs lernen", "content": "Lange vor den ersten Worten experimentieren Babys mit Lauten. Wenn Sie auf Gurren oder Brabbeln antworten, vermitteln Sie den Rhythmus eines Gesprächs: Eine Person teilt sich mit, die andere reagiert. Dieser Austausch unterstützt die frühe soziale und sprachliche Entwicklung."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Beginnen Sie ein kleines Gespräch", "items": ["Wiederholen Sie einige Laute Ihres Babys und warten Sie auf eine Antwort.", "Lächeln Sie und suchen Sie Blickkontakt, wenn Ihr Baby interessiert wirkt.", "Beschreiben Sie Alltagsaktivitäten mit einfachen Worten.", "Lassen Sie Pausen, damit Ihr Baby sich beteiligen kann."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie brauchen keine besonderen Lektionen. Gewöhnliche Momente voller Aufmerksamkeit und Austausch bieten wertvolle Lerngelegenheiten."}
+    ], "sources": [], "askNeloPrompt": "Welche Aktivitäten fördern die ersten Laute und das Brabbeln meines Babys?"
+  },
+  {
+    "id": "baby-care-002", "category": "babyCare", "illustration": "babyCare", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["baby-care", "bath-time", "bonding"],
+    "title": "Beim Baden geht es um mehr als Sauberwerden",
+    "summary": "Ein warmes Bad kann eine schöne Gelegenheit für Nähe, Spiel und neue Sinneseindrücke sein.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Ein Moment zum Entdecken", "content": "Beim Baden erlebt Ihr Baby warmes Wasser, sanfte Berührungen und Bewegung. Mit zunehmendem Alter können Planschen und das Erkunden des Wassers spielerischer Teil der Routine werden. Manche Babys lieben das Bad sofort, andere brauchen Zeit, um sich wohlzufühlen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Gestalten Sie das Bad angenehm und sicher", "items": ["Legen Sie Handtücher und Utensilien bereit, bevor Sie Ihr Baby ins Wasser setzen.", "Prüfen Sie die Wassertemperatur sorgfältig.", "Bleiben Sie in Griffweite und beaufsichtigen Sie Ihr Baby ununterbrochen.", "Lassen Sie Ihr Baby nie allein in der Badewanne, auch nicht für einen Augenblick oder in einem Badesitz."]},
+      {"id": "reassurance", "type": "highlight", "content": "Baden muss nicht aufwendig sein oder täglich stattfinden. Eine kurze, ruhige Routine kann genauso wertvoll sein."}
+    ], "sources": [], "askNeloPrompt": "Wie mache ich das Baden für mein Baby sicher und angenehm?"
+  },
+  {
+    "id": "solid-food-003", "category": "solidFood", "illustration": "solidFood", "minAgeDays": 180, "maxAgeDays": 548, "priority": 5,
+    "tags": ["solid-food", "self-feeding", "independence"],
+    "title": "Ein wenig Chaos kann viel Lernen bedeuten",
+    "summary": "Essen auf Tisch, Händen und Boden? Mahlzeiten mit allen Sinnen zu erkunden gehört zum Essenlernen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Lebensmittel zu erkunden fördert Fähigkeiten", "content": "Wenn Babys feste Nahrung beginnen, helfen Berühren, Zerdrücken und Aufheben dabei, Konsistenzen und Koordination kennenzulernen. Selbstständiges Essen fördert Feinmotorik und Unabhängigkeit, auch wenn anfangs nur wenig im Mund landet."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Fördern Sie sicheres Erkunden", "items": ["Bieten Sie weiche Lebensmittel in Formen und Konsistenzen an, die zu den Fähigkeiten Ihres Babys passen.", "Lassen Sie Ihr Baby Nahrung ohne Druck berühren und erkunden.", "Lassen Sie es aufrecht sitzen und beaufsichtigen Sie jeden Bissen.", "Vermeiden Sie Erstickungsgefahren wie ganze Nüsse, ganze Trauben und harte Stücke rohen Gemüses."]},
+      {"id": "reassurance", "type": "highlight", "content": "Eine chaotische Mahlzeit ist keine misslungene Mahlzeit. Erkunden, Koordination und Neugier sind wichtige Teile des Essenlernens."}
+    ], "sources": [], "askNeloPrompt": "Wie kann ich mein Baby sicher zum selbstständigen Essen ermutigen?"
+  },
+  {
+    "id": "parent-support-003", "category": "parentSupport", "illustration": "parentSupport", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["parent-support", "wellbeing", "self-care"],
+    "title": "Auch für sich selbst zu sorgen ist wichtig",
+    "summary": "Die Betreuung eines Babys kostet Kraft. Auch Ihre Erholung, Ihr Wohlbefinden und Ihre Unterstützung verdienen Aufmerksamkeit.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Auch Eltern haben Bedürfnisse", "content": "Die ersten Monate können körperlich und emotional fordernd sein. Unterbrochener Schlaf, veränderte Abläufe und neue Verantwortung lassen oft wenig Zeit für Sie selbst. Sich auszuruhen, zu essen, Kontakt zu anderen zu pflegen oder Hilfe zu erbitten gehört zur Fürsorge für Ihr Wohlbefinden."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Schaffen Sie Raum für sich", "items": ["Nehmen Sie praktische Hilfe von Menschen an, denen Sie vertrauen.", "Teilen Sie Verantwortung nach Möglichkeit mit einer Partnerperson oder unterstützenden Person.", "Machen Sie kurze Pausen, auch wenn es nur wenige Minuten sind.", "Sprechen Sie mit einer medizinischen Fachperson, wenn Traurigkeit, Angst oder Überforderung anhalten."]},
+      {"id": "reassurance", "type": "highlight", "content": "Für sich selbst zu sorgen ist nicht egoistisch. Ihr Wohlbefinden zählt unabhängig von allem, was Sie für Ihr Kind tun."}
+    ], "sources": [], "askNeloPrompt": "Wie kann ich realistisch für mich sorgen, während ich mein Baby betreue?"
+  },
+  {
+    "id": "motor-development-003", "category": "motorDevelopment", "illustration": "motorDevelopment", "minAgeDays": 270, "maxAgeDays": 548, "priority": 5,
+    "tags": ["motor-development", "walking", "milestones"],
+    "title": "Der Weg zu den ersten Schritten",
+    "summary": "Stehen, an Möbeln entlanggehen und erste Schritte sind spannende Meilensteine, die Kinder zu unterschiedlichen Zeiten erreichen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Laufen braucht Übung", "content": "Vor dem freien Laufen üben viele Babys das Stehen an Möbeln, verlagern ihr Gewicht und bewegen sich seitwärts an stabilen Flächen entlang. Dies fördert Gleichgewicht und Koordination. Der Zeitpunkt des freien Laufens variiert und das Lernen umfasst meist viele Versuche."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Unterstützen Sie sichere Bewegung", "items": ["Bieten Sie stabile Möbel und einen sicheren Raum zum Erkunden.", "Lassen Sie Ihr Kind auf sicheren Innenflächen barfuß spielen.", "Fördern Sie Bewegung, ohne Ihr Kind in Positionen zu ziehen, die es nicht selbst halten kann.", "Vermeiden Sie Lauflernhilfen mit Rollen wegen der Verletzungsgefahr."]},
+      {"id": "reassurance", "type": "highlight", "content": "Für erste Schritte gibt es eine breite normale Altersspanne. Läuft Ihr Kind mit 18 Monaten nicht frei oder verliert es eine frühere Fähigkeit, lassen Sie seine Entwicklung beurteilen."}
+    ], "sources": [], "askNeloPrompt": "Wie unterstütze ich mein Baby beim Stehen- und Laufenlernen?"
+  },
+  {
+    "id": "health-and-comfort-002", "category": "healthAndComfort", "illustration": "healthAndComfort", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["health", "common-cold", "comfort"],
+    "title": "Wenn Ihr Baby erkältet ist",
+    "summary": "Eine laufende oder verstopfte Nase kommt bei kleinen Kindern häufig vor. Sanfte Pflege kann Beschwerden lindern.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Erkältungen verstehen", "content": "Babys und Kleinkinder begegnen beim Aufbau ihres Immunsystems vielen Atemwegsviren. Eine Erkältung kann eine verstopfte Nase, Niesen und Husten verursachen. Die meisten unkomplizierten Erkältungen bessern sich mit der Zeit, doch sehr junge Babys sowie Kinder mit Atem- oder Trinkproblemen benötigen besondere Aufmerksamkeit."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Einfache Möglichkeiten zur Linderung", "items": ["Verwenden Sie sterile Kochsalzlösung als Tropfen oder Spray, um Nasenschleim zu lösen.", "Bieten Sie häufig die gewohnten Milchmahlzeiten an und achten Sie auf Austrocknungszeichen.", "Halten Sie die Schlafunterlage flach und befolgen Sie Empfehlungen für sicheren Schlaf.", "Geben Sie keine frei verkäuflichen Husten- und Erkältungsmittel, sofern sie nicht ausdrücklich medizinisch empfohlen wurden."]},
+      {"id": "reassurance", "type": "highlight", "content": "Holen Sie dringend medizinischen Rat ein bei 38°C oder mehr bei einem Baby unter 3 Monaten, Atemnot, schlechtem Trinken, Austrocknung oder ungewöhnlicher Schläfrigkeit."}
+    ], "sources": [], "askNeloPrompt": "Wie kann ich meinem erkälteten Baby Linderung verschaffen?"
+  },
+  {
+    "id": "learning-003", "category": "learning", "illustration": "learning", "minAgeDays": 180, "maxAgeDays": 548, "priority": 5,
+    "tags": ["learning", "cause-and-effect", "exploration"],
+    "title": "Kleine Experimente, große Entdeckungen",
+    "summary": "Spielzeug fallen lassen, Knöpfe drücken und Behälter öffnen sind die ersten Experimente Ihres Babys mit Ursache und Wirkung.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Entdecken, wie die Welt funktioniert", "content": "Mit zunehmendem Alter erkennen Babys Zusammenhänge zwischen ihren Handlungen und dem, was danach geschieht. Eine Rassel zu schütteln erzeugt Geräusche, ein losgelassenes Spielzeug fällt und ein Stoß kann Dinge bewegen. Diese Erfahrungen fördern Neugier, Aufmerksamkeit und Problemlösen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Fördern Sie Entdeckungen im Alltag", "items": ["Bieten Sie sichere Gegenstände an, die bei Bewegung unterschiedliche Geräusche machen.", "Lassen Sie Ihr Baby Stapelbecher oder altersgerechte Behälter erkunden.", "Beschreiben Sie, was bei einer Handlung passiert.", "Geben Sie Ihrem Baby Zeit zum Experimentieren, bevor Sie etwas vormachen."]},
+      {"id": "reassurance", "type": "highlight", "content": "Lernen braucht kein kompliziertes Spielzeug. Alltagsgegenstände und einfache Begegnungen bieten viele Entdeckungsmöglichkeiten."}
+    ], "sources": [], "askNeloPrompt": "Welche einfachen Aktivitäten helfen meinem Baby, Ursache und Wirkung zu verstehen?"
+  },
+  {
+    "id": "night-sleep-003", "category": "nightSleep", "illustration": "nightSleep", "minAgeDays": 90, "maxAgeDays": 548, "priority": 5,
+    "tags": ["sleep", "bedtime-routine", "reassurance"],
+    "title": "Die Geborgenheit einer vertrauten Schlafenszeit",
+    "summary": "Einige vorhersehbare Schritte vor dem Schlafen helfen Ihrem Baby zu erkennen, dass die Schlafenszeit naht.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Routinen helfen können", "content": "Babys erkennen nach und nach vertraute Muster. Eine ruhige Abfolge wie Schlafanzug anziehen, Licht dimmen und leise kuscheln schafft vorhersehbare Signale. Eine Routine garantiert keinen ununterbrochenen Schlaf, kann das Einschlafen aber erleichtern."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Gestalten Sie eine einfache Routine", "items": ["Wählen Sie zwei oder drei beruhigende Aktivitäten für Ihre Familie.", "Halten Sie die Reihenfolge recht beständig, ohne die Uhr starr zu befolgen.", "Reduzieren Sie helles Licht und anregendes Spiel vor dem Schlafen.", "Legen Sie Ihr Baby stets in eine altersgerechte, sichere Schlafumgebung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Eine Abendroutine muss weder perfekt noch aufwendig sein. Vertrautheit und Ruhe sind wichtiger als ein exakter Zeitplan."}
+    ], "sources": [], "askNeloPrompt": "Wie gestalte ich eine beruhigende Abendroutine passend zum Alter meines Babys?"
+  },
+  {
+    "id": "breastfeeding-002", "category": "breastfeeding", "illustration": "breastfeeding", "minAgeDays": 0, "maxAgeDays": 120, "priority": 5,
+    "tags": ["breastfeeding", "cluster-feeding", "reassurance"],
+    "title": "Warum Ihr Baby schon wieder trinken möchte",
+    "summary": "Manche Babys möchten besonders in den ersten Wochen mehrmals kurz hintereinander gestillt werden. Dies wird oft Clusterstillen genannt.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Clusterstillen verstehen", "content": "In bestimmten Phasen, besonders während der ersten Monate, möchten gestillte Babys über einige Stunden hinweg wiederholt trinken. Dieses Muster heißt Clusterstillen. Es kann abends oder bei verändertem Nahrungsbedarf auftreten. Häufiges Stillen allein bedeutet nicht, dass Ihre Milchmenge zu gering ist."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Erleichtern Sie häufiges Stillen", "items": ["Reagieren Sie auf die Hungerzeichen Ihres Babys statt nur auf die Uhr.", "Halten Sie Wasser, Snacks und einen bequemen Platz für sich bereit.", "Bitten Sie eine vertraute Person, während intensiver Stillphasen andere Aufgaben zu übernehmen.", "Beobachten Sie nasse Windeln und Gewichtszunahme und holen Sie bei Sorgen Unterstützung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Clusterstillen kann anstrengend sein, ist aber oft vorübergehend. Bei Schmerzen, Austrocknungszeichen oder unzureichender Gewichtszunahme wenden Sie sich an eine medizinische Fachperson."}
+    ], "sources": [], "askNeloPrompt": "Wie erkenne ich, ob das häufige Stillen meines Babys normal ist?"
+  },
+  {
+    "id": "bottle-feeding-002", "category": "bottleFeeding", "illustration": "bottleFeeding", "minAgeDays": 0, "maxAgeDays": 365, "priority": 5,
+    "tags": ["bottle-feeding", "paced-feeding", "comfort"],
+    "title": "Das Fläschchen ist kein Wettrennen",
+    "summary": "Langsameres Füttern hilft Ihrem Baby, angenehm zu trinken und Pausen anzuzeigen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Lassen Sie Ihr Baby das Tempo bestimmen", "content": "Beim Fläschchen geht es nicht nur um eine bestimmte Milchmenge. Babys brauchen Gelegenheit, in Ruhe zu saugen, zu schlucken, zu atmen und Pausen zu machen. Ein schneller Milchfluss kann Schwierigkeiten bereiten. Bedürfnisorientiertes, langsames Füttern hilft Ihnen, Pausen- und Sättigungszeichen zu erkennen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Versuchen Sie einen sanfteren Rhythmus", "items": ["Halten Sie Ihr Baby gestützt und halb aufrecht.", "Halten Sie die Flasche eher waagerecht, um den Milchfluss zu mäßigen.", "Lassen Sie natürliche Pausen zu und achten Sie auf Unwohlsein.", "Stützen Sie eine Flasche nie ab und lassen Sie Ihr Baby nie unbeaufsichtigt trinken."]},
+      {"id": "reassurance", "type": "highlight", "content": "Jedes Baby entwickelt seinen eigenen Trinkrhythmus. Wenn Füttern regelmäßig Husten, Verschlucken, deutliche Belastung oder geringe Gewichtszunahme verursacht, holen Sie fachlichen Rat ein."}
+    ], "sources": [], "askNeloPrompt": "Wie kann ich meinem Baby das Fläschchen in seinem eigenen Tempo geben?"
+  },
+  {
+    "id": "growth-002", "category": "growth", "illustration": "growth", "minAgeDays": 0, "maxAgeDays": 365, "priority": 5,
+    "tags": ["growth", "feeding", "development"],
+    "title": "Wachstum verläuft nicht immer gleich schnell",
+    "summary": "Appetit, Schlaf und Verhalten können sich beim Wachsen verändern. Entwicklung folgt selten einem vollkommen vorhersehbaren Plan.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Wachstum braucht Zeit", "content": "Babys wachsen im ersten Jahr schnell, aber nicht jeden Tag gleich stark. Manchmal wirkt Ihr Baby hungriger oder braucht mehr Nähe. Solche Veränderungen werden mitunter Wachstumsschübe genannt, doch es gibt keinen Zeitplan, der für jedes Baby gilt."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Reagieren Sie auf veränderte Bedürfnisse", "items": ["Achten Sie auf Hunger- und Sättigungszeichen.", "Nehmen Sie die empfohlenen Wachstumskontrollen wahr.", "Rechnen Sie mit Schwankungen bei Schlaf und Ernährung.", "Wenden Sie sich bei anhaltenden Sorgen zu Ernährung, Flüssigkeitsversorgung oder Wachstum an eine medizinische Fachperson."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht jeden Wachstumsschub erkennen. Den Signalen Ihres Babys zu folgen und die Gesamtentwicklung zu beobachten ist meist hilfreicher."}
+    ], "sources": [], "askNeloPrompt": "Wie beeinflussen Wachstumsschübe Ernährung und Schlaf meines Babys?"
+  },
+  {
+    "id": "daytime-nap-003", "category": "daytimeNap", "illustration": "daytimeNap", "minAgeDays": 0, "maxAgeDays": 240, "priority": 5,
+    "tags": ["sleep", "short-naps", "reassurance"],
+    "title": "Warum manche Nickerchen so kurz sind",
+    "summary": "Ein kurzes Nickerchen bedeutet nicht automatisch, dass etwas nicht stimmt. Junge Babys haben oft wechselnde, unvorhersehbare Schlafmuster.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Kurze Schlafphasen verstehen", "content": "In den ersten Lebensmonaten kann der Tagschlaf unregelmäßig sein. Manche Schlafphasen sind kurz, andere deutlich länger. Babys entwickeln ihren Schlafrhythmus noch und haben unterschiedliche Bedürfnisse. Eine einzelne kurze Schlafphase ist nicht unbedingt schlechter Schlaf."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Unterstützen Sie Ruhe am Tag", "items": ["Achten Sie auf Müdigkeitszeichen wie weniger Interesse oder Unruhe.", "Bieten Sie eine ruhige Umgebung, wenn Ihr Baby schlafbereit wirkt.", "Befolgen Sie bei jedem Schlaf die Empfehlungen für sicheren Schlaf und legen Sie Ihr Baby auf den Rücken.", "Betrachten Sie den Gesamtschlaf und das allgemeine Wohlbefinden statt einer einzelnen Schlafphase."]},
+      {"id": "reassurance", "type": "highlight", "content": "Nicht jedes Nickerchen muss lang sein. Wirkt Ihr Baby anhaltend erschöpft oder bereitet Ihnen der Schlaf Sorgen, sprechen Sie mit einer medizinischen Fachperson."}
+    ], "sources": [], "askNeloPrompt": "Sind kurze Nickerchen im Alter meines Babys normal?"
+  },
+  {
+    "id": "playtime-003", "category": "playtime", "illustration": "playtime", "minAgeDays": 90, "maxAgeDays": 365, "priority": 5,
+    "tags": ["playtime", "sensory-development", "exploration"],
+    "title": "Die Welt ist ein Spielplatz für die Sinne",
+    "summary": "Verschiedene Oberflächen, Geräusche und Bewegungen machen alltägliche Momente zu spannenden Entdeckungen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Mit den Sinnen lernen", "content": "Babys erkunden ihre Umgebung durch Sehen, Hören, Berühren und Bewegung. Einen weichen Stoff zu fühlen, eine leise Rassel zu hören oder einem Gegenstand zuzusehen hilft ihnen, Unterschiede kennenzulernen. Sinnliches Spiel muss weder kompliziert noch teuer sein."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Probieren Sie einfache Sinneserfahrungen", "items": ["Bieten Sie altersgerechtes Spielzeug mit verschiedenen sicheren Oberflächen an.", "Lassen Sie Ihr Baby unter Aufsicht ein weiches Tuch erkunden.", "Führen Sie sanfte Klänge mit einer Rassel oder Ihrer Stimme ein.", "Folgen Sie den Reaktionen Ihres Babys und pausieren Sie bei Überreizung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Ihr Baby braucht keine ständige Unterhaltung. Einige neugierige Entdeckungsmomente können genügen."}
+    ], "sources": [], "askNeloPrompt": "Welche sicheren Sinneserfahrungen kann ich meinem Baby anbieten?"
+  },
+  {
+    "id": "teething-002", "category": "teething", "illustration": "teething", "minAgeDays": 120, "maxAgeDays": 548, "priority": 5,
+    "tags": ["teething", "oral-health", "baby-care"],
+    "title": "Der erste Zahn verdient ein wenig Pflege",
+    "summary": "Zahnpflege beginnt früher, als viele Eltern denken. Der erste Zahn ist der richtige Zeitpunkt für eine sanfte Routine.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Gesunde Gewohnheiten von Anfang an", "content": "Milchzähne sind wichtig für Ernährung, Sprachentwicklung und den Platz der bleibenden Zähne. Die Pflege beginnt mit dem ersten Zahn. Frühes, sanftes Putzen schafft gesunde Gewohnheiten und schützt vor Karies."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Beginnen Sie eine einfache Zahnpflegeroutine", "items": ["Putzen Sie zweimal täglich mit einer kleinen, weichen Zahnbürste.", "Verwenden Sie eine dünne Spur fluoridhaltiger Zahnpasta entsprechend dem Alter und örtlichen Empfehlungen.", "Legen Sie Ihr Baby nicht mit einer Flasche Milch oder gesüßten Getränken ins Bett.", "Planen Sie den ersten Zahnarztbesuch bis zum ersten Geburtstag oder innerhalb von sechs Monaten nach dem ersten Zahn."]},
+      {"id": "reassurance", "type": "highlight", "content": "Eine sanfte Routine ist wichtiger als perfekte Technik. Ihre zahnmedizinische Fachperson hilft bei Zahnpasta und Fluoridmenge."}
+    ], "sources": [], "askNeloPrompt": "Wie pflege ich die ersten Zähne meines Babys?"
+  },
+  {
+    "id": "parent-support-004", "category": "parentSupport", "illustration": "parentSupport", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["parent-support", "shared-responsibilities", "wellbeing"],
+    "title": "Elternsein war nie als Aufgabe für eine Person gedacht",
+    "summary": "Verantwortung zu teilen und Unterstützung anzunehmen macht den Alltag besser bewältigbar.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Unterstützung macht einen Unterschied", "content": "Die Betreuung eines Babys umfasst sichtbare und unsichtbare Aufgaben, vom Füttern und Wickeln bis zur Terminplanung und zum Voraussehen von Bedürfnissen. Liegt die Verantwortung überwiegend bei einer Person, kann Erschöpfung entstehen. Aufgaben zu teilen und offen zu sprechen hilft, ein tragfähiges Gleichgewicht zu finden."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Erleichtern Sie die Zusammenarbeit", "items": ["Sprechen Sie offen über besonders belastende Aufgaben.", "Teilen Sie Verantwortung passend zu Ihrer Familiensituation.", "Berücksichtigen Sie Planung und mentale Last, nicht nur praktische Aufgaben.", "Nehmen Sie Hilfe von vertrauten Angehörigen oder Freunden an."]},
+      {"id": "reassurance", "type": "highlight", "content": "Unterstützung zu brauchen ist keine Schwäche. Elternsein ist fordernd, und alle verdienen Erholung und neue Kraft."}
+    ], "sources": [], "askNeloPrompt": "Wie können wir die Verantwortung als Eltern gerechter teilen?"
+  },
+  {
+    "id": "communication-004", "category": "communication", "illustration": "communication", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["communication", "reading", "language-development"],
+    "title": "Für eine Geschichte ist es nie zu früh",
+    "summary": "Gemeinsames Lesen fördert Sprache und Verbindung, noch bevor Ihr Baby die Worte versteht.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Vorlesen wichtig ist", "content": "Beim Vorlesen hört Ihr Baby Rhythmus und Klänge der Sprache und genießt Ihre Aufmerksamkeit. Bücher führen mit der Zeit neue Wörter ein, regen Austausch an und werden vertrauter Teil des Alltags. Junge Babys achten oft stärker auf Stimme und Gesicht als auf die Geschichte."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Machen Sie Bücher zum Teil des Tages", "items": ["Wählen Sie stabile Bücher mit klaren Bildern und einfachen Worten.", "Zeigen Sie auf Gegenstände und beschreiben Sie sie.", "Lassen Sie Ihr Baby Seiten berühren oder umblättern, wenn es bereit ist.", "Folgen Sie seinem Interesse, statt jedes Buch beenden zu müssen."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht lange lesen. Schon wenige Minuten gemeinsamer Aufmerksamkeit können wertvoll sein."}
+    ], "sources": [], "askNeloPrompt": "Welche Bücher und Leseaktivitäten passen zum Alter meines Babys?"
+  },
+  {
+    "id": "solid-food-004", "category": "solidFood", "illustration": "solidFood", "minAgeDays": 180, "maxAgeDays": 548, "priority": 5,
+    "tags": ["solid-food", "iron", "nutrition"],
+    "title": "Ein kleiner Nährstoff mit großer Bedeutung",
+    "summary": "Eisen wird besonders wichtig, wenn Babys feste Nahrung beginnen. Eisenreiche Lebensmittel unterstützen eine gesunde Entwicklung.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Eisen wichtig ist", "content": "Eisen unterstützt gesunde Blutzellen und die Gehirnentwicklung. Babys werden mit Eisenvorräten geboren, die im Säuglingsalter allmählich abnehmen. Mit Einführung der Beikost werden geeignete eisenreiche Lebensmittel neben Mutter- oder Säuglingsmilch wichtig."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Entdecken Sie eisenreiche Lebensmittel", "items": ["Bieten Sie altersgerecht zubereitetes Fleisch, Geflügel, Fisch, Bohnen oder Linsen an.", "Erwägen Sie geeigneten, mit Eisen angereicherten Babybrei.", "Kombinieren Sie pflanzliche Eisenquellen mit Vitamin-C-reichen Lebensmitteln.", "Fragen Sie besonders bei Frühgeburt nach einer nötigen Eisenergänzung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht bei jeder Mahlzeit jedes Milligramm berechnen. Eine Vielfalt geeigneter Lebensmittel unterstützt langfristig eine ausgewogene Ernährung."}
+    ], "sources": [], "askNeloPrompt": "Welche eisenreichen Lebensmittel eignen sich für das Alter meines Babys?"
+  },
+  {
+    "id": "motor-development-004", "category": "motorDevelopment", "illustration": "motorDevelopment", "minAgeDays": 180, "maxAgeDays": 548, "priority": 5,
+    "tags": ["motor-development", "fine-motor-skills", "coordination"],
+    "title": "Kleine Finger, wachsende Fähigkeiten",
+    "summary": "Spielzeug greifen, Gegenstände von Hand zu Hand geben und kleine Bewegungen erkunden fördert die Koordination.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Feinmotorik entdecken", "content": "Feinmotorik umfasst zunehmend präzise Bewegungen von Händen und Fingern. Babys lernen zu greifen, Gegenstände zwischen den Händen zu wechseln und schließlich kleine Dinge mit Daumen und Fingern aufzunehmen. Dies unterstützt Spiel, selbstständiges Essen und Unabhängigkeit."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Fördern Sie kleine Hände", "items": ["Bieten Sie leichtes, gut greifbares, altersgerechtes Spielzeug an.", "Lassen Sie sichere Gegenstände zwischen den Händen wechseln.", "Führen Sie mit besserer Koordination Stapelbecher und große Bausteine ein.", "Halten Sie kleine Gegenstände und ablösbare Teile wegen Erstickungsgefahr außer Reichweite."]},
+      {"id": "reassurance", "type": "highlight", "content": "Handkoordination entwickelt sich allmählich im Alltag. Jedes Kind hat sein Tempo; bei Verlust erworbener Fähigkeiten oder Sorgen sprechen Sie mit Ihrer Kinderärztin oder Ihrem Kinderarzt."}
+    ], "sources": [], "askNeloPrompt": "Welche Aktivitäten fördern die Feinmotorik meines Babys?"
+  },
+  {
+    "id": "parent-support-005", "category": "parentSupport", "illustration": "parentSupport", "minAgeDays": 180, "maxAgeDays": 548, "priority": 5,
+    "tags": ["separation", "attachment", "reassurance"],
+    "title": "Wenn der Abschied Tränen bringt", "summary": "Ihr Baby wird vielleicht plötzlich unruhig, wenn Sie den Raum verlassen. Trennungsangst ist ein häufiger Teil der frühen Entwicklung.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Trennung schwerfallen kann", "content": "Wenn Babys vertraute Menschen und ihre Umgebung bewusster wahrnehmen, reagieren sie möglicherweise stark auf das Weggehen einer Bezugsperson. Trennungsangst entsteht häufig in der zweiten Hälfte des ersten Jahres, Zeitpunkt und Intensität variieren jedoch. Ihr Baby lernt Beziehungen, Entfernung und das beruhigende Wiedersehen kennen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Gestalten Sie Abschiede sanfter", "items": ["Schaffen Sie ein kurzes, vorhersehbares Abschiedsritual.", "Erklären Sie ruhig, dass Sie gehen und wiederkommen.", "Üben Sie kurze Trennungen mit einer vertrauten Betreuungsperson.", "Verschwinden Sie nicht ohne Abschied, da dies das Weggehen unvorhersehbarer macht."]},
+      {"id": "reassurance", "type": "highlight", "content": "Tränen beim Abschied bedeuten nicht, dass Sie Ihre Bindung schädigen. Beständige, zugewandte Betreuung stärkt mit der Zeit das Vertrauen."}
+    ], "sources": [], "askNeloPrompt": "Wie helfe ich meinem Baby bei Trennungsangst?"
+  },
+  {
+    "id": "bottle-feeding-003", "category": "bottleFeeding", "illustration": "bottleFeeding", "minAgeDays": 0, "maxAgeDays": 365, "priority": 5,
+    "tags": ["formula", "bottle-feeding", "food-safety"],
+    "title": "Eine sichere Flasche beginnt bei der Zubereitung", "summary": "Einige sorgfältige Schritte bei der Zubereitung von Säuglingsnahrung schützen Ihr Baby vor schädlichen Bakterien.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum die Zubereitung wichtig ist", "content": "Säuglingsmilchpulver ist nicht steril. Schädliche Bakterien können im Pulver vorkommen oder bei der Zubereitung hineingelangen. Sichere Handhabung, genaues Abmessen und richtige Lagerung senken das Infektionsrisiko. Babys unter zwei Monaten, Frühgeborene und Babys mit geschwächtem Immunsystem brauchen besondere Sorgfalt."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Gewöhnen Sie sich eine sichere Zubereitung an", "items": ["Waschen Sie Ihre Hände und reinigen Sie alle Utensilien vor der Zubereitung.", "Befolgen Sie Herstellerangaben und örtliche Gesundheitsrichtlinien zu Wassertemperatur und Zubereitung.", "Messen Sie Wasser und Pulver mit dem beiliegenden Messlöffel genau ab.", "Entsorgen Sie Reste nach der Mahlzeit und beachten Sie die empfohlenen Aufbewahrungszeiten."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sichere Zubereitung wird schnell zur Routine. Bei erhöhtem Infektionsrisiko fragen Sie eine medizinische Fachperson nach der sichersten Nahrung und Zubereitungsweise."}
+    ], "sources": [], "askNeloPrompt": "Wie bereite ich Säuglingsnahrung sicher zu und bewahre sie auf?"
+  },
+  {
+    "id": "learning-004", "category": "learning", "illustration": "learning", "minAgeDays": 270, "maxAgeDays": 548, "priority": 5,
+    "tags": ["emotions", "learning", "social-development"],
+    "title": "Große Gefühle in einem kleinen Menschen", "summary": "Frustration, Begeisterung und Tränen gehören zum Kennenlernen von Gefühlen. Ihre ruhige Nähe kann helfen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Emotionale Fähigkeiten brauchen Zeit", "content": "Wenn Babys zu Kleinkindern werden, entwickeln sie stärkere Vorlieben und möchten selbstständiger erkunden. Ihre Fähigkeit, Frustration zu bewältigen, entwickelt sich jedoch noch. Weinen oder Protestieren ist oft Ausdruck von Gefühlen, die sie noch nicht in Worte fassen können."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Begleiten Sie Ihr Kind durch Gefühle", "items": ["Bleiben Sie ruhig und bieten Sie Trost, wenn Ihr Kind überwältigt ist.", "Benennen Sie Gefühle einfach, etwa: „Du wirkst frustriert.“", "Setzen Sie freundliche, beständige Grenzen.", "Bieten Sie gegebenenfalls einfache Wahlmöglichkeiten für etwas Mitbestimmung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Ihr Kind muss nicht jedes Gefühl allein bewältigen. Emotionsregulation entsteht allmählich in unterstützenden Beziehungen."}
+    ], "sources": [], "askNeloPrompt": "Wie reagiere ich, wenn mein Kleinkind frustriert oder aufgebracht ist?"
+  },
+  {
+    "id": "baby-care-003", "category": "babyCare", "illustration": "babyCare", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["skin-care", "baby-care", "comfort"],
+    "title": "Sanfte Pflege für empfindliche Haut", "summary": "Die Haut Ihres Babys entwickelt sich noch. Einfache, sanfte Pflege genügt häufig.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Empfindliche Babyhaut verstehen", "content": "Babyhaut kann empfindlicher auf Feuchtigkeit, Reibung, Duftstoffe und aggressive Reinigungsprodukte reagieren. Vorübergehende Trockenheit oder leichte Reizung ist häufig. Sauberhalten, unnötige Produkte vermeiden und feuchte Bereiche schützen hilft, die Haut angenehm zu halten."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Halten Sie die Pflege einfach", "items": ["Verwenden Sie lauwarmes Wasser und bei Bedarf milde, unparfümierte Reinigung.", "Tupfen Sie die Haut, besonders in Falten, sanft trocken.", "Wechseln Sie nasse oder schmutzige Windeln rasch und verwenden Sie bei Bedarf eine geeignete Schutzcreme.", "Fragen Sie bei anhaltendem Ausschlag, verletzter Haut oder Infektionszeichen eine medizinische Fachperson."]},
+      {"id": "reassurance", "type": "highlight", "content": "Mehr Produkte bedeuten nicht automatisch bessere Pflege. Eine einfache Routine ist für gesunde Babyhaut oft am sanftesten."}
+    ], "sources": [], "askNeloPrompt": "Wie sieht eine einfache und sichere Hautpflege für mein Baby aus?"
+  },
+  {
+    "id": "communication-005", "category": "communication", "illustration": "communication", "minAgeDays": 270, "maxAgeDays": 548, "priority": 5,
+    "tags": ["language", "first-words", "communication"],
+    "title": "Der Zauber des ersten Wortes", "summary": "Die ersten bedeutungsvollen Worte entstehen möglicherweise allmählich nach Monaten des Zuhörens, Gestikulierens und Austauschs.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Worte wachsen aus Alltagsbegegnungen", "content": "Vor erkennbaren Worten hören Babys monatelang Sprache, probieren Laute aus und kommunizieren durch Gesten. Erste Worte entstehen oft gegen Ende des ersten Jahres, doch die Entwicklung variiert. Auch Wörter verstehen und auf vertraute Sprache reagieren sind wichtige Teile der Kommunikation."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Fördern Sie Sprache natürlich", "items": ["Benennen Sie vertraute Gegenstände im Alltag.", "Reagieren Sie warm auf Laute, Gesten und Wortversuche.", "Lesen Sie einfache Bücher und sprechen Sie über die Bilder.", "Drängen Sie Ihr Kind nicht, Wörter auf Aufforderung zu wiederholen."]},
+      {"id": "reassurance", "type": "highlight", "content": "Kinder entwickeln Sprache unterschiedlich schnell. Wenn erwartete Kommunikationsschritte ausbleiben, Ihr Kind schlecht hört oder Fähigkeiten verliert, besprechen Sie Ihre Sorge medizinisch."}
+    ], "sources": [], "askNeloPrompt": "Wie fördere ich die ersten Worte und die Sprachentwicklung meines Babys?"
+  },
+  {
+    "id": "breastfeeding-003", "category": "breastfeeding", "illustration": "breastfeeding", "minAgeDays": 0, "maxAgeDays": 180, "priority": 5,
+    "tags": ["breastfeeding", "milk-intake", "reassurance"],
+    "title": "Bekommt Ihr Baby genug Milch?", "summary": "Beim Stillen gibt es keine Mengenanzeige. Wachstum, Windeln und Verhalten liefern jedoch hilfreiche Hinweise.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Schauen Sie über die Uhr hinaus", "content": "Gestillte Babys trinken nicht alle gleich lang oder in gleichen Abständen. Die Dauer allein zeigt nicht die Milchmenge. Gewichtszunahme, nasse Windeln und wirksame Milchübertragung sind hilfreicher. Stillmuster ändern sich zudem mit dem Wachstum."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Wichtige Anzeichen", "items": ["Lassen Sie das Wachstum bei empfohlenen Terminen verfolgen.", "Achten Sie auf eine altersgerechte Zahl nasser Windeln.", "Beobachten Sie rhythmisches Saugen und Schlucken.", "Holen Sie Still- oder medizinische Hilfe bei Schmerzen, Austrocknungszeichen oder bedenklicher Gewichtszunahme."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht jede Mahlzeit messen. Bei Unsicherheit kann eine medizinische Fachperson Stillen und Wachstum beurteilen."}
+    ], "sources": [], "askNeloPrompt": "Wie erkenne ich, ob mein gestilltes Baby genug Milch bekommt?"
+  },
+  {
+    "id": "playtime-004", "category": "playtime", "illustration": "playtime", "minAgeDays": 180, "maxAgeDays": 548, "priority": 5,
+    "tags": ["playtime", "free-play", "exploration"],
+    "title": "Das beste Spiel braucht manchmal keine Anleitung", "summary": "Sichere Gegenstände im eigenen Tempo zu erkunden fördert Neugier, Kreativität und Selbstständigkeit.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Der Wert des freien Spiels", "content": "Babys und Kleinkinder lernen durch Erkunden, Experimentieren und Entdecken. Beim freien Spiel wählt Ihr Kind Interesse und Umgang selbst. Das fördert Aufmerksamkeit, Problemlösen und beginnende Selbstständigkeit. Ihre Nähe bleibt wertvoll, auch ohne jede Aktivität zu lenken."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Schaffen Sie Raum zum Entdecken", "items": ["Bieten Sie wenige sichere, altersgerechte Spielsachen statt zu vieler gleichzeitig an.", "Lassen Sie Ihr Kind den Gegenstand wählen.", "Beobachten Sie zunächst, bevor Sie etwas vormachen.", "Bleiben Sie zur Aufsicht in der Nähe und geben Sie Raum zum Experimentieren."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht jede Spielminute organisieren. Eine sichere Umgebung und Ihre Anwesenheit genügen manchmal."}
+    ], "sources": [], "askNeloPrompt": "Wie fördere ich selbstständiges Spielen und halte mein Baby sicher?"
+  },
+  {
+    "id": "health-and-comfort-003", "category": "healthAndComfort", "illustration": "healthAndComfort", "minAgeDays": 120, "maxAgeDays": 548, "priority": 5,
+    "tags": ["safety", "baby-proofing", "motor-development"],
+    "title": "Ihr kleiner Entdecker braucht eine sichere Welt", "summary": "Mit zunehmender Beweglichkeit werden Alltagsgegenstände plötzlich faszinierend — und manchmal gefährlich.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Ein neuer Blick auf Ihr Zuhause", "content": "Drehen, Krabbeln, Hochziehen und Laufen erschließen bisher unerreichbare Orte. Kabel, Möbel, Treppen, Reinigungsmittel und Kleinteile können gefährlich werden. Vorbereitung vor jeder Mobilitätsstufe hilft, vermeidbare Verletzungen zu reduzieren."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Sehen Sie die Welt aus Babyhöhe", "items": ["Sichern Sie schwere Möbel und Fernseher gegen Umkippen.", "Bewahren Sie Medikamente, Reinigungsmittel und verschluckbare Kleinteile verschlossen oder unerreichbar auf.", "Nutzen Sie geeignete Schutzgitter an Treppen.", "Halten Sie heiße Getränke, scharfe Gegenstände und Kabel außer Reichweite.", "Auch in einem gesicherten Raum bleibt Aufsicht unverzichtbar."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht über Nacht jeden Raum perfektionieren. Beginnen Sie mit den wichtigsten Gefahren und prüfen Sie neu, wenn sich die Fähigkeiten verändern."}
+    ], "sources": [], "askNeloPrompt": "Was sollte ich zu Hause für das aktuelle Alter meines Kindes sichern?"
+  },
+  {
+    "id": "learning-005", "category": "learning", "illustration": "learning", "minAgeDays": 270, "maxAgeDays": 548, "priority": 5,
+    "tags": ["learning", "imitation", "social-development"],
+    "title": "Ihr Baby beobachtet und lernt", "summary": "Vom Abschiedswinken bis zum Telefonieren im Spiel: Nachahmung hilft kleinen Kindern, die Welt zu verstehen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Durch Beobachten lernen", "content": "Babys und Kleinkinder beobachten und kopieren zunehmend Handlungen. Nachahmung hilft bei neuen Bewegungen, sozialen Abläufen und der Nutzung von Gegenständen. Haarebürsten, Winken oder Rühren mit einem Löffel werden zu Lerngelegenheiten."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Machen Sie Routinen zu Lernmomenten", "items": ["Winken Sie zur Begrüßung und zum Abschied und warten Sie auf eine Reaktion.", "Zeigen Sie einfache Handlungen mit sicheren Gegenständen.", "Laden Sie Ihr Kind bei Liedern zum Nachahmen von Gesten ein.", "Freuen Sie sich über Versuche, ohne genaue Kopien zu erwarten."]},
+      {"id": "reassurance", "type": "highlight", "content": "Ihr Kind lernt täglich aus gewöhnlichen Begegnungen. Besondere Lektionen sind für wertvolle Lerngelegenheiten nicht nötig."}
+    ], "sources": [], "askNeloPrompt": "Welche Alltagsaktivitäten helfen meinem Baby, durch Nachahmung zu lernen?"
+  },
+  {
+    "id": "parent-support-006", "category": "parentSupport", "illustration": "parentSupport", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["parent-support", "emotional-wellbeing", "reassurance"],
+    "title": "Manche Tage sind einfach schwieriger", "summary": "Elternsein kann zugleich schön und erschöpfend sein. Ein schwieriger Tag definiert Sie nicht als Elternteil.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Raum für schwierige Gefühle", "content": "Die Betreuung eines kleinen Kindes bringt neben Freude auch Frustration, Müdigkeit und Unsicherheit. Schlafmangel und neue Abläufe lassen Alltägliches überwältigend wirken. Solche Gefühle bedeuten nicht automatisch ein Problem, doch anhaltende Belastung verdient Aufmerksamkeit und Unterstützung."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Seien Sie nachsichtig mit sich", "items": ["Konzentrieren Sie sich bei wenig Energie auf das Wesentliche.", "Bitten Sie eine vertraute Person um praktische oder emotionale Unterstützung.", "Machen Sie eine kurze Pause, wenn Ihr Kind sicher betreut ist.", "Sprechen Sie bei anhaltender Traurigkeit, Angst oder Überforderung mit einer medizinischen Fachperson."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht jeden Moment genießen, um fürsorglich zu sein. Ihr Wohlbefinden zählt und Hilfe anzunehmen ist gesund."}
+    ], "sources": [], "askNeloPrompt": "Wie bewältige ich schwierige Elterntage ohne Schuldgefühle?"
+  },
+  {
+    "id": "bottle-feeding-004", "category": "bottleFeeding", "illustration": "bottleFeeding", "minAgeDays": 0, "maxAgeDays": 365, "priority": 5,
+    "tags": ["bottle-feeding", "hygiene", "food-safety"],
+    "title": "Eine saubere Flasche macht einen Unterschied", "summary": "Milchreste können Bakterienwachstum fördern. Eine einfache Reinigungsroutine hält das Zubehör sicher.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Flaschenhygiene wichtig ist", "content": "Milch kann Rückstände in Flaschen, Saugern und anderem Zubehör hinterlassen. Ohne gründliche Reinigung können sich dort Bakterien vermehren. Babys sind in den ersten Monaten besonders infektionsanfällig; sorgfältige Reinigung und angemessene Sterilisation sind daher wichtig."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Entwickeln Sie eine sichere Reinigungsroutine", "items": ["Waschen Sie Ihre Hände, bevor Sie sauberes Zubehör anfassen.", "Zerlegen Sie Flaschen und reinigen Sie alle Teile nach jeder Mahlzeit.", "Verwenden Sie heißes Spülwasser und eine eigene Flaschenbürste oder, falls erlaubt, die Spülmaschine.", "Lassen Sie alle Teile auf einer sauberen Fläche vollständig lufttrocknen.", "Befolgen Sie örtliche Empfehlungen zur Sterilisation, besonders bei Babys unter zwei Monaten, Frühgeborenen oder geschwächtem Immunsystem."]},
+      {"id": "reassurance", "type": "highlight", "content": "Flaschenhygiene muss nicht kompliziert sein. Eine beständige Routine schützt Ihr Baby und wird rasch alltäglich."}
+    ], "sources": [], "askNeloPrompt": "Wie reinige und sterilisiere ich die Flaschen meines Babys sicher?"
+  },
+  {
+    "id": "growth-003", "category": "growth", "illustration": "growth", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["growth", "weight", "growth-monitoring"],
+    "title": "Ein einzelnes Wiegen erzählt nicht die ganze Geschichte", "summary": "Kleine Unterschiede zwischen Gewichtsmessungen kommen vor. Entscheidend ist der Verlauf über längere Zeit.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Messwerte schwanken können", "content": "Das gemessene Gewicht kann durch Waage, Kleidung, eine kürzliche Mahlzeit und Messbedingungen beeinflusst werden. Kleine Abweichungen bedeuten nicht immer eine relevante Wachstumsänderung. Medizinische Fachpersonen beurteilen Gewicht zusammen mit Länge, Alter, Vorgeschichte und früheren Messungen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Machen Sie Messungen aussagekräftiger", "items": ["Nutzen Sie zu Hause eine geeignete Babywaage.", "Messen Sie möglichst unter ähnlichen Bedingungen.", "Notieren Sie Datum und Wert genau.", "Wiegen Sie nicht übermäßig häufig, sofern es nicht medizinisch empfohlen wird.", "Holen Sie Rat ein bei unzureichender Zunahme, unerwartetem Gewichtsverlust oder Trinkproblemen."]},
+      {"id": "reassurance", "type": "highlight", "content": "Das Wohlbefinden Ihres Babys lässt sich nicht in einer Zahl zusammenfassen. Verlauf und klinische Beurteilung ergeben ein vollständigeres Bild."}
+    ], "sources": [], "askNeloPrompt": "Wie oft sollte ich mein Baby wiegen und wie deute ich Veränderungen?"
+  },
+  {
+    "id": "teething-003", "category": "teething", "illustration": "teething", "minAgeDays": 120, "maxAgeDays": 548, "priority": 5,
+    "tags": ["teething", "development", "reassurance"],
+    "title": "Wo bleiben die ersten Zähnchen?", "summary": "Bei manchen Babys kommt der erste Zahn früh, bei anderen später. Der Zeitpunkt variiert stark.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Jedes Lächeln entwickelt sich anders", "content": "Die ersten Milchzähne erscheinen oft um den sechsten Monat, doch die normale Spanne ist groß. Manche Babys zahnen früher, bei anderen wird erst nahe dem ersten Geburtstag ein Zahn sichtbar. Auch die Reihenfolge variiert, häufig kommen die unteren Schneidezähne zuerst."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Was Eltern tun können", "items": ["Vergleichen Sie den Zahnungszeitpunkt nicht mit anderen Kindern.", "Reinigen Sie das Zahnfleisch sanft und putzen Sie ab dem ersten Zahn.", "Planen Sie entsprechend örtlichen Empfehlungen bis zum ersten Geburtstag eine Kontrolle.", "Fragen Sie bei verzögertem Zahndurchbruch oder ungewöhnlichen Zahnfleischveränderungen eine zahnmedizinische Fachperson."]},
+      {"id": "reassurance", "type": "highlight", "content": "Ein später erster Zahn bedeutet nicht automatisch ein Problem. Bei Sorgen kann eine zahnmedizinische Fachperson die Entwicklung beurteilen."}
+    ], "sources": [], "askNeloPrompt": "Wann sollten die ersten Zähne kommen und wann besteht Grund zur Sorge?"
+  },
+  {
+    "id": "daytime-nap-004", "category": "daytimeNap", "illustration": "daytimeNap", "minAgeDays": 0, "maxAgeDays": 365, "priority": 5,
+    "tags": ["sleep", "tiredness", "sleep-cues"],
+    "title": "Ihr Baby zeigt Ihnen vielleicht, dass es müde ist", "summary": "Gähnen ist nicht das einzige Müdigkeitszeichen. Kleine Verhaltensänderungen helfen, Ruhebedarf zu erkennen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Schlafsignale erkennen", "content": "Babys zeigen Müdigkeit unterschiedlich. Manche werden stiller, wenden sich von Reizen ab oder verlieren Spielinteresse. Andere reiben die Augen, gähnen oder werden unruhig. Individuelle Zeichen zu kennen hilft, Ruhe anzubieten, bevor Ihr Baby sehr aufgebracht ist; die Zeichen können sich mit dem Alter ändern."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Achten Sie auf kleine Signale", "items": ["Beobachten Sie weniger Interesse oder Abwenden.", "Achten Sie auf Gähnen, Augenreiben oder zunehmende Unruhe.", "Leiten Sie ruhig zum Schlaf über, wenn Ihr Baby müde wirkt.", "Verbinden Sie Beobachtungen mit dem üblichen Muster statt einem starren Plan.", "Nutzen Sie immer eine sichere Schlafumgebung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie werden nicht jedes Signal perfekt erkennen. Mit der Zeit erleichtert das Beobachten der Muster das Verständnis."}
+    ], "sources": [], "askNeloPrompt": "Wie erkenne ich frühe Müdigkeitszeichen meines Babys?"
+  },
+  {
+    "id": "health-and-comfort-004", "category": "healthAndComfort", "illustration": "healthAndComfort", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["health", "hydration", "warning-signs"],
+    "title": "Kleine Zeichen zeigen, wie wichtig Flüssigkeit ist", "summary": "Babys können schneller austrocknen als Erwachsene. Warnzeichen helfen zu erkennen, wann medizinischer Rat nötig ist.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Flüssigkeitsversorgung Aufmerksamkeit verdient", "content": "Babys haben einen relativ hohen Flüssigkeitsbedarf und verlieren bei Fieber, Erbrechen, Durchfall oder schlechtem Trinken Flüssigkeit. Austrocknung entsteht, wenn Verluste die Aufnahme übersteigen. Veränderungen bei nassen Windeln, Wachheit und Trinkverhalten sind besonders bei jungen Babys wichtig."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Warnzeichen", "items": ["Achten Sie auf deutlich weniger nasse Windeln als üblich.", "Beobachten Sie trockenen Mund, weniger Tränen oder ungewöhnliche Schläfrigkeit.", "Bieten Sie weiterhin angemessen Mutter- oder Säuglingsmilch an.", "Holen Sie rasch Rat ein bei schlechtem Trinken, anhaltendem Erbrechen oder Durchfall oder möglichen Austrocknungszeichen.", "Suchen Sie bei starker Teilnahmslosigkeit, schwerem Wecken oder anderen Zeichen ernster Krankheit sofort Hilfe."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie müssen nicht jeden Tropfen zählen. Ernährung, nasse Windeln und Allgemeinverhalten helfen, Veränderungen zu erkennen."}
+    ], "sources": [], "askNeloPrompt": "Welche Warnzeichen für Austrocknung gibt es bei Babys?"
+  },
+  {
+    "id": "night-sleep-004", "category": "nightSleep", "illustration": "nightSleep", "minAgeDays": 0, "maxAgeDays": 120, "priority": 5,
+    "tags": ["sleep", "circadian-rhythm", "newborn"],
+    "title": "Tag und Nacht sind noch neue Begriffe", "summary": "Neugeborene kennen den Unterschied zwischen Tag und Nacht noch nicht. Ihr innerer Schlafrhythmus entsteht allmählich.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Den Rhythmus von Tag und Nacht lernen", "content": "In den ersten Monaten entwickelt sich der zirkadiane Rhythmus, der Schlaf und Wachsein reguliert. Neugeborenenschlaf verteilt sich häufig über Tag und Nacht, da Nahrungsbedarf und unreife Schlafregulation das Aufwachen bestimmen. Tageslicht und ruhigere Nachtroutinen können den Unterschied mit der Zeit verdeutlichen."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Führen Sie Tag und Nacht sanft ein", "items": ["Lassen Sie Ihr Baby während Wachzeiten natürliches Tageslicht erleben.", "Halten Sie nächtliches Füttern und Wickeln ruhig und das Licht gedämpft.", "Lassen Sie tagsüber normale Haushaltsgeräusche zu.", "Reagieren Sie nachts weiterhin auf Hungerzeichen.", "Befolgen Sie Tag und Nacht Empfehlungen für sicheren Schlaf."]},
+      {"id": "reassurance", "type": "highlight", "content": "Häufiges nächtliches Aufwachen ist bei vielen Neugeborenen normal. Ihr Baby entwickelt seinen Rhythmus allmählich."}
+    ], "sources": [], "askNeloPrompt": "Wie helfe ich meinem Neugeborenen, Tag und Nacht zu unterscheiden?"
+  },
+  {
+    "id": "breastfeeding-004", "category": "breastfeeding", "illustration": "breastfeeding", "minAgeDays": 90, "maxAgeDays": 365, "priority": 5,
+    "tags": ["breastfeeding", "distraction", "feeding-behavior"],
+    "title": "Wenn alles interessanter ist als Milch", "summary": "Mit wachsender Neugier schauen Babys beim Stillen häufiger umher oder unterbrechen die Mahlzeit.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Neugier kann das Stillen verändern", "content": "Wenn Babys Geräusche, Bewegung und Menschen stärker wahrnehmen, unterbrechen manche das Stillen, um sich umzusehen. Dies kann in den mittleren Säuglingsmonaten auftreten. Ablenkung bedeutet nicht unbedingt weniger Interesse am Stillen oder eine gesunkene Milchmenge."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Gestalten Sie das Stillen angenehmer", "items": ["Stillen Sie bei leichter Ablenkbarkeit in ruhigerer Umgebung.", "Bieten Sie die Brust bei Hungerzeichen an, bevor Ihr Baby sehr aufgebracht ist.", "Erlauben Sie kurze Pausen zum Umschauen.", "Beobachten Sie nasse Windeln und Wachstum bei dauerhaft kürzeren oder selteneren Mahlzeiten.", "Holen Sie Hilfe, wenn Ihr Baby Mahlzeiten anhaltend verweigert oder zu wenig aufnimmt."]},
+      {"id": "reassurance", "type": "highlight", "content": "Ein neugieriges Baby ist nicht automatisch unzureichend ernährt. Trinkmuster entwickeln sich oft mit dem Weltinteresse weiter."}
+    ], "sources": [], "askNeloPrompt": "Warum lässt sich mein Baby beim Stillen so leicht ablenken?"
+  },
+  {
+    "id": "growth-004", "category": "growth", "illustration": "growth", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["growth", "prematurity", "corrected-age"],
+    "title": "Bei Frühgeborenen hat das Alter zwei Bedeutungen", "summary": "Frühgeborene haben ein chronologisches und ein korrigiertes Alter. Der Unterschied hilft, die Entwicklung einzuordnen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Was ist das korrigierte Alter?", "content": "Das chronologische Alter ist die Zeit seit der Geburt. Das korrigierte Alter berücksichtigt, wie viele Wochen zu früh Ihr Baby kam. Ein acht Wochen zu früh geborenes, jetzt sechs Monate altes Baby hat etwa vier Monate korrigiertes Alter. Fachpersonen nutzen es häufig für Wachstum und Meilensteine Frühgeborener, meist in den ersten zwei Jahren."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Betrachten Sie die Entwicklung mit Perspektive", "items": ["Notieren Sie das Schwangerschaftsalter bei der Geburt.", "Fragen Sie, wann das korrigierte Alter verwendet werden soll.", "Nutzen Sie empfohlene Wachstumskurven für Frühgeborene.", "Vergleichen Sie Meilensteine nicht nur nach chronologischem Alter.", "Befolgen Sie den individuellen medizinischen und entwicklungsbezogenen Nachsorgeplan."]},
+      {"id": "reassurance", "type": "highlight", "content": "Eine frühe Geburt verändert die Beurteilung der Entwicklung. Das korrigierte Alter vermittelt ein gerechteres Bild."}
+    ], "sources": [], "askNeloPrompt": "Was ist das korrigierte Alter meines Frühgeborenen und wie nutze ich es?"
+  },
+  {
+    "id": "solid-food-005", "category": "solidFood", "illustration": "solidFood", "minAgeDays": 180, "maxAgeDays": 365, "priority": 5,
+    "tags": ["solid-food", "allergens", "nutrition"],
+    "title": "Neue Lebensmittel einschließlich Allergene einführen", "summary": "Ei und Erdnuss können bei Entwicklungsreife während der Beikost in sicherer Form eingeführt werden.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Die Einführung von Allergenen verstehen", "content": "Aktuelle Empfehlungen unterstützen meist die Einführung häufiger Allergene im Säuglingsalter, sobald das Baby für Beikost bereit ist, statt sie unnötig zu verzögern. Dazu gehören gut gegartes Ei, Erdnuss in sicherer Form, Milchbestandteile und Weizen. Bei schwerem Ekzem, bekannter Allergie oder früherer Reaktion ist individueller Rat nötig."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Führen Sie Lebensmittel bedacht ein", "items": ["Bieten Sie entwicklungsangemessene Konsistenzen an.", "Verdünnen Sie glatte Erdnussbutter in Brei oder geeigneter Speise; geben Sie nie ganze Erdnüsse.", "Führen Sie Allergene einzeln und in kleinen Mengen ein.", "Bieten Sie verträgliche Allergene regelmäßig in abwechslungsreicher Ernährung weiter an.", "Holen Sie bei schwerem Ekzem, bekannter Allergie oder früherer Reaktion vorher medizinischen Rat ein."]},
+      {"id": "reassurance", "type": "highlight", "content": "Die Einführung kann beängstigend sein. Bei Atemnot, Schwellung von Zunge oder Rachen oder anderen Zeichen einer schweren allergischen Reaktion rufen Sie sofort medizinische Notfallhilfe."}
+    ], "sources": [], "askNeloPrompt": "Wie führe ich häufige Lebensmittelallergene sicher ein?"
+  },
+  {
+    "id": "playtime-005", "category": "playtime", "illustration": "playtime", "minAgeDays": 0, "maxAgeDays": 548, "priority": 5,
+    "tags": ["playtime", "music", "language", "bonding"],
+    "title": "Ihre Stimme ist der Lieblingsklang Ihres Babys", "summary": "Lieder, Reime und spielerische Laute machen Alltagsmomente zu Gelegenheiten für Verbindung und Lernen.",
+    "sections": [
+      {"id": "understanding", "type": "paragraph", "title": "Warum Musik und Rhythmus wichtig sind", "content": "Babys interessieren sich von Natur aus für Stimmen, Rhythmen und Wiederholungen. Singen und Reime fördern gemeinsame Aufmerksamkeit, frühe Spracherfahrung und soziale Interaktion. Später erwarten Kinder vertraute Wörter, ahmen Gesten nach oder bewegen sich zur Musik."},
+      {"id": "practical-tips", "type": "bulletList", "title": "Bringen Sie Musik in den Alltag", "items": ["Singen Sie beim Wickeln, Anziehen oder Spielen einfache Lieder.", "Wiederholen Sie vertraute Reime mit sanften Handbewegungen.", "Pausieren Sie im Lieblingslied und beobachten Sie die Reaktion.", "Nutzen Sie angenehme Lautstärke und vermeiden Sie laute Musik nahe den Ohren.", "Folgen Sie den Reaktionen und pausieren Sie bei Müdigkeit oder Überreizung."]},
+      {"id": "reassurance", "type": "highlight", "content": "Sie brauchen keine schöne Singstimme. Ihre vertraute Stimme und gemeinsame Aufmerksamkeit machen diese Momente besonders."}
+    ], "sources": [], "askNeloPrompt": "Welche Lieder und Musikspiele passen zum Alter meines Babys?"
+  }
+]

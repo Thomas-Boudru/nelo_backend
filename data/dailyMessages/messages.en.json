@@ -1,0 +1,2276 @@
+[
+  {
+    "id": "night-sleep-001",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["sleep", "reassurance"],
+    "title": "Every baby has their own sleep rhythm",
+    "summary": "Night waking is common in early infancy. Your baby is still developing their own sleep patterns.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why babies wake at night",
+        "content": "During the first months, babies often wake for feeding, comfort, or because their sleep cycles are still developing. The number of awakenings varies widely between babies and can change from week to week."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "A few gentle habits",
+        "items": [
+          "Keep nighttime interactions calm, with soft lighting and minimal stimulation.",
+          "Notice your baby’s tiredness cues rather than expecting a rigid schedule.",
+          "Always place your baby on their back on a firm, flat sleep surface without loose bedding."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Frequent waking does not mean you are doing something wrong. Sleep develops over time, and your baby does not need to follow anyone else’s timetable."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Safe Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "What sleep habits are appropriate for my baby’s age?"
+  },
+  {
+    "id": "parent-support-001",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["wellbeing", "reassurance"],
+    "title": "You do not need to be a perfect parent",
+    "summary": "Small moments of care and connection matter more than getting every routine exactly right.",
+    "sections": [
+      {
+        "id": "pressure",
+        "type": "paragraph",
+        "title": "Let go of the perfect-day checklist",
+        "content": "Some days go smoothly; others are full of interruptions, mess, and unexpected needs. A difficult day does not cancel out all the loving attention you give your child. Parenting is built from many ordinary moments, not a flawless schedule."
+      },
+      {
+        "id": "reset",
+        "type": "bulletList",
+        "title": "Try a small reset",
+        "items": [
+          "Choose one thing that matters today and let the rest be flexible.",
+          "Accept practical help when it is offered, even for a small task.",
+          "If you feel overwhelmed, place your baby somewhere safe and take a brief moment to regroup."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Being responsive does not mean being available every second. Your needs matter too, and asking for support is a strength."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I make a difficult parenting day feel more manageable?"
+  },
+  {
+    "id": "breastfeeding-001",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["feeding", "reassurance"],
+    "title": "Frequent feeds can be normal",
+    "summary": "Some babies want to breastfeed often, especially during growth and developmental changes.",
+    "sections": [
+      {
+        "id": "pattern",
+        "type": "paragraph",
+        "title": "Why feeding patterns change",
+        "content": "Breastfed babies do not always feed at predictable intervals. They may cluster several feeds close together, particularly in the evening. Frequency alone does not tell you whether a baby is getting enough milk."
+      },
+      {
+        "id": "observe",
+        "type": "bulletList",
+        "title": "Look at the bigger picture",
+        "items": [
+          "Watch for swallowing during feeds and your baby’s behavior afterward.",
+          "Keep an eye on wet diapers and growth, as advised by your healthcare professional.",
+          "Ask a midwife, lactation consultant, or clinician for help if feeds are painful or you worry about milk transfer."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You and your baby are learning together. If feeding feels hard, getting support early can make a real difference."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Breastfeeding",
+        "url": "https://www.cdc.gov/breastfeeding/"
+      }
+    ],
+    "askNeloPrompt": "What signs can help me know whether breastfeeding is going well?"
+  },
+  {
+    "id": "motor-development-001",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 60,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["movement", "play"],
+    "title": "Little moments of tummy time add up",
+    "summary": "Short, supervised play on the tummy helps babies practice lifting and turning their heads.",
+    "sections": [
+      {
+        "id": "why",
+        "type": "paragraph",
+        "title": "Building strength through play",
+        "content": "When your baby is awake and alert, time spent on their tummy gives them a chance to use neck, shoulder, and upper-body muscles. It does not have to look like a workout. A few pleasant moments can be enough to start."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Make it inviting",
+        "items": [
+          "Try short sessions on a firm, safe surface while you stay close and watch.",
+          "Get down to your baby’s eye level and talk or smile.",
+          "If your baby becomes upset, pause and try again later."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Every baby builds confidence at a different pace. Tummy time is for awake, supervised play only; always put your baby on their back to sleep."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Tummy Time",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/Back-to-Sleep-Tummy-to-Play.aspx"
+      }
+    ],
+    "askNeloPrompt": "What are some gentle tummy-time ideas for my baby?"
+  },
+  {
+    "id": "communication-001",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["language", "bonding"],
+    "title": "Your voice is already teaching your baby",
+    "summary": "Talking, singing, and responding to little sounds all help build early communication.",
+    "sections": [
+      {
+        "id": "connection",
+        "type": "paragraph",
+        "title": "A conversation before words",
+        "content": "Long before babies can speak, they notice voices, expressions, rhythm, and pauses. When you respond to a coo or a glance, you show your baby that communication goes both ways."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Easy ways to connect",
+        "items": [
+          "Describe what you are doing during a diaper change or walk.",
+          "Pause after speaking to give your baby room to respond with a sound or expression.",
+          "Sing a familiar song or repeat a playful sound your baby enjoys."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You do not need special lessons or toys. Your familiar voice and attention are already meaningful."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Learn the Signs. Act Early.",
+        "url": "https://www.cdc.gov/act-early/"
+      }
+    ],
+    "askNeloPrompt": "How can I encourage communication with my baby through everyday routines?"
+  },
+  {
+    "id": "solid-food-001",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 270,
+    "priority": 5,
+    "tags": ["feeding", "textures", "safety"],
+    "title": "New textures are a learning experience",
+    "summary": "When your baby is ready for solids, exploring different textures can take time and practice.",
+    "sections": [
+      {
+        "id": "exploring",
+        "type": "paragraph",
+        "title": "More than a meal",
+        "content": "Starting complementary foods is about learning as well as eating. Babies may touch, smear, spit out, or refuse a food before accepting it. Around six months, readiness signs include good head control and being able to sit with support."
+      },
+      {
+        "id": "safe-start",
+        "type": "bulletList",
+        "title": "Keep early meals relaxed and safe",
+        "items": [
+          "Offer soft, age-appropriate textures while your baby sits upright and is supervised.",
+          "Introduce iron-rich foods as part of a varied diet, while continuing breast milk or formula.",
+          "Avoid choking hazards and never leave your baby alone while eating."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A hesitant first taste is not a failure. If you are unsure about readiness, allergies, or swallowing, ask your child’s healthcare professional."
+      }
+    ],
+    "sources": [
+      {
+        "title": "WHO — Complementary Feeding",
+        "url": "https://www.who.int/health-topics/complementary-feeding"
+      }
+    ],
+    "askNeloPrompt": "What textures and foods are suitable when my baby starts solids?"
+  },
+  {
+    "id": "daytime-nap-001",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "routine"],
+    "title": "Naps do not always follow the clock",
+    "summary": "Daytime sleep can vary from one day to the next as babies grow and their needs change.",
+    "sections": [
+      {
+        "id": "variation",
+        "type": "paragraph",
+        "title": "Why naps can be unpredictable",
+        "content": "Your baby may have a longer nap one day and several shorter ones the next. Changes in activity, development, and overnight sleep can affect daytime rest. Looking at patterns over several days is often more useful than judging one nap."
+      },
+      {
+        "id": "support",
+        "type": "bulletList",
+        "title": "Create a gentle nap rhythm",
+        "items": [
+          "Watch for tiredness cues, such as rubbing eyes or turning away from stimulation.",
+          "Try a calm, familiar wind-down routine.",
+          "Use a safe sleep space: on the back, on a firm, flat surface without loose items."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "An irregular nap does not mean the whole day is ruined. Consistency can help, but flexibility is part of caring for a growing baby."
+      }
+    ],
+    "sources": [
+      {
+        "title": "AAP — Baby Sleep",
+        "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx"
+      }
+    ],
+    "askNeloPrompt": "How can I recognize my baby’s nap cues?"
+  },
+  {
+    "id": "playtime-001",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["play", "learning"],
+    "title": "Play is how your baby explores",
+    "summary": "Simple games with familiar people can be just as engaging as expensive toys.",
+    "sections": [
+      {
+        "id": "discovery",
+        "type": "paragraph",
+        "title": "Small discoveries matter",
+        "content": "Passing an object between hands, looking for a toy, or watching you make a funny face helps your baby practice attention, movement, and social connection. You do not need to plan a packed schedule of activities."
+      },
+      {
+        "id": "ideas",
+        "type": "bulletList",
+        "title": "Try these easy games",
+        "items": [
+          "Offer a safe object to grasp, shake, or explore.",
+          "Play peekaboo and give your baby time to react.",
+          "Name objects you see and follow your baby’s interests."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A few minutes of shared attention can be valuable. Let your baby’s curiosity guide the pace, and stop when they seem tired."
+      }
+    ],
+    "sources": [
+      {
+        "title": "UNICEF — Early Childhood Development",
+        "url": "https://www.unicef.org/early-childhood-development"
+      }
+    ],
+    "askNeloPrompt": "What simple games suit my baby’s current development?"
+  },
+  {
+    "id": "teething-001",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["comfort", "teething"],
+    "title": "Teething can be uncomfortable",
+    "summary": "New teeth arrive on different schedules, and some babies need a little extra comfort.",
+    "sections": [
+      {
+        "id": "what-to-expect",
+        "type": "paragraph",
+        "title": "Every smile develops differently",
+        "content": "Some babies drool more or want to chew on things as teeth begin to emerge. Others show few signs. The timing varies, so an earlier or later first tooth is not automatically a concern."
+      },
+      {
+        "id": "comfort",
+        "type": "bulletList",
+        "title": "Gentle comfort options",
+        "items": [
+          "Offer a clean, chilled (not frozen) teething ring designed for babies.",
+          "Gently rub the gums with a clean finger if your baby likes it.",
+          "Avoid teething necklaces and numbing gels unless a clinician specifically advises otherwise."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "High fever, significant diarrhea, or a baby who seems very unwell should not be assumed to be teething. Seek medical advice if those symptoms occur."
+      }
+    ],
+    "sources": [
+      {
+        "title": "NHS — Teething",
+        "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/"
+      }
+    ],
+    "askNeloPrompt": "What are safe ways to comfort my teething baby?"
+  },
+  {
+    "id": "learning-001",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 365,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation"],
+    "title": "Your toddler learns by watching you",
+    "summary": "Everyday actions, from waving to tidying up, can become opportunities to learn together.",
+    "sections": [
+      {
+        "id": "imitation",
+        "type": "paragraph",
+        "title": "A powerful way to learn",
+        "content": "As toddlers grow, they often copy gestures, sounds, and familiar routines. Pretending to stir a pot or wiping a table can be a playful way to explore how the world works."
+      },
+      {
+        "id": "everyday",
+        "type": "bulletList",
+        "title": "Make ordinary moments playful",
+        "items": [
+          "Invite your toddler to copy a simple gesture, like clapping or waving.",
+          "Give them safe, age-appropriate objects for pretend play.",
+          "Name what you are doing, then pause to notice their response."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Children do not all imitate the same things at the same age. Follow your toddler’s interests, and share developmental concerns with your healthcare professional."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CDC — Developmental Milestones",
+        "url": "https://www.cdc.gov/act-early/milestones/index.html"
+      }
+    ],
+    "askNeloPrompt": "What everyday activities can help my toddler learn through imitation?"
+  },
+
+  {
+    "id": "communication-002",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "gestures", "language"],
+    "title": "Little gestures speak volumes",
+    "summary": "Before words arrive, your baby may already be telling you a lot through gestures, sounds and expressions.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Communication begins before words",
+        "content": "Pointing, reaching, waving and looking toward familiar objects are all ways babies learn to communicate. These gestures often develop alongside early language and help your child share interests, needs and discoveries."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encourage little conversations",
+        "items": [
+          "Respond when your baby points or reaches toward something.",
+          "Name objects and actions during everyday activities.",
+          "Pause after speaking to give your baby time to respond.",
+          "Celebrate attempts to communicate without expecting perfect words."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Communication is much more than speaking. Every shared look, gesture and sound is an opportunity to connect."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I encourage my baby's communication before their first words?"
+  },
+  {
+    "id": "solid-food-002",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["feeding", "food-exploration", "reassurance"],
+    "title": "One taste is not the whole story",
+    "summary": "Your baby refuses a new food? It may simply take more opportunities to explore unfamiliar tastes and textures.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Learning to enjoy new foods",
+        "content": "Babies are discovering an entirely new world of flavors, smells and textures. Some foods are accepted immediately, while others need repeated, pressure-free exposure. Refusing a food today does not necessarily mean your child will always dislike it."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make exploration easier",
+        "items": [
+          "Offer small amounts of unfamiliar foods alongside familiar options.",
+          "Let your baby explore food through touching and smelling.",
+          "Avoid forcing bites or turning meals into a struggle.",
+          "Try offering rejected foods again on another day."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Progress is not measured by how much your baby eats at every meal. Exploring food is part of learning."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What can I do when my baby repeatedly refuses new foods?"
+  },
+  {
+    "id": "motor-development-002",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["motor-development", "movement", "milestones"],
+    "title": "Every little movement matters",
+    "summary": "Rolling, reaching, crawling and pulling up are different ways your baby explores movement.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Movement develops through exploration",
+        "content": "As babies gain strength and coordination, they experiment with moving their bodies in new ways. Some crawl on hands and knees, others move differently, and some do not crawl in the traditional way. Development follows a general progression, but individual patterns can vary."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Create space to explore",
+        "items": [
+          "Offer supervised floor play in a safe, open area.",
+          "Place interesting toys slightly beyond easy reach.",
+          "Allow your baby to experiment with movement independently.",
+          "Avoid baby walkers with wheels, which can cause injuries."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Children do not all move in exactly the same way. If you are concerned about a missed milestone or loss of an acquired skill, speak with your pediatrician."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Which motor milestones should I watch for at my baby's age?"
+  },
+  {
+    "id": "parent-support-002",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "reassurance", "confidence"],
+    "title": "Your baby is not in a race",
+    "summary": "It is easy to compare milestones with other children, but development is not a competition.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why comparisons can be misleading",
+        "content": "One baby may start moving earlier, while another develops new sounds or social skills first. Children have individual strengths and developmental patterns. Comparing isolated achievements rarely gives a complete picture of how a child is progressing."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Focus on your child's progress",
+        "items": [
+          "Notice the small changes your baby makes over time.",
+          "Use age-appropriate developmental milestones as helpful guides.",
+          "Celebrate discoveries without rushing the next achievement.",
+          "Share concerns with a healthcare professional rather than relying on comparisons."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Your child's journey is their own. You can appreciate their individual pace while still paying attention to important developmental milestones."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I tell whether my baby's development is on track?"
+  },
+  {
+    "id": "night-sleep-002",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 240,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "development", "reassurance"],
+    "title": "Why sleep can suddenly change",
+    "summary": "A baby who slept well may start waking more often. Changes in sleep can happen during periods of rapid development.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Sleep is not always a straight line",
+        "content": "Between approximately eight and twelve months, babies are developing new physical, social and emotional abilities. Some experience changes in their sleep, including more frequent waking or difficulty settling. Illness, discomfort and changes in routine can also affect sleep."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Support restful nights",
+        "items": [
+          "Keep a familiar and calming bedtime routine.",
+          "Respond to your baby's needs with patience.",
+          "Provide opportunities for movement and exploration during the day.",
+          "Maintain a safe sleep environment for every sleep."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A few difficult nights do not erase your progress. Sleep patterns can fluctuate as your baby grows."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Why has my baby started waking more frequently at night?"
+  },
+  {
+    "id": "playtime-002",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 450,
+    "priority": 5,
+    "tags": ["play", "social-development", "learning"],
+    "title": "Peekaboo is more than a game",
+    "summary": "A simple game of peekaboo can help your baby explore anticipation, attention and connection.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Learning through surprise",
+        "content": "When you hide your face and reappear, your baby experiences a playful pattern of disappearance and return. As memory and understanding develop, games like peekaboo can support anticipation, social interaction and the growing awareness that people and objects continue to exist when out of sight."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make it playful",
+        "items": [
+          "Hide your face briefly behind your hands.",
+          "Pause before reappearing to build anticipation.",
+          "Follow your baby's reactions and stop if they seem uncomfortable.",
+          "Try hiding a favorite toy under a light cloth while supervising closely."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You do not need expensive toys to support learning. Your attention and a few playful moments can mean a great deal."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What simple games can support my baby's development?"
+  },
+  {
+    "id": "learning-002",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "repetition", "curiosity"],
+    "title": "Again, again... and again!",
+    "summary": "Does your baby repeat the same action endlessly? Repetition is one of the ways young children learn.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why repetition matters",
+        "content": "Dropping a spoon, opening a box or pressing the same button repeatedly may seem monotonous to adults. For babies, repetition helps them explore cause and effect, practice coordination and build familiarity with their surroundings."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encourage curiosity",
+        "items": [
+          "Allow your baby to repeat safe activities.",
+          "Describe what happens using simple words.",
+          "Offer everyday objects suitable for their age.",
+          "Introduce small variations when your child seems ready."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "What looks like the same game for the tenth time may still be an interesting discovery for your baby."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Why does my baby love repeating the same activities?"
+  },
+  {
+    "id": "baby-care-001",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 300,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "independence", "daily-routines"],
+    "title": "Small choices build confidence",
+    "summary": "As your baby grows, simple opportunities to participate in daily routines can encourage independence.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Independence begins with small steps",
+        "content": "Toward the end of the first year and into toddlerhood, children increasingly want to participate in everyday activities. Reaching for a spoon, helping during dressing or choosing between two suitable objects gives them opportunities to practice coordination and make simple decisions."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Invite your child to participate",
+        "items": [
+          "Offer a choice between two safe, appropriate toys.",
+          "Let your child help hold a washcloth during care routines.",
+          "Give them time to try simple actions before stepping in.",
+          "Praise their effort rather than expecting perfect results."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Learning to do things independently takes time. A little patience can turn everyday routines into valuable learning moments."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I encourage independence in my baby or toddler?"
+  },
+  {
+    "id": "health-and-comfort-001",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "comfort", "health"],
+    "title": "Comfort during teething",
+    "summary": "Tender gums can make teething uncomfortable. A few simple approaches may help soothe your baby.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "What teething can feel like",
+        "content": "As teeth begin to emerge, some babies experience tender gums, increased drooling or a desire to chew. Teething may cause mild discomfort, but a true fever, significant diarrhea or a baby who seems seriously unwell should not automatically be attributed to teething."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Gentle ways to help",
+        "items": [
+          "Gently massage your baby's gums with a clean finger.",
+          "Offer a clean, chilled but not frozen teething ring.",
+          "Wipe away excess drool to help protect the skin.",
+          "Avoid teething necklaces and numbing gels containing lidocaine or benzocaine."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Teething experiences vary. If your baby has a fever, persistent symptoms or seems unusually unwell, contact a healthcare professional."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What are safe ways to relieve teething discomfort?"
+  },
+  {
+    "id": "daytime-nap-002",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "naps", "development"],
+    "title": "When nap routines start changing",
+    "summary": "As babies grow, their daytime sleep needs evolve. Changes in nap patterns can be a normal part of development.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why naps evolve",
+        "content": "Younger babies often need several naps throughout the day. As they mature, many gradually transition toward fewer, longer naps. The timing varies, and temporary disruptions can happen during illness, travel or developmental changes."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Follow your baby's needs",
+        "items": [
+          "Observe signs of tiredness alongside your child's usual routine.",
+          "Allow some flexibility when nap timing changes.",
+          "Keep the sleep environment safe and comfortable.",
+          "Avoid forcing a nap transition based only on age."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "There is no single nap schedule that suits every baby. Consistency can help, but flexibility is part of adapting to your child's needs."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How do I know when my baby is ready to change their nap schedule?"
+  },
+
+  {
+    "id": "bottle-feeding-001",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hunger-cues", "responsive-feeding"],
+    "title": "When your baby says: I'm full",
+    "summary": "Finishing every bottle isn't the goal. Learning to recognize your baby's hunger and fullness cues can make feeding more comfortable.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Your baby can guide you",
+        "content": "Babies communicate their appetite through movements, expressions and behavior. Turning away from the bottle, slowing down or relaxing their hands may indicate that they have had enough. The amount they drink can vary between feeds, and that is not necessarily a problem."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Try responsive bottle-feeding",
+        "items": [
+          "Hold your baby close and watch their reactions throughout the feed.",
+          "Keep the bottle relatively horizontal and allow natural pauses.",
+          "Stop when your baby consistently shows signs of fullness.",
+          "Avoid encouraging your baby to finish a bottle simply because milk remains."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A successful feed is not measured by an empty bottle. If you are worried about intake, hydration or weight gain, ask your healthcare professional for guidance."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I recognize my baby's hunger and fullness cues during bottle-feeding?"
+  },
+  {
+    "id": "growth-001",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "growth-charts", "reassurance"],
+    "title": "Growth is a journey, not a number",
+    "summary": "A single measurement tells only part of the story. Your baby's growth pattern over time matters much more.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Understanding growth curves",
+        "content": "Growth charts help healthcare professionals follow changes in weight, length and head circumference over time. Babies naturally grow at different rates. A percentile is not a score or a ranking of health. What matters is the overall pattern, the child's circumstances and whether growth remains appropriate over time."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Follow the bigger picture",
+        "items": [
+          "Record measurements accurately and consistently.",
+          "Look at growth trends rather than individual numbers.",
+          "Discuss unexpected changes with your pediatrician.",
+          "Remember that babies born prematurely may need age-adjusted growth assessments."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Being on a lower or higher percentile does not automatically indicate a problem. Growth is best interpreted over time with a healthcare professional."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How should I interpret my baby's growth chart and percentiles?"
+  },
+  {
+    "id": "communication-003",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 60,
+    "maxAgeDays": 300,
+    "priority": 5,
+    "tags": ["communication", "babbling", "language-development"],
+    "title": "Your baby's first conversations",
+    "summary": "Those little coos and babbles are more than adorable sounds. They're early steps toward communication.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Learning the rhythm of conversation",
+        "content": "Long before their first words, babies begin experimenting with sounds. When you respond to a coo or babble, you introduce the rhythm of conversation: one person communicates, the other responds. These back-and-forth interactions support early social and language development."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Start a little conversation",
+        "items": [
+          "Repeat some of your baby's sounds and wait for a response.",
+          "Smile and make eye contact when your baby seems interested.",
+          "Describe everyday activities using simple language.",
+          "Leave pauses so your baby has a chance to participate."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You don't need special lessons to encourage communication. Ordinary moments of attention and interaction provide valuable opportunities to learn."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What activities can encourage my baby's early sounds and babbling?"
+  },
+  {
+    "id": "baby-care-002",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["baby-care", "bath-time", "bonding"],
+    "title": "Bath time is more than getting clean",
+    "summary": "A warm bath can become a lovely opportunity for connection, play and discovering new sensations.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "A moment of discovery",
+        "content": "Bath time introduces your baby to different sensations, including warm water, gentle touch and movement. As your child grows, splashing and exploring the water can become a playful part of the routine. Some babies love baths immediately, while others need time to feel comfortable."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Keep bath time comfortable and safe",
+        "items": [
+          "Prepare towels and supplies before placing your baby in the water.",
+          "Check the water temperature carefully before the bath.",
+          "Stay within arm's reach and maintain constant supervision.",
+          "Never leave your baby alone in the bath, even for a moment or with a bath seat."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Bath time doesn't have to be elaborate or happen every day. A short, calm routine can be just as meaningful."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I make bath time safe and enjoyable for my baby?"
+  },
+  {
+    "id": "solid-food-003",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "self-feeding", "independence"],
+    "title": "A little mess can mean big learning",
+    "summary": "Food on the tray, hands and floor? Exploring meals with their senses is part of learning to eat.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Exploring food builds skills",
+        "content": "As babies begin eating solid foods, touching, squishing and picking up food helps them explore textures and practice coordination. Self-feeding opportunities can support fine motor development and independence, even when very little food reaches their mouth at first."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encourage safe exploration",
+        "items": [
+          "Offer soft foods prepared in shapes and textures appropriate for your baby's abilities.",
+          "Let your baby touch and explore food without pressure.",
+          "Keep your baby seated upright and supervise every bite.",
+          "Avoid choking hazards such as whole nuts, whole grapes and hard pieces of raw vegetables."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Messy meals are not failed meals. Exploration, coordination and curiosity are important parts of learning to eat."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I safely encourage my baby to start feeding themselves?"
+  },
+  {
+    "id": "parent-support-003",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "wellbeing", "self-care"],
+    "title": "Taking care of yourself matters too",
+    "summary": "Caring for a baby takes energy. Your own rest, wellbeing and support deserve attention as well.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Parents have needs too",
+        "content": "The early months of parenting can be physically and emotionally demanding. Sleep disruption, changing routines and new responsibilities may leave little time for yourself. Taking moments to rest, eat, connect with others or ask for help is part of maintaining your wellbeing."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make space for yourself",
+        "items": [
+          "Accept practical help when someone you trust offers it.",
+          "Share responsibilities with a partner or support person when possible.",
+          "Take short breaks during the day, even if they are only a few minutes.",
+          "Speak with a healthcare professional if sadness, anxiety or overwhelm persist."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Looking after yourself is not selfish. Your wellbeing matters independently of everything you do for your child."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What are some realistic ways to take care of myself while caring for my baby?"
+  },
+  {
+    "id": "motor-development-003",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "walking", "milestones"],
+    "title": "The journey toward first steps",
+    "summary": "Standing, cruising and taking first steps are exciting milestones, but children reach them at different times.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Walking takes practice",
+        "content": "Before walking independently, many babies practice standing while holding furniture, shifting their weight and moving sideways along stable surfaces. These activities help develop balance and coordination. The timing of independent walking varies, and learning usually involves plenty of trial and error."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Support safe movement",
+        "items": [
+          "Provide stable furniture and a safe space for exploration.",
+          "Allow barefoot play on safe indoor surfaces.",
+          "Encourage movement without pulling your child into positions they cannot manage.",
+          "Avoid wheeled baby walkers because of their injury risk."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "There is a range of typical ages for first steps. If your child is not walking independently by 18 months, or loses a skill they previously had, seek a developmental assessment."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I support my baby as they learn to stand and walk?"
+  },
+  {
+    "id": "health-and-comfort-002",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "common-cold", "comfort"],
+    "title": "When your baby catches a cold",
+    "summary": "Runny noses and congestion are common in young children. Gentle care can help keep your baby comfortable.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Understanding common colds",
+        "content": "Babies and toddlers encounter many respiratory viruses as their immune systems develop. A common cold may cause nasal congestion, sneezing and coughing. Most uncomplicated colds improve with time, but very young babies and children with breathing or feeding difficulties need particular attention."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Simple ways to provide comfort",
+        "items": [
+          "Use sterile saline drops or spray to help loosen nasal mucus.",
+          "Offer usual milk feeds frequently and watch for signs of dehydration.",
+          "Keep your baby's sleep surface flat and follow safe sleep recommendations.",
+          "Avoid over-the-counter cough and cold medicines unless specifically recommended by a healthcare professional."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Seek urgent medical advice for fever of 38°C or higher in a baby under 3 months, difficulty breathing, poor feeding, dehydration or unusual drowsiness."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I help my baby feel more comfortable when they have a cold?"
+  },
+  {
+    "id": "learning-003",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "cause-and-effect", "exploration"],
+    "title": "Little experiments, big discoveries",
+    "summary": "Dropping toys, pushing buttons and opening containers are your baby's first experiments with cause and effect.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Discovering how the world works",
+        "content": "As babies grow, they begin noticing connections between their actions and what happens next. Shaking a rattle produces sound, dropping a toy makes it fall, and pushing an object can make it move. These simple experiences help develop curiosity, attention and problem-solving skills."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encourage everyday discoveries",
+        "items": [
+          "Offer safe objects that make different sounds when moved.",
+          "Let your baby explore stacking cups or age-appropriate containers.",
+          "Describe what happens when your child performs an action.",
+          "Give your baby time to experiment before showing them how something works."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Learning doesn't require complicated toys. Everyday objects and simple interactions can offer plenty of opportunities for discovery."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What simple activities can help my baby understand cause and effect?"
+  },
+
+  {
+    "id": "night-sleep-003",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 90,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["sleep", "bedtime-routine", "reassurance"],
+    "title": "The comfort of a familiar bedtime",
+    "summary": "A few predictable steps before sleep can help your baby recognize that bedtime is approaching.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why routines can help",
+        "content": "Babies gradually learn to recognize familiar patterns. Repeating a calm sequence before bedtime, such as changing into pajamas, dimming the lights and sharing a quiet cuddle, can create predictable signals that sleep is approaching. A routine does not guarantee uninterrupted sleep, but it may make settling easier."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Build a simple routine",
+        "items": [
+          "Choose two or three calming activities that suit your family.",
+          "Keep the sequence relatively consistent without following the clock rigidly.",
+          "Reduce bright lights and stimulating play before bedtime.",
+          "Always place your baby in a safe sleep environment appropriate for their age."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A bedtime routine doesn't need to be perfect or elaborate. Familiarity and a calm atmosphere matter more than following an exact schedule."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I create a calming bedtime routine that suits my baby's age?"
+  },
+
+  {
+    "id": "breastfeeding-002",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["breastfeeding", "cluster-feeding", "reassurance"],
+    "title": "Why your baby wants to feed again",
+    "summary": "Some babies want several breastfeeds close together, especially during the early weeks. This is often called cluster feeding.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Understanding cluster feeding",
+        "content": "During certain periods, particularly in the first months, breastfed babies may want to feed repeatedly over a few hours. This pattern is known as cluster feeding. It can happen in the evening or during periods of changing feeding needs. Frequent feeding alone does not necessarily mean your milk supply is insufficient."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make frequent feeds easier",
+        "items": [
+          "Respond to your baby's feeding cues rather than relying only on the clock.",
+          "Keep water, snacks and a comfortable place nearby for yourself.",
+          "Ask someone you trust to help with other tasks during busy feeding periods.",
+          "Monitor wet diapers and weight gain, and seek feeding support if you are concerned."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Cluster feeding can be tiring, but it is often temporary. If feeds are painful, your baby seems dehydrated or weight gain is inadequate, contact a healthcare professional."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I tell whether my baby's frequent breastfeeding is normal?"
+  },
+  {
+    "id": "bottle-feeding-002",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "paced-feeding", "comfort"],
+    "title": "A bottle doesn't have to be a race",
+    "summary": "Slowing down bottle-feeding can help your baby feed comfortably and communicate when they need a break.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Let your baby set the pace",
+        "content": "Bottle-feeding is not simply about delivering a certain amount of milk. Babies need opportunities to suck, swallow, breathe and pause comfortably. A fast flow can make feeding difficult for some babies. Responsive, paced feeding allows you to notice signs that your baby wants a break or has had enough."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Try a gentler rhythm",
+        "items": [
+          "Hold your baby in a supported, semi-upright position.",
+          "Keep the bottle relatively horizontal to moderate the milk flow.",
+          "Allow natural pauses and watch for signs of discomfort.",
+          "Never prop a bottle or leave your baby feeding unattended."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Every baby develops their own feeding rhythm. If feeding regularly causes coughing, choking, distress or poor weight gain, seek professional advice."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I practice paced bottle-feeding with my baby?"
+  },
+  {
+    "id": "growth-002",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["growth", "feeding", "development"],
+    "title": "Growing doesn't happen at one steady speed",
+    "summary": "Your baby's appetite, sleep and behavior may change as they grow. Development rarely follows a perfectly predictable schedule.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Growth happens over time",
+        "content": "Babies grow rapidly during their first year, but growth does not happen at exactly the same rate every day. You may notice periods when your baby seems hungrier or needs more comfort. These changes are sometimes described as growth spurts, although there is no universal timetable that applies to every baby."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Respond to changing needs",
+        "items": [
+          "Pay attention to hunger and fullness cues.",
+          "Continue following recommended growth checks.",
+          "Expect some variation in sleep and feeding patterns.",
+          "Contact your healthcare professional if feeding, hydration or growth concerns persist."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You do not need to identify every growth spurt. Following your baby's cues and monitoring their overall development is usually more useful."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How do growth spurts affect my baby's feeding and sleep?"
+  },
+  {
+    "id": "daytime-nap-003",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 240,
+    "priority": 5,
+    "tags": ["sleep", "short-naps", "reassurance"],
+    "title": "Why some naps are so short",
+    "summary": "A short nap doesn't automatically mean something is wrong. Young babies often have changing and unpredictable sleep patterns.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Understanding short naps",
+        "content": "During early infancy, daytime sleep can be irregular. Some naps last only a short time, while others are much longer. Babies are still developing their sleep rhythms, and individual sleep needs vary. A short nap on its own is not necessarily a sign of poor sleep."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Support daytime rest",
+        "items": [
+          "Watch for signs of tiredness such as reduced engagement or fussiness.",
+          "Offer a calm environment when your baby appears ready to sleep.",
+          "Follow safe sleep guidance for every nap, including placing your baby on their back.",
+          "Consider your baby's total sleep and general wellbeing rather than focusing on one nap."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Not every nap needs to be long. If your baby seems persistently exhausted or you are concerned about their sleep, discuss it with a healthcare professional."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Are short naps normal for my baby's age?"
+  },
+  {
+    "id": "playtime-003",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["playtime", "sensory-development", "exploration"],
+    "title": "The world is a sensory playground",
+    "summary": "Different textures, sounds and movements can turn ordinary moments into fascinating discoveries for your baby.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Learning through the senses",
+        "content": "Babies explore their surroundings through sight, hearing, touch and movement. Feeling a soft fabric, hearing a gentle rattle or watching an object move can help them discover differences and build familiarity with their environment. Sensory play does not need to be complicated or expensive."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Try simple sensory activities",
+        "items": [
+          "Offer age-appropriate toys with different safe textures.",
+          "Let your baby explore a soft cloth while you supervise.",
+          "Introduce gentle sounds using a rattle or your voice.",
+          "Follow your baby's reactions and pause if they seem overstimulated."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Your baby doesn't need constant entertainment. A few moments of curious exploration can be enough."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What safe sensory activities can I try with my baby?"
+  },
+  {
+    "id": "teething-002",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "oral-health", "baby-care"],
+    "title": "The first tooth deserves a little care",
+    "summary": "Dental care begins earlier than many parents expect. Your baby's first tooth is the perfect moment to start a gentle routine.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Healthy habits from the beginning",
+        "content": "Baby teeth play important roles in eating, speech development and maintaining space for permanent teeth. Dental care should begin when the first tooth appears. Early, gentle brushing helps establish healthy habits and protect teeth from decay."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Start a simple dental routine",
+        "items": [
+          "Brush twice daily with a small, soft toothbrush.",
+          "Use a smear of fluoride toothpaste appropriate for your child's age and local dental guidance.",
+          "Avoid putting your baby to bed with a bottle containing milk or sweetened drinks.",
+          "Arrange an initial dental visit by their first birthday or within six months of the first tooth."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A gentle routine is more important than perfect brushing technique. Your dental professional can help you choose the right toothpaste and fluoride amount."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How should I clean my baby's first teeth?"
+  },
+  {
+    "id": "parent-support-004",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "shared-responsibilities", "wellbeing"],
+    "title": "Parenting was never meant to be a solo job",
+    "summary": "Sharing responsibilities and asking for support can make everyday parenting more manageable.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Support makes a difference",
+        "content": "Caring for a baby involves many visible and invisible tasks, from feeding and changing diapers to planning appointments and anticipating needs. When responsibilities fall mostly on one person, exhaustion can build. Sharing practical tasks and communicating openly can help families find a more sustainable balance."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make teamwork easier",
+        "items": [
+          "Talk openly about which tasks feel most demanding.",
+          "Divide responsibilities in a way that fits your family's circumstances.",
+          "Include planning and mental workload, not only physical tasks.",
+          "Accept help from trusted relatives or friends when available."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Needing support is not a sign of weakness. Parenting is demanding, and everyone deserves opportunities to rest and recharge."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can we share parenting responsibilities more fairly?"
+  },
+  {
+    "id": "communication-004",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["communication", "reading", "language-development"],
+    "title": "It's never too early for a story",
+    "summary": "Reading together can support language development and connection, even before your baby understands the words.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why reading matters",
+        "content": "When you read aloud, your baby hears the rhythm and sounds of language while enjoying your attention. Over time, shared books can introduce new words, encourage interaction and become a familiar part of daily routines. Young babies may focus more on your voice and facial expressions than on the story itself."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make books part of your day",
+        "items": [
+          "Choose sturdy books with clear pictures and simple words.",
+          "Point to objects and describe what you see.",
+          "Let your baby touch or turn pages when developmentally ready.",
+          "Follow your child's interest rather than insisting on finishing every book."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You don't need to read for a long time. Even a few minutes of shared attention can be meaningful."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What kinds of books and reading activities are suitable for my baby's age?"
+  },
+  {
+    "id": "solid-food-004",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["solid-food", "iron", "nutrition"],
+    "title": "A little nutrient with a big role",
+    "summary": "Iron becomes especially important as babies begin eating solid foods. Offering iron-rich foods can help support healthy development.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why iron matters",
+        "content": "Iron supports healthy blood cells and brain development. Babies are born with iron stores, but these gradually decrease during infancy. Around the time complementary foods are introduced, offering suitable iron-rich foods becomes important alongside breast milk or formula."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Explore iron-rich foods",
+        "items": [
+          "Offer age-appropriate preparations of meat, poultry, fish, beans or lentils.",
+          "Consider iron-fortified infant cereals when suitable.",
+          "Pair plant-based iron sources with vitamin C-rich foods to support absorption.",
+          "Ask a healthcare professional whether your baby needs iron supplementation, especially if born prematurely."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You don't need to calculate every milligram at each meal. Offering a variety of suitable foods over time helps build a balanced diet."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Which iron-rich foods are appropriate for my baby's age?"
+  },
+
+  {
+    "id": "motor-development-004",
+    "category": "motorDevelopment",
+    "illustration": "motorDevelopment",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["motor-development", "fine-motor-skills", "coordination"],
+    "title": "Tiny fingers, growing skills",
+    "summary": "Picking up toys, transferring objects and exploring small movements help your baby develop coordination.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Discovering fine motor skills",
+        "content": "Fine motor development involves increasingly precise movements of the hands and fingers. Babies gradually learn to reach for objects, grasp them, transfer them between hands and eventually pick up small items using their thumb and fingers. These abilities support play, self-feeding and everyday independence."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encourage little hands",
+        "items": [
+          "Offer lightweight, easy-to-grasp toys appropriate for your baby's age.",
+          "Let your baby transfer safe objects between their hands.",
+          "Introduce stacking cups and large blocks as coordination improves.",
+          "Keep small objects and detachable toy parts out of reach because of choking risks."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Hand coordination develops gradually through everyday exploration. Every child progresses at their own pace, but if you notice a loss of previously acquired skills or have concerns about development, speak with your pediatrician."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What activities can help my baby develop fine motor skills?"
+  },
+
+  {
+    "id": "parent-support-005",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["separation", "attachment", "reassurance"],
+    "title": "When goodbye brings tears",
+    "summary": "Your baby may suddenly become upset when you leave the room. Separation anxiety is a common part of early development.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why separation can feel difficult",
+        "content": "As babies become more aware of familiar people and their surroundings, they may react strongly when a parent or caregiver leaves. Separation anxiety often emerges during the second half of the first year, although its timing and intensity vary. Your baby is learning about relationships, distance and the reassuring experience of reunion."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make goodbyes gentler",
+        "items": [
+          "Create a short, predictable goodbye routine.",
+          "Explain calmly that you are leaving and will return.",
+          "Practice brief separations with a familiar, trusted caregiver.",
+          "Avoid disappearing without saying goodbye, which can make departures less predictable."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Tears at goodbye do not mean you are damaging your bond. Consistent, responsive care helps your child build trust over time."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I help my baby cope with separation anxiety?"
+  },
+  {
+    "id": "bottle-feeding-003",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["formula", "bottle-feeding", "food-safety"],
+    "title": "A safe bottle starts with preparation",
+    "summary": "A few careful steps when preparing infant formula help protect your baby from harmful bacteria.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why preparation matters",
+        "content": "Powdered infant formula is not sterile. Harmful bacteria can occasionally be present in the powder or introduced during preparation. Safe handling, accurate measurements and appropriate storage help reduce the risk of infection. Babies younger than two months, those born prematurely and those with weakened immune systems need particular care."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Build safe preparation habits",
+        "items": [
+          "Wash your hands and clean feeding equipment before preparing a bottle.",
+          "Follow the formula manufacturer's instructions and applicable local health guidance for water temperature and preparation.",
+          "Measure water and powder accurately using the supplied scoop.",
+          "Discard formula left in the bottle after a feed and follow recommended storage times for prepared formula."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Safe preparation soon becomes a familiar routine. If your baby is at higher risk of infection, ask a healthcare professional about the safest formula options and preparation method."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I prepare and store infant formula safely?"
+  },
+  {
+    "id": "learning-004",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["emotions", "learning", "social-development"],
+    "title": "Big feelings in a little person",
+    "summary": "Frustration, excitement and tears are part of learning to understand emotions. Your calm presence can help.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Emotional skills take time",
+        "content": "As babies become toddlers, they develop stronger preferences and a growing desire to explore independently. However, their ability to manage frustration is still developing. Crying or protesting when something does not go as expected is often a way of expressing feelings they cannot yet explain in words."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Help your child navigate emotions",
+        "items": [
+          "Stay calm and offer comfort when your child is overwhelmed.",
+          "Use simple words to describe feelings, such as 'You seem frustrated.'",
+          "Maintain gentle, consistent boundaries.",
+          "Offer simple choices when appropriate to give your child some control."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Your child is not expected to manage every emotion independently. Learning emotional regulation happens gradually through supportive relationships."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I respond when my toddler becomes frustrated or upset?"
+  },
+  {
+    "id": "baby-care-003",
+    "category": "babyCare",
+    "illustration": "babyCare",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["skin-care", "baby-care", "comfort"],
+    "title": "Gentle care for delicate skin",
+    "summary": "Your baby's skin is still developing. Simple, gentle care is often all it needs.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Understanding sensitive baby skin",
+        "content": "Baby skin can be more sensitive to irritation from moisture, friction, fragrances and harsh cleansing products. Temporary dryness or mild irritation is common. Keeping the skin clean, avoiding unnecessary products and protecting areas exposed to moisture can help maintain comfort."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Keep skin care simple",
+        "items": [
+          "Use lukewarm water and mild, fragrance-free cleansing products when needed.",
+          "Pat the skin dry gently, especially in skin folds.",
+          "Change wet or dirty diapers promptly and use a suitable barrier cream when needed.",
+          "Ask a healthcare professional about persistent rashes, broken skin or signs of infection."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "More products do not necessarily mean better care. A simple routine is often the gentlest option for healthy baby skin."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What is a simple and safe skincare routine for my baby?"
+  },
+  {
+    "id": "communication-005",
+    "category": "communication",
+    "illustration": "communication",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["language", "first-words", "communication"],
+    "title": "The magic of a first word",
+    "summary": "Your baby's first meaningful words may arrive gradually, supported by months of listening, gestures and interaction.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Words grow from everyday interactions",
+        "content": "Before speaking recognizable words, babies spend months listening to language, experimenting with sounds and communicating through gestures. First words often emerge around the end of the first year, although development varies. Understanding words and responding to familiar language are also important parts of communication."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Encourage language naturally",
+        "items": [
+          "Name familiar objects during everyday activities.",
+          "Respond warmly to sounds, gestures and attempts at words.",
+          "Read simple books and talk about the pictures.",
+          "Avoid pressuring your child to repeat words on command."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Children develop language at different rates. If your child is not meeting expected communication milestones, has difficulty hearing or loses skills, discuss your concerns with a healthcare professional."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I encourage my baby's first words and language development?"
+  },
+
+  {
+    "id": "breastfeeding-003",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 180,
+    "priority": 5,
+    "tags": ["breastfeeding", "milk-intake", "reassurance"],
+    "title": "Is your baby getting enough milk?",
+    "summary": "Breastfeeding doesn't come with a measuring scale. Fortunately, your baby's growth, diapers and behavior can offer useful clues.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Look beyond the clock",
+        "content": "Breastfed babies do not all feed for the same length of time or at the same intervals. The duration of a feed alone cannot tell you how much milk your baby receives. Weight gain, wet diapers and signs of effective milk transfer are more useful indicators. Feeding patterns also change as babies grow."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Signs worth observing",
+        "items": [
+          "Follow your baby's growth with recommended healthcare appointments.",
+          "Notice whether your baby has an age-appropriate number of wet diapers.",
+          "Look for rhythmic sucking and swallowing during feeds.",
+          "Seek lactation or medical support if feeding is painful, your baby seems dehydrated or weight gain is concerning."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You do not need to measure every feed to breastfeed successfully. If you are unsure whether your baby is receiving enough milk, a healthcare professional can assess feeding and growth."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I tell whether my breastfed baby is getting enough milk?"
+  },
+  {
+    "id": "playtime-004",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 180,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "free-play", "exploration"],
+    "title": "Sometimes the best play has no instructions",
+    "summary": "Letting your baby explore safe objects at their own pace can encourage curiosity, creativity and independence.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "The value of free play",
+        "content": "Babies and toddlers learn by exploring, experimenting and making discoveries. During free play, your child chooses what interests them and how to interact with it. This can support attention, problem-solving and emerging independence. Your presence and encouragement remain valuable, even when you are not directing every activity."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Create room for discovery",
+        "items": [
+          "Offer a few safe, age-appropriate toys rather than too many at once.",
+          "Allow your child to choose which object to explore.",
+          "Observe before stepping in to demonstrate how something works.",
+          "Stay nearby and supervise while giving your child space to experiment."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You don't need to organize every minute of playtime. Sometimes simply providing a safe environment and being present is enough."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I encourage independent play while keeping my baby safe?"
+  },
+  {
+    "id": "health-and-comfort-003",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["safety", "baby-proofing", "motor-development"],
+    "title": "Your little explorer needs a safe world",
+    "summary": "As your baby becomes more mobile, everyday household objects can suddenly become fascinating — and sometimes dangerous.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "A new perspective on your home",
+        "content": "Rolling, crawling, pulling up and walking allow babies to reach places that were previously inaccessible. Electrical cords, furniture, stairs, cleaning products and small objects can become hazards. Preparing your home before each new mobility stage can help reduce preventable injuries."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "See the world from your baby's level",
+        "items": [
+          "Secure heavy furniture and televisions to prevent tipping.",
+          "Keep medicines, cleaning products and small choking hazards locked away or inaccessible.",
+          "Use appropriate safety gates near stairs.",
+          "Keep hot drinks, sharp objects and electrical cords out of reach.",
+          "Remember that supervision remains essential even in a baby-proofed room."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You do not need to make every room perfect overnight. Start with the most important hazards and reassess your home as your child's abilities change."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What should I baby-proof at home for my child's current age?"
+  },
+  {
+    "id": "learning-005",
+    "category": "learning",
+    "illustration": "learning",
+    "minAgeDays": 270,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["learning", "imitation", "social-development"],
+    "title": "Your baby is watching and learning",
+    "summary": "From waving goodbye to pretending to talk on a phone, imitation helps young children discover how the world works.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Learning by watching others",
+        "content": "Babies and toddlers increasingly observe and copy actions they see around them. Imitation helps them practice new movements, participate in social routines and explore how everyday objects are used. Familiar activities such as brushing hair, waving or stirring with a spoon can become opportunities for learning."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Turn routines into learning moments",
+        "items": [
+          "Wave hello and goodbye and give your child time to respond.",
+          "Demonstrate simple actions with safe toys or household objects.",
+          "Invite your child to imitate gestures during songs.",
+          "Celebrate attempts without expecting exact copies."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Your child learns from ordinary interactions every day. You do not need special lessons to create meaningful learning opportunities."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What everyday activities can help my baby learn through imitation?"
+  },
+  {
+    "id": "parent-support-006",
+    "category": "parentSupport",
+    "illustration": "parentSupport",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["parent-support", "emotional-wellbeing", "reassurance"],
+    "title": "Some days are simply harder than others",
+    "summary": "Parenting can be joyful and exhausting at the same time. A difficult day does not define the kind of parent you are.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Making room for difficult feelings",
+        "content": "Caring for a young child can bring moments of happiness alongside frustration, tiredness and uncertainty. Sleep deprivation and changing routines can make ordinary challenges feel overwhelming. These feelings do not automatically mean that something is wrong, but persistent distress deserves attention and support."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Be gentle with yourself",
+        "items": [
+          "Focus on essential needs when your energy is limited.",
+          "Ask a trusted person for practical or emotional support.",
+          "Take a short break when your child is safely cared for.",
+          "Speak with a healthcare professional if sadness, anxiety or overwhelm persist."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You do not have to enjoy every moment to be a caring parent. Your wellbeing matters, and asking for help is a healthy choice."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I cope with difficult parenting days without feeling guilty?"
+  },
+
+  {
+    "id": "bottle-feeding-004",
+    "category": "bottleFeeding",
+    "illustration": "bottleFeeding",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["bottle-feeding", "hygiene", "food-safety"],
+    "title": "A clean bottle makes a difference",
+    "summary": "Milk residue can allow bacteria to grow. A simple cleaning routine helps keep feeding equipment safe.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why bottle hygiene matters",
+        "content": "Milk can leave residue inside bottles, nipples and other feeding equipment. Without proper cleaning, bacteria may multiply on these surfaces. Babies are particularly vulnerable to infections during their early months, so careful cleaning and appropriate sanitizing are important parts of safe feeding."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Build a safe cleaning routine",
+        "items": [
+          "Wash your hands before handling clean feeding equipment.",
+          "Disassemble bottles and clean all parts after every feed.",
+          "Use hot soapy water and a dedicated bottle brush, or a dishwasher when the manufacturer allows it.",
+          "Allow parts to air-dry completely on a clean surface.",
+          "Follow local recommendations for sanitizing, especially for babies under two months, premature babies or those with weakened immune systems."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Bottle hygiene doesn't need to be complicated. A consistent cleaning routine helps protect your baby and soon becomes part of everyday life."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How should I clean and sanitize my baby's bottles safely?"
+  },
+  {
+    "id": "growth-003",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "weight", "growth-monitoring"],
+    "title": "One weigh-in doesn't tell the whole story",
+    "summary": "Small differences between weight measurements can happen. Growth is best understood by looking at the trend over time.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why measurements can vary",
+        "content": "A baby's recorded weight can be affected by the scale used, clothing, recent feeding and measurement conditions. Small differences between individual weigh-ins do not always reflect a meaningful change in growth. Healthcare professionals interpret weight alongside length, age, medical history and previous measurements."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make measurements more useful",
+        "items": [
+          "Use a suitable baby scale when weighing at home.",
+          "Try to measure under similar conditions each time.",
+          "Record the date and measurement accurately.",
+          "Avoid weighing excessively unless recommended by a healthcare professional.",
+          "Seek medical advice if weight gain is inadequate, weight drops unexpectedly or feeding becomes difficult."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Your baby's wellbeing cannot be summarized by one number. Growth patterns and clinical assessment provide a more complete picture."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How often should I weigh my baby, and how should I interpret changes?"
+  },
+  {
+    "id": "teething-003",
+    "category": "teething",
+    "illustration": "teething",
+    "minAgeDays": 120,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["teething", "development", "reassurance"],
+    "title": "Where are those first teeth?",
+    "summary": "Some babies get their first tooth early, while others take longer. The timing of teething varies considerably.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Every smile develops differently",
+        "content": "The first baby teeth often appear around six months, but there is a wide range of normal timing. Some babies develop teeth earlier, while others may not have a visible tooth until closer to their first birthday. The order of eruption can also vary, although the lower front teeth commonly appear first."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "What parents can do",
+        "items": [
+          "Avoid comparing your baby's teething schedule with other children.",
+          "Gently clean the gums and begin brushing when the first tooth appears.",
+          "Arrange a dental assessment by the first birthday, following local guidance.",
+          "Ask a dental professional if you have concerns about delayed tooth eruption or unusual changes in the gums."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A later first tooth does not automatically mean something is wrong. Your dental professional can assess development if you have concerns."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "When should my baby's first teeth appear, and when should I be concerned?"
+  },
+  {
+    "id": "daytime-nap-004",
+    "category": "daytimeNap",
+    "illustration": "daytimeNap",
+    "minAgeDays": 0,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["sleep", "tiredness", "sleep-cues"],
+    "title": "Your baby may be telling you they're tired",
+    "summary": "Yawning isn't the only sign of tiredness. Small changes in behavior can help you recognize when your baby needs rest.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Recognizing sleep cues",
+        "content": "Babies communicate tiredness in different ways. Some become quieter, look away from stimulation or lose interest in play. Others rub their eyes, yawn or become fussy. Learning your baby's individual cues can help you offer rest before they become very upset, although signs can change with age."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Notice the little signals",
+        "items": [
+          "Watch for reduced engagement or turning away from activities.",
+          "Notice yawning, eye rubbing or increasing fussiness.",
+          "Offer a calm transition toward sleep when your baby seems tired.",
+          "Combine your observations with your baby's usual sleep patterns rather than relying on a strict schedule.",
+          "Always use a safe sleep environment for naps."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You won't recognize every sleep cue perfectly. Over time, observing your baby's patterns can make their needs easier to understand."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I recognize my baby's early signs of tiredness?"
+  },
+  {
+    "id": "health-and-comfort-004",
+    "category": "healthAndComfort",
+    "illustration": "healthAndComfort",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["health", "hydration", "warning-signs"],
+    "title": "Small signs that hydration matters",
+    "summary": "Babies can become dehydrated more quickly than adults. Knowing the warning signs helps you recognize when medical advice is needed.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why hydration deserves attention",
+        "content": "Babies have relatively high fluid needs and may lose fluids during fever, vomiting, diarrhea or poor feeding. Dehydration can develop when fluid losses exceed intake. Recognizing changes in wet diapers, alertness and feeding behavior is important, especially in young infants."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Signs to watch for",
+        "items": [
+          "Notice a significant decrease in wet diapers compared with your baby's usual pattern.",
+          "Watch for a dry mouth, fewer tears when crying or unusual sleepiness.",
+          "Continue offering breast milk or formula as appropriate.",
+          "Seek prompt medical advice if your baby is feeding poorly, has persistent vomiting or diarrhea, or shows possible signs of dehydration.",
+          "Seek emergency care for severe lethargy, difficulty waking or other signs of serious illness."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You do not need to track every drop your baby drinks. Paying attention to feeding, wet diapers and general behavior can help you recognize when something changes."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What are the warning signs of dehydration in babies?"
+  },
+
+  {
+    "id": "night-sleep-004",
+    "category": "nightSleep",
+    "illustration": "nightSleep",
+    "minAgeDays": 0,
+    "maxAgeDays": 120,
+    "priority": 5,
+    "tags": ["sleep", "circadian-rhythm", "newborn"],
+    "title": "Day and night are still new concepts",
+    "summary": "Newborns don't arrive knowing the difference between day and night. Their internal sleep rhythm develops gradually.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Learning the rhythm of day and night",
+        "content": "During the first months, babies gradually develop their circadian rhythm, the internal system that helps regulate sleep and wakefulness. Newborn sleep is often spread across the entire day and night because feeding needs and immature sleep regulation influence when they wake. Over time, exposure to normal daytime light and calmer nighttime routines can help reinforce the difference."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Gently introduce day and night",
+        "items": [
+          "Let your baby experience natural daylight during waking hours.",
+          "Keep nighttime feeds and diaper changes calm, with dim lighting.",
+          "Use normal household sounds during the day rather than keeping everything silent.",
+          "Continue responding to hunger cues during the night.",
+          "Always follow safe sleep recommendations, day and night."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Frequent nighttime waking is normal for many newborns. Your baby is gradually learning a rhythm that takes time to develop."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I help my newborn gradually distinguish day from night?"
+  },
+  {
+    "id": "breastfeeding-004",
+    "category": "breastfeeding",
+    "illustration": "breastfeeding",
+    "minAgeDays": 90,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["breastfeeding", "distraction", "feeding-behavior"],
+    "title": "When everything is more interesting than milk",
+    "summary": "As babies become more curious about the world, they may start looking around or interrupting feeds more often.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Curiosity can change feeding",
+        "content": "As babies become more aware of sounds, movement and people around them, some begin interrupting breastfeeds to look at their surroundings. This can happen during the middle months of infancy, although the timing varies. Distracted feeding does not necessarily mean your baby is losing interest in breastfeeding or that your milk supply has decreased."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Make feeding more comfortable",
+        "items": [
+          "Try breastfeeding in a quieter environment when your baby seems easily distracted.",
+          "Offer feeds when your baby shows hunger cues rather than waiting until they become very upset.",
+          "Allow short pauses when your baby wants to look around.",
+          "Monitor wet diapers and growth if feeds become consistently shorter or less frequent.",
+          "Seek feeding support if your baby persistently refuses feeds or shows signs of inadequate intake."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "A curious baby isn't necessarily a poorly fed baby. Feeding patterns often evolve alongside your child's growing interest in the world."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "Why does my baby get distracted while breastfeeding?"
+  },
+  {
+    "id": "growth-004",
+    "category": "growth",
+    "illustration": "growth",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["growth", "prematurity", "corrected-age"],
+    "title": "For premature babies, age has two meanings",
+    "summary": "Babies born early may have both a chronological age and a corrected age. Understanding the difference can help make sense of development.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "What is corrected age?",
+        "content": "Chronological age is the time since your baby was born. Corrected age accounts for how many weeks early your baby arrived. For example, a baby born eight weeks early who is now six months old has a corrected age of approximately four months. Healthcare professionals often use corrected age when assessing growth and developmental milestones in premature infants, commonly during the first two years."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Follow development with perspective",
+        "items": [
+          "Keep a record of your baby's gestational age at birth.",
+          "Ask your healthcare professional when corrected age should be used.",
+          "Use growth charts appropriate for premature infants when recommended.",
+          "Avoid comparing milestones using chronological age alone.",
+          "Follow your baby's individualized medical and developmental follow-up plan."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Being born early can change how developmental progress is assessed. Corrected age helps provide a fairer picture of your baby's journey."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What is my premature baby's corrected age, and how should I use it?"
+  },
+  {
+    "id": "solid-food-005",
+    "category": "solidFood",
+    "illustration": "solidFood",
+    "minAgeDays": 180,
+    "maxAgeDays": 365,
+    "priority": 5,
+    "tags": ["solid-food", "allergens", "nutrition"],
+    "title": "Introducing new foods, including allergens",
+    "summary": "Foods such as egg and peanut can be introduced during complementary feeding when your baby is developmentally ready, using safe preparations.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Understanding allergen introduction",
+        "content": "Current guidance generally supports introducing common allergenic foods during infancy once a baby is ready for complementary foods, rather than delaying them unnecessarily. Examples include well-cooked egg, peanut in a safe form, dairy ingredients and wheat. Babies with severe eczema, known food allergies or previous reactions may need individualized advice before introducing certain foods."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Introduce foods thoughtfully",
+        "items": [
+          "Offer new foods in textures appropriate for your baby's developmental abilities.",
+          "Use smooth peanut butter thinned into puree or another suitable food; never offer whole peanuts.",
+          "Introduce common allergens one at a time in small amounts so reactions are easier to recognize.",
+          "Once tolerated, continue including allergenic foods regularly as part of a varied diet.",
+          "Seek medical advice before introduction if your baby has severe eczema, a known food allergy or a previous reaction."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "Introducing allergens can feel intimidating. If your baby develops breathing difficulty, tongue or throat swelling, or other signs of a severe allergic reaction, seek emergency medical help immediately."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "How can I safely introduce common food allergens to my baby?"
+  },
+  {
+    "id": "playtime-005",
+    "category": "playtime",
+    "illustration": "playtime",
+    "minAgeDays": 0,
+    "maxAgeDays": 548,
+    "priority": 5,
+    "tags": ["playtime", "music", "language", "bonding"],
+    "title": "Your voice is your baby's favorite soundtrack",
+    "summary": "Songs, rhymes and playful sounds can turn everyday moments into opportunities for connection and learning.",
+    "sections": [
+      {
+        "id": "understanding",
+        "type": "paragraph",
+        "title": "Why music and rhythm matter",
+        "content": "Babies are naturally interested in voices, rhythms and repeated sounds. Singing and nursery rhymes can support shared attention, early language exposure and social interaction. As children grow, they may begin anticipating familiar words, copying gestures or moving along with music."
+      },
+      {
+        "id": "practical-tips",
+        "type": "bulletList",
+        "title": "Bring music into everyday life",
+        "items": [
+          "Sing simple songs during diaper changes, dressing or playtime.",
+          "Repeat familiar rhymes and add gentle hand movements.",
+          "Pause during favorite songs to see whether your child responds.",
+          "Use comfortable sound levels and avoid loud music near your baby's ears.",
+          "Follow your baby's reactions and take breaks when they seem tired or overstimulated."
+        ]
+      },
+      {
+        "id": "reassurance",
+        "type": "highlight",
+        "content": "You don't need a beautiful singing voice. Your familiar voice and shared attention are what make these moments special."
+      }
+    ],
+    "sources": [],
+    "askNeloPrompt": "What songs and musical games can I enjoy with my baby at their age?"
+  }
+]
